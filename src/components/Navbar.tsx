@@ -2,6 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { flexCenter } from '../styles/utils';
+import { PRODUCT_CATEGORIES } from '../constants';
+import { capitalize } from '../helpers';
 
 const Root = styled.nav`
   padding: 2rem;
@@ -13,7 +15,7 @@ const CenteredContainer = styled.div`
   grid-auto-flow: column;
   align-items: center;
   justify-content: space-between;
-  max-width: 140rem;
+  max-width: 160rem;
   margin: 0 auto;
 `;
 
@@ -63,24 +65,90 @@ const SearchIcon = styled.svg`
 `;
 
 const Links = styled.div`
-  /*  */
+  display: flex;
 `;
 
 const linkTypography = css`
   font-size: 1.8rem;
   padding: 0.9rem 2rem;
+  transition: color 0.2s;
 `;
 
 const NavLink = styled.a`
   ${linkTypography}
+
+  &:hover {
+    color: #333;
+  }
+`;
+
+const DropdownContainer = styled.div`
+  position: relative;
+
+  &:hover > :last-child {
+    visibility: initial;
+    opacity: 1;
+  }
+`;
+
+const CategoryText = styled.p`
+  ${linkTypography}
+  cursor: pointer;
+`;
+
+const CategoryDropdown = styled.ul`
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  padding: 1.5rem 0;
+  background: rgba(192, 224, 243, 0.4);
+  border-radius: 1rem;
+  transform: translateX(-50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+`;
+
+const DropdownLink = styled.a`
+  ${linkTypography}
+  width: 100%;
+  padding: 1rem 8rem 1rem 1.5rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 `;
 
 const AuthArea = styled.div`
   ${flexCenter}
 `;
 
-const LoginLink = styled.a`
+const authLinkOrBtn = css`
   ${linkTypography}
+  border-radius: 6px;
+  transition: opacity 0.3s;
+  transition: background 0.2s;
+`;
+
+const LoginLink = styled.a`
+  ${authLinkOrBtn}
+  background: rgba(0, 0, 0, 0.08);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.13);
+  }
+`;
+
+const LogoutBtn = styled.button`
+  ${authLinkOrBtn}
+  color: rgba(255, 0, 0, 0.8);
+  background: rgba(255, 0, 0, 0.1);
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(255, 0, 0, 0.15);
+  }
 `;
 
 const MyAccountLink = styled.a`
@@ -138,9 +206,22 @@ const Navbar = () => {
           </Link>
 
           {/* Categories */}
-          <Link href="/categories" passHref>
-            <NavLink>Categories</NavLink>
-          </Link>
+          <DropdownContainer>
+            {/* Text */}
+            <CategoryText>Categories</CategoryText>
+
+            {/* Dropdown */}
+            <CategoryDropdown>
+              {/* Links */}
+              {PRODUCT_CATEGORIES.map(category => (
+                <li>
+                  <Link href={`/${category}`} passHref>
+                    <DropdownLink>{capitalize(category)}</DropdownLink>
+                  </Link>
+                </li>
+              ))}
+            </CategoryDropdown>
+          </DropdownContainer>
 
           {/* Blog */}
           <Link href="/blog" passHref>
@@ -163,6 +244,9 @@ const Navbar = () => {
               </MyAccountIcon>
             </MyAccountLink>
           </Link>
+
+          {/* Logout btn */}
+          <LogoutBtn>Logout</LogoutBtn>
         </AuthArea>
       </CenteredContainer>
     </Root>
