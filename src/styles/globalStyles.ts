@@ -12,8 +12,10 @@ ${css`
   }
 
   html {
+    font-family: 'Rubik', sans-serif;
     font-size: 62.5%;
-    font-weight: 400;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 
     /* Media queries */
@@ -32,11 +34,6 @@ ${css`
     @media only screen and (max-width: 25em) {
       font-size: 43.75%; // 1rem = 7px 7/16 = 43.75%
     }
-  }
-
-  body {
-    font-family: 'Montserrat', sans-serif;
-    -webkit-font-smoothing: antialiased;
   }
 
   input,
