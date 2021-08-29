@@ -1,4 +1,5 @@
 import { createGlobalStyle, css } from 'styled-components';
+import { cssVariables } from './cssVariables';
 
 // General styling of the app
 export const GlobalStyles = createGlobalStyle`
@@ -11,10 +12,15 @@ ${css`
     box-sizing: inherit;
   }
 
+  :root {
+    ${cssVariables}
+  }
+
   html {
     font-family: 'Rubik', sans-serif;
     font-size: 62.5%;
     font-weight: 300;
+    line-height: 1;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
 
