@@ -1,7 +1,13 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import { GlobalStyles } from '../styles/globalStyles';
+
+const ContentArea = styled.div`
+  max-width: 120rem;
+  margin: 0 auto;
+`;
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -19,7 +25,11 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       {/* Global styles */}
       <GlobalStyles />
-      <Component {...pageProps} />
+
+      {/* Page content centered */}
+      <ContentArea>
+        <Component {...pageProps} />
+      </ContentArea>
     </>
   );
 }

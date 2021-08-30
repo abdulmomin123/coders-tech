@@ -122,6 +122,7 @@ const DropdownLink = styled.a`
 
 const AuthArea = styled.div`
   ${flexCenter}
+  display: none;
 `;
 
 const authLinkOrBtn = css`
@@ -214,7 +215,7 @@ const Navbar = () => {
             <CategoryDropdown>
               {/* Links */}
               {PRODUCT_CATEGORIES.map(category => (
-                <li>
+                <li key={category}>
                   <Link href={`/${category}`} passHref>
                     <DropdownLink>{capitalize(category)}</DropdownLink>
                   </Link>
