@@ -29,7 +29,6 @@ const ImageSlideshow = () => {
   // State
   const [currentImg, setCurrentImg] = useState(1);
   const [shouldTransition, setShouldTransition] = useState(true);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timer>();
 
   const images = ['/p1.jpg', '/p2.jpg', '/p3.jpg', '/p4.jpg', '/p5.jpg'];
 
