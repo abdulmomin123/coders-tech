@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 
@@ -21,10 +22,6 @@ const SlidesContainer = styled.div<{
   );
   transition: ${({ shouldTransition }) =>
     shouldTransition ? 'transform 0.8s ease-in-out' : 'none'};
-`;
-
-const Slide = styled.div`
-  background: #ddd;
 `;
 
 const ButtonsContainer = styled.div`
@@ -84,17 +81,33 @@ const ImageSlideshow = () => {
           }
         }}
       >
-        <Slide>
-          <Image src="/p5.jpg" width={1200} height={429} alt="test" />
-        </Slide>
+        {/* Last image */}
+        <Link href="/product/0">
+          <a>
+            <Image
+              src={images[images.length - 1]}
+              width={1200}
+              height={429}
+              alt="test"
+            />
+          </a>
+        </Link>
+
+        {/* All images */}
         {images.map(img => (
-          <Slide key={img}>
-            <Image src={img} width={1200} height={429} alt="test" />
-          </Slide>
+          <Link href="/product/a" key={img}>
+            <a>
+              <Image src={img} width={1200} height={429} alt="test" />
+            </a>
+          </Link>
         ))}
-        <Slide>
-          <Image src="/p1.jpg" width={1200} height={429} alt="test" />
-        </Slide>
+
+        {/* First image */}
+        <Link href="/product/5">
+          <a>
+            <Image src={images[0]} width={1200} height={429} alt="test" />
+          </a>
+        </Link>
       </SlidesContainer>
 
       <ButtonsContainer>
