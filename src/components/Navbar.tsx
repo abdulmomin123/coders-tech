@@ -7,7 +7,7 @@ import { capitalize } from '../helpers';
 
 const Root = styled.nav`
   padding: 2rem;
-  background: #f6f6f6;
+  background: var(--bg-primary);
 `;
 
 const CenteredContainer = styled.div`
@@ -97,7 +97,7 @@ const CategoryText = styled.p`
 const CategoryDropdown = styled.ul`
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: 35%;
   padding: 1.5rem 0;
   background: rgba(192, 224, 243, 0.6);
   border-radius: 1rem;
@@ -222,11 +222,6 @@ const Navbar = () => {
               ))}
             </CategoryDropdown>
           </DropdownContainer>
-
-          {/* Blog */}
-          <Link href="/blog" passHref>
-            <NavLink>Blog</NavLink>
-          </Link>
         </Links>
 
         {/* User auth actions */}

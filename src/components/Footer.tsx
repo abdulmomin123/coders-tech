@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Root = styled.footer``;
+const Root = styled.footer`
+  background: var(--bg-primary);
+`;
 
 const Footer = () => {
   return (

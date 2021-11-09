@@ -1,6 +1,14 @@
 import { createGlobalStyle, css } from 'styled-components';
 import { cssVariables } from './cssVariables';
 
+const inputStyles = css`
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+`;
+
 // General styling of the app
 export const GlobalStyles = createGlobalStyle`
 ${css`
@@ -42,12 +50,18 @@ ${css`
   textarea,
   select,
   button {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
+    ${inputStyles}
 
     &:focus {
       outline: none;
+    }
+  }
+
+  input,
+  textarea,
+  select {
+    &::placeholder {
+      ${inputStyles}
     }
   }
 
