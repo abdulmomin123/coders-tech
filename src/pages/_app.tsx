@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import { GlobalStyles } from '../styles/globalStyles';
 
@@ -30,6 +31,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ContentArea>
         <Component {...pageProps} />
       </ContentArea>
+
+      {/* Footer */}
+      <Footer />
     </>
   );
 }
