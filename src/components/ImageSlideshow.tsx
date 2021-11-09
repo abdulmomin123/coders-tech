@@ -82,7 +82,7 @@ const ImageSlideshow = () => {
         }}
       >
         {/* Last image */}
-        <Link href="/product/0">
+        <Link href="/laptop/0">
           <a>
             <Image
               src={images[images.length - 1]}
@@ -95,7 +95,7 @@ const ImageSlideshow = () => {
 
         {/* All images */}
         {images.map(img => (
-          <Link href="/product/a" key={img}>
+          <Link href="/keyboard/a" key={img}>
             <a>
               <Image src={img} width={1200} height={429} alt="test" />
             </a>
@@ -103,7 +103,7 @@ const ImageSlideshow = () => {
         ))}
 
         {/* First image */}
-        <Link href="/product/5">
+        <Link href="/mouse/5">
           <a>
             <Image src={images[0]} width={1200} height={429} alt="test" />
           </a>

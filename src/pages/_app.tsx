@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Navbar from '../components/Navbar';
 import { GlobalStyles } from '../styles/globalStyles';
 
-const ContentArea = styled.div`
+const ContentArea = styled.main`
   max-width: 120rem;
   margin: 0 auto;
 `;

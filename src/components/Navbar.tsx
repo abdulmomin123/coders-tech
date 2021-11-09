@@ -42,12 +42,10 @@ const SearchInput = styled.input`
   border: 4px solid rgba(0, 0, 0, 0);
   transition: border 0.3s, background 0.3s;
 
-  &:hover,
   &:focus {
     background: initial;
   }
 
-  &:hover,
   &:focus {
     border: 4px solid #c0e0f3;
   }
