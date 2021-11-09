@@ -120,7 +120,10 @@ const ImageSlideshow = () => {
           Previous
         </Button>
 
-        <span>&nbsp; | &nbsp;</span>
+        <span>
+          &nbsp; {currentImg > images.length ? images.length : currentImg}{' '}
+          &nbsp;
+        </span>
 
         <Button
           onClick={() => {

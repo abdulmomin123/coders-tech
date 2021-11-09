@@ -101,12 +101,13 @@ const CategoryDropdown = styled.ul`
   top: 100%;
   left: 50%;
   padding: 1.5rem 0;
-  background: rgba(192, 224, 243, 0.4);
+  background: rgba(192, 224, 243, 0.6);
   border-radius: 1rem;
   transform: translateX(-50%);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s;
+  z-index: 1;
 `;
 
 const DropdownLink = styled.a`
