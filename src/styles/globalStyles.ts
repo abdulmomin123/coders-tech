@@ -36,15 +36,12 @@ ${css`
     @media only screen and (max-width: 56.25em) {
       font-size: 50%; // 1rem = 8px 8/16 = 50%
     }
-
-    @media only screen and (max-width: 25em) {
-      font-size: 43.75%; // 1rem = 7px 7/16 = 43.75%
-    }
   }
 
   input,
   textarea,
-  select {
+  select,
+  button {
     font-family: inherit;
     font-size: inherit;
     font-weight: inherit;
