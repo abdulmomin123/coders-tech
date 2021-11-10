@@ -1,8 +1,10 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import styled from 'styled-components';
+import Cart from '../components/Cart';
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import CartProvider from '../contexts/Cart';
 import { GlobalStyles } from '../styles/globalStyles';
 
 const ContentArea = styled.main`
@@ -13,7 +15,7 @@ const ContentArea = styled.main`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <CartProvider>
       <Head>
         <title>Coders Tech | Shop for Programmers</title>
         <meta
@@ -33,9 +35,12 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </ContentArea>
 
+      {/* Shopping cart */}
+      <Cart />
+
       {/* Footer */}
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 
