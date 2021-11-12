@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import HeadingPrimary from '../components/HeadingPrimary';
 
 const Root = styled.div`
+  max-width: 120rem;
+  margin: 0 auto;
   height: 80vh;
   text-align: center;
 `;

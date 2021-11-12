@@ -7,6 +7,7 @@ const Root = styled.div`
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  margin-bottom: 3rem;
 `;
 
 const SlidesContainer = styled.div<{
@@ -50,7 +51,7 @@ const ImageSlideshow = () => {
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 5000));
   };
 
-  const images = ['/p1.jpg', '/p2.jpg', '/p3.jpg', '/p4.jpg', '/p5.jpg'];
+  const images = ['/slide.jpg', '/slide-2.jpg'];
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
@@ -85,8 +86,8 @@ const ImageSlideshow = () => {
           <a>
             <Image
               src={images[images.length - 1]}
-              width={1200}
-              height={429}
+              width={1520}
+              height={543}
               alt="test"
             />
           </a>
@@ -96,7 +97,7 @@ const ImageSlideshow = () => {
         {images.map(img => (
           <Link href="/keyboard/a" key={img}>
             <a>
-              <Image src={img} width={1200} height={429} alt="test" />
+              <Image src={img} width={1520} height={543} alt="test" />
             </a>
           </Link>
         ))}
@@ -104,7 +105,7 @@ const ImageSlideshow = () => {
         {/* First image */}
         <Link href="/mouse/5">
           <a>
-            <Image src={images[0]} width={1200} height={429} alt="test" />
+            <Image src={images[0]} width={1520} height={543} alt="test" />
           </a>
         </Link>
       </SlidesContainer>

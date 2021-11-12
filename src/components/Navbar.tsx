@@ -70,14 +70,14 @@ const linkTypography = css`
   font-size: 1.8rem;
   padding: 0.9rem 2rem;
   transition: color 0.2s;
-`;
-
-const NavLink = styled.a`
-  ${linkTypography}
 
   &:hover {
     color: #333;
   }
+`;
+
+const NavLink = styled.a`
+  ${linkTypography}
 `;
 
 const DropdownContainer = styled.div`
@@ -115,6 +115,7 @@ const DropdownLink = styled.a`
   transition: background 0.2s;
 
   &:hover {
+    color: currentColor;
     background: rgba(0, 0, 0, 0.1);
   }
 `;

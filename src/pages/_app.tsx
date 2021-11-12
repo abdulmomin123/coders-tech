@@ -8,8 +8,6 @@ import CartProvider from '../contexts/Cart';
 import { GlobalStyles } from '../styles/globalStyles';
 
 const ContentArea = styled.main`
-  max-width: 120rem;
-  margin: 0 auto;
   padding: 3rem;
 `;
 
