@@ -51,7 +51,7 @@ const ImageSlideshow = () => {
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 5000));
   };
 
-  const images = ['/slide.jpg', '/slide-2.jpg'];
+  const images = ['/slide.jpg', '/slide.jpg'];
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
@@ -87,7 +87,7 @@ const ImageSlideshow = () => {
             <Image
               src={images[images.length - 1]}
               width={1520}
-              height={543}
+              height={440}
               alt="test"
             />
           </a>
@@ -97,7 +97,7 @@ const ImageSlideshow = () => {
         {images.map(img => (
           <Link href="/keyboard/a" key={img}>
             <a>
-              <Image src={img} width={1520} height={543} alt="test" />
+              <Image src={img} width={1520} height={440} alt="test" />
             </a>
           </Link>
         ))}
@@ -105,7 +105,7 @@ const ImageSlideshow = () => {
         {/* First image */}
         <Link href="/mouse/5">
           <a>
-            <Image src={images[0]} width={1520} height={543} alt="test" />
+            <Image src={images[0]} width={1520} height={440} alt="test" />
           </a>
         </Link>
       </SlidesContainer>
