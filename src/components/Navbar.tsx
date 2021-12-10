@@ -99,8 +99,9 @@ const CategoryDropdown = styled.ul`
   top: 100%;
   left: 35%;
   padding: 1.5rem 0;
-  background: rgba(192, 224, 243, 0.6);
-  border-radius: 1rem;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   transform: translateX(-50%);
   opacity: 0;
   visibility: hidden;
@@ -174,7 +175,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link href="/" passHref>
           <Logo title="Home">
-            Cotech<span>.</span>
+            Shopnik<span>.</span>
           </Logo>
         </Link>
 

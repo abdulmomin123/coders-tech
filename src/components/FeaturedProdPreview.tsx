@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styled, { css } from 'styled-components';
 
-const Root = styled.div<{ width: string; height: string; background: string }>`
+const Root = styled.div<{ width: number; height: number; background: string }>`
   position: relative;
   padding: 3rem;
   width: ${({ width }) => width};
@@ -63,10 +63,8 @@ interface Props {
   description: string;
   href: string;
   img: string;
-  width: string;
-  height: string;
-  imgWidth: number;
-  imgHeight: number;
+  width: number;
+  height: number;
   background: string;
 }
 
@@ -77,8 +75,6 @@ const FeaturedProdPreview: FC<Props> = ({
   img,
   width,
   height,
-  imgWidth,
-  imgHeight,
   background,
 }) => {
   return (
@@ -107,13 +103,8 @@ const FeaturedProdPreview: FC<Props> = ({
       </Texts>
 
       {/* Product image */}
-      <ImageContainer width={imgWidth} height={imgHeight}>
-        <Image
-          src={img}
-          width={imgWidth}
-          height={imgHeight}
-          layout="responsive"
-        />
+      <ImageContainer width={width} height={height}>
+        <Image src={img} width={width} height={height} layout="responsive" />
       </ImageContainer>
     </Root>
   );

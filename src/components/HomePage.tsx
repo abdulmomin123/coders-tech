@@ -28,10 +28,8 @@ const HomePage = () => {
             description="Domed as former time of very might vows trial road, its clarinet expect."
             href="/test"
             img="/chair.png"
-            width="auto"
-            height="32rem"
-            imgWidth={292}
-            imgHeight={233}
+            width={230}
+            height={184}
             background={bg}
           />
 
@@ -40,10 +38,8 @@ const HomePage = () => {
             description="As shoulders ship first uninitiated theory mathematically trying. Nor some the measures arrived."
             href="/test"
             img="/table.png"
-            width="auto"
-            height="32rem"
-            imgWidth={407}
-            imgHeight={163}
+            width={330}
+            height={132}
             background={bg}
           />
         </FeaturedProducts>
