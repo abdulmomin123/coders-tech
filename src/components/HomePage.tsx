@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FeaturedProdBanner from './FeaturedProdBanner';
 import FeaturedProdPreview from './FeaturedProdPreview';
 import ImageSlideshow from './ImageSlideshow';
 import ProductsCarousel from './ProductsCarousel';
@@ -40,6 +41,9 @@ const HomePage = () => {
 
       {/* Products carousel */}
       <ProductsCarousel />
+
+      {/* Featured product banner */}
+      <FeaturedProdBanner />
     </>
   );
 };

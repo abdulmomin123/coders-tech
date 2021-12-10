@@ -5,7 +5,13 @@ const Root = styled.section``;
 const ProductsCarousel = () => {
   return (
     <Root>
-      <p></p>
+      {/* Category buttons */}
+
+      {/* Products grid */}
+
+      {/* Pagination buttons */}
+
+      {/* Go to shop button */}
     </Root>
   );
 };
