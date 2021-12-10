@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import FeaturedProdPreview from './FeaturedProdPreview';
 import ImageSlideshow from './ImageSlideshow';
+import ProductsCarousel from './ProductsCarousel';
 
 const FeaturedProducts = styled.div`
   display: grid;
@@ -8,16 +9,10 @@ const FeaturedProducts = styled.div`
   gap: 4rem;
 `;
 
-const Container = styled.div`
-  max-width: 152rem;
-  margin: 0 auto;
-`;
-
 const HomePage = () => {
-  const bg = '#f4f5f7';
   return (
     <>
-      <Container>
+      <section>
         {/* Image slideshow */}
         <ImageSlideshow />
 
@@ -30,7 +25,6 @@ const HomePage = () => {
             img="/chair.png"
             width={230}
             height={184}
-            background={bg}
           />
 
           <FeaturedProdPreview
@@ -40,10 +34,12 @@ const HomePage = () => {
             img="/table.png"
             width={330}
             height={132}
-            background={bg}
           />
         </FeaturedProducts>
-      </Container>
+      </section>
+
+      {/* Products carousel */}
+      <ProductsCarousel />
     </>
   );
 };

@@ -8,7 +8,9 @@ import CartProvider from '../contexts/Cart';
 import { GlobalStyles } from '../styles/globalStyles';
 
 const ContentArea = styled.main`
-  padding: 3rem;
+  max-width: 150rem;
+  margin: 0 auto;
+  padding: 3rem 0;
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
