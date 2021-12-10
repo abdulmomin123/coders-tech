@@ -24,6 +24,7 @@ const textTransform = css`
 `;
 
 const Title = styled.h2`
+  font-weight: 300;
   ${textTransform}
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
@@ -31,6 +32,10 @@ const Title = styled.h2`
   & > :last-child {
     color: #222;
   }
+`;
+
+const StrongTitle = styled.strong`
+  font-weight: 500;
 `;
 
 const Description = styled.p`
@@ -86,7 +91,7 @@ const FeaturedProdPreview: FC<Props> = ({
             .split(' ')
             .map((el, i, arr) =>
               i === arr.length - 1 ? (
-                <strong key={i}>{el}</strong>
+                <StrongTitle key={i}>{el}</StrongTitle>
               ) : (
                 <React.Fragment key={i}>{`${el} `}</React.Fragment>
               )

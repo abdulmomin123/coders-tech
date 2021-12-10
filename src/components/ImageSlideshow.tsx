@@ -26,7 +26,7 @@ const SlidesContainer = styled.div<{
 
 const ButtonsContainer = styled.div`
   font-size: 1.7rem;
-  font-weight: 500;
+  font-weight: 300;
   position: absolute;
   bottom: 15%;
   left: 15%;
@@ -44,12 +44,9 @@ const ImageSlideshow = () => {
   const [shouldTransition, setShouldTransition] = useState(true);
   const [timer, setTimer] = useState<NodeJS.Timeout>();
 
-  const clearTimer = () => {
-    clearTimeout(timer!);
-  };
-  const initializeTimer = () => {
+  const clearTimer = () => clearTimeout(timer!);
+  const initializeTimer = () =>
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 5000));
-  };
 
   const images = ['/slide.jpg', '/slide.jpg'];
 
@@ -60,6 +57,8 @@ const ImageSlideshow = () => {
 
     initializeTimer();
   }, [currentImg]);
+
+  useEffect(() => () => clearTimer());
 
   return (
     <Root
@@ -95,7 +94,7 @@ const ImageSlideshow = () => {
 
         {/* All images */}
         {images.map(img => (
-          <Link href="/keyboard/a" key={img}>
+          <Link href="/keyboard/a" key={Math.random()}>
             <a>
               <Image src={img} width={1520} height={440} alt="test" />
             </a>
@@ -121,8 +120,9 @@ const ImageSlideshow = () => {
         </Button>
 
         <span>
-          &nbsp; {currentImg > images.length ? images.length : currentImg}{' '}
-          &nbsp;
+          &nbsp;&nbsp;
+          {currentImg > images.length ? images.length : currentImg}
+          &nbsp;&nbsp;
         </span>
 
         <Button

@@ -76,8 +76,13 @@ const linkTypography = css`
   }
 `;
 
+const fontWeight = css`
+  font-weight: 500;
+`;
+
 const NavLink = styled.a`
   ${linkTypography}
+  ${fontWeight}
 `;
 
 const DropdownContainer = styled.div`
@@ -91,6 +96,7 @@ const DropdownContainer = styled.div`
 
 const CategoryText = styled.p`
   ${linkTypography}
+  ${fontWeight}
   cursor: pointer;
 `;
 
