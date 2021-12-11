@@ -4,3 +4,10 @@ export interface CartItem {
   price: string;
   quantity: number;
 }
+
+export type Categories =
+  | 'all'
+  | 'lighting'
+  | 'sofas'
+  | 'lounge chairs'
+  | 'furniture';

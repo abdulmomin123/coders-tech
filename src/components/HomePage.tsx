@@ -43,7 +43,13 @@ const HomePage = () => {
       <ProductsCarousel />
 
       {/* Featured product banner */}
-      <FeaturedProdBanner />
+      <FeaturedProdBanner
+        title="Stylish Minimal Chair"
+        href="/chairs/1"
+        img="/f3.png"
+        width={424}
+        height={390}
+      />
     </>
   );
 };

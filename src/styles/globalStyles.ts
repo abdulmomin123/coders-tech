@@ -9,6 +9,17 @@ const inputStyles = css`
   color: inherit;
 `;
 
+export const featuredProdTitleStyles = css`
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+
+  strong {
+    font-weight: 500;
+  }
+`;
+
 // General styling of the app
 export const GlobalStyles = createGlobalStyle`
 ${css`

@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
+import ViewNowBtn from './ViewNowBtn';
+import { featuredProdTitleStyles } from '../styles/globalStyles';
 
 const Root = styled.div`
   position: relative;
@@ -17,23 +18,12 @@ const Texts = styled.div`
   z-index: 1;
 `;
 
-const textTransform = css`
-  text-transform: uppercase;
-`;
-
 const Title = styled.h2`
-  font-weight: 300;
-  ${textTransform}
-  letter-spacing: 2px;
-  margin-bottom: 0.5rem;
+  ${featuredProdTitleStyles}
 
   & > :last-child {
     color: #222;
   }
-`;
-
-const StrongTitle = styled.strong`
-  font-weight: 500;
 `;
 
 const Description = styled.p`
@@ -41,16 +31,6 @@ const Description = styled.p`
   line-height: 1.7;
   margin-bottom: 3rem;
   color: #88888a;
-`;
-
-const ViewNow = styled.a`
-  font-size: 1.9rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  ${textTransform}
-  padding-bottom: 1rem;
-  color: #222;
-  border-bottom: 1px solid currentColor;
 `;
 
 const ImageContainer = styled.div<{ width: number; height: number }>`
@@ -87,7 +67,7 @@ const FeaturedProdPreview: FC<Props> = ({
             .split(' ')
             .map((el, i, arr) =>
               i === arr.length - 1 ? (
-                <StrongTitle key={i}>{el}</StrongTitle>
+                <strong key={i}>{el}</strong>
               ) : (
                 <React.Fragment key={i}>{`${el} `}</React.Fragment>
               )
@@ -98,9 +78,7 @@ const FeaturedProdPreview: FC<Props> = ({
         <Description>{description}</Description>
 
         {/* View now btn */}
-        <Link href={href} passHref>
-          <ViewNow>View Now</ViewNow>
-        </Link>
+        <ViewNowBtn href={href} />
       </Texts>
 
       {/* Product image */}
