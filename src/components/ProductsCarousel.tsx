@@ -1,5 +1,6 @@
+import Link from 'next/link';
 import { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Categories } from '../Types';
 
 const Root = styled.section`
@@ -17,16 +18,19 @@ const CategoryButtonsContainer = styled.div`
   margin-bottom: 3rem;
 `;
 
+const textTransform = css`
+  text-transform: uppercase;
+`;
+
 const CategoryBtn = styled.button<{ isSelected: boolean }>`
   font-size: 1.7rem;
   font-weight: 500;
-  text-transform: uppercase;
+  ${textTransform}
   padding-bottom: 0.8rem;
   color: ${({ isSelected }) => (isSelected ? '#37499d' : 'initial')};
   border-bottom: 2px solid
     ${({ isSelected }) => (isSelected ? '#37499d' : 'transparent')};
   transition: color 0.2s, border 0.2s;
-  cursor: pointer;
 
   &:hover {
     color: #37499d;
@@ -36,13 +40,80 @@ const CategoryBtn = styled.button<{ isSelected: boolean }>`
 
 const ProductGrid = styled.div``;
 
-const PaginationBtn = styled.button``;
+const PaginationButtons = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+`;
 
-const ShopBtn = styled.button``;
+const PaginationBtn = styled.button`
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const PageNumber = styled.span`
+  font-size: 2.1rem;
+  font-weight: 500;
+`;
+
+const Icon = styled.svg<{ isLeft?: boolean }>`
+  width: 2rem;
+  height: 2rem;
+  fill: #000;
+  ${({ isLeft }) => isLeft && 'transform: rotate(180deg);'}
+`;
+
+const position = css`
+  position: relative;
+`;
+
+const ShopButtonContainer = styled.div`
+  ${position}
+`;
+
+const Line = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #ebebeb;
+  transform: translateY(-50%);
+`;
+
+const InnerContainer = styled.div`
+  ${position}
+  display: inline-block;
+  padding: 0 3rem;
+  background: #fff;
+`;
+
+const ShopBtn = styled.a`
+  font-size: 1.8rem;
+  ${textTransform}
+  padding: 1.3rem 3rem;
+  background: #fff;
+  border: 1px solid var(--accent-color);
+  transition: background 0.2s;
+
+  &:hover {
+    background: var(--accent-color);
+  }
+`;
 
 const ProductsCarousel = () => {
   // State
   const [selectedCategory, setSelectedCategory] = useState<Categories>('all');
+  const [currentPage, setCurrentPage] = useState(1);
 
   const updateCategory = (target: HTMLButtonElement) =>
     setSelectedCategory(target.textContent!.toLowerCase() as Categories);
@@ -84,10 +155,38 @@ const ProductsCarousel = () => {
       </CategoryButtonsContainer>
 
       {/* Products grid */}
+      <ProductGrid></ProductGrid>
 
       {/* Pagination buttons */}
+      <PaginationButtons>
+        {/* Left button */}
+        <PaginationBtn>
+          <Icon isLeft={true}>
+            <use href="/chevron-right.svg#icon" />
+          </Icon>
+        </PaginationBtn>
+
+        {/* Current page text */}
+        <PageNumber>{currentPage}</PageNumber>
+
+        {/* Right button */}
+        <PaginationBtn>
+          <Icon>
+            <use href="/chevron-right.svg#icon" />
+          </Icon>
+        </PaginationBtn>
+      </PaginationButtons>
 
       {/* Go to shop button */}
+      <ShopButtonContainer>
+        <Line />
+
+        <InnerContainer>
+          <Link href="/shop" passHref>
+            <ShopBtn>Go to Shop</ShopBtn>
+          </Link>
+        </InnerContainer>
+      </ShopButtonContainer>
     </Root>
   );
 };

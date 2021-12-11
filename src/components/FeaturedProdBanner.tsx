@@ -29,7 +29,7 @@ const Title = styled.h2`
 
 const ImageContainer = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
   right: 10%;
 `;
 

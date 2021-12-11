@@ -11,6 +11,10 @@ const ContentArea = styled.main`
   max-width: 150rem;
   margin: 0 auto;
   padding: 3rem 0;
+
+  @media only screen and (max-width: 96.25em) {
+    padding: 3rem;
+  }
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
