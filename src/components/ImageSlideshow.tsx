@@ -30,6 +30,10 @@ const ButtonsContainer = styled.div`
   position: absolute;
   bottom: 15%;
   left: 15%;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  align-items: center;
+  gap: 1rem;
 `;
 
 const Button = styled.button`
@@ -119,11 +123,7 @@ const ImageSlideshow = () => {
           Previous
         </Button>
 
-        <span>
-          &nbsp;&nbsp;
-          {currentImg > images.length ? images.length : currentImg}
-          &nbsp;&nbsp;
-        </span>
+        <span>{currentImg > images.length ? images.length : currentImg}</span>
 
         <Button
           onClick={() => {
