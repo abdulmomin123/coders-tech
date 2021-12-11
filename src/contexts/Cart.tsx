@@ -1,7 +1,7 @@
 import { createContext, FC, useState } from 'react';
 import { CartItem } from '../Types';
 
-export const CartItemsContext = createContext<CartItem[] | null>(null);
+export const CartItemsContext = createContext<CartItem[]>([]);
 export const CartItemsSetter = createContext<(cartItems: CartItem[]) => void>(
   () => {}
 );
@@ -12,7 +12,7 @@ export const CartContext = createContext({
 
 const CartProvider: FC = ({ children }) => {
   // State
-  const [cartItems, setCartItems] = useState<CartItem[] | null>(null);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
 
   return (

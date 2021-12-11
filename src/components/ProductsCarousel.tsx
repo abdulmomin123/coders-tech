@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { Categories } from '../Types';
+import ProductsPreview from './ProductPreview';
 
 const Root = styled.section`
   text-align: center;
@@ -15,7 +16,7 @@ const CategoryButtonsContainer = styled.div`
   grid-auto-flow: column;
   grid-auto-columns: max-content;
   gap: 6.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 4rem;
 `;
 
 const textTransform = css`
@@ -38,7 +39,13 @@ const CategoryBtn = styled.button<{ isSelected: boolean }>`
   }
 `;
 
-const ProductGrid = styled.div``;
+const ProductGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 3rem;
+  row-gap: 6rem;
+  margin-bottom: 7rem;
+`;
 
 const PaginationButtons = styled.div`
   display: grid;
@@ -46,7 +53,7 @@ const PaginationButtons = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
 `;
 
 const PaginationBtn = styled.button`
@@ -155,12 +162,71 @@ const ProductsCarousel = () => {
       </CategoryButtonsContainer>
 
       {/* Products grid */}
-      <ProductGrid></ProductGrid>
+      <ProductGrid>
+        <ProductsPreview
+          name="Buckle Wrap Wooden Table"
+          images={['/p2.jpg', '/p1.jpg', 'p3.jpg']}
+          href="/test/test"
+          price={52}
+        />
+        <ProductsPreview
+          name="Wooden Teapot Via Jar"
+          images={['/p1.jpg']}
+          href="/test/test"
+          price={45}
+          discountedPrice={65}
+        />
+        <ProductsPreview
+          name="Wooden Bluetooth Speaker"
+          images={['/p3.jpg']}
+          href="/test/test"
+          price={36}
+        />
+        <ProductsPreview
+          name="Wooden Coffee Mug"
+          images={['/p4.jpg']}
+          href="/test/test"
+          price={23}
+          status="new"
+        />
+        <ProductsPreview
+          name="Wooden White Chair"
+          images={['/p5.jpg']}
+          href="/test/test"
+          price={45}
+          discountedPrice={65}
+        />
+        <ProductsPreview
+          name="Black Wooden Wardrobe"
+          images={['/p6.jpg']}
+          href="/test/test"
+          price={52}
+        />
+        <ProductsPreview
+          name="Black Chair - Wooden Craft"
+          images={['/p7.jpg']}
+          href="/test/test"
+          price={36}
+          status="new"
+        />
+        <ProductsPreview
+          name="Wall Decorator for Plant"
+          images={['/p8.jpg']}
+          href="/test/test"
+          price={23}
+        />
+      </ProductGrid>
 
       {/* Pagination buttons */}
       <PaginationButtons>
         {/* Left button */}
-        <PaginationBtn>
+        <PaginationBtn
+          onClick={() => {
+            if (currentPage <= 1) return;
+
+            setCurrentPage(currentPage - 1);
+          }}
+        >
           <Icon isLeft={true}>
             <use href="/chevron-right.svg#icon" />
           </Icon>
@@ -170,7 +236,13 @@ const ProductsCarousel = () => {
         <PageNumber>{currentPage}</PageNumber>
 
         {/* Right button */}
-        <PaginationBtn>
+        <PaginationBtn
+          onClick={() => {
+            if (currentPage > 5) return;
+
+            setCurrentPage(currentPage + 1);
+          }}
+        >
           <Icon>
             <use href="/chevron-right.svg#icon" />
           </Icon>
