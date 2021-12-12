@@ -6,19 +6,19 @@ export const CartItemsSetter = createContext<(cartItems: CartItem[]) => void>(
   () => {}
 );
 export const CartContext = createContext({
-  isOpen: false,
-  setIsOpen: (_: boolean) => {},
+  isCartOpen: false,
+  setIsCartOpen: (_: boolean) => {},
 });
 
 const CartProvider: FC = ({ children }) => {
   // State
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   return (
     <CartItemsContext.Provider value={cartItems}>
       <CartItemsSetter.Provider value={setCartItems}>
-        <CartContext.Provider value={{ isOpen, setIsOpen }}>
+        <CartContext.Provider value={{ isCartOpen, setIsCartOpen }}>
           {children}
         </CartContext.Provider>
       </CartItemsSetter.Provider>

@@ -26,18 +26,18 @@ const ShoppingCart = styled.div<{ isOpen: boolean }>`
 
 const Cart = () => {
   // Consuming context
-  const { isOpen, setIsOpen } = useContext(CartContext);
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   return (
     <Root
       onClick={({ target }) => {
         const cart = (target as HTMLElement).closest('.cart');
 
-        if (!cart) setIsOpen(false);
+        if (!cart) setIsCartOpen(false);
       }}
-      isOpen={isOpen}
+      isOpen={isCartOpen}
     >
-      <ShoppingCart isOpen={isOpen} className="cart">
+      <ShoppingCart isOpen={isCartOpen} className="cart">
         <p>cart</p>
       </ShoppingCart>
     </Root>

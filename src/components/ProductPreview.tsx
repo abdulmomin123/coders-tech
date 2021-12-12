@@ -2,7 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useContext } from 'react';
 import styled, { css } from 'styled-components';
-import { CartItemsContext, CartItemsSetter } from '../contexts/Cart';
+import {
+  CartContext,
+  CartItemsContext,
+  CartItemsSetter,
+} from '../contexts/Cart';
 import { capitalize, formatPrice } from '../helpers';
 
 const position = css`
@@ -13,8 +17,18 @@ const Root = styled.a`
   ${position}
   text-align: left;
 
+  img {
+    transition: transform 0.2s;
+  }
+
   &:hover > :first-child > :last-child {
     transform: translate(-50%, 0);
+  }
+
+  &:hover {
+    img {
+      transform: scale(1.2);
+    }
   }
 `;
 
@@ -114,6 +128,7 @@ const ProductsPreview: FC<Props> = ({
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
+  const { setIsCartOpen } = useContext(CartContext);
 
   return (
     <Link href={href} passHref>
@@ -138,6 +153,8 @@ const ProductsPreview: FC<Props> = ({
                 const existingProduct = cartItems.find(
                   ({ name: prodName }) => prodName === name
                 );
+
+                if (!cartItems.length) setIsCartOpen(true);
 
                 if (existingProduct) {
                   existingProduct.quantity++;
