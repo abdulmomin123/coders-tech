@@ -20,6 +20,7 @@ const transition = css`
 const Root = styled.a`
   ${position}
   text-align: left;
+  max-width: 27rem;
 
   img {
     ${transition}
@@ -135,7 +136,7 @@ interface Props {
   status?: 'new' | 'sale';
 }
 
-const ProductsPreview: FC<Props> = ({
+const ProductPreview: FC<Props> = ({
   name,
   images,
   href,
@@ -212,4 +213,4 @@ const ProductsPreview: FC<Props> = ({
   );
 };
 
-export default ProductsPreview;
+export default ProductPreview;

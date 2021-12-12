@@ -9,7 +9,7 @@ const Root = styled.div`
   height: 300px;
   display: flex;
   align-items: center;
-  margin-top: 20rem;
+  margin: 20rem 0 13rem 0;
   background: #f4f5f7;
 `;
 

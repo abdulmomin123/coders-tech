@@ -7,7 +7,6 @@ const Root = styled.footer`
   justify-items: center;
   gap: 1.8rem;
   padding: 2rem;
-  margin-top: 3rem;
   background: var(--bg-primary);
 
   p,

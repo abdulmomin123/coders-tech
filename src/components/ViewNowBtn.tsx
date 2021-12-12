@@ -16,10 +16,10 @@ interface Props {
   href: string;
 }
 
-const ViewNowBtn: FC<Props> = ({ href }) => {
+const ViewNowBtn: FC<Props> = ({ href, children }) => {
   return (
     <Link href={href} passHref>
-      <Root>View Now</Root>
+      <Root>{children ? children : 'View Now'}</Root>
     </Link>
   );
 };

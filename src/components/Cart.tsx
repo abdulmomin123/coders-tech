@@ -12,7 +12,7 @@ const Root = styled.div<{ isOpen: boolean }>`
   backdrop-filter: blur(1px);
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
   transition: visibility 0.3s, background 0.3s, backdrop-filter 0.3s;
-  z-index: 1;
+  z-index: 2;
 `;
 
 const ShoppingCart = styled.div<{ isOpen: boolean }>`

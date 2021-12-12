@@ -11,7 +11,10 @@ const FeaturedProducts = styled.div`
   gap: 4rem;
 `;
 
-const FeaturedCategories = styled.section``;
+const FeaturedCategories = styled.section`
+  max-width: 120rem;
+  margin: 0 auto 10rem auto;
+`;
 
 const HomePage = () => {
   return (
@@ -58,8 +61,14 @@ const HomePage = () => {
 
       {/* Featured categories */}
       <FeaturedCategories>
-        <FeaturedCategory />
-        <FeaturedCategory />
+        <FeaturedCategory
+          name="Decoration"
+          description="Small be and the rain would phase distance, succeed align."
+        />
+        <FeaturedCategory
+          name="Architect"
+          description="Small be and the rain would phase distance, succeed align."
+        />
       </FeaturedCategories>
     </>
   );
