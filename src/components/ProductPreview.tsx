@@ -8,6 +8,7 @@ import {
   CartItemsSetter,
 } from '../contexts/Cart';
 import { capitalize, formatPrice } from '../helpers';
+import { ProductPreviewType } from '../Types';
 
 const position = css`
   position: relative;
@@ -127,16 +128,7 @@ const Price = styled.span<{ isDiscounted?: boolean }>`
   ${({ isDiscounted }) => isDiscounted && 'margin-left: 1.5rem;'}
 `;
 
-interface Props {
-  name: string;
-  images: string[];
-  href: string;
-  price: number;
-  discountedPrice?: number;
-  status?: 'new' | 'sale';
-}
-
-const ProductPreview: FC<Props> = ({
+const ProductPreview: FC<ProductPreviewType> = ({
   name,
   images,
   href,

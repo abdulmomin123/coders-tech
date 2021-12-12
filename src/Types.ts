@@ -11,3 +11,12 @@ export type Categories =
   | 'sofas'
   | 'lounge chairs'
   | 'furniture';
+
+export interface ProductPreviewType {
+  name: string;
+  images: string[];
+  href: string;
+  price: number;
+  discountedPrice?: number;
+  status?: 'new' | 'sale';
+}
