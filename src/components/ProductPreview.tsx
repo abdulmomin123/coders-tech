@@ -13,12 +13,16 @@ const position = css`
   position: relative;
 `;
 
+const transition = css`
+  transition: transform 0.2s;
+`;
+
 const Root = styled.a`
   ${position}
   text-align: left;
 
   img {
-    transition: transform 0.2s;
+    ${transition}
   }
 
   &:hover > :first-child > :last-child {
@@ -32,15 +36,27 @@ const Root = styled.a`
   }
 `;
 
-const textStyles = css`
-  text-transform: uppercase;
+const fontWeight = css`
   font-weight: 500;
 `;
 
-const Status = styled.div<{ status: 'new' | 'sale' }>`
+const textStyles = css`
+  text-transform: uppercase;
+  ${fontWeight}
+`;
+
+const fontSize = css`
   font-size: 1.6rem;
-  ${textStyles}
+`;
+
+const positionAbs = css`
   position: absolute;
+`;
+
+const Status = styled.div<{ status: 'new' | 'sale' }>`
+  ${fontSize}
+  ${textStyles}
+  ${positionAbs}
   top: 0;
   right: 2rem;
   padding: 0.4rem 1.5rem;
@@ -57,7 +73,7 @@ const ImageContainer = styled.div`
 `;
 
 const Buttons = styled.div`
-  position: absolute;
+  ${positionAbs}
   bottom: 3px;
   left: 50%;
   display: grid;
@@ -67,13 +83,17 @@ const Buttons = styled.div`
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 3px solid var(--accent-color);
   transform: translate(-50%, 110%);
-  transition: transform 0.2s;
+  ${transition}
+`;
+
+const letterSpacing = css`
+  letter-spacing: 1px;
 `;
 
 const Button = styled.button`
   ${textStyles}
   font-size: 1.35rem;
-  letter-spacing: 1px;
+  ${letterSpacing}
   padding: 0.6rem 2rem;
   line-height: 1;
 
@@ -92,16 +112,14 @@ const Name = styled.h3`
   font-size: 2.2rem;
   font-weight: 300;
   line-height: 1.3;
-  letter-spacing: 1px;
+  ${letterSpacing}
   margin-bottom: 1.5rem;
   color: #636262;
 `;
 
-const Prices = styled.div``;
-
 const Price = styled.span<{ isDiscounted?: boolean }>`
-  font-size: 1.6rem;
-  font-weight: 500;
+  ${fontSize}
+  ${fontWeight}
   text-decoration: ${({ isDiscounted }) =>
     isDiscounted ? 'line-through' : 'none'};
   color: ${({ isDiscounted }) => (isDiscounted ? '#bbbaba' : '#252525')};
@@ -180,7 +198,7 @@ const ProductsPreview: FC<Props> = ({
         <Name>{name}</Name>
 
         {/* Product price & discounted price */}
-        <Prices>
+        <div>
           {/* Current price */}
           <Price>{formatPrice(price)}</Price>
 
@@ -188,7 +206,7 @@ const ProductsPreview: FC<Props> = ({
           {discountedPrice && (
             <Price isDiscounted={true}>{formatPrice(discountedPrice)}</Price>
           )}
-        </Prices>
+        </div>
       </Root>
     </Link>
   );
