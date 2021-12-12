@@ -50,7 +50,7 @@ const ImageSlideshow = () => {
 
   const clearTimer = () => clearTimeout(timer!);
   const initializeTimer = () =>
-    setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 5000));
+    setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
 
   const images = ['/slide.jpg', '/slide.jpg'];
 

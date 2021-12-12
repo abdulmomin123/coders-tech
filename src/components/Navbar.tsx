@@ -6,8 +6,11 @@ import { PRODUCT_CATEGORIES } from '../constants';
 import { capitalize } from '../helpers';
 
 const Root = styled.nav`
+  position: sticky;
+  top: 0;
   padding: 2rem;
   background: var(--bg-primary);
+  z-index: 2;
 `;
 
 const CenteredContainer = styled.div`
