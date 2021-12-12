@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import FeaturedCategory from './FeaturedCategory';
 import FeaturedProdBanner from './FeaturedProdBanner';
 import FeaturedProdPreview from './FeaturedProdPreview';
 import ImageSlideshow from './ImageSlideshow';
@@ -9,6 +10,8 @@ const FeaturedProducts = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 4rem;
 `;
+
+const FeaturedCategories = styled.section``;
 
 const HomePage = () => {
   return (
@@ -43,13 +46,21 @@ const HomePage = () => {
       <ProductsCarousel />
 
       {/* Featured product banner */}
-      <FeaturedProdBanner
-        title="Stylish Minimal Chair"
-        href="/chairs/1"
-        img="/f3.png"
-        width={424}
-        height={390}
-      />
+      <section>
+        <FeaturedProdBanner
+          title="Stylish Minimal Chair"
+          href="/chairs/1"
+          img="/f3.png"
+          width={424}
+          height={390}
+        />
+      </section>
+
+      {/* Featured categories */}
+      <FeaturedCategories>
+        <FeaturedCategory />
+        <FeaturedCategory />
+      </FeaturedCategories>
     </>
   );
 };
