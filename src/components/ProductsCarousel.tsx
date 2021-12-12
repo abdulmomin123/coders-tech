@@ -11,8 +11,12 @@ const Root = styled.section`
   padding-top: 8rem;
 `;
 
-const CategoryButtonsContainer = styled.div`
+const displayGrid = css`
   display: grid;
+`;
+
+const CategoryButtonsContainer = styled.div`
+  ${displayGrid}
   grid-auto-flow: column;
   grid-auto-columns: max-content;
   gap: 6.5rem;
@@ -23,9 +27,13 @@ const textTransform = css`
   text-transform: uppercase;
 `;
 
+const fontWeight = css`
+  font-weight: 500;
+`;
+
 const CategoryBtn = styled.button<{ isSelected: boolean }>`
   font-size: 1.7rem;
-  font-weight: 500;
+  ${fontWeight}
   ${textTransform}
   padding-bottom: 0.8rem;
   color: ${({ isSelected }) => (isSelected ? '#37499d' : 'initial')};
@@ -40,7 +48,7 @@ const CategoryBtn = styled.button<{ isSelected: boolean }>`
 `;
 
 const ProductGrid = styled.div`
-  display: grid;
+  ${displayGrid}
   grid-template-columns: repeat(4, 1fr);
   column-gap: 3rem;
   row-gap: 6rem;
@@ -48,7 +56,7 @@ const ProductGrid = styled.div`
 `;
 
 const PaginationButtons = styled.div`
-  display: grid;
+  ${displayGrid}
   grid-template-columns: repeat(3, max-content);
   align-items: center;
   justify-content: center;
@@ -56,11 +64,15 @@ const PaginationButtons = styled.div`
   margin-bottom: 3rem;
 `;
 
+const transitionBg = css`
+  transition: background 0.2s;
+`;
+
 const PaginationBtn = styled.button`
   padding: 1rem;
   background: rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-  transition: background 0.2s;
+  ${transitionBg}
 
   &:hover {
     background: rgba(0, 0, 0, 0.15);
@@ -69,7 +81,7 @@ const PaginationBtn = styled.button`
 
 const PageNumber = styled.span`
   font-size: 2.1rem;
-  font-weight: 500;
+  ${fontWeight}
 `;
 
 const Icon = styled.svg<{ isLeft?: boolean }>`
@@ -97,20 +109,24 @@ const Line = styled.span`
   transform: translateY(-50%);
 `;
 
+const bgWhite = css`
+  background: #fff;
+`;
+
 const InnerContainer = styled.div`
   ${position}
   display: inline-block;
   padding: 0 3rem;
-  background: #fff;
+  ${bgWhite}
 `;
 
 const ShopBtn = styled.a`
   font-size: 1.8rem;
   ${textTransform}
   padding: 1.3rem 3rem;
-  background: #fff;
+  ${bgWhite}
   border: 1px solid var(--accent-color);
-  transition: background 0.2s;
+  ${transitionBg}
 
   &:hover {
     background: var(--accent-color);
