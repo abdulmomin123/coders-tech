@@ -129,17 +129,25 @@ const Price = styled.span<{ isDiscounted?: boolean }>`
 `;
 
 const ProductPreview: FC<ProductPreviewType> = ({
+  id,
   name,
-  images,
-  href,
+  image,
   price,
-  discountedPrice,
-  status,
+  href,
+  oldPrice,
+  thumbnail,
+  createdAt,
 }) => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
   const { setIsCartOpen } = useContext(CartContext);
+
+  const status = oldPrice
+    ? 'sale'
+    : Date.now() - new Date(createdAt).getTime() <= 604800000
+    ? 'new'
+    : null;
 
   return (
     <Link href={href} passHref>
@@ -147,7 +155,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
         {/* Image container */}
         <ImageContainer>
           {/* Product image */}
-          <Image src={images[0]} alt={name} width={270} height={350} />
+          <Image src={image} alt={name} width={270} height={350} />
 
           {/* Add to cart and favorite button */}
           <Buttons onClick={e => e.preventDefault()}>
@@ -174,7 +182,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
 
                 setCartItems([
                   ...cartItems,
-                  { image: '', name, price, quantity: 1 },
+                  { id, name, price, href, thumbnail, quantity: 1 },
                 ]);
               }}
             >
@@ -184,8 +192,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
         </ImageContainer>
 
         {/* Product status */}
-        {status && <Status status={status}>{capitalize(status)}</Status>}
-        {discountedPrice && <Status status="sale">Sale</Status>}
+        {status && <Status status={status}>{status}</Status>}
 
         {/* Product name */}
         <Name>{name}</Name>
@@ -196,8 +203,8 @@ const ProductPreview: FC<ProductPreviewType> = ({
           <Price>{formatPrice(price)}</Price>
 
           {/* Discounted price */}
-          {discountedPrice && (
-            <Price isDiscounted={true}>{formatPrice(discountedPrice)}</Price>
+          {oldPrice && (
+            <Price isDiscounted={true}>{formatPrice(oldPrice)}</Price>
           )}
         </div>
       </Root>

@@ -27,13 +27,19 @@ const DeleteBtn = styled.button``;
 
 const DeleteIcon = styled.svg``;
 
-const CartProdPreview: FC<CartItem> = ({ name, image, price, quantity }) => {
+const CartProdPreview: FC<CartItem> = ({
+  name,
+  price,
+  href,
+  thumbnail,
+  quantity,
+}) => {
   return (
     <Root>
       {/* Product image */}
       <ImageContainer>
         <Link href="/test/test">
-          <Image src={image} alt={name} width={200} height={200} />
+          <Image src={thumbnail} alt={name} width={200} height={200} />
         </Link>
       </ImageContainer>
 

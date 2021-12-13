@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { products } from '../seedData';
 import { Categories } from '../Types';
 import ProductPreview from './ProductPreview';
 
@@ -179,58 +180,30 @@ const ProductsCarousel = () => {
 
       {/* Products grid */}
       <ProductGrid>
-        <ProductPreview
-          name="Buckle Wrap Wooden Table"
-          images={['/p2.jpg', '/p1.jpg', 'p3.jpg']}
-          href="/test/test"
-          price={52}
-        />
-        <ProductPreview
-          name="Wooden Teapot Via Jar"
-          images={['/p1.jpg']}
-          href="/test/test"
-          price={45}
-          discountedPrice={65}
-        />
-        <ProductPreview
-          name="Wooden Bluetooth Speaker"
-          images={['/p3.jpg']}
-          href="/test/test"
-          price={36}
-        />
-        <ProductPreview
-          name="Wooden Coffee Mug"
-          images={['/p4.jpg']}
-          href="/test/test"
-          price={23}
-          status="new"
-        />
-        <ProductPreview
-          name="Wooden White Chair"
-          images={['/p5.jpg']}
-          href="/test/test"
-          price={45}
-          discountedPrice={65}
-        />
-        <ProductPreview
-          name="Black Wooden Wardrobe"
-          images={['/p6.jpg']}
-          href="/test/test"
-          price={52}
-        />
-        <ProductPreview
-          name="Black Chair - Wooden Craft"
-          images={['/p7.jpg']}
-          href="/test/test"
-          price={36}
-          status="new"
-        />
-        <ProductPreview
-          name="Wall Decorator for Plant"
-          images={['/p8.jpg']}
-          href="/test/test"
-          price={23}
-        />
+        {products.map(
+          ({
+            id,
+            name,
+            image,
+            price,
+            href,
+            oldPrice,
+            thumbnail,
+            createdAt,
+          }) => (
+            <ProductPreview
+              key={id}
+              id={id}
+              name={name}
+              image={image}
+              price={price}
+              href={href}
+              oldPrice={oldPrice}
+              thumbnail={thumbnail}
+              createdAt={createdAt}
+            />
+          )
+        )}
       </ProductGrid>
 
       {/* Pagination buttons */}

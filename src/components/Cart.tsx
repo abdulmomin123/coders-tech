@@ -1,6 +1,11 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { CartContext } from '../contexts/Cart';
+import {
+  CartContext,
+  CartItemsContext,
+  CartItemsSetter,
+} from '../contexts/Cart';
+import CartProdPreview from './CartProdPreview';
 
 const Root = styled.div<{ isOpen: boolean }>`
   position: fixed;
@@ -16,8 +21,10 @@ const Root = styled.div<{ isOpen: boolean }>`
 `;
 
 const ShoppingCart = styled.div<{ isOpen: boolean }>`
+  position: relative;
   width: 40rem;
   height: 100%;
+  padding: 2rem;
   background: #fff;
   margin-left: auto;
   transform: ${({ isOpen }) => (isOpen ? 'none' : 'translateX(105%)')};
@@ -36,9 +43,19 @@ const CloseIcon = styled.svg``;
 
 const TextPrimary = styled.p``;
 
+const EmptyCart = styled.div``;
+
+const EmptyText = styled.p``;
+
+const CartIcon = styled.svg``;
+
 const ProductsContainer = styled.div``;
 
-const BottomPart = styled.div``;
+const BottomPart = styled.div`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+`;
 
 const PriceGroup = styled.div``;
 
@@ -50,6 +67,8 @@ const CheckoutBtn = styled.button``;
 
 const Cart = () => {
   // Consuming context
+  const cartItems = useContext(CartItemsContext);
+  const setCartItems = useContext(CartItemsSetter);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   return (
@@ -82,9 +101,29 @@ const Cart = () => {
         </TopPart>
 
         {/* Cart product previews */}
-        <ProductsContainer>
-          <p></p>
-        </ProductsContainer>
+        {cartItems.length ? (
+          <ProductsContainer>
+            {cartItems.map(({ id, name, price, quantity, thumbnail, href }) => (
+              <CartProdPreview
+                key={id}
+                id={id}
+                name={name}
+                price={price}
+                quantity={quantity}
+                thumbnail={thumbnail}
+                href={href}
+              />
+            ))}
+          </ProductsContainer>
+        ) : (
+          <EmptyCart>
+            <EmptyText>Empty</EmptyText>
+
+            <CartIcon>
+              <use href="/cart.svg#icon" />
+            </CartIcon>
+          </EmptyCart>
+        )}
 
         {/* Bottom part */}
         <BottomPart>

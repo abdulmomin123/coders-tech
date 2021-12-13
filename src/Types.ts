@@ -1,7 +1,18 @@
-export interface CartItem {
+interface Product {
+  id: string;
   name: string;
-  image: string;
   price: number;
+  href: string;
+  thumbnail: string;
+}
+
+export interface ProductPreviewType extends Product {
+  image: string;
+  oldPrice?: number;
+  createdAt: string;
+}
+
+export interface CartItem extends Product {
   quantity: number;
 }
 
@@ -11,12 +22,3 @@ export type Categories =
   | 'sofas'
   | 'lounge chairs'
   | 'furniture';
-
-export interface ProductPreviewType {
-  name: string;
-  images: string[];
-  href: string;
-  price: number;
-  discountedPrice?: number;
-  status?: 'new' | 'sale';
-}

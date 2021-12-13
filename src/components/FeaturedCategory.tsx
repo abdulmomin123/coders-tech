@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import styled from 'styled-components';
-import { ProductPreviewType } from '../Types';
+import { products } from '../seedData';
 import ProductPreview from './ProductPreview';
 import ViewNowBtn from './ViewNowBtn';
 
@@ -66,59 +66,10 @@ interface Props {
 }
 
 const FeaturedCategory: FC<Props> = ({ name, description }) => {
-  const p1: ProductPreviewType[] = [
-    {
-      name: 'Buckle Wrap Wooden Table',
-      images: ['/p2.jpg', '/p1.jpg', 'p3.jpg'],
-      href: '/test/test',
-      price: 52,
-    },
-    {
-      name: 'Wooden Teapot Via Jar',
-      images: ['/p1.jpg'],
-      href: '/test/test',
-      price: 45,
-      discountedPrice: 65,
-    },
-    {
-      name: 'Wooden Bluetooth Speaker',
-      images: ['/p3.jpg'],
-      href: '/test/test',
-      price: 36,
-    },
-    {
-      name: 'Wooden Coffee Mug',
-      images: ['/p4.jpg'],
-      href: '/test/test',
-      price: 23,
-      status: 'new',
-    },
-    {
-      name: 'Wooden White Chair',
-      images: ['/p5.jpg'],
-      href: '/test/test',
-      price: 45,
-      discountedPrice: 65,
-    },
-    {
-      name: 'Black Wooden Wardrobe',
-      images: ['/p6.jpg'],
-      href: '/test/test',
-      price: 52,
-    },
-    {
-      name: 'Black Chair - Wooden Craft',
-      images: ['/p7.jpg'],
-      href: '/test/test',
-      price: 36,
-      status: 'new',
-    },
-  ];
-
   // State
   const [currentPage, setCurrentPage] = useState(1);
 
-  const maxNumOfPages = Math.ceil(p1.length / 3);
+  const maxNumOfPages = Math.ceil(products.length / 3);
 
   return (
     <Root>
@@ -149,19 +100,32 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
         )}
 
         {/* Product previews */}
-        {p1
+        {products
           .slice((currentPage - 1) * 3, currentPage * 3)
-          .map(({ name, price, images, href, discountedPrice, status }) => (
-            <ProductPreview
-              key={name}
-              name={name}
-              images={images}
-              href={href}
-              price={price}
-              discountedPrice={discountedPrice}
-              status={status}
-            />
-          ))}
+          .map(
+            ({
+              id,
+              name,
+              image,
+              price,
+              href,
+              oldPrice,
+              thumbnail,
+              createdAt,
+            }) => (
+              <ProductPreview
+                key={id}
+                id={id}
+                name={name}
+                image={image}
+                price={price}
+                href={href}
+                oldPrice={oldPrice}
+                thumbnail={thumbnail}
+                createdAt={createdAt}
+              />
+            )
+          )}
 
         {/* Right button */}
         {currentPage < maxNumOfPages && (
