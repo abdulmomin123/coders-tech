@@ -37,7 +37,7 @@ const ButtonsContainer = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 2rem;
   background: rgba(255, 255, 255, 0.3);
   border-radius: 5px;
 `;
