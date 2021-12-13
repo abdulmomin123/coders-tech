@@ -24,6 +24,30 @@ const ShoppingCart = styled.div<{ isOpen: boolean }>`
   transition: transform 0.3s ease-out;
 `;
 
+const TopPart = styled.div``;
+
+const Container = styled.div``;
+
+const OrderDetailsText = styled.p``;
+
+const CloseBtn = styled.button``;
+
+const CloseIcon = styled.svg``;
+
+const TextPrimary = styled.p``;
+
+const ProductsContainer = styled.div``;
+
+const BottomPart = styled.div``;
+
+const PriceGroup = styled.div``;
+
+const Price = styled.span``;
+
+const TotalPrice = styled.span``;
+
+const CheckoutBtn = styled.button``;
+
 const Cart = () => {
   // Consuming context
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
@@ -38,7 +62,56 @@ const Cart = () => {
       isOpen={isCartOpen}
     >
       <ShoppingCart isOpen={isCartOpen} className="cart">
-        <p>cart</p>
+        {/* Top part */}
+        <TopPart>
+          {/* Order details text and the close button */}
+          <Container>
+            {/* Text */}
+            <OrderDetailsText>Order Details</OrderDetailsText>
+
+            {/* Close icon */}
+            <CloseBtn>
+              <CloseIcon>
+                <use href="" />
+              </CloseIcon>
+            </CloseBtn>
+          </Container>
+
+          {/* My cart text */}
+          <TextPrimary>My Cart</TextPrimary>
+        </TopPart>
+
+        {/* Cart product previews */}
+        <ProductsContainer>
+          <p></p>
+        </ProductsContainer>
+
+        {/* Bottom part */}
+        <BottomPart>
+          {/* Order info text */}
+          <TextPrimary>Order Info</TextPrimary>
+
+          {/* Subtotal */}
+          <PriceGroup>
+            Subtotal
+            <Price>$199.00</Price>
+          </PriceGroup>
+
+          {/* Shipping Cost */}
+          <PriceGroup>
+            Shipping Cost
+            <Price>+$10.00</Price>
+          </PriceGroup>
+
+          {/* Total */}
+          <PriceGroup>
+            Total
+            <TotalPrice>$209.00</TotalPrice>
+          </PriceGroup>
+
+          {/* Checkout button */}
+          <CheckoutBtn>Checkout ($209.00)</CheckoutBtn>
+        </BottomPart>
       </ShoppingCart>
     </Root>
   );
