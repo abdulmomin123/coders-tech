@@ -1,15 +1,23 @@
 import { useContext, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { formatPrice } from '../helpers';
 import CartProdPreview from './CartProdPreview';
+
+const fullWidth = css`
+  width: 100%;
+`;
+
+const fullHeight = css`
+  height: 100%;
+`;
 
 const Root = styled.div<{ isOpen: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  ${fullWidth}
+  ${fullHeight}
   background: ${({ isOpen }) => (isOpen ? 'rgba(0,0,0,.2)' : 'transparent')};
   backdrop-filter: blur(1px);
   visibility: ${({ isOpen }) => (isOpen ? 'visible' : 'hidden')};
@@ -17,10 +25,14 @@ const Root = styled.div<{ isOpen: boolean }>`
   z-index: 2;
 `;
 
+const displayGrid = css`
+  display: grid;
+`;
+
 const ShoppingCart = styled.div<{ isOpen: boolean }>`
   width: 40rem;
-  height: 100%;
-  display: grid;
+  ${fullHeight}
+  ${displayGrid}
   grid-template-rows: max-content 1fr max-content;
   padding: 4rem 2.5rem 2.5rem 2.5rem;
   background: #fff;
@@ -29,26 +41,46 @@ const ShoppingCart = styled.div<{ isOpen: boolean }>`
   transition: transform 0.3s ease-out;
 `;
 
-const Container = styled.div`
+const displayFlex = css`
   display: flex;
-  align-items: center;
+`;
+
+const justifyContent = css`
   justify-content: space-between;
+`;
+
+const Container = styled.div`
+  ${displayFlex}
+  align-items: center;
+  ${justifyContent}
   margin-bottom: 4rem;
+`;
+
+const fontWeight = css`
+  font-weight: 500;
+`;
+
+const darkColor = css`
+  color: #333333;
 `;
 
 const OrderDetailsText = styled.p`
   font-size: 2rem;
-  font-weight: 500;
+  ${fontWeight}
   letter-spacing: 1px;
   text-align: center;
-  color: #333333;
+  ${darkColor}
+`;
+
+const transition = css`
+  transition: background 0.2s;
 `;
 
 const CloseBtn = styled.button`
   padding: 0.8rem;
   background: rgba(0, 0, 0, 0.1);
   border-radius: 5px;
-  transition: background 0.2s;
+  ${transition}
 
   &:hover {
     background: rgba(0, 0, 0, 0.2);
@@ -63,7 +95,7 @@ const CloseIcon = styled.svg`
 
 const TextPrimary = styled.p`
   font-size: 2.6rem;
-  font-weight: 400;
+  ${fontWeight}
   margin-bottom: 2.5rem;
   color: #040d28;
 `;
@@ -76,7 +108,7 @@ const CartIcon = styled.svg`
 `;
 
 const ProductsContainer = styled.div`
-  display: grid;
+  ${displayGrid}
   grid-auto-rows: max-content;
   gap: 3rem;
   overflow-y: scroll;
@@ -98,8 +130,8 @@ const BottomPart = styled.div`
 
 const PriceGroup = styled.div<{ isTotal?: boolean }>`
   font-size: 1.8rem;
-  display: flex;
-  justify-content: space-between;
+  ${displayFlex}
+  ${justifyContent}
   margin-top: ${({ isTotal }) => (isTotal ? '4rem' : 'none')};
   color: #7d7d7e;
 
@@ -109,26 +141,26 @@ const PriceGroup = styled.div<{ isTotal?: boolean }>`
 `;
 
 const Price = styled.span`
-  color: #333333;
+  ${darkColor}
 `;
 
 const TotalPrice = styled.span`
   font-size: 2.3rem;
-  font-weight: 500;
+  ${fontWeight}
   color: #000;
 `;
 
 const CheckoutBtn = styled.button`
   font-size: 1.7rem;
-  font-weight: 500;
+  ${fontWeight}
   text-transform: uppercase;
-  width: 100%;
+  ${fullWidth}
   padding: 2rem;
   margin-top: 3.8rem;
   color: #f1f4ff;
   background: #003fff;
   border-radius: 1.8rem;
-  transition: background 0.2s;
+  ${transition}
 
   &:hover {
     background: #002db3;
