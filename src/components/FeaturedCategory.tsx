@@ -113,13 +113,6 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
       price: 36,
       status: 'new',
     },
-    {
-      name: 'Black Chair - Wooden Craftt',
-      images: ['/p7.jpg'],
-      href: '/test/test',
-      price: 36,
-      status: 'new',
-    },
   ];
 
   // State
