@@ -169,15 +169,17 @@ const ProductPreview: FC<ProductPreviewType> = ({
             {/* Add to cart button */}
             <Button
               onClick={() => {
-                const existingProduct = cartItems.find(
+                const newCartItems = [...cartItems];
+                const existingProduct = newCartItems.find(
                   ({ id: prodId }) => prodId === id
                 );
 
                 if (!cartItems.length) setIsCartOpen(true);
+                if (existingProduct && existingProduct.quantity >= 100) return;
 
                 if (existingProduct) {
                   existingProduct.quantity++;
-                  return setCartItems([...cartItems]);
+                  return setCartItems(newCartItems);
                 }
 
                 setCartItems([

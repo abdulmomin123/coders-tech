@@ -156,18 +156,21 @@ const CartProdPreview: FC<CartItem> = ({
         {/* Buttons */}
         <Buttons>
           {/* Quantity increase decrease buttons */}
-          <QuantityButtons
-            onClick={() => {
-              if (quantity <= 1) return;
-
-              const item = cartItems.find(({ id: prodId }) => id === prodId);
-              item!.quantity--;
-
-              setCartItems([...cartItems]);
-            }}
-          >
+          <QuantityButtons>
             {/* Minus button */}
-            <Button>
+            <Button
+              onClick={() => {
+                if (quantity <= 1) return;
+
+                setCartItems(
+                  cartItems.map(item =>
+                    item.id === id
+                      ? { ...item, quantity: item.quantity - 1 }
+                      : item
+                  )
+                );
+              }}
+            >
               <Icon>
                 <use href="/minus.svg#icon" />
               </Icon>
@@ -181,10 +184,13 @@ const CartProdPreview: FC<CartItem> = ({
               onClick={() => {
                 if (quantity >= 100) return;
 
-                const item = cartItems.find(({ id: prodId }) => prodId === id);
-                item!.quantity++;
-
-                setCartItems([...cartItems]);
+                setCartItems(
+                  cartItems.map(item =>
+                    item.id === id
+                      ? { ...item, quantity: item.quantity + 1 }
+                      : item
+                  )
+                );
               }}
             >
               <Icon>
