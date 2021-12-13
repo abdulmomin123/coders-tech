@@ -21,11 +21,17 @@ const QuantityButtons = styled.div``;
 
 const Button = styled.button``;
 
-const Icon = styled.svg``;
+const Icon = styled.svg`
+  width: 2rem;
+  height: 2rem;
+`;
 
 const DeleteBtn = styled.button``;
 
-const DeleteIcon = styled.svg``;
+const DeleteIcon = styled.svg`
+  width: 2rem;
+  height: 2rem;
+`;
 
 const CartProdPreview: FC<CartItem> = ({
   name,
@@ -38,19 +44,23 @@ const CartProdPreview: FC<CartItem> = ({
     <Root>
       {/* Product image */}
       <ImageContainer>
-        <Link href="/test/test">
-          <Image src={thumbnail} alt={name} width={200} height={200} />
+        <Link href={href}>
+          <a>
+            <Image src={thumbnail} alt={name} width={200} height={200} />
+          </a>
         </Link>
       </ImageContainer>
 
       {/* Details */}
       <Details>
-        <Link href="/test/test">
-          {/* Name */}
-          <Name>{name}</Name>
+        <Link href={href}>
+          <a>
+            {/* Name */}
+            <Name>{name}</Name>
 
-          {/* Price */}
-          <Price>{formatPrice(price)}</Price>
+            {/* Price */}
+            <Price>{formatPrice(price)}</Price>
+          </a>
         </Link>
 
         {/* Buttons */}

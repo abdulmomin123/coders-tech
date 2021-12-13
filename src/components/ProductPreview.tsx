@@ -7,7 +7,7 @@ import {
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
-import { capitalize, formatPrice } from '../helpers';
+import { formatPrice } from '../helpers';
 import { ProductPreviewType } from '../Types';
 
 const position = css`

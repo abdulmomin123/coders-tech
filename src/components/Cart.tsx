@@ -1,10 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import {
   CartContext,
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
+import { formatPrice } from '../helpers';
 import CartProdPreview from './CartProdPreview';
 
 const Root = styled.div<{ isOpen: boolean }>`
@@ -21,55 +22,125 @@ const Root = styled.div<{ isOpen: boolean }>`
 `;
 
 const ShoppingCart = styled.div<{ isOpen: boolean }>`
-  position: relative;
   width: 40rem;
   height: 100%;
-  padding: 2rem;
+  display: grid;
+  grid-template-rows: max-content 1fr max-content;
+  padding: 4rem 2.5rem 2.5rem 2.5rem;
   background: #fff;
   margin-left: auto;
   transform: ${({ isOpen }) => (isOpen ? 'none' : 'translateX(105%)')};
   transition: transform 0.3s ease-out;
 `;
 
-const TopPart = styled.div``;
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4rem;
+`;
 
-const Container = styled.div``;
+const OrderDetailsText = styled.p`
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #333333;
+`;
 
-const OrderDetailsText = styled.p``;
+const CloseBtn = styled.button`
+  padding: 0.8rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  transition: background 0.2s;
 
-const CloseBtn = styled.button``;
+  &:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+`;
 
-const CloseIcon = styled.svg``;
+const CloseIcon = styled.svg`
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: #fff;
+`;
 
-const TextPrimary = styled.p``;
+const TextPrimary = styled.p`
+  font-size: 2.6rem;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+  color: #040d28;
+`;
 
-const EmptyCart = styled.div``;
-
-const EmptyText = styled.p``;
-
-const CartIcon = styled.svg``;
+const CartIcon = styled.svg`
+  place-self: center;
+  width: 10rem;
+  height: 10rem;
+  fill: #7a7a7a;
+`;
 
 const ProductsContainer = styled.div``;
 
 const BottomPart = styled.div`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  align-self: end;
 `;
 
-const PriceGroup = styled.div``;
+const PriceGroup = styled.div<{ isTotal?: boolean }>`
+  font-size: 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: ${({ isTotal }) => (isTotal ? '4rem' : 'none')};
+  color: #7d7d7e;
 
-const Price = styled.span``;
+  &:not(:last-of-type) {
+    margin-bottom: 2rem;
+  }
+`;
 
-const TotalPrice = styled.span``;
+const Price = styled.span`
+  color: #333333;
+`;
 
-const CheckoutBtn = styled.button``;
+const TotalPrice = styled.span`
+  font-size: 2.3rem;
+  font-weight: 500;
+  color: #000;
+`;
+
+const CheckoutBtn = styled.button`
+  font-size: 1.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 2rem;
+  margin-top: 3.8rem;
+  color: #f1f4ff;
+  background: #003fff;
+  border-radius: 1.8rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #002db3;
+  }
+`;
 
 const Cart = () => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+
+  const subtotal = cartItems.reduce(
+    (total, item) => item.price * item.quantity + total,
+    0
+  );
+  const shippingCost = subtotal ? 10 : 0;
+
+  useEffect(() => {
+    isCartOpen
+      ? (document.body.style.overflow = 'hidden')
+      : (document.body.style.overflow = 'initial');
+  }, [isCartOpen]);
 
   return (
     <Root
@@ -82,23 +153,23 @@ const Cart = () => {
     >
       <ShoppingCart isOpen={isCartOpen} className="cart">
         {/* Top part */}
-        <TopPart>
+        <div>
           {/* Order details text and the close button */}
           <Container>
             {/* Text */}
             <OrderDetailsText>Order Details</OrderDetailsText>
 
             {/* Close icon */}
-            <CloseBtn>
+            <CloseBtn onClick={() => setIsCartOpen(false)}>
               <CloseIcon>
-                <use href="" />
+                <use href="/close.svg#icon" />
               </CloseIcon>
             </CloseBtn>
           </Container>
 
           {/* My cart text */}
           <TextPrimary>My Cart</TextPrimary>
-        </TopPart>
+        </div>
 
         {/* Cart product previews */}
         {cartItems.length ? (
@@ -116,13 +187,9 @@ const Cart = () => {
             ))}
           </ProductsContainer>
         ) : (
-          <EmptyCart>
-            <EmptyText>Empty</EmptyText>
-
-            <CartIcon>
-              <use href="/cart.svg#icon" />
-            </CartIcon>
-          </EmptyCart>
+          <CartIcon>
+            <use href="/cart.svg#icon" />
+          </CartIcon>
         )}
 
         {/* Bottom part */}
@@ -133,23 +200,25 @@ const Cart = () => {
           {/* Subtotal */}
           <PriceGroup>
             Subtotal
-            <Price>$199.00</Price>
+            <Price>{formatPrice(subtotal)}</Price>
           </PriceGroup>
 
           {/* Shipping Cost */}
           <PriceGroup>
             Shipping Cost
-            <Price>+$10.00</Price>
+            <Price>+{formatPrice(shippingCost)}</Price>
           </PriceGroup>
 
           {/* Total */}
-          <PriceGroup>
+          <PriceGroup isTotal={true}>
             Total
-            <TotalPrice>$209.00</TotalPrice>
+            <TotalPrice>{formatPrice(subtotal + shippingCost)}</TotalPrice>
           </PriceGroup>
 
           {/* Checkout button */}
-          <CheckoutBtn>Checkout ($209.00)</CheckoutBtn>
+          <CheckoutBtn disabled={!cartItems.length}>
+            Checkout ({formatPrice(subtotal + shippingCost)})
+          </CheckoutBtn>
         </BottomPart>
       </ShoppingCart>
     </Root>
