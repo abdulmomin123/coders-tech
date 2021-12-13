@@ -6,7 +6,7 @@ import { featuredProdTitleStyles } from '../styles/globalStyles';
 
 const Root = styled.div`
   position: relative;
-  padding: 3.5rem;
+  padding: 5.5rem;
   background: #f4f5f7;
 `;
 
