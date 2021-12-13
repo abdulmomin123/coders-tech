@@ -32,9 +32,9 @@ const Description = styled.p`
 
 const ProductGrid = styled.div`
   position: relative;
-  display: flex;
-  justify-content: space-between;
-  gap: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
 `;
 
 const PaginationButton = styled.button<{ isLeft?: boolean }>`
@@ -108,6 +108,13 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
     },
     {
       name: 'Black Chair - Wooden Craft',
+      images: ['/p7.jpg'],
+      href: '/test/test',
+      price: 36,
+      status: 'new',
+    },
+    {
+      name: 'Black Chair - Wooden Craftt',
       images: ['/p7.jpg'],
       href: '/test/test',
       price: 36,
