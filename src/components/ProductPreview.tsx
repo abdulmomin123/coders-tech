@@ -170,7 +170,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
             <Button
               onClick={() => {
                 const existingProduct = cartItems.find(
-                  ({ name: prodName }) => prodName === name
+                  ({ id: prodId }) => prodId === id
                 );
 
                 if (!cartItems.length) setIsCartOpen(true);

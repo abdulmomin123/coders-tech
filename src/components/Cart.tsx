@@ -1,10 +1,6 @@
 import { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import {
-  CartContext,
-  CartItemsContext,
-  CartItemsSetter,
-} from '../contexts/Cart';
+import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { formatPrice } from '../helpers';
 import CartProdPreview from './CartProdPreview';
 
@@ -79,10 +75,25 @@ const CartIcon = styled.svg`
   fill: #7a7a7a;
 `;
 
-const ProductsContainer = styled.div``;
+const ProductsContainer = styled.div`
+  display: grid;
+  grid-auto-rows: max-content;
+  gap: 3rem;
+  overflow-y: scroll;
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+`;
 
 const BottomPart = styled.div`
   align-self: end;
+  padding-top: 1.5rem;
 `;
 
 const PriceGroup = styled.div<{ isTotal?: boolean }>`
@@ -127,7 +138,6 @@ const CheckoutBtn = styled.button`
 const Cart = () => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
-  const setCartItems = useContext(CartItemsSetter);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
 
   const subtotal = cartItems.reduce(

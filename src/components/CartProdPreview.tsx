@@ -1,52 +1,142 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FC } from 'react';
-import styled from 'styled-components';
+import { FC, useContext } from 'react';
+import styled, { css } from 'styled-components';
+import { CartItemsContext, CartItemsSetter } from '../contexts/Cart';
 import { formatPrice } from '../helpers';
 import { CartItem } from '../Types';
 
-const Root = styled.div``;
-
-const ImageContainer = styled.div``;
-
-const Details = styled.div``;
-
-const Name = styled.p``;
-
-const Price = styled.p``;
-
-const Buttons = styled.div``;
-
-const QuantityButtons = styled.div``;
-
-const Button = styled.button``;
-
-const Icon = styled.svg`
-  width: 2rem;
-  height: 2rem;
+const displayGrid = css`
+  display: grid;
 `;
 
-const DeleteBtn = styled.button``;
+const Root = styled.div`
+  ${displayGrid}
+  grid-template-columns: max-content 1fr;
+  gap: 2.5rem;
+`;
+
+const ImageContainer = styled.div`
+  border-radius: 2rem;
+  overflow: hidden;
+`;
+
+const Details = styled.div`
+  ${displayGrid}
+  grid-template-rows: max-content 1fr;
+`;
+
+const fontSize = css`
+  font-size: 1.8rem;
+`;
+
+const Name = styled.p`
+  ${fontSize}
+  font-weight: 500;
+  line-height: 1.25;
+  color: #080f20;
+  margin-bottom: 1rem;
+`;
+
+const Price = styled.p`
+  font-size: 1.7rem;
+  color: #5a5a5a;
+  letter-spacing: 1px;
+`;
+
+const alignItems = css`
+  align-items: center;
+`;
+
+const Buttons = styled.div`
+  align-self: end;
+  display: flex;
+  ${alignItems}
+  justify-content: space-between;
+`;
+
+const QuantityButtons = styled.div`
+  ${fontSize}
+  ${displayGrid}
+  grid-auto-flow: column;
+  ${alignItems}
+  gap: 1.5rem;
+  color: #989898;
+`;
+
+const placeItems = css`
+  place-items: center;
+`;
+
+const padding = css`
+  padding: 1rem;
+`;
+
+const borderRadius = css`
+  border-radius: 50%;
+`;
+
+const transition = css`
+  transition: background 0.2s;
+`;
+
+const Button = styled.button`
+  ${displayGrid}
+  ${placeItems}
+  ${padding}
+  border: 2px solid #e8e8e8;
+  ${borderRadius}
+  ${transition}
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.05);
+  }
+`;
+
+const Icon = styled.svg`
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: #989898;
+`;
+
+const DeleteBtn = styled.button`
+  ${displayGrid}
+  ${placeItems}
+  ${padding}
+  background: #f1f1f3;
+  ${borderRadius}
+  ${transition}
+
+  &:hover {
+    background: #e6e6e6;
+  }
+`;
 
 const DeleteIcon = styled.svg`
   width: 2rem;
   height: 2rem;
+  stroke: #5f5c6e;
 `;
 
 const CartProdPreview: FC<CartItem> = ({
+  id,
   name,
   price,
   href,
   thumbnail,
   quantity,
 }) => {
+  // Consuming context
+  const cartItems = useContext(CartItemsContext);
+  const setCartItems = useContext(CartItemsSetter);
+
   return (
     <Root>
       {/* Product image */}
       <ImageContainer>
         <Link href={href}>
           <a>
-            <Image src={thumbnail} alt={name} width={200} height={200} />
+            <Image src={thumbnail} alt={name} width={120} height={120} />
           </a>
         </Link>
       </ImageContainer>
@@ -66,11 +156,20 @@ const CartProdPreview: FC<CartItem> = ({
         {/* Buttons */}
         <Buttons>
           {/* Quantity increase decrease buttons */}
-          <QuantityButtons>
+          <QuantityButtons
+            onClick={() => {
+              if (quantity <= 1) return;
+
+              const item = cartItems.find(({ id: prodId }) => id === prodId);
+              item!.quantity--;
+
+              setCartItems([...cartItems]);
+            }}
+          >
             {/* Minus button */}
             <Button>
               <Icon>
-                <use href="" />
+                <use href="/minus.svg#icon" />
               </Icon>
             </Button>
 
@@ -78,17 +177,30 @@ const CartProdPreview: FC<CartItem> = ({
             {quantity}
 
             {/* Plus button */}
-            <Button>
+            <Button
+              onClick={() => {
+                if (quantity >= 100) return;
+
+                const item = cartItems.find(({ id: prodId }) => prodId === id);
+                item!.quantity++;
+
+                setCartItems([...cartItems]);
+              }}
+            >
               <Icon>
-                <use href="" />
+                <use href="/plus.svg#icon" />
               </Icon>
             </Button>
           </QuantityButtons>
 
           {/* Delete button */}
-          <DeleteBtn>
+          <DeleteBtn
+            onClick={() =>
+              setCartItems(cartItems.filter(({ id: prodId }) => id !== prodId))
+            }
+          >
             <DeleteIcon>
-              <use href="" />
+              <use href="/trash.svg#icon" />
             </DeleteIcon>
           </DeleteBtn>
         </Buttons>
