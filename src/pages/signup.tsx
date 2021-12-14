@@ -2,12 +2,12 @@ import styled from 'styled-components';
 
 const Root = styled.div``;
 
-const auth = () => {
+const signup = () => {
   return (
     <Root>
-      <h1>auth</h1>
+      <p></p>
     </Root>
   );
 };
 
-export default auth;
+export default signup;
