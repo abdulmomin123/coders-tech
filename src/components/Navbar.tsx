@@ -1,44 +1,70 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
-import { flexCenter } from '../styles/utils';
+import { gridCenter } from '../styles/utils';
 import { PRODUCT_CATEGORIES } from '../constants';
 import { capitalize } from '../helpers';
+import { CartContext, CartItemsContext } from '../contexts/Cart';
+
+const topZero = css`
+  top: 0;
+`;
 
 const Root = styled.nav`
   position: sticky;
-  top: 0;
+  ${topZero}
   padding: 2rem;
   background: var(--bg-primary);
+  box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.09);
   z-index: 2;
+`;
+
+const gridAFColumn = css`
+  grid-auto-flow: column;
 `;
 
 const CenteredContainer = styled.div`
   display: grid;
-  grid-auto-flow: column;
+  ${gridAFColumn}
   align-items: center;
   justify-content: space-between;
   max-width: 160rem;
   margin: 0 auto;
 `;
 
+const fontWeight = css`
+  font-weight: 500;
+`;
+
 const Logo = styled.a`
   font-size: 3.5rem;
-  font-weight: 500;
+  ${fontWeight}
 
   span {
     color: var(--accent-color);
   }
 `;
 
-const Search = styled.div`
+const positionRelative = css`
   position: relative;
 `;
 
-const SearchInput = styled.input`
+const Search = styled.div`
+  ${positionRelative}
+`;
+
+const fontSizeSmall = css`
   font-size: 1.6rem;
-  letter-spacing: 0.5px;
+`;
+
+const darkColor = css`
   color: #333;
+`;
+
+const SearchInput = styled.input`
+  ${fontSizeSmall}
+  letter-spacing: 0.5px;
+  ${darkColor}
   background: rgba(0, 0, 0, 0.07);
   padding: 0.5rem 1.5rem;
   border-radius: 2rem;
@@ -54,14 +80,26 @@ const SearchInput = styled.input`
   }
 `;
 
-const SearchIcon = styled.svg`
+const positionAbs = css`
   position: absolute;
-  top: 50%;
+`;
+
+const rightZero = css`
   right: 0;
+`;
+
+const fillAccent = css`
+  fill: var(--accent-color);
+`;
+
+const SearchIcon = styled.svg`
+  ${positionAbs}
+  top: 50%;
+  ${rightZero}
   width: 2rem;
   height: 2rem;
   margin-right: 1.5rem;
-  fill: var(--accent-color);
+  ${fillAccent}
   transform: translateY(-50%);
 `;
 
@@ -69,18 +107,18 @@ const Links = styled.div`
   display: flex;
 `;
 
+const colorTransition = css`
+  transition: color 0.2s;
+`;
+
 const linkTypography = css`
   font-size: 1.8rem;
   padding: 0.9rem 2rem;
-  transition: color 0.2s;
+  ${colorTransition}
 
   &:hover {
-    color: #333;
+    ${darkColor}
   }
-`;
-
-const fontWeight = css`
-  font-weight: 500;
 `;
 
 const NavLink = styled.a`
@@ -89,7 +127,7 @@ const NavLink = styled.a`
 `;
 
 const DropdownContainer = styled.div`
-  position: relative;
+  ${positionRelative}
 
   &:hover > :last-child {
     visibility: initial;
@@ -97,14 +135,18 @@ const DropdownContainer = styled.div`
   }
 `;
 
-const CategoryText = styled.p`
-  ${linkTypography}
-  ${fontWeight}
+const cursorPointer = css`
   cursor: pointer;
 `;
 
+const CategoryText = styled.p`
+  ${linkTypography}
+  ${fontWeight}
+  ${cursorPointer}
+`;
+
 const CategoryDropdown = styled.ul`
-  position: absolute;
+  ${positionAbs}
   top: 100%;
   left: 35%;
   padding: 1.5rem 0;
@@ -130,54 +172,75 @@ const DropdownLink = styled.a`
   }
 `;
 
-const AuthArea = styled.div`
-  ${flexCenter}
-  display: none;
+const UserActions = styled.div`
+  ${gridCenter}
+  ${gridAFColumn}
+  gap: 4rem;
 `;
 
-const authLinkOrBtn = css`
-  ${linkTypography}
-  border-radius: 6px;
-  transition: opacity 0.3s;
-  transition: background 0.2s;
+const CartButton = styled.button`
+  ${positionRelative}
+  padding: 0 1rem;
 `;
 
-const LoginLink = styled.a`
-  ${authLinkOrBtn}
-  background: rgba(0, 0, 0, 0.08);
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.13);
-  }
+const width3Rem = css`
+  width: 3rem;
 `;
 
-const LogoutBtn = styled.button`
-  ${authLinkOrBtn}
-  color: rgba(255, 0, 0, 0.8);
-  background: rgba(255, 0, 0, 0.1);
-  transition: background 0.2s;
-
-  &:hover {
-    background: rgba(255, 0, 0, 0.15);
-  }
+const height3Rem = css`
+  height: 3rem;
 `;
 
-const MyAccountLink = styled.a`
-  /*  */
+const CartIcon = styled.svg`
+  ${width3Rem}
+  ${height3Rem}
+`;
+
+const ItemCount = styled.span<{ totalItems: number }>`
+  ${fontSizeSmall}
+  ${fontWeight}
+  line-height: 1;
+  ${positionAbs}
+  ${topZero}
+  ${rightZero}
+  width: ${({ totalItems }) => (totalItems > 99 ? '3rem' : '2.3rem')};
+  height: ${({ totalItems }) => (totalItems > 99 ? '3rem' : '2.3rem')};
+  ${gridCenter};
+  color: #fff;
+  background: red;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
 `;
 
 const MyAccountIcon = styled.svg`
-  width: 3rem;
-  height: 3rem;
+  ${width3Rem}
+  ${height3Rem}
   fill: rgba(0, 0, 0, 0.2);
   transition: fill 0.3s;
+  ${cursorPointer}
 
   &:hover {
-    fill: var(--accent-color);
+    ${fillAccent}
+  }
+`;
+
+const SignInLink = styled.a`
+  font-size: 1.7rem;
+  ${fontWeight}
+  color: #161616;
+  ${colorTransition}
+
+  &:hover {
+    color: #444444;
   }
 `;
 
 const Navbar = () => {
+  const cartItems = useContext(CartItemsContext);
+  const { setIsCartOpen } = useContext(CartContext);
+
+  const isLoggedIn = false;
+
   return (
     <Root>
       <CenteredContainer>
@@ -236,24 +299,33 @@ const Navbar = () => {
         </Links>
 
         {/* User auth actions */}
-        <AuthArea>
-          {/* Login */}
-          <Link href="/login" passHref>
-            <LoginLink>Login</LoginLink>
-          </Link>
+        <UserActions>
+          {/* Cart button */}
+          <CartButton onClick={() => setIsCartOpen(true)}>
+            <CartIcon>
+              <use href="/cart.svg#icon" />
+            </CartIcon>
 
-          {/* My account */}
-          <Link href="/account" passHref>
-            <MyAccountLink title="My Account">
-              <MyAccountIcon>
-                <use href="/account.svg#main" />
-              </MyAccountIcon>
-            </MyAccountLink>
-          </Link>
+            {/* Item count */}
+            {cartItems.length ? (
+              <ItemCount totalItems={cartItems.length}>
+                {cartItems.length}
+              </ItemCount>
+            ) : null}
+          </CartButton>
 
-          {/* Logout btn */}
-          <LogoutBtn>Logout</LogoutBtn>
-        </AuthArea>
+          {/* Sign in */}
+          {isLoggedIn ? (
+            // My account
+            <MyAccountIcon>
+              <use href="/account.svg#icon" />
+            </MyAccountIcon>
+          ) : (
+            <Link href="/login" passHref>
+              <SignInLink>Sign In</SignInLink>
+            </Link>
+          )}
+        </UserActions>
       </CenteredContainer>
     </Root>
   );

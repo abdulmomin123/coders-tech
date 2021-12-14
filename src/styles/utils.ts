@@ -8,6 +8,5 @@ export const flexCenter = css`
 
 export const gridCenter = css`
   display: grid;
-  align-items: center;
-  justify-content: center;
+  place-items: center;
 `;
