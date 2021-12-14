@@ -216,17 +216,19 @@ const Cart = () => {
         {/* Cart product previews */}
         {cartItems.length ? (
           <ProductsContainer>
-            {cartItems.map(({ id, name, price, quantity, thumbnail, href }) => (
-              <CartProdPreview
-                key={id}
-                id={id}
-                name={name}
-                price={price}
-                quantity={quantity}
-                thumbnail={thumbnail}
-                href={href}
-              />
-            ))}
+            {cartItems.map(
+              ({ id, name, category, price, quantity, thumbnail }) => (
+                <CartProdPreview
+                  key={id}
+                  id={id}
+                  name={name}
+                  category={category}
+                  price={price}
+                  quantity={quantity}
+                  thumbnail={thumbnail}
+                />
+              )
+            )}
           </ProductsContainer>
         ) : (
           <CartIcon>

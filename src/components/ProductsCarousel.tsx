@@ -185,8 +185,8 @@ const ProductsCarousel = () => {
             id,
             name,
             image,
+            category,
             price,
-            href,
             oldPrice,
             thumbnail,
             createdAt,
@@ -195,9 +195,9 @@ const ProductsCarousel = () => {
               key={id}
               id={id}
               name={name}
+              category={category}
               image={image}
               price={price}
-              href={href}
               oldPrice={oldPrice}
               thumbnail={thumbnail}
               createdAt={createdAt}

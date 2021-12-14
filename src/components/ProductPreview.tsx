@@ -7,7 +7,7 @@ import {
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
-import { formatPrice } from '../helpers';
+import { formatPrice, slugify } from '../helpers';
 import { ProductPreviewType } from '../Types';
 
 const position = css`
@@ -131,9 +131,9 @@ const Price = styled.span<{ isDiscounted?: boolean }>`
 const ProductPreview: FC<ProductPreviewType> = ({
   id,
   name,
+  category,
   image,
   price,
-  href,
   oldPrice,
   thumbnail,
   createdAt,
@@ -151,7 +151,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
     : null;
 
   return (
-    <Link href={href} passHref>
+    <Link href={`/${category}/${slugify(name)}`} passHref>
       <Root>
         {/* Image container */}
         <ImageContainer>
@@ -185,7 +185,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
 
                 setCartItems([
                   ...cartItems,
-                  { id, name, price, href, thumbnail, quantity: 1 },
+                  { id, name, category, price, thumbnail, quantity: 1 },
                 ]);
               }}
             >

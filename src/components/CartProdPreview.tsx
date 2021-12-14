@@ -2,8 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FC, useContext } from 'react';
 import styled, { css } from 'styled-components';
-import { CartItemsContext, CartItemsSetter } from '../contexts/Cart';
-import { formatPrice } from '../helpers';
+import {
+  CartContext,
+  CartItemsContext,
+  CartItemsSetter,
+} from '../contexts/Cart';
+import { formatPrice, slugify } from '../helpers';
 import { CartItem } from '../Types';
 
 const displayGrid = css`
@@ -122,20 +126,24 @@ const CartProdPreview: FC<CartItem> = ({
   id,
   name,
   price,
-  href,
+  category,
   thumbnail,
   quantity,
 }) => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
+  const { setIsCartOpen } = useContext(CartContext);
+
+  const href = `/${category}/${slugify(name)}`;
+  const closeCart = () => setIsCartOpen(false);
 
   return (
     <Root>
       {/* Product image */}
       <ImageContainer>
         <Link href={href}>
-          <a>
+          <a onClick={closeCart}>
             <Image src={thumbnail} alt={name} width={120} height={120} />
           </a>
         </Link>
@@ -144,7 +152,7 @@ const CartProdPreview: FC<CartItem> = ({
       {/* Details */}
       <Details>
         <Link href={href}>
-          <a>
+          <a onClick={closeCart}>
             {/* Name */}
             <Name>{name}</Name>
 

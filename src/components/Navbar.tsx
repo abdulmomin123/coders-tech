@@ -148,7 +148,7 @@ const CategoryText = styled.p`
 const CategoryDropdown = styled.ul`
   ${positionAbs}
   top: 100%;
-  left: 35%;
+  left: 50%;
   padding: 1.5rem 0;
   background: #fff;
   border-radius: 5px;
