@@ -1,9 +1,8 @@
 import { ProductPreviewType } from './Types';
-import { v4 as uuid } from 'uuid';
 
 export const products: ProductPreviewType[] = [
   {
-    id: uuid(),
+    id: 'p1',
     name: 'Wooden Teapot Via Jar',
     image: '/p1.jpg',
     href: '/category/p1',
@@ -13,7 +12,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p2',
     name: 'Buckle Wrap Wooden Table',
     image: '/p2.jpg',
     href: '/category/p2',
@@ -22,7 +21,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p3',
     name: 'Wooden Bluetooth Speaker',
     image: '/p3.jpg',
     href: '/category/p3',
@@ -31,7 +30,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p4',
     name: 'Wooden Coffee Mug',
     image: '/p4.jpg',
     href: '/category/p4',
@@ -40,7 +39,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p5',
     name: 'Wooden White Chair',
     image: '/p5.jpg',
     href: '/category/p5',
@@ -50,7 +49,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p6',
     name: 'Black Wooden Wardrobe',
     image: '/p6.jpg',
     href: '/category/p6',
@@ -59,7 +58,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p7',
     name: 'Black Chair - Wooden Craft',
     image: '/p7.jpg',
     href: '/category/p7',
@@ -68,7 +67,7 @@ export const products: ProductPreviewType[] = [
     createdAt: new Date().toISOString(),
   },
   {
-    id: uuid(),
+    id: 'p8',
     name: 'Wall Decorator for Plant',
     image: '/p8.jpg',
     href: '/category/p8',

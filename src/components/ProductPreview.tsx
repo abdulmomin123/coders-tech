@@ -141,7 +141,8 @@ const ProductPreview: FC<ProductPreviewType> = ({
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
-  const { setIsCartOpen } = useContext(CartContext);
+  const { setIsCartOpen, hasCartOpened, setHasCartOpened } =
+    useContext(CartContext);
 
   const status = oldPrice
     ? 'sale'
@@ -174,7 +175,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
                   ({ id: prodId }) => prodId === id
                 );
 
-                if (!cartItems.length) setIsCartOpen(true);
+                if (!hasCartOpened) setIsCartOpen(true), setHasCartOpened(true);
                 if (existingProduct && existingProduct.quantity >= 100) return;
 
                 if (existingProduct) {

@@ -8,3 +8,5 @@ export const PRODUCT_CATEGORIES = [
   'headset',
   'microphone',
 ];
+
+export const LOCAL_STORAGE_CART_ITEMS_KEY = 'ShopnikFurnitureStoreCartItems';
