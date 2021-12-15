@@ -1,15 +1,15 @@
 import styled from 'styled-components';
-import LoginForm from '../components/Auth/LoginForm';
+import ForgotPasswordForm from '../components/Auth/ForgotPasswordForm';
 import { authPagesStyles } from '../styles/globalStyles';
 
 const Root = styled.div`
   ${authPagesStyles}
 `;
 
-const login = () => (
+const forgot = () => (
   <Root>
-    <LoginForm />
+    <ForgotPasswordForm />
   </Root>
 );
 
-export default login;
+export default forgot;

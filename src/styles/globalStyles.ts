@@ -20,6 +20,27 @@ export const featuredProdTitleStyles = css`
   }
 `;
 
+export const authPagesStyles = css`
+  min-height: 70vh;
+  display: grid;
+  align-items: start;
+  justify-content: center;
+  padding: 5rem 3rem 3rem 3rem;
+`;
+
+const fontSize = css`
+  font-size: 1.6rem;
+`;
+
+export const authFormsStyles = css`
+  ${fontSize}
+  text-align: center;
+  width: 400px;
+  border-radius: 4px;
+  padding: 2.5rem 4rem;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+`;
+
 // General styling of the app
 export const GlobalStyles = createGlobalStyle`
 ${css`
@@ -106,7 +127,7 @@ ${css`
   }
 
   p {
-    font-size: 1.6rem;
+    ${fontSize}
   }
 
   h1 {
