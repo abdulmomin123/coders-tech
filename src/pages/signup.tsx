@@ -1,11 +1,16 @@
 import styled from 'styled-components';
+import AuthForm from '../components/AuthForm';
+import { gridCenter } from '../styles/utils';
 
-const Root = styled.div``;
+const Root = styled.div`
+  min-height: 70vh;
+  ${gridCenter}
+`;
 
 const signup = () => {
   return (
     <Root>
-      <p></p>
+      <AuthForm />
     </Root>
   );
 };
