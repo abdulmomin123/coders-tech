@@ -1,7 +1,9 @@
 import { useRouter } from 'next/dist/client/router';
+import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { flexCenter } from '../styles/utils';
+import { validateEmail } from '../helpers';
 
 const fontSize = css`
   font-size: 1.6rem;
@@ -142,13 +144,23 @@ const BottomLink = styled.a`
 `;
 
 const AuthForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: 'onBlur',
+  });
   const route = useRouter().route.replace('/', '');
 
   const action = route === 'login' ? 'Log in' : 'Sign up';
-  const error = false;
 
   return (
-    <Root>
+    <Root
+      onSubmit={handleSubmit(({ email, password }) => {
+        console.log(email, password);
+      })}
+    >
       {/* Login/Signup to shopnik */}
       <TextPrimary>
         {route === 'login'
@@ -160,19 +172,32 @@ const AuthForm = () => {
         {/* Email */}
         <InputGroup>
           {/* Input */}
-          <Input error={error} type="text" placeholder="Enter email" />
+          <Input
+            error={errors.email}
+            type="text"
+            placeholder="Enter email"
+            {...register('email', { required: true, validate: validateEmail })}
+          />
 
           {/* Error */}
-          {error && <Error>Please enter a valid email</Error>}
+          {errors.email && <Error>Please enter a valid email</Error>}
         </InputGroup>
 
         {/* Password */}
         <InputGroup>
           {/* Input */}
-          <Input error={error} type="password" placeholder="Enter password" />
+          <Input
+            error={errors.password}
+            type="password"
+            placeholder="Enter password"
+            {...register('password', {
+              required: true,
+              minLength: 6,
+            })}
+          />
 
           {/* Error */}
-          {error && <Error>Must be at least 6 characters long</Error>}
+          {errors.password && <Error>Must be at least 6 characters long</Error>}
         </InputGroup>
 
         {/* Login/Signup button */}
