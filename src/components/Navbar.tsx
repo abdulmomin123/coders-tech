@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { gridCenter } from '../styles/utils';
-import { PRODUCT_CATEGORIES } from '../constants';
+import { mockCategories } from '../constants';
 import { capitalize } from '../helpers';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
 
@@ -149,6 +149,7 @@ const CategoryDropdown = styled.ul`
   ${positionAbs}
   top: 100%;
   left: 50%;
+  width: 25rem;
   padding: 1.5rem 0;
   background: #fff;
   border-radius: 5px;
@@ -163,7 +164,7 @@ const CategoryDropdown = styled.ul`
 const DropdownLink = styled.a`
   ${linkTypography}
   width: 100%;
-  padding: 1rem 8rem 1rem 1.5rem;
+  padding: 1rem 1.5rem;
   transition: background 0.2s;
 
   &:hover {
@@ -287,7 +288,7 @@ const Navbar = () => {
             {/* Dropdown */}
             <CategoryDropdown>
               {/* Links */}
-              {PRODUCT_CATEGORIES.map(category => (
+              {mockCategories.slice(1).map(category => (
                 <li key={category}>
                   <Link href={`/${category}`} passHref>
                     <DropdownLink>{capitalize(category)}</DropdownLink>

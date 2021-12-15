@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { mockCategories } from '../constants';
+import { capitalize } from '../helpers';
 import { products } from '../seedData';
 import { Categories } from '../Types';
 import ProductPreview from './ProductPreview';
@@ -136,7 +138,7 @@ const ShopBtn = styled.a`
 
 const ProductsCarousel = () => {
   // State
-  const [selectedCategory, setSelectedCategory] = useState<Categories>('all');
+  const [selectedCategory, setSelectedCategory] = useState(mockCategories[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const updateCategory = (target: HTMLButtonElement) =>
@@ -146,36 +148,17 @@ const ProductsCarousel = () => {
     <Root>
       {/* Category buttons */}
       <CategoryButtonsContainer>
-        <CategoryBtn
-          onClick={({ target }) => updateCategory(target as HTMLButtonElement)}
-          isSelected={selectedCategory === 'all'}
-        >
-          All
-        </CategoryBtn>
-        <CategoryBtn
-          onClick={({ target }) => updateCategory(target as HTMLButtonElement)}
-          isSelected={selectedCategory === 'lighting'}
-        >
-          Lighting
-        </CategoryBtn>
-        <CategoryBtn
-          onClick={({ target }) => updateCategory(target as HTMLButtonElement)}
-          isSelected={selectedCategory === 'sofas'}
-        >
-          Sofas
-        </CategoryBtn>
-        <CategoryBtn
-          onClick={({ target }) => updateCategory(target as HTMLButtonElement)}
-          isSelected={selectedCategory === 'lounge chairs'}
-        >
-          Lounge Chairs
-        </CategoryBtn>
-        <CategoryBtn
-          onClick={({ target }) => updateCategory(target as HTMLButtonElement)}
-          isSelected={selectedCategory === 'furniture'}
-        >
-          Furniture
-        </CategoryBtn>
+        {mockCategories.map(category => (
+          <CategoryBtn
+            key={category}
+            onClick={({ target }) =>
+              updateCategory(target as HTMLButtonElement)
+            }
+            isSelected={selectedCategory === category}
+          >
+            {capitalize(category)}
+          </CategoryBtn>
+        ))}
       </CategoryButtonsContainer>
 
       {/* Products grid */}

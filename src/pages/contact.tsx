@@ -6,7 +6,7 @@ import { validateEmail } from '../helpers';
 const Root = styled.div`
   max-width: 80rem;
   margin: 0 auto;
-  height: 80vh;
+  height: 75vh;
   padding: 3rem;
   text-align: center;
 `;
@@ -45,7 +45,7 @@ const Input = styled.input<{ error: boolean }>`
 
   &:focus {
     border: 4px solid
-      ${({ error }) => (error ? '#e03737' : 'var(--color-border)')};
+      ${({ error }) => (error ? '#e03737' : 'var(--accent-color)')};
   }
 `;
 
@@ -56,7 +56,7 @@ const TextArea = styled.textarea<{ error: boolean }>`
 
   &:focus {
     border: 4px solid
-      ${({ error }) => (error ? '#e03737' : 'var(--color-border)')};
+      ${({ error }) => (error ? '#e03737' : 'var(--accent-color)')};
   }
 `;
 
