@@ -1,52 +1,86 @@
 import { useRouter } from 'next/dist/client/router';
 import Link from 'next/link';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { flexCenter } from '../styles/utils';
 
-const Root = styled.form`
+const fontSize = css`
   font-size: 1.6rem;
-  text-align: center;
-  width: 40rem;
+`;
+
+const borderRadius = css`
   border-radius: 4px;
+`;
+
+const Root = styled.form`
+  ${fontSize}
+  text-align: center;
+  width: 400px;
+  ${borderRadius}
   padding: 2.5rem 4rem;
   box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
 `;
 
 const TextPrimary = styled.h1`
-  font-size: 1.9rem;
+  font-size: 2rem;
   padding: 1rem 0 3rem 0;
   color: #5e6c84;
 `;
 
 const InputGrid = styled.div`
   display: grid;
-  gap: 1.7rem;
+  gap: 1.8rem;
 `;
 
-const Input = styled.input`
-  font-size: 1.6rem;
-  padding: 1.1rem 1rem;
+const InputGroup = styled.div`
+  text-align: left;
+`;
+
+const fullWidth = css`
+  width: 100%;
+`;
+
+const darkColor = css`
   color: #4d4d4d;
-  background: #fafbfc;
-  border: 2px solid #dfe1e6;
-  border-radius: 3px;
+`;
+
+const transition = css`
   transition: background 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+`;
+
+const Input = styled.input<{ error: boolean }>`
+  ${fontSize}
+  ${fullWidth}
+  padding: 1.1rem 1rem;
+  ${darkColor}
+  background: #fafbfc;
+  border: 3px solid ${({ error }) => (error ? '#e03737' : '#dfe1e6')};
+  border-radius: 3px;
+  ${transition}
 
   &::placeholder {
     color: #757575;
   }
 
   &:focus {
-    background-color: #fff;
-    border: 2px solid #4c9aff;
-    box-shadow: 0 0 0;
+    background: #fff;
+    border: 3px solid ${({ error }) => (error ? '#e03737' : '#4c9aff')};
   }
 `;
 
-const LoginButton = styled.button`
+const Error = styled.p`
+  font-size: 1.55rem;
+  margin: 5px 0;
+  color: #e03737;
+`;
+
+const fontWeight = css`
   font-weight: 500;
+`;
+
+const LoginButton = styled.button`
+  ${fontWeight}
   background: #5aac44;
-  padding: 0.6em 1.3em;
+  padding: 0.8rem 1.5rem;
   color: #fff;
   border-radius: 5px;
   transition: background 0.2s;
@@ -59,23 +93,23 @@ const LoginButton = styled.button`
 const TextSecondary = styled.p`
   font-size: 1.4rem;
   padding: 2.2rem 0;
-  color: #4d4d4d;
+  ${darkColor}
 `;
 
 const GoogleLoginBtn = styled.button`
-  font-size: 1.6rem;
-  font-weight: 500;
-  width: 100%;
+  ${fontSize}
+  ${fontWeight}
+  ${fullWidth}
   ${flexCenter}
   padding: 1rem;
   color: #505f79;
   box-shadow: rgb(0 0 0 / 20%) 1px 1px 5px 0;
   border: 2px solid transparent;
-  border-radius: 4px;
-  transition: background 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s;
+  ${borderRadius}
+  ${transition}
 
   &:hover {
-    background-color: #f9fafc;
+    background: #f9fafc;
   }
 
   &:active {
@@ -95,7 +129,7 @@ const Links = styled.ul`
   justify-content: center;
   padding: 2.5rem 0 1.5rem 0;
   margin-top: 3rem;
-  color: #4d4d4d;
+  ${darkColor}
   border-top: 1px solid #ccc;
 `;
 
@@ -111,6 +145,7 @@ const AuthForm = () => {
   const route = useRouter().route.replace('/', '');
 
   const action = route === 'login' ? 'Log in' : 'Sign up';
+  const error = false;
 
   return (
     <Root>
@@ -123,10 +158,22 @@ const AuthForm = () => {
 
       <InputGrid>
         {/* Email */}
-        <Input type="text" placeholder="Enter email" />
+        <InputGroup>
+          {/* Input */}
+          <Input error={error} type="text" placeholder="Enter email" />
+
+          {/* Error */}
+          {error && <Error>Please enter a valid email</Error>}
+        </InputGroup>
 
         {/* Password */}
-        <Input type="password" placeholder="Enter password" />
+        <InputGroup>
+          {/* Input */}
+          <Input error={error} type="password" placeholder="Enter password" />
+
+          {/* Error */}
+          {error && <Error>Must be at least 6 characters long</Error>}
+        </InputGroup>
 
         {/* Login/Signup button */}
         <LoginButton type="submit">{action}</LoginButton>
