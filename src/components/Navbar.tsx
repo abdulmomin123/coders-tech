@@ -290,7 +290,7 @@ const Navbar = () => {
               {/* Links */}
               {mockCategories.slice(1).map(category => (
                 <li key={category}>
-                  <Link href={`/${category}`} passHref>
+                  <Link href={`/${category.replaceAll(' ', '-')}`} passHref>
                     <DropdownLink>{capitalize(category)}</DropdownLink>
                   </Link>
                 </li>

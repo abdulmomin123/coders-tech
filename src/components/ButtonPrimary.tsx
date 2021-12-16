@@ -7,6 +7,7 @@ const position = css`
 `;
 
 const Root = styled.div`
+  text-align: center;
   ${position}
 `;
 

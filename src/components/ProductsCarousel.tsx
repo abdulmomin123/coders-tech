@@ -2,12 +2,11 @@ import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { mockCategories } from '../constants';
 import { capitalize } from '../helpers';
-import { products } from '../seedData';
+import { mockProducts } from '../seedData';
 import ButtonPrimary from './ButtonPrimary';
 import ProductsGrid from './ProductsGrid';
 
 const Root = styled.section`
-  text-align: center;
   max-width: 120rem;
   margin: 0 auto;
   padding-top: 8rem;
@@ -111,7 +110,7 @@ const ProductsCarousel = () => {
       </CategoryButtonsContainer>
 
       {/* Products grid */}
-      <ProductsGrid products={products} />
+      <ProductsGrid products={mockProducts['furniture']} />
 
       {/* Pagination buttons */}
       <PaginationButtons>

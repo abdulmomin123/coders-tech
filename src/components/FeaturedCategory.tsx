@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import styled from 'styled-components';
-import { products } from '../seedData';
+import { mockProducts } from '../seedData';
 import ProductPreview from './ProductPreview';
 import ViewNowBtn from './ViewNowBtn';
 
@@ -69,7 +69,7 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
   // State
   const [currentPage, setCurrentPage] = useState(1);
 
-  const maxNumOfPages = Math.ceil(products.length / 3);
+  const maxNumOfPages = Math.ceil(mockProducts['furniture'].length / 3);
 
   return (
     <Root>
@@ -100,7 +100,7 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
         )}
 
         {/* Product previews */}
-        {products
+        {mockProducts['furniture']
           .slice((currentPage - 1) * 3, currentPage * 3)
           .map(
             ({

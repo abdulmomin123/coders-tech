@@ -1,8 +1,8 @@
 export const mockCategories = [
   'all',
   'lighting',
-  'sofas',
-  'lounge chairs',
+  'sofa',
+  'lounge chair',
   'furniture',
 ];
 

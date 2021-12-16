@@ -7,7 +7,7 @@ import {
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
-import { formatPrice, slugify } from '../helpers';
+import { camelCaseToNormal, formatPrice, slugify } from '../helpers';
 import { ProductPreviewType } from '../Types';
 
 const position = css`
@@ -144,6 +144,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
   const { setIsCartOpen, hasCartOpened, setHasCartOpened } =
     useContext(CartContext);
 
+  const kebabCasedCategory = camelCaseToNormal(category, '-', false);
   const status = oldPrice
     ? 'sale'
     : Date.now() - new Date(createdAt).getTime() <= 604800000
@@ -151,7 +152,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
     : null;
 
   return (
-    <Link href={`/${category}/${slugify(name)}`} passHref>
+    <Link href={`/${kebabCasedCategory}/${slugify(name)}`} passHref>
       <Root>
         {/* Image container */}
         <ImageContainer>
@@ -185,7 +186,14 @@ const ProductPreview: FC<ProductPreviewType> = ({
 
                 setCartItems([
                   ...cartItems,
-                  { id, name, category, price, thumbnail, quantity: 1 },
+                  {
+                    id,
+                    name,
+                    category: kebabCasedCategory,
+                    price,
+                    thumbnail,
+                    quantity: 1,
+                  },
                 ]);
               }}
             >
