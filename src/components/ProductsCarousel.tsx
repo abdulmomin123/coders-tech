@@ -1,11 +1,10 @@
-import Link from 'next/link';
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { mockCategories } from '../constants';
 import { capitalize } from '../helpers';
 import { products } from '../seedData';
-import { Categories } from '../Types';
-import ProductPreview from './ProductPreview';
+import ButtonPrimary from './ButtonPrimary';
+import ProductsGrid from './ProductsGrid';
 
 const Root = styled.section`
   text-align: center;
@@ -50,14 +49,6 @@ const CategoryBtn = styled.button<{ isSelected: boolean }>`
   }
 `;
 
-const ProductGrid = styled.div`
-  ${displayGrid}
-  grid-template-columns: repeat(4, 1fr);
-  column-gap: 3rem;
-  row-gap: 6rem;
-  margin-bottom: 7rem;
-`;
-
 const PaginationButtons = styled.div`
   ${displayGrid}
   grid-template-columns: repeat(3, max-content);
@@ -94,55 +85,13 @@ const Icon = styled.svg<{ isLeft?: boolean }>`
   ${({ isLeft }) => isLeft && 'transform: rotate(180deg);'}
 `;
 
-const position = css`
-  position: relative;
-`;
-
-const ShopButtonContainer = styled.div`
-  ${position}
-`;
-
-const Line = styled.span`
-  position: absolute;
-  top: 50%;
-  left: 0;
-  height: 2px;
-  width: 100%;
-  background: #ebebeb;
-  transform: translateY(-50%);
-`;
-
-const bgWhite = css`
-  background: #fff;
-`;
-
-const InnerContainer = styled.div`
-  ${position}
-  display: inline-block;
-  padding: 0 3rem;
-  ${bgWhite}
-`;
-
-const ShopBtn = styled.a`
-  font-size: 1.8rem;
-  ${textTransform}
-  padding: 1.3rem 3rem;
-  ${bgWhite}
-  border: 1px solid var(--accent-color);
-  ${transitionBg}
-
-  &:hover {
-    background: var(--accent-color);
-  }
-`;
-
 const ProductsCarousel = () => {
   // State
   const [selectedCategory, setSelectedCategory] = useState(mockCategories[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const updateCategory = (target: HTMLButtonElement) =>
-    setSelectedCategory(target.textContent!.toLowerCase() as Categories);
+    setSelectedCategory(target.textContent!.toLowerCase());
 
   return (
     <Root>
@@ -162,32 +111,7 @@ const ProductsCarousel = () => {
       </CategoryButtonsContainer>
 
       {/* Products grid */}
-      <ProductGrid>
-        {products.map(
-          ({
-            id,
-            name,
-            image,
-            category,
-            price,
-            oldPrice,
-            thumbnail,
-            createdAt,
-          }) => (
-            <ProductPreview
-              key={id}
-              id={id}
-              name={name}
-              category={category}
-              image={image}
-              price={price}
-              oldPrice={oldPrice}
-              thumbnail={thumbnail}
-              createdAt={createdAt}
-            />
-          )
-        )}
-      </ProductGrid>
+      <ProductsGrid products={products} />
 
       {/* Pagination buttons */}
       <PaginationButtons>
@@ -222,15 +146,9 @@ const ProductsCarousel = () => {
       </PaginationButtons>
 
       {/* Go to shop button */}
-      <ShopButtonContainer>
-        <Line />
-
-        <InnerContainer>
-          <Link href="/shop" passHref>
-            <ShopBtn>Go to Shop</ShopBtn>
-          </Link>
-        </InnerContainer>
-      </ShopButtonContainer>
+      <ButtonPrimary type="button" href="/shop">
+        Go to Shop
+      </ButtonPrimary>
     </Root>
   );
 };

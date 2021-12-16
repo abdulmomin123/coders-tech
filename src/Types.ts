@@ -15,10 +15,3 @@ export interface ProductPreviewType extends Product {
 export interface CartItem extends Product {
   quantity: number;
 }
-
-export type Categories =
-  | 'all'
-  | 'lighting'
-  | 'sofas'
-  | 'lounge chairs'
-  | 'furniture';
