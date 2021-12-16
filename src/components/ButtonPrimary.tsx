@@ -33,10 +33,12 @@ const InnerContainer = styled.div`
 `;
 
 const buttonStyles = css`
-  font-size: 1.8rem;
+  font-size: 1.7rem;
+  font-weight: 500;
   line-height: 1;
   text-transform: uppercase;
   padding: 1.3rem 3rem;
+  color: #383838;
   ${bgWhite}
   border: 1px solid var(--accent-color);
   transition: background 0.2s;

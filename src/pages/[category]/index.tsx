@@ -9,6 +9,10 @@ import {
   kebabCaseToCamelCase,
 } from '../../helpers';
 import { mockProducts } from '../../seedData';
+import {
+  categoryAndShopPagesStyles,
+  categoryNameStyles,
+} from '../../styles/globalStyles';
 import { ProductPreviewType } from '../../Types';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -38,17 +42,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 const Root = styled.div`
-  max-width: 120rem;
-  padding: 3rem 0 8rem 0;
-  margin: 0 auto;
+  ${categoryAndShopPagesStyles}
 `;
 
 const CategoryName = styled.h1`
-  display: inline-block;
+  ${categoryNameStyles}
   padding-bottom: 1.5rem;
   margin-bottom: 5rem;
-  color: #363636;
-  border-bottom: 5px solid var(--accent-color);
 `;
 
 interface Props {
@@ -60,7 +60,7 @@ const index: FC<Props> = ({ category, products }) => {
   return (
     <Root>
       {/* Category name */}
-      <CategoryName>{capitalize(category)}</CategoryName>
+      <CategoryName>{capitalize(category.replaceAll('-', ' '))}</CategoryName>
 
       {/* Products */}
       <ProductsGrid products={products} />

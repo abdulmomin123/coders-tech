@@ -28,6 +28,18 @@ export const authPagesStyles = css`
   padding: 5rem 3rem 3rem 3rem;
 `;
 
+export const categoryAndShopPagesStyles = css`
+  max-width: 120rem;
+  padding: 3rem 0 8rem 0;
+  margin: 0 auto;
+`;
+
+export const categoryNameStyles = css`
+  display: inline-block;
+  color: #363636;
+  border-bottom: 5px solid var(--accent-color);
+`;
+
 const fontSize = css`
   font-size: 1.6rem;
 `;

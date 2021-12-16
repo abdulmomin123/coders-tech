@@ -34,11 +34,8 @@ export const camelCaseToNormal = (
     : result.toLowerCase();
 };
 
-export const kebabCaseToCamelCase = (val: string) => {
-  const result = val
+export const kebabCaseToCamelCase = (val: string) =>
+  val
     .split('-')
     .map((el, i) => (i === 0 ? el : capitalize(el)))
     .join('');
-
-  return result;
-};
