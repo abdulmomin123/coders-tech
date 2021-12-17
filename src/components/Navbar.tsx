@@ -39,6 +39,7 @@ const fontWeight = css`
 const Logo = styled.a`
   font-size: 3.5rem;
   ${fontWeight}
+  color:#222;
 
   span {
     color: var(--accent-color);
@@ -114,10 +115,11 @@ const colorTransition = css`
 const linkTypography = css`
   font-size: 1.8rem;
   padding: 0.9rem 2rem;
+  color: #222;
   ${colorTransition}
 
   &:hover {
-    ${darkColor}
+    color: #444444;
   }
 `;
 
@@ -228,7 +230,7 @@ const MyAccountIcon = styled.svg`
 const SignInLink = styled.a`
   font-size: 1.7rem;
   ${fontWeight}
-  color: #161616;
+  color: #222;
   ${colorTransition}
 
   &:hover {

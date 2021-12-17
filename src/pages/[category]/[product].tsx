@@ -5,7 +5,13 @@ const Root = styled.div``;
 const product = () => {
   return (
     <Root>
-      <h1>Product</h1>
+      {/* Category and product name */}
+
+      {/* Product main details */}
+
+      {/* Description */}
+
+      {/* Reviews and questions */}
     </Root>
   );
 };

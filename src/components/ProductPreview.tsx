@@ -116,7 +116,7 @@ const Name = styled.h3`
   line-height: 1.3;
   ${letterSpacing}
   margin-bottom: 1.5rem;
-  color: #636262;
+  color: #4d4c4c;
 `;
 
 const Price = styled.span<{ isDiscounted?: boolean }>`
