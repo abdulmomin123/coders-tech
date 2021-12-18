@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { gridCenter } from '../styles/utils';
 import { mockCategories } from '../constants';
 import { capitalize } from '../helpers';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
+import { auth } from '../lib/firebase/firebase';
 
 const topZero = css`
   top: 0;
@@ -239,10 +241,9 @@ const SignInLink = styled.a`
 `;
 
 const Navbar = () => {
+  const [user] = useAuthState(auth);
   const cartItems = useContext(CartItemsContext);
   const { setIsCartOpen } = useContext(CartContext);
-
-  const isLoggedIn = false;
 
   return (
     <Root>
@@ -318,7 +319,7 @@ const Navbar = () => {
           </CartButton>
 
           {/* Sign in */}
-          {isLoggedIn ? (
+          {user ? (
             // My account
             <MyAccountIcon>
               <use href="/account.svg#icon" />

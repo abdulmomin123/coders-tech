@@ -1,7 +1,10 @@
-import React from 'react';
+import { sendPasswordResetEmail } from 'firebase/auth';
+import { useRouter } from 'next/dist/client/router';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { validateEmail } from '../../helpers';
+import { auth } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
 import BottomLink from './BottomLink';
 import FormTitle from './FormTitle';
@@ -23,18 +26,38 @@ const Text = styled.p`
 `;
 
 const ForgotPasswordForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm({
     mode: 'onBlur',
   });
+  const router = useRouter();
 
   return (
     <Root
-      onSubmit={handleSubmit(({ email, password }) => {
-        console.log(email, password);
+      onSubmit={handleSubmit(async ({ email }) => {
+        try {
+          setIsLoading(true);
+
+          await sendPasswordResetEmail(auth, email);
+
+          setIsLoading(false);
+
+          // Clear form
+          reset();
+
+          // Redirect to login page
+          router.push('/login');
+
+          // Display success notification
+        } catch (err) {
+          // Display error notification
+        }
       })}
     >
       <FormTitle>Can't log in?</FormTitle>
@@ -45,7 +68,13 @@ const ForgotPasswordForm = () => {
         {/* Email */}
         <Input
           error={errors.email}
-          {...register('email', { required: true, validate: validateEmail })}
+          {...register('email', {
+            required: {
+              value: true,
+              message: 'Email is required',
+            },
+            validate: validateEmail,
+          })}
           {...{
             type: 'text',
             placeholder: 'Enter email',
@@ -53,7 +82,7 @@ const ForgotPasswordForm = () => {
         />
 
         {/* Submit button */}
-        <SubmitButton>Send recovery link</SubmitButton>
+        <SubmitButton isDisabled={isLoading}>Send recovery link</SubmitButton>
       </InputGrid>
 
       <Links>

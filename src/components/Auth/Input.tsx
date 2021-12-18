@@ -5,7 +5,7 @@ const Root = styled.div`
   text-align: left;
 `;
 
-const InputField = styled.input<{ error: boolean }>`
+const InputField = styled.input<{ error: any }>`
   font-size: 1.6rem;
   width: 100%;
   padding: 1.1rem 1rem;
@@ -32,7 +32,9 @@ const Error = styled.p`
 `;
 
 interface Props {
-  error: boolean;
+  error: {
+    message: string;
+  };
 }
 
 const Input: FC<Props> = forwardRef<any, Props>(
@@ -43,7 +45,7 @@ const Input: FC<Props> = forwardRef<any, Props>(
         <InputField ref={ref} error={error} {...inputProps} />
 
         {/* Error */}
-        {error && <Error>Please enter a valid email</Error>}
+        {error && <Error>{error.message}</Error>}
       </Root>
     );
   }

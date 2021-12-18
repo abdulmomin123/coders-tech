@@ -1,7 +1,9 @@
-import React from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { validateEmail } from '../../helpers';
+import { auth } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
 import BottomLink from './BottomLink';
 import FormTitle from './FormTitle';
@@ -17,10 +19,13 @@ const Root = styled.div`
 `;
 
 const LoginForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
+    reset,
   } = useForm({
     mode: 'onBlur',
   });
@@ -30,15 +35,33 @@ const LoginForm = () => {
       <FormTitle>Log in to Shopnik</FormTitle>
 
       <form
-        onSubmit={handleSubmit(({ email, password }) => {
-          console.log(email, password);
+        onSubmit={handleSubmit(async ({ email, password }) => {
+          try {
+            setIsLoading(true);
+
+            // Sign the user in
+            await signInWithEmailAndPassword(auth, email, password);
+
+            setIsLoading(false);
+
+            // Clear the form
+            reset();
+          } catch (_) {
+            // Display error notification
+          }
         })}
       >
         <InputGrid>
           {/* Email */}
           <Input
             error={errors.email}
-            {...register('email', { required: true, validate: validateEmail })}
+            {...register('email', {
+              required: {
+                value: true,
+                message: 'Email is required',
+              },
+              validate: validateEmail,
+            })}
             {...{
               type: 'text',
               placeholder: 'Enter email',
@@ -49,8 +72,11 @@ const LoginForm = () => {
           <Input
             error={errors.password}
             {...register('password', {
-              required: true,
-              minLength: 6,
+              required: { value: true, message: 'Password is required' },
+              minLength: {
+                value: 6,
+                message: 'Must be at least 6 characters long',
+              },
             })}
             {...{
               type: 'password',
@@ -59,7 +85,7 @@ const LoginForm = () => {
           />
 
           {/* Login button */}
-          <SubmitButton>Log in</SubmitButton>
+          <SubmitButton isDisabled={isLoading}>Log in</SubmitButton>
         </InputGrid>
       </form>
 

@@ -15,8 +15,14 @@ const Root = styled.button`
   }
 `;
 
-const SubmitButton: FC = ({ children }) => (
-  <Root type="submit">{children}</Root>
+interface Props {
+  isDisabled: boolean;
+}
+
+const SubmitButton: FC<Props> = ({ isDisabled, children }) => (
+  <Root type="submit" disabled={isDisabled}>
+    {children}
+  </Root>
 );
 
 export default SubmitButton;

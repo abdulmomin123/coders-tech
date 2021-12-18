@@ -21,10 +21,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CartProvider>
       <Head>
-        <title>Coders Tech | Shop for Programmers</title>
+        <title>Shopnik | Furniture store</title>
         <meta
           name="description"
-          content="Shop for coding techs and equipments. Built for programmers to fulfill their tech needs, all in one place."
+          content="Shopnik is a furniture store. You can shop world class furniture at Shopnik."
         />
       </Head>
 
