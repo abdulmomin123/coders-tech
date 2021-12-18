@@ -327,7 +327,7 @@ const Navbar = () => {
             </MyAccountIcon>
           ) : (
             <Link href="/login" passHref>
-              <SignInLink>Sign In</SignInLink>
+              <SignInLink>Log In</SignInLink>
             </Link>
           )}
         </UserActions>

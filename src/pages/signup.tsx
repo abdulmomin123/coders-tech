@@ -13,7 +13,7 @@ const signup = () => {
   const [user] = useAuthState(auth);
   const router = useRouter();
 
-  user ? router.push('/') : null;
+  // user ? router.push('/') : null;
 
   return (
     <Root>

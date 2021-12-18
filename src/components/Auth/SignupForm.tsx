@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { isMobile, validateEmail } from '../../helpers';
-import { auth, provider } from '../../lib/firebase/firebase';
+import { auth, createUserProfile, provider } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
 import BottomLink from './BottomLink';
 import FormTitle from './FormTitle';
@@ -39,14 +39,19 @@ const SignupForm = () => {
       <FormTitle>Sign up for your account</FormTitle>
 
       <form
-        onSubmit={handleSubmit(async ({ email, password }) => {
+        onSubmit={handleSubmit(async ({ name, email, password }) => {
           try {
             setIsLoading(true);
 
             // Authenticate user
-            await createUserWithEmailAndPassword(auth, email, password);
+            const { user } = await createUserWithEmailAndPassword(
+              auth,
+              email,
+              password
+            );
 
             // Create user profile
+            await createUserProfile(name, user.email!, user.uid);
 
             setIsLoading(false);
 
@@ -54,6 +59,7 @@ const SignupForm = () => {
             reset();
           } catch (_) {
             // Display error notification
+            setIsLoading(false);
           }
         })}
       >
@@ -122,9 +128,12 @@ const SignupForm = () => {
       <GoogleButton
         handleClick={async () => {
           try {
-            isMobile()
-              ? await signInWithRedirect(auth, provider)
-              : await signInWithPopup(auth, provider);
+            const signup = isMobile() ? signInWithRedirect : signInWithPopup;
+
+            const { user } = await signup(auth, provider);
+
+            // Create user profile
+            await createUserProfile(user.displayName!, user.email!, user.uid);
           } catch (_) {
             // Display error notification
           }

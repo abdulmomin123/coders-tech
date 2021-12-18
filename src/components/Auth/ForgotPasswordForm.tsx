@@ -57,6 +57,7 @@ const ForgotPasswordForm = () => {
           // Display success notification
         } catch (err) {
           // Display error notification
+          setIsLoading(false);
         }
       })}
     >

@@ -52,6 +52,7 @@ const LoginForm = () => {
             reset();
           } catch (_) {
             // Display error notification
+            setIsLoading(false);
           }
         })}
       >
