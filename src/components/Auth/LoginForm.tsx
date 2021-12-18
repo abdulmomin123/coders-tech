@@ -1,9 +1,13 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signInWithRedirect,
+} from 'firebase/auth';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-import { validateEmail } from '../../helpers';
-import { auth } from '../../lib/firebase/firebase';
+import { isMobile, validateEmail } from '../../helpers';
+import { auth, provider } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
 import BottomLink from './BottomLink';
 import FormTitle from './FormTitle';
@@ -91,7 +95,17 @@ const LoginForm = () => {
 
       <TextPrimary>OR</TextPrimary>
 
-      <GoogleButton handleClick={() => {}} />
+      <GoogleButton
+        handleClick={async () => {
+          try {
+            isMobile()
+              ? await signInWithRedirect(auth, provider)
+              : await signInWithPopup(auth, provider);
+          } catch (_) {
+            // Display error notification
+          }
+        }}
+      />
 
       <Links>
         <BottomLink href="/forgot">Forgot password?</BottomLink>

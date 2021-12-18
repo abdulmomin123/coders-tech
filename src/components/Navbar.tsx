@@ -7,6 +7,7 @@ import { mockCategories } from '../constants';
 import { capitalize } from '../helpers';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { auth } from '../lib/firebase/firebase';
+import { signOut } from 'firebase/auth';
 
 const topZero = css`
   top: 0;
@@ -321,7 +322,7 @@ const Navbar = () => {
           {/* Sign in */}
           {user ? (
             // My account
-            <MyAccountIcon>
+            <MyAccountIcon onClick={() => signOut(auth)}>
               <use href="/account.svg#icon" />
             </MyAccountIcon>
           ) : (

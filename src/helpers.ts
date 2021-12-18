@@ -42,3 +42,8 @@ export const kebabCaseToCamelCase = (val: string) =>
     .split('-')
     .map((el, i) => (i === 0 ? el : capitalize(el)))
     .join('');
+
+export const isMobile = () =>
+  /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
