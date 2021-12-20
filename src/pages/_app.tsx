@@ -7,6 +7,7 @@ import Navbar from '../components/Navbar';
 import Notification from '../components/Notification';
 import CartProvider from '../contexts/Cart';
 import NotificationProvider from '../contexts/Notification';
+import UserProvider from '../contexts/User';
 import { GlobalStyles } from '../styles/globalStyles';
 
 const ContentArea = styled.main`
@@ -23,33 +24,35 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <CartProvider>
       <NotificationProvider>
-        <Head>
-          <title>Shopnik | Furniture store</title>
-          <meta
-            name="description"
-            content="Shopnik is a furniture store. You can shop world class furniture at Shopnik."
-          />
-        </Head>
+        <UserProvider>
+          <Head>
+            <title>Shopnik | Furniture store</title>
+            <meta
+              name="description"
+              content="Shopnik is a furniture store. You can shop world class furniture at Shopnik."
+            />
+          </Head>
 
-        {/* Navbar */}
-        <Navbar />
+          {/* Navbar */}
+          <Navbar />
 
-        {/* Global styles */}
-        <GlobalStyles />
+          {/* Global styles */}
+          <GlobalStyles />
 
-        {/* Page content centered */}
-        <ContentArea>
-          <Component {...pageProps} />
-        </ContentArea>
+          {/* Page content centered */}
+          <ContentArea>
+            <Component {...pageProps} />
+          </ContentArea>
 
-        {/* Shopping cart */}
-        <Cart />
+          {/* Shopping cart */}
+          <Cart />
 
-        {/* Footer */}
-        <Footer />
+          {/* Footer */}
+          <Footer />
 
-        {/* Notification */}
-        <Notification />
+          {/* Notification */}
+          <Notification />
+        </UserProvider>
       </NotificationProvider>
     </CartProvider>
   );

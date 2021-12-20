@@ -6,6 +6,7 @@ import { setDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-avataaars-sprites';
+import { User } from '../../Types';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCUbqFvykMxoJLIU0KtqOzfFAjcoAJKzoM',
@@ -65,4 +66,10 @@ export const createUserProfile = async (
     image,
     uid,
   });
+};
+
+export const getUserProfile = async (uid: string) => {
+  const foundUser = await doesUserExist(uid);
+
+  return foundUser ? (foundUser.data() as User) : null;
 };

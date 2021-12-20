@@ -58,3 +58,10 @@ export interface NotificationType {
   type: 'error' | 'success';
   text: string;
 }
+
+export interface User {
+  name: string;
+  email: string;
+  image: string;
+  uid: string;
+}

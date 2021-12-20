@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { gridCenter } from '../styles/utils';
@@ -9,6 +8,7 @@ import { capitalize } from '../helpers';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { auth } from '../lib/firebase/firebase';
 import { signOut } from 'firebase/auth';
+import { UserContext } from '../contexts/User';
 
 const topZero = css`
   top: 0;
@@ -238,8 +238,7 @@ const MyAccountIcon = styled.svg`
 
   &:hover {
     ${fillAccent}
-
-    
+  }
 `;
 
 const AccountActionsDropdown = styled.div`
@@ -258,8 +257,9 @@ const AccountActionsDropdown = styled.div`
 `;
 
 const UserImage = styled.span`
-  border-radius: 50%;
   margin-bottom: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
   overflow: hidden;
 `;
 
@@ -309,7 +309,7 @@ const SignInLink = styled.a`
 `;
 
 const Navbar = () => {
-  const [user] = useAuthState(auth);
+  const userData = useContext(UserContext);
   const cartItems = useContext(CartItemsContext);
   const { setIsCartOpen } = useContext(CartContext);
 
@@ -387,7 +387,7 @@ const Navbar = () => {
           </CartButton>
 
           {/* Sign in */}
-          {user ? (
+          {userData ? (
             // My account
             <MyAccount>
               <MyAccountIcon>
@@ -398,15 +398,15 @@ const Navbar = () => {
                 {/* User image */}
                 <UserImage>
                   <Image
-                    src="/account.svg"
-                    alt="image is abdul momin"
-                    width={50}
-                    height={50}
+                    src={userData.image}
+                    alt={`image of ${userData.name}`}
+                    width={55}
+                    height={55}
                   />
                 </UserImage>
 
                 {/* User name */}
-                <UserName>Abdul Momin</UserName>
+                <UserName>{userData.name}</UserName>
 
                 {/* My account link */}
                 <Link href="/account" passHref>
