@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useContext } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Link from 'next/link';
@@ -218,6 +219,16 @@ const ItemCount = styled.span<{ totalItems: number }>`
   transform: translate(50%, -50%);
 `;
 
+const MyAccount = styled.div`
+  ${positionRelative}
+
+  &:hover > :last-child {
+      opacity: 1;
+      visibility: initial;
+    }
+  }
+`;
+
 const MyAccountIcon = styled.svg`
   ${width3Rem}
   ${height3Rem}
@@ -227,7 +238,63 @@ const MyAccountIcon = styled.svg`
 
   &:hover {
     ${fillAccent}
+
+    
+`;
+
+const AccountActionsDropdown = styled.div`
+  text-align: center;
+  ${positionAbs}
+  top: 100%;
+  right: 0;
+  width: 25rem;
+  padding-top: 2rem;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s;
+`;
+
+const UserImage = styled.span`
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  overflow: hidden;
+`;
+
+const UserName = styled.p`
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 2.5rem;
+`;
+
+const buttonStyles = css`
+  font-size: 1.8rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 1rem 1.5rem;
+  transition: background 0.2s;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.1);
   }
+`;
+
+const Icon = styled.svg`
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  fill: #555;
+`;
+
+const UserActionLink = styled.a`
+  ${buttonStyles}
+`;
+
+const LogoutBtn = styled.button`
+  ${buttonStyles}
 `;
 
 const SignInLink = styled.a`
@@ -322,9 +389,46 @@ const Navbar = () => {
           {/* Sign in */}
           {user ? (
             // My account
-            <MyAccountIcon onClick={() => signOut(auth)}>
-              <use href="/account.svg#icon" />
-            </MyAccountIcon>
+            <MyAccount>
+              <MyAccountIcon>
+                <use href="/account.svg#icon" />
+              </MyAccountIcon>
+
+              <AccountActionsDropdown>
+                {/* User image */}
+                <UserImage>
+                  <Image
+                    src="/account.svg"
+                    alt="image is abdul momin"
+                    width={50}
+                    height={50}
+                  />
+                </UserImage>
+
+                {/* User name */}
+                <UserName>Abdul Momin</UserName>
+
+                {/* My account link */}
+                <Link href="/account" passHref>
+                  <UserActionLink>
+                    {/* icon */}
+                    <Icon>
+                      <use href="/account.svg#icon" />
+                    </Icon>
+                    My account
+                  </UserActionLink>
+                </Link>
+
+                {/* Logout button */}
+                <LogoutBtn onClick={() => signOut(auth)}>
+                  {/* icon */}
+                  <Icon>
+                    <use href="/logout.svg#icon" />
+                  </Icon>
+                  Logout
+                </LogoutBtn>
+              </AccountActionsDropdown>
+            </MyAccount>
           ) : (
             <Link href="/login" passHref>
               <SignInLink>Log In</SignInLink>
