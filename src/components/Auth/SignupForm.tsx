@@ -31,7 +31,6 @@ const SignupForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-    reset,
   } = useForm({
     mode: 'onBlur',
   });
@@ -46,19 +45,12 @@ const SignupForm = () => {
             setIsLoading(true);
 
             // Authenticate user
-            const { user } = await createUserWithEmailAndPassword(
-              auth,
-              email,
-              password
-            );
+            const {
+              user: { email: userEmail, uid },
+            } = await createUserWithEmailAndPassword(auth, email, password);
 
             // Create user profile
-            await createUserProfile(name, user.email!, user.uid);
-
-            setIsLoading(false);
-
-            // Clear the form
-            reset();
+            await createUserProfile(name, userEmail!, uid!);
           } catch (error) {
             const message = (error as any).message as string;
 
@@ -141,10 +133,12 @@ const SignupForm = () => {
           try {
             const signup = isMobile() ? signInWithRedirect : signInWithPopup;
 
-            const { user } = await signup(auth, provider);
+            const {
+              user: { displayName, email, uid },
+            } = await signup(auth, provider);
 
             // Create user profile
-            await createUserProfile(user.displayName!, user.email!, user.uid);
+            await createUserProfile(displayName!, email!, uid!);
           } catch (_) {
             // Display error notification
             setNotification({

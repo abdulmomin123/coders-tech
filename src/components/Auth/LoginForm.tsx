@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { NotificationContextSetter } from '../../contexts/Notification';
 import { isMobile, validateEmail } from '../../helpers';
-import { auth, provider } from '../../lib/firebase/firebase';
+import { auth, createUserProfile, provider } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
 import BottomLink from './BottomLink';
 import FormTitle from './FormTitle';
@@ -31,7 +31,6 @@ const LoginForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-    reset,
   } = useForm({
     mode: 'onBlur',
   });
@@ -47,11 +46,6 @@ const LoginForm = () => {
 
             // Sign the user in
             await signInWithEmailAndPassword(auth, email, password);
-
-            setIsLoading(false);
-
-            // Clear the form
-            reset();
           } catch (error) {
             const message = (error as any).message as string;
 
@@ -110,9 +104,14 @@ const LoginForm = () => {
       <GoogleButton
         handleClick={async () => {
           try {
-            isMobile()
+            const {
+              user: { displayName, email, uid },
+            } = isMobile()
               ? await signInWithRedirect(auth, provider)
               : await signInWithPopup(auth, provider);
+
+            // Create user profile if the profile doesn't exist
+            await createUserProfile(displayName!, email!, uid!);
           } catch (_) {
             // Display error notification
             setNotification({

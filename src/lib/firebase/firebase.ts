@@ -25,20 +25,26 @@ export const storage = getStorage();
 
 export const provider = new GoogleAuthProvider();
 
+export const doesUserExist = async (uid: string) => {
+  // Check if the user is already authenticated
+  const docRef = doc(firestore, 'users', uid);
+  const user = await getDoc(docRef);
+
+  return user.exists() ? user : false;
+};
+
 export const createUserProfile = async (
   name: string,
   email: string,
   uid: string
 ) => {
-  // Check if the user is already authenticated
-  const docRef = doc(firestore, 'users', uid);
-  const user = await getDoc(docRef);
+  const user = await doesUserExist(uid);
 
-  if (user.exists()) return;
+  if (user) return;
 
   // Create profile image based on user's name
   const svg = createAvatar(style, {
-    seed: name,
+    seed: uid,
   });
 
   const blob = new Blob([svg], {
