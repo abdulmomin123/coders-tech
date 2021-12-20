@@ -53,3 +53,8 @@ export interface FullProduct extends BaseProduct {
   question: Question[];
   replies: Reply[];
 }
+
+export interface NotificationType {
+  type: 'error' | 'success';
+  text: string;
+}

@@ -3,9 +3,10 @@ import {
   signInWithPopup,
   signInWithRedirect,
 } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { NotificationContextSetter } from '../../contexts/Notification';
 import { isMobile, validateEmail } from '../../helpers';
 import { auth, provider } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
@@ -23,6 +24,7 @@ const Root = styled.div`
 `;
 
 const LoginForm = () => {
+  const setNotification = useContext(NotificationContextSetter);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -50,8 +52,17 @@ const LoginForm = () => {
 
             // Clear the form
             reset();
-          } catch (_) {
+          } catch (error) {
+            const message = (error as any).message as string;
+
             // Display error notification
+            setNotification({
+              type: 'error',
+              text: message.includes('auth/network-request-failed')
+                ? 'Something went wrong. Try again'
+                : 'Wrong password or account does not exist',
+            });
+
             setIsLoading(false);
           }
         })}
@@ -104,6 +115,10 @@ const LoginForm = () => {
               : await signInWithPopup(auth, provider);
           } catch (_) {
             // Display error notification
+            setNotification({
+              type: 'error',
+              text: 'Something went wrong. Try again',
+            });
           }
         }}
       />

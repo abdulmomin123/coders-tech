@@ -1,8 +1,9 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { useRouter } from 'next/dist/client/router';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { NotificationContextSetter } from '../../contexts/Notification';
 import { validateEmail } from '../../helpers';
 import { auth } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
@@ -26,6 +27,7 @@ const Text = styled.p`
 `;
 
 const ForgotPasswordForm = () => {
+  const setNotification = useContext(NotificationContextSetter);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -55,8 +57,17 @@ const ForgotPasswordForm = () => {
           router.push('/login');
 
           // Display success notification
-        } catch (err) {
+          setNotification({
+            type: 'success',
+            text: 'Password reset email sent',
+          });
+        } catch (_) {
           // Display error notification
+          setNotification({
+            type: 'error',
+            text: 'Something went wrong. Try again',
+          });
+
           setIsLoading(false);
         }
       })}

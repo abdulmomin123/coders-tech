@@ -3,9 +3,10 @@ import {
   signInWithPopup,
   signInWithRedirect,
 } from 'firebase/auth';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { NotificationContextSetter } from '../../contexts/Notification';
 import { isMobile, validateEmail } from '../../helpers';
 import { auth, createUserProfile, provider } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
@@ -23,6 +24,7 @@ const Root = styled.div`
 `;
 
 const SignupForm = () => {
+  const setNotification = useContext(NotificationContextSetter);
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -57,8 +59,17 @@ const SignupForm = () => {
 
             // Clear the form
             reset();
-          } catch (_) {
+          } catch (error) {
+            const message = (error as any).message as string;
+
             // Display error notification
+            setNotification({
+              type: 'error',
+              text: message.includes('email-already-in-use')
+                ? 'Email already in use'
+                : 'Something went wrong. Try again',
+            });
+
             setIsLoading(false);
           }
         })}
@@ -136,6 +147,10 @@ const SignupForm = () => {
             await createUserProfile(user.displayName!, user.email!, user.uid);
           } catch (_) {
             // Display error notification
+            setNotification({
+              type: 'error',
+              text: 'Something went wrong. Try again',
+            });
           }
         }}
       />
