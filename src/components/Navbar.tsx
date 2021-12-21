@@ -229,18 +229,6 @@ const MyAccount = styled.div`
   }
 `;
 
-const MyAccountIcon = styled.svg`
-  ${width3Rem}
-  ${height3Rem}
-  fill: rgba(0, 0, 0, 0.2);
-  transition: fill 0.3s;
-  ${cursorPointer}
-
-  &:hover {
-    ${fillAccent}
-  }
-`;
-
 const AccountActionsDropdown = styled.div`
   text-align: center;
   ${positionAbs}
@@ -256,11 +244,14 @@ const AccountActionsDropdown = styled.div`
   transition: opacity 0.5s;
 `;
 
-const UserImage = styled.span`
-  margin-bottom: 1rem;
+const UserImage = styled.span<{ width?: string; height?: string }>`
+  width: ${({ width }) => width};
+  height: ${({ height }) => height};
+  margin-bottom: ${({ width }) => (width ? '0' : '1rem')};
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
   overflow: hidden;
+  cursor: pointer;
 `;
 
 const UserName = styled.p`
@@ -390,9 +381,15 @@ const Navbar = () => {
           {userData ? (
             // My account
             <MyAccount>
-              <MyAccountIcon>
-                <use href="/account.svg#icon" />
-              </MyAccountIcon>
+              <UserImage width="3.5rem" height="3.5rem">
+                <Image
+                  src={userData.image}
+                  alt={`image of ${userData.name}`}
+                  width={45}
+                  height={45}
+                  layout="responsive"
+                />
+              </UserImage>
 
               <AccountActionsDropdown>
                 {/* User image */}
