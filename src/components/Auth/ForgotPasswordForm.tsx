@@ -34,7 +34,6 @@ const ForgotPasswordForm = () => {
     handleSubmit,
     register,
     formState: { errors },
-    reset,
   } = useForm({
     mode: 'onBlur',
   });
@@ -48,19 +47,14 @@ const ForgotPasswordForm = () => {
 
           await sendPasswordResetEmail(auth, email);
 
-          setIsLoading(false);
-
-          // Clear form
-          reset();
-
-          // Redirect to login page
-          router.push('/login');
-
           // Display success notification
           setNotification({
             type: 'success',
             text: 'Password reset email sent',
           });
+
+          // Redirect to login page
+          router.push('/login');
         } catch (_) {
           // Display error notification
           setNotification({
