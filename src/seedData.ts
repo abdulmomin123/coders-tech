@@ -309,9 +309,15 @@ const furniture: ProductPreviewType[] = [
 ];
 
 export const mockProducts = {
-  // all: [...lighting, ...sofa, ...loungeChair, ...furniture],
   lighting,
   sofa,
   loungeChair,
   furniture,
 };
+
+export const allProducts = [
+  ...mockProducts['lighting'],
+  ...mockProducts['sofa'],
+  ...mockProducts['loungeChair'],
+  ...mockProducts['furniture'],
+];

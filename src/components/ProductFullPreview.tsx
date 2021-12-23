@@ -1,16 +1,20 @@
 import { FC } from 'react';
 import styled from 'styled-components';
+import { FullProduct } from '../Types';
 
-const Root = styled.div``;
+const Root = styled.div`
+  max-width: 115rem;
+  margin: 0 auto;
+`;
 
 interface Props {
-  //
+  product: FullProduct;
 }
 
-const ProductFullPreview: FC<Props> = ({}) => {
+const ProductFullPreview: FC<Props> = ({ product: { name } }) => {
   return (
     <Root>
-      <h1>Full product preview</h1>
+      <h1>{name}</h1>
       {/* Category and product name */}
 
       {/* Product main details */}

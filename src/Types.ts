@@ -1,21 +1,3 @@
-interface Product {
-  id: string;
-  name: string;
-  category: string;
-  price: number;
-  thumbnail: string;
-}
-
-export interface ProductPreviewType extends Product {
-  image: string;
-  oldPrice?: number;
-  createdAt: string;
-}
-
-export interface CartItem extends Product {
-  quantity: number;
-}
-
 interface BaseProduct {
   id: string;
   name: string;
@@ -24,14 +6,14 @@ interface BaseProduct {
   thumbnail: string;
 }
 
-export interface ProductPreviewTypee extends BaseProduct {
+export interface CartItem extends BaseProduct {
+  quantity: number;
+}
+
+export interface ProductPreviewType extends BaseProduct {
   oldPrice?: number;
   image: string;
   createdAt: string;
-}
-
-export interface CartItemm extends BaseProduct {
-  quantity: string;
 }
 
 export interface Review {
@@ -45,7 +27,6 @@ export interface Question {
 export interface Reply {
   //
 }
-
 export interface FullProduct extends BaseProduct {
   images: string[];
   description: string;
