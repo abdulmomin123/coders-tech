@@ -238,6 +238,7 @@ const Ratings = styled.div`
   display: grid;
   grid-template-columns: repeat(2, max-content);
   gap: 8rem;
+  margin-bottom: 8rem;
 `;
 
 const RatingsLeft = styled.div`
@@ -552,7 +553,14 @@ const ProductFullPreview: FC<Props> = ({
 
           {/* Feedbacks */}
           <Feedbacks>
-            <Feedback />
+            <Feedback
+              uid="u1"
+              name="Abdul Momin"
+              image="/test-user.svg"
+              rating={4}
+              feedback="This product is really great and does it's job very well."
+              date={new Date().toISOString()}
+            />
           </Feedbacks>
         </Container>
       </ReviewsSection>
