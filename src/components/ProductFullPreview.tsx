@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
+import ReactStars from 'react-stars';
 import { FullProduct } from '../Types';
 import { camelCaseToNormal, capitalize, formatPrice } from '../helpers';
 import Feedback from './Feedback';
@@ -10,6 +11,7 @@ import {
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
+import RatingGroup from './RatingGroup';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -89,10 +91,13 @@ const Name = styled.h1`
 
 const TotalRatings = styled.div`
   font-size: 1.7rem;
+  display: flex;
+  align-items: center;
   margin-bottom: 4rem;
 `;
 
 const TotalRatingsLink = styled.a`
+  margin-left: 1rem;
   color: #1d899e;
   cursor: pointer;
 `;
@@ -209,21 +214,60 @@ const Container = styled.div`
   padding: 3rem;
 `;
 
-const ReviewButtons = styled.div``;
+const ReviewButtons = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 2rem;
+  margin-bottom: 4rem;
+`;
 
-const ReviewBtn = styled.button``;
+const ReviewBtn = styled.button<{ isSelected: boolean }>`
+  font-size: 1.8rem;
+  font-weight: 500;
+  padding-bottom: 0.5rem;
+  border-bottom: 4px solid
+    ${({ isSelected }) => (isSelected ? '#46D6AB' : '#ccc')};
+  transition: border-color 0.2s;
 
-const Ratings = styled.div``;
+  &:hover {
+    border-color: #46d6ab;
+  }
+`;
 
-const RatingsLeft = styled.div``;
+const Ratings = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 8rem;
+`;
 
-const RatingsRight = styled.div``;
+const RatingsLeft = styled.div`
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #757575;
+`;
 
-const Rating = styled.span``;
+const Numbers = styled.div`
+  margin-bottom: 1.5rem;
+`;
 
-const RatingOutOf = styled.span``;
+const StarsContainer = styled.div`
+  margin-bottom: 1rem;
+`;
 
-const RatingGroup = styled.div``;
+const RatingsRight = styled.div`
+  display: grid;
+  gap: 1rem;
+`;
+
+const Rating = styled.span`
+  font-size: 5rem;
+  color: #212121;
+`;
+
+const RatingOutOf = styled.span`
+  font-size: 3.3rem;
+  color: #9e9e9e;
+`;
 
 const Feedbacks = styled.div``;
 
@@ -239,6 +283,9 @@ const ProductFullPreview: FC<Props> = ({
   const { setIsCartOpen, hasCartOpened, setHasCartOpened } =
     useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
+  const [selectedFeedback, setSelectedFeedback] = useState<
+    'reviews' | 'questions'
+  >('reviews');
 
   return (
     <Root>
@@ -324,7 +371,15 @@ const ProductFullPreview: FC<Props> = ({
 
           <TotalRatings>
             {/* Stars */}
-            starts &nbsp;
+            <ReactStars
+              count={5}
+              value={4.8}
+              size={20}
+              color1="#e1e1e4"
+              color2="#faca51"
+              edit={false}
+            />
+
             {/* Ratings count */}
             <Link href="#ratings" passHref>
               <TotalRatingsLink>221 ratings</TotalRatingsLink>
@@ -443,35 +498,55 @@ const ProductFullPreview: FC<Props> = ({
         <Container>
           <ReviewButtons>
             {/* Reviews */}
-            <ReviewBtn>Reviews</ReviewBtn>
+            <ReviewBtn
+              onClick={() => setSelectedFeedback('reviews')}
+              isSelected={selectedFeedback === 'reviews'}
+            >
+              Reviews
+            </ReviewBtn>
 
             {/* Questions */}
-            <ReviewBtn>Questions</ReviewBtn>
+            <ReviewBtn
+              onClick={() => setSelectedFeedback('questions')}
+              isSelected={selectedFeedback === 'questions'}
+            >
+              Questions
+            </ReviewBtn>
           </ReviewButtons>
 
           {/* Ratings */}
           <Ratings>
             {/* Left side */}
             <RatingsLeft>
-              <div>
+              <Numbers>
                 <Rating>4.8</Rating>
 
                 <RatingOutOf>/5</RatingOutOf>
-              </div>
+              </Numbers>
+
               {/* Stars */}
+              <StarsContainer>
+                <ReactStars
+                  count={5}
+                  value={4.8}
+                  size={40}
+                  color1="#e1e1e4"
+                  color2="#faca51"
+                  edit={false}
+                />
+              </StarsContainer>
+
               {/* Total ratings */}
-              243 Ratings
+              <span>248 Ratings</span>
             </RatingsLeft>
 
             {/* Right side */}
             <RatingsRight>
-              <RatingGroup>
-                {/* Stars */}
-
-                {/* Progress bar */}
-
-                {/* Ratings count */}
-              </RatingGroup>
+              <RatingGroup stars={5} totalRatings={248} ratings={225} />
+              <RatingGroup stars={4} totalRatings={248} ratings={13} />
+              <RatingGroup stars={3} totalRatings={248} ratings={6} />
+              <RatingGroup stars={2} totalRatings={248} ratings={0} />
+              <RatingGroup stars={1} totalRatings={248} ratings={4} />
             </RatingsRight>
           </Ratings>
 
