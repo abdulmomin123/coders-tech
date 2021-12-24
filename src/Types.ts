@@ -2,6 +2,7 @@ interface BaseProduct {
   id: string;
   name: string;
   price: number;
+  oldPrice?: number;
   category: string;
   thumbnail: string;
 }
@@ -11,7 +12,6 @@ export interface CartItem extends BaseProduct {
 }
 
 export interface ProductPreviewType extends BaseProduct {
-  oldPrice?: number;
   image: string;
   createdAt: string;
 }

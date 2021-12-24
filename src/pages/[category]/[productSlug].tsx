@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductFullPreview from '../../components/ProductFullPreview';
 import { allProducts } from '../../seedData';
@@ -37,6 +37,16 @@ interface Props {
 }
 
 const product: FC<Props> = ({ product }) => {
+  useEffect(() => {
+    document.body.style.background = '#eff0f5';
+    document.querySelector('html')!.style.scrollBehavior = 'smooth';
+
+    return () => {
+      document.body.style.background = 'initial';
+      document.querySelector('html')!.style.scrollBehavior = 'initial';
+    };
+  }, []);
+
   return (
     <Root>
       <ProductFullPreview product={product} />

@@ -167,9 +167,8 @@ const CartProdPreview: FC<CartItem> = ({
           <QuantityButtons>
             {/* Minus button */}
             <Button
+              disabled={quantity <= 1}
               onClick={() => {
-                if (quantity <= 1) return;
-
                 setCartItems(
                   cartItems.map(item =>
                     item.id === id
@@ -189,9 +188,8 @@ const CartProdPreview: FC<CartItem> = ({
 
             {/* Plus button */}
             <Button
+              disabled={quantity >= 100}
               onClick={() => {
-                if (quantity >= 100) return;
-
                 setCartItems(
                   cartItems.map(item =>
                     item.id === id
