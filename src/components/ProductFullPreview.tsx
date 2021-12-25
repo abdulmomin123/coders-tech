@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-stars';
-import { FullProduct, Review } from '../Types';
+import { FullProduct, Question, Review } from '../Types';
 import { camelCaseToNormal, capitalize, formatPrice } from '../helpers';
 import Feedback from './Feedback';
 import {
@@ -12,6 +12,7 @@ import {
   CartItemsSetter,
 } from '../contexts/Cart';
 import RatingGroup from './RatingGroup';
+import { gridCenter } from '../styles/utils';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -270,7 +271,30 @@ const RatingOutOf = styled.span`
   color: #9e9e9e;
 `;
 
-const Feedbacks = styled.div``;
+const Feedbacks = styled.div`
+  display: grid;
+  gap: 5rem;
+`;
+
+const FeedbackGroup = styled.div`
+  display: grid;
+  gap: 0.7rem;
+`;
+
+const ReplyContainer = styled.div`
+  margin-left: 8.5rem;
+`;
+
+const EmptyContainer = styled.div`
+  height: 30vh;
+  ${gridCenter}
+  background: rgba(0,0,0,.04);
+  border-radius: 1rem;
+`;
+
+const EmptyText = styled.p`
+  font-size: 1.8rem;
+`;
 
 interface Props {
   product: FullProduct;
@@ -287,6 +311,43 @@ const ProductFullPreview: FC<Props> = ({
   const [selectedFeedback, setSelectedFeedback] = useState<
     'reviews' | 'questions'
   >('reviews');
+
+  const reviews: Review[] = [
+    // {
+    //   id: 'u1',
+    //   name: 'Abdul Momin',
+    //   image: '/test-user.svg',
+    //   rating: 4,
+    //   feedback: "This product is really great and does it's job very well.",
+    //   date: new Date().toISOString(),
+    //   replies: [
+    //     {
+    //       name: 'Shopnik',
+    //       image: '/test-user.svg',
+    //       feedback: 'Thanks for your review.',
+    //       date: new Date().toISOString(),
+    //     },
+    //   ],
+    // },
+  ];
+
+  const questions: Question[] = [
+    // {
+    //   id: 'u1',
+    //   name: 'Abdul Momin',
+    //   image: '/test-user.svg',
+    //   feedback: 'Is this product good enough?',
+    //   date: new Date().toISOString(),
+    //   replies: [
+    //     {
+    //       name: 'Shopnik',
+    //       image: '/test-user.svg',
+    //       feedback: 'Yes, this product is very good.',
+    //       date: new Date().toISOString(),
+    //     },
+    //   ],
+    // },
+  ];
 
   return (
     <Root>
@@ -383,7 +444,14 @@ const ProductFullPreview: FC<Props> = ({
 
             {/* Ratings count */}
             <Link href="#ratings" passHref>
-              <TotalRatingsLink>221 ratings</TotalRatingsLink>
+              <TotalRatingsLink
+                onClick={() =>
+                  selectedFeedback !== 'reviews' &&
+                  setSelectedFeedback('reviews')
+                }
+              >
+                221 ratings
+              </TotalRatingsLink>
             </Link>
           </TotalRatings>
 
@@ -553,19 +621,47 @@ const ProductFullPreview: FC<Props> = ({
 
           {/* Feedbacks */}
           <Feedbacks>
-            <Feedback
-              feedback={
-                {
-                  id: 'u1',
-                  name: 'Abdul Momin',
-                  image: '/test-user.svg',
-                  rating: 4,
-                  feedback:
-                    "This product is really great and does it's job very well.",
-                  date: new Date().toISOString(),
-                } as Review
-              }
-            />
+            {selectedFeedback === 'reviews'
+              ? reviews.map(review => (
+                  <FeedbackGroup key={review.id}>
+                    {/* Feedback */}
+                    <Feedback feedback={review} />
+
+                    {/* Reply */}
+                    <ReplyContainer>
+                      {review.replies.map(reply => (
+                        <Feedback feedback={reply} key={reply.date} />
+                      ))}
+                    </ReplyContainer>
+                  </FeedbackGroup>
+                ))
+              : questions.map(question => (
+                  <FeedbackGroup key={question.id}>
+                    {/* Feedback */}
+                    <Feedback feedback={question} />
+
+                    {/* Reply */}
+                    <ReplyContainer>
+                      {question.replies.map(reply => (
+                        <Feedback feedback={reply} key={reply.date} />
+                      ))}
+                    </ReplyContainer>
+                  </FeedbackGroup>
+                ))}
+
+            {/* If there is no reviews */}
+            {selectedFeedback === 'reviews' && !reviews.length && (
+              <EmptyContainer>
+                <EmptyText>This product has no reviews.</EmptyText>
+              </EmptyContainer>
+            )}
+
+            {/* If there is no questions */}
+            {selectedFeedback === 'questions' && !questions.length && (
+              <EmptyContainer>
+                <EmptyText>There are no questions yet.</EmptyText>
+              </EmptyContainer>
+            )}
           </Feedbacks>
         </Container>
       </ReviewsSection>
