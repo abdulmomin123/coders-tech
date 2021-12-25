@@ -1,6 +1,26 @@
-import { ProductPreviewType } from './Types';
+import { FullProduct } from './Types';
 
-const lighting: ProductPreviewType[] = [
+const description = `Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga, voluptas
+velit iste eligendi nulla amet porro nam quibusdam ullam earum enim
+consectetur optio quis, corrupti reiciendis repellendus asperiores autem
+incidunt, dicta quaerat perspiciatis exercitationem! Deserunt magni ut
+sed, facilis dolor reiciendis delectus explicabo ipsum eaque magnam, odit
+debitis expedita quia nostrum beatae assumenda totam! Doloremque nostrum
+consectetur ipsum natus tempore deserunt eveniet? Eligendi, earum. Optio
+quidem repellat, laudantium ab explicabo sed? Laboriosam ratione
+laudantium veritatis dicta architecto officiis perferendis! Itaque
+corporis odit, impedit doloribus numquam porro saepe sed dolorem. Quam
+sint ullam, ducimus vitae autem consectetur laborum. Voluptates, sint sed!
+`;
+
+const images = [
+  '/test-prod-img.webp',
+  '/test-prod-img-2.webp',
+  '/test-prod-img-3.webp',
+  '/test-prod-img-4.webp',
+];
+
+const lighting: FullProduct[] = [
   {
     id: 'p1',
     name: 'Wooden Teapot Via Jar',
@@ -10,6 +30,43 @@ const lighting: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p1-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p2',
@@ -19,6 +76,43 @@ const lighting: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p2-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p3',
@@ -28,6 +122,43 @@ const lighting: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p3-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p4',
@@ -37,6 +168,43 @@ const lighting: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p4-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p5',
@@ -47,6 +215,43 @@ const lighting: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p5-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p6',
@@ -56,6 +261,43 @@ const lighting: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p6-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p7',
@@ -65,6 +307,43 @@ const lighting: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p7-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p8',
@@ -74,10 +353,47 @@ const lighting: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p8-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
 ];
 
-const sofa: ProductPreviewType[] = [
+const sofa: FullProduct[] = [
   {
     id: 'p9',
     name: 'Wooden Teapot Via Jar',
@@ -87,6 +403,43 @@ const sofa: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p1-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p10',
@@ -96,6 +449,43 @@ const sofa: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p2-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p11',
@@ -105,6 +495,43 @@ const sofa: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p3-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p12',
@@ -114,6 +541,43 @@ const sofa: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p4-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p13',
@@ -124,6 +588,43 @@ const sofa: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p5-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p14',
@@ -133,6 +634,43 @@ const sofa: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p6-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p15',
@@ -142,6 +680,43 @@ const sofa: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p7-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p16',
@@ -151,10 +726,47 @@ const sofa: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p8-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
 ];
 
-const loungeChair: ProductPreviewType[] = [
+const loungeChair: FullProduct[] = [
   {
     id: 'p17',
     name: 'Wooden Teapot Via Jar',
@@ -164,6 +776,43 @@ const loungeChair: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p1-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p18',
@@ -173,6 +822,43 @@ const loungeChair: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p2-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p19',
@@ -182,6 +868,43 @@ const loungeChair: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p3-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p20',
@@ -191,6 +914,43 @@ const loungeChair: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p4-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p21',
@@ -201,6 +961,43 @@ const loungeChair: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p5-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p22',
@@ -210,6 +1007,43 @@ const loungeChair: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p6-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p23',
@@ -219,6 +1053,43 @@ const loungeChair: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p7-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p24',
@@ -228,10 +1099,47 @@ const loungeChair: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p8-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
 ];
 
-const furniture: ProductPreviewType[] = [
+const furniture: FullProduct[] = [
   {
     id: 'p25',
     name: 'Wooden Teapot Via Jar',
@@ -241,6 +1149,43 @@ const furniture: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p1-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p26',
@@ -250,6 +1195,43 @@ const furniture: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p2-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p27',
@@ -259,6 +1241,43 @@ const furniture: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p3-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p28',
@@ -268,6 +1287,43 @@ const furniture: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p4-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p29',
@@ -278,6 +1334,43 @@ const furniture: ProductPreviewType[] = [
     oldPrice: 65,
     thumbnail: '/p5-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p30',
@@ -287,6 +1380,43 @@ const furniture: ProductPreviewType[] = [
     price: 52,
     thumbnail: '/p6-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p31',
@@ -296,6 +1426,43 @@ const furniture: ProductPreviewType[] = [
     price: 36,
     thumbnail: '/p7-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'p32',
@@ -305,6 +1472,43 @@ const furniture: ProductPreviewType[] = [
     price: 23,
     thumbnail: '/p8-thumb.jpg',
     createdAt: new Date().toISOString(),
+    images,
+    description,
+    reviews: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        rating: 4,
+        feedback: "This product is really great and does it's job very well.",
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Thanks for your review.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
+    questions: [
+      {
+        id: 'u1',
+        name: 'Abdul Momin',
+        image: '/test-user.svg',
+        feedback: 'Is this product good enough?',
+        date: new Date().toISOString(),
+        replies: [
+          {
+            name: 'Shopnik',
+            image: '/test-user.svg',
+            feedback: 'Yes, this product is very good.',
+            date: new Date().toISOString(),
+          },
+        ],
+      },
+    ],
   },
 ];
 

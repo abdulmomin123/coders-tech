@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-stars';
-import { FullProduct, Question, Review } from '../Types';
+import { FullProduct } from '../Types';
 import { camelCaseToNormal, capitalize, formatPrice } from '../helpers';
 import Feedback from './Feedback';
 import {
@@ -16,6 +16,7 @@ import { gridCenter } from '../styles/utils';
 import { UserContext } from '../contexts/User';
 import { useRouter } from 'next/dist/client/router';
 import { useForm } from 'react-hook-form';
+import ProductImage from './ProductImage';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -53,28 +54,7 @@ const DetailsSection = styled.section`
   border-radius: 3px;
 `;
 
-const ImagesSide = styled.div`
-  max-width: 33rem;
-`;
-
-const ImageContainer = styled.div`
-  position: relative;
-  width: 33rem;
-  height: 33rem;
-  margin-bottom: 1.5rem;
-  overflow: hidden;
-  cursor: zoom-in;
-
-  &:hover {
-    div {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 750px;
-      height: 750px;
-    }
-  }
-`;
+const ImagesSide = styled.div``;
 
 const Thumbnails = styled.div`
   display: flex;
@@ -289,6 +269,7 @@ const RatingOutOf = styled.span`
 const Feedbacks = styled.div`
   display: grid;
   gap: 5rem;
+  margin-bottom: 5rem;
 `;
 
 const AskQuestionForm = styled.form`
@@ -301,6 +282,7 @@ const AskQuestionForm = styled.form`
 
 const QuestionInput = styled.textarea<{ error: boolean }>`
   height: 8rem;
+  width: 80%;
   padding: 1.5rem;
   color: #666;
   background: rgba(0, 0, 0, 0.04);
@@ -348,7 +330,18 @@ interface Props {
 }
 
 const ProductFullPreview: FC<Props> = ({
-  product: { id, category, name, price, oldPrice, thumbnail },
+  product: {
+    id,
+    category,
+    name,
+    price,
+    oldPrice,
+    thumbnail,
+    description,
+    images,
+    reviews,
+    questions,
+  },
 }) => {
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
@@ -369,49 +362,8 @@ const ProductFullPreview: FC<Props> = ({
     'reviews' | 'questions'
   >('reviews');
 
-  const images = [
-    '/test-prod-img.webp',
-    '/test-prod-img-2.webp',
-    '/test-prod-img-3.webp',
-    '/test-prod-img-4.webp',
-  ];
-
-  const reviews: Review[] = [
-    // {
-    //   id: 'u1',
-    //   name: 'Abdul Momin',
-    //   image: '/test-user.svg',
-    //   rating: 4,
-    //   feedback: "This product is really great and does it's job very well.",
-    //   date: new Date().toISOString(),
-    //   replies: [
-    //     {
-    //       name: 'Shopnik',
-    //       image: '/test-user.svg',
-    //       feedback: 'Thanks for your review.',
-    //       date: new Date().toISOString(),
-    //     },
-    //   ],
-    // },
-  ];
-
-  const questions: Question[] = [
-    // {
-    //   id: 'u1',
-    //   name: 'Abdul Momin',
-    //   image: '/test-user.svg',
-    //   feedback: 'Is this product good enough?',
-    //   date: new Date().toISOString(),
-    //   replies: [
-    //     {
-    //       name: 'Shopnik',
-    //       image: '/test-user.svg',
-    //       feedback: 'Yes, this product is very good.',
-    //       date: new Date().toISOString(),
-    //     },
-    //   ],
-    // },
-  ];
+  const avgRating =
+    reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length;
 
   return (
     <Root>
@@ -436,17 +388,7 @@ const ProductFullPreview: FC<Props> = ({
         {/* Left side */}
         <ImagesSide>
           {/* Currently selected image */}
-          <ImageContainer>
-            <div>
-              <Image
-                src={images[selectedImage]}
-                alt={name}
-                width={750}
-                height={750}
-                layout="responsive"
-              />
-            </div>
-          </ImageContainer>
+          <ProductImage img={images[selectedImage]} alt={name} />
 
           {/* Thumbnails */}
           <Thumbnails>
@@ -477,7 +419,7 @@ const ProductFullPreview: FC<Props> = ({
             {/* Stars */}
             <ReactStars
               count={5}
-              value={0}
+              value={avgRating}
               size={20}
               color1="#e1e1e4"
               color2="#faca51"
@@ -492,7 +434,7 @@ const ProductFullPreview: FC<Props> = ({
                   setSelectedFeedback('reviews')
                 }
               >
-                0 ratings
+                {reviews.length} {reviews.length > 1 ? 'ratings' : 'rating'}
               </TotalRatingsLink>
             </Link>
           </TotalRatings>
@@ -590,9 +532,7 @@ const ProductFullPreview: FC<Props> = ({
       <DescriptionSection>
         <SectionTitle>Product details of {name}</SectionTitle>
 
-        <Description>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-        </Description>
+        <Description>{description}</Description>
       </DescriptionSection>
 
       {/* Reviews and questions */}
@@ -622,7 +562,7 @@ const ProductFullPreview: FC<Props> = ({
             {/* Left side */}
             <RatingsLeft>
               <Numbers>
-                <Rating>0</Rating>
+                <Rating>{avgRating}</Rating>
 
                 <RatingOutOf>/5</RatingOutOf>
               </Numbers>
@@ -631,7 +571,7 @@ const ProductFullPreview: FC<Props> = ({
               <StarsContainer>
                 <ReactStars
                   count={5}
-                  value={0}
+                  value={avgRating}
                   size={40}
                   color1="#e1e1e4"
                   color2="#faca51"
@@ -640,16 +580,23 @@ const ProductFullPreview: FC<Props> = ({
               </StarsContainer>
 
               {/* Total ratings */}
-              <span>0 Ratings</span>
+              <span>
+                {reviews.length} {reviews.length > 1 ? 'Ratings' : 'Rating'}
+              </span>
             </RatingsLeft>
 
             {/* Right side */}
             <RatingsRight>
-              <RatingGroup stars={5} totalRatings={0} ratings={0} />
-              <RatingGroup stars={4} totalRatings={0} ratings={0} />
-              <RatingGroup stars={3} totalRatings={0} ratings={0} />
-              <RatingGroup stars={2} totalRatings={0} ratings={0} />
-              <RatingGroup stars={1} totalRatings={0} ratings={0} />
+              {[5, 4, 3, 2, 1].map(star => (
+                <RatingGroup
+                  key={star}
+                  stars={star}
+                  totalRatings={reviews.length}
+                  ratings={
+                    reviews.filter(({ rating }) => rating === star).length
+                  }
+                />
+              ))}
             </RatingsRight>
           </Ratings>
 

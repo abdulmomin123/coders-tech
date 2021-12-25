@@ -35,10 +35,12 @@ export interface Question extends Reply {
 }
 
 export interface FullProduct extends BaseProduct {
+  image: string;
+  createdAt: string;
   images: string[];
   description: string;
   reviews: Review[];
-  question: Question[];
+  questions: Question[];
 }
 
 export interface User {
