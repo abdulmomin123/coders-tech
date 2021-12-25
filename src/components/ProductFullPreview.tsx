@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-stars';
-import { FullProduct } from '../Types';
+import { FullProduct, Review } from '../Types';
 import { camelCaseToNormal, capitalize, formatPrice } from '../helpers';
 import Feedback from './Feedback';
 import {
@@ -554,12 +554,17 @@ const ProductFullPreview: FC<Props> = ({
           {/* Feedbacks */}
           <Feedbacks>
             <Feedback
-              uid="u1"
-              name="Abdul Momin"
-              image="/test-user.svg"
-              rating={4}
-              feedback="This product is really great and does it's job very well."
-              date={new Date().toISOString()}
+              feedback={
+                {
+                  id: 'u1',
+                  name: 'Abdul Momin',
+                  image: '/test-user.svg',
+                  rating: 4,
+                  feedback:
+                    "This product is really great and does it's job very well.",
+                  date: new Date().toISOString(),
+                } as Review
+              }
             />
           </Feedbacks>
         </Container>

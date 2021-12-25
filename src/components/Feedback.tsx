@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { FC } from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-stars';
+import { Question, Reply, Review } from '../Types';
 
 const Root = styled.div`
   display: grid;
@@ -47,15 +48,18 @@ const FeedbackText = styled.p`
 `;
 
 interface Props {
-  uid: string;
-  name: string;
-  image: string;
-  rating?: number;
-  feedback: string;
-  date: string;
+  feedback: Review | Question | Reply;
 }
 
-const Feedback: FC<Props> = ({ name, image, rating, feedback, date }) => {
+const Feedback: FC<Props> = ({ feedback }) => {
+  const {
+    name,
+    image,
+    date,
+    feedback: feedbackText,
+    rating,
+  } = feedback as Review;
+
   return (
     <Root>
       {/* User's image */}
@@ -89,7 +93,7 @@ const Feedback: FC<Props> = ({ name, image, rating, feedback, date }) => {
         )}
 
         {/* Feedback text */}
-        <FeedbackText>{feedback}</FeedbackText>
+        <FeedbackText>{feedbackText}</FeedbackText>
       </InfoContainer>
     </Root>
   );

@@ -16,28 +16,29 @@ export interface ProductPreviewType extends BaseProduct {
   createdAt: string;
 }
 
-export interface Review {
-  //
-}
-
-export interface Question {
-  //
-}
-
 export interface Reply {
-  //
+  name: string;
+  image: string;
+  feedback: string;
+  date: string;
 }
+
+export interface Review extends Reply {
+  id: string;
+  rating: number;
+  replies: Reply[];
+}
+
+export interface Question extends Reply {
+  id: string;
+  replies: Reply[];
+}
+
 export interface FullProduct extends BaseProduct {
   images: string[];
   description: string;
   reviews: Review[];
   question: Question[];
-  replies: Reply[];
-}
-
-export interface NotificationType {
-  type: 'error' | 'success';
-  text: string;
 }
 
 export interface User {
@@ -45,4 +46,9 @@ export interface User {
   email: string;
   image: string;
   uid: string;
+}
+
+export interface NotificationType {
+  type: 'error' | 'success';
+  text: string;
 }
