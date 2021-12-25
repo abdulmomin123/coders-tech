@@ -13,6 +13,9 @@ import {
 } from '../contexts/Cart';
 import RatingGroup from './RatingGroup';
 import { gridCenter } from '../styles/utils';
+import { UserContext } from '../contexts/User';
+import { useRouter } from 'next/dist/client/router';
+import { useForm } from 'react-hook-form';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -55,10 +58,22 @@ const ImagesSide = styled.div`
 `;
 
 const ImageContainer = styled.div`
+  position: relative;
   width: 33rem;
   height: 33rem;
   margin-bottom: 1.5rem;
+  overflow: hidden;
   cursor: zoom-in;
+
+  &:hover {
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 750px;
+      height: 750px;
+    }
+  }
 `;
 
 const Thumbnails = styled.div`
@@ -66,10 +81,10 @@ const Thumbnails = styled.div`
   justify-content: space-between;
 `;
 
-const ThumbnailContainer = styled.div`
+const ThumbnailContainer = styled.div<{ isSelected: boolean }>`
   width: 5.5em;
   height: 5.5rem;
-  border: 1px solid #dadada;
+  border: 1px solid ${({ isSelected }) => (isSelected ? '#f57224' : '#dadada')};
   border-radius: 2px;
   transition: border 0.2s;
   cursor: pointer;
@@ -276,6 +291,38 @@ const Feedbacks = styled.div`
   gap: 5rem;
 `;
 
+const AskQuestionForm = styled.form`
+  font-size: 1.7rem;
+  font-weight: 500;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+`;
+
+const QuestionInput = styled.textarea<{ error: boolean }>`
+  height: 8rem;
+  padding: 1.5rem;
+  color: #666;
+  background: rgba(0, 0, 0, 0.04);
+  border: 3px solid ${({ error }) => (error ? 'red' : '#ccc')};
+  border-radius: 5px;
+  resize: vertical;
+`;
+
+const SubmitBtn = styled.button`
+  font-size: 1.8rem;
+  justify-self: start;
+  padding: 1rem 3rem;
+  color: #333;
+  background: var(--accent-color);
+  border-radius: 5px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #42e7b0;
+  }
+`;
+
 const FeedbackGroup = styled.div`
   display: grid;
   gap: 0.7rem;
@@ -307,10 +354,27 @@ const ProductFullPreview: FC<Props> = ({
   const setCartItems = useContext(CartItemsSetter);
   const { setIsCartOpen, hasCartOpened, setHasCartOpened } =
     useContext(CartContext);
+  const user = useContext(UserContext);
+  const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedFeedback, setSelectedFeedback] = useState<
     'reviews' | 'questions'
   >('reviews');
+
+  const images = [
+    '/test-prod-img.webp',
+    '/test-prod-img-2.webp',
+    '/test-prod-img-3.webp',
+    '/test-prod-img-4.webp',
+  ];
 
   const reviews: Review[] = [
     // {
@@ -373,56 +437,34 @@ const ProductFullPreview: FC<Props> = ({
         <ImagesSide>
           {/* Currently selected image */}
           <ImageContainer>
-            <Image
-              src="/test-prod-img.webp"
-              alt={name}
-              width={330}
-              height={330}
-              layout="responsive"
-            />
+            <div>
+              <Image
+                src={images[selectedImage]}
+                alt={name}
+                width={750}
+                height={750}
+                layout="responsive"
+              />
+            </div>
           </ImageContainer>
 
           {/* Thumbnails */}
           <Thumbnails>
-            <ThumbnailContainer>
-              <Image
-                src="/test-prod-img.webp"
-                alt={`${name} small size`}
-                width={55}
-                height={55}
-                layout="responsive"
-              />
-            </ThumbnailContainer>
-
-            <ThumbnailContainer>
-              <Image
-                src="/test-prod-img.webp"
-                alt={`${name} small size`}
-                width={55}
-                height={55}
-                layout="responsive"
-              />
-            </ThumbnailContainer>
-
-            <ThumbnailContainer>
-              <Image
-                src="/test-prod-img.webp"
-                alt={`${name} small size`}
-                width={55}
-                height={55}
-                layout="responsive"
-              />
-            </ThumbnailContainer>
-
-            <ThumbnailContainer>
-              <Image
-                src="/test-prod-img.webp"
-                alt={`${name} small size`}
-                width={55}
-                height={55}
-                layout="responsive"
-              />
-            </ThumbnailContainer>
+            {images.map((img, i) => (
+              <ThumbnailContainer
+                key={i}
+                onMouseOver={() => setSelectedImage(i)}
+                isSelected={selectedImage === i}
+              >
+                <Image
+                  src={img}
+                  alt={`${name} small size`}
+                  width={55}
+                  height={55}
+                  layout="responsive"
+                />
+              </ThumbnailContainer>
+            ))}
           </Thumbnails>
         </ImagesSide>
 
@@ -435,7 +477,7 @@ const ProductFullPreview: FC<Props> = ({
             {/* Stars */}
             <ReactStars
               count={5}
-              value={4.8}
+              value={0}
               size={20}
               color1="#e1e1e4"
               color2="#faca51"
@@ -450,7 +492,7 @@ const ProductFullPreview: FC<Props> = ({
                   setSelectedFeedback('reviews')
                 }
               >
-                221 ratings
+                0 ratings
               </TotalRatingsLink>
             </Link>
           </TotalRatings>
@@ -550,14 +592,6 @@ const ProductFullPreview: FC<Props> = ({
 
         <Description>
           Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
         </Description>
       </DescriptionSection>
 
@@ -588,7 +622,7 @@ const ProductFullPreview: FC<Props> = ({
             {/* Left side */}
             <RatingsLeft>
               <Numbers>
-                <Rating>4.8</Rating>
+                <Rating>0</Rating>
 
                 <RatingOutOf>/5</RatingOutOf>
               </Numbers>
@@ -597,7 +631,7 @@ const ProductFullPreview: FC<Props> = ({
               <StarsContainer>
                 <ReactStars
                   count={5}
-                  value={4.8}
+                  value={0}
                   size={40}
                   color1="#e1e1e4"
                   color2="#faca51"
@@ -606,21 +640,56 @@ const ProductFullPreview: FC<Props> = ({
               </StarsContainer>
 
               {/* Total ratings */}
-              <span>248 Ratings</span>
+              <span>0 Ratings</span>
             </RatingsLeft>
 
             {/* Right side */}
             <RatingsRight>
-              <RatingGroup stars={5} totalRatings={248} ratings={225} />
-              <RatingGroup stars={4} totalRatings={248} ratings={13} />
-              <RatingGroup stars={3} totalRatings={248} ratings={6} />
-              <RatingGroup stars={2} totalRatings={248} ratings={0} />
-              <RatingGroup stars={1} totalRatings={248} ratings={4} />
+              <RatingGroup stars={5} totalRatings={0} ratings={0} />
+              <RatingGroup stars={4} totalRatings={0} ratings={0} />
+              <RatingGroup stars={3} totalRatings={0} ratings={0} />
+              <RatingGroup stars={2} totalRatings={0} ratings={0} />
+              <RatingGroup stars={1} totalRatings={0} ratings={0} />
             </RatingsRight>
           </Ratings>
 
           {/* Feedbacks */}
           <Feedbacks>
+            {/* Ask a question */}
+            {selectedFeedback === 'questions' && (
+              <AskQuestionForm
+                onSubmit={handleSubmit(({ question }) => {
+                  if (!user) return router.push('/login');
+
+                  console.log(question);
+
+                  // Reset the form
+                  reset();
+                  return;
+                })}
+              >
+                {/* Input */}
+                <QuestionInput
+                  placeholder="Ask a question..."
+                  maxLength={150}
+                  {...register('question', {
+                    required: true,
+                    minLength: 15,
+                    maxLength: 150,
+                  })}
+                  error={!!errors.question}
+                />
+
+                {/* Submit button */}
+                <SubmitBtn
+                  type="submit"
+                  onClick={() => !user && router.push('/login')}
+                >
+                  {user ? 'Ask question' : 'Log in to ask a question'}
+                </SubmitBtn>
+              </AskQuestionForm>
+            )}
+
             {selectedFeedback === 'reviews'
               ? reviews.map(review => (
                   <FeedbackGroup key={review.id}>
