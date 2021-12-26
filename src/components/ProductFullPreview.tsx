@@ -62,7 +62,7 @@ const Thumbnails = styled.div`
 `;
 
 const ThumbnailContainer = styled.div<{ isSelected: boolean }>`
-  width: 5.5em;
+  width: 5.5rem;
   height: 5.5rem;
   border: 1px solid ${({ isSelected }) => (isSelected ? '#f57224' : '#dadada')};
   border-radius: 2px;

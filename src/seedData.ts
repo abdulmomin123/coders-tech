@@ -43,7 +43,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -60,7 +60,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -89,7 +89,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -106,7 +106,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -135,7 +135,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -152,7 +152,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -181,7 +181,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -198,7 +198,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -228,7 +228,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -245,7 +245,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -274,7 +274,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -291,7 +291,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -320,7 +320,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -337,7 +337,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -366,7 +366,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -383,7 +383,7 @@ const lighting: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -416,7 +416,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -433,7 +433,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -462,7 +462,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -479,7 +479,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -508,7 +508,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -525,7 +525,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -554,7 +554,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -571,7 +571,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -601,7 +601,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -618,7 +618,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -647,7 +647,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -664,7 +664,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -693,7 +693,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -710,7 +710,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -739,7 +739,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -756,7 +756,7 @@ const sofa: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -789,7 +789,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -806,7 +806,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -835,7 +835,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -852,7 +852,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -881,7 +881,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -898,7 +898,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -927,7 +927,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -944,7 +944,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -974,7 +974,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -991,7 +991,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1020,7 +1020,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1037,7 +1037,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1066,7 +1066,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1083,7 +1083,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1112,7 +1112,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1129,7 +1129,7 @@ const loungeChair: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1162,7 +1162,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1179,7 +1179,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1208,7 +1208,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1225,7 +1225,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1254,7 +1254,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1271,7 +1271,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1300,7 +1300,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1317,7 +1317,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1347,7 +1347,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1364,7 +1364,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1393,7 +1393,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1410,7 +1410,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1439,7 +1439,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1456,7 +1456,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
@@ -1485,7 +1485,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Thanks for your review.',
             date: new Date().toISOString(),
           },
@@ -1502,7 +1502,7 @@ const furniture: FullProduct[] = [
         replies: [
           {
             name: 'Shopnik',
-            image: '/test-user.svg',
+            image: '/shopnik.png',
             feedback: 'Yes, this product is very good.',
             date: new Date().toISOString(),
           },
