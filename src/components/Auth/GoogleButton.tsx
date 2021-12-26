@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import { flexCenter } from '../../styles/utils';
+import LoadingAnimation from '../LoadingAnimation';
 
 const Root = styled.button`
   font-size: 1.6rem;
@@ -31,17 +32,24 @@ const Icon = styled.svg`
 `;
 
 interface Props {
+  isDisabled: boolean;
   handleClick: () => void;
 }
 
-const GoogleButton: FC<Props> = ({ handleClick }) => (
-  <Root onClick={handleClick}>
-    {/* Icon */}
-    <Icon>
-      <use href="/google.svg#icon" />
-    </Icon>
-    {/* Text */}
-    Continue with Google
+const GoogleButton: FC<Props> = ({ isDisabled, handleClick }) => (
+  <Root disabled={isDisabled} onClick={handleClick}>
+    {isDisabled ? (
+      <LoadingAnimation bg="#a1a1a1" />
+    ) : (
+      <>
+        {/* Icon */}
+        <Icon>
+          <use href="/google.svg#icon" />
+        </Icon>
+        {/* Text */}
+        Continue with Google
+      </>
+    )}
   </Root>
 );
 

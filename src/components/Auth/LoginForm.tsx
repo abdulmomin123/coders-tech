@@ -7,6 +7,7 @@ import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { NotificationContextSetter } from '../../contexts/Notification';
+import { RecheckUserProfile } from '../../contexts/User';
 import { isMobile, validateEmail } from '../../helpers';
 import { auth, createUserProfile, provider } from '../../lib/firebase/firebase';
 import { authFormsStyles } from '../../styles/globalStyles';
@@ -25,7 +26,9 @@ const Root = styled.div`
 
 const LoginForm = () => {
   const setNotification = useContext(NotificationContextSetter);
+  const { value, reCheckUserProfile } = useContext(RecheckUserProfile);
   const [isLoading, setIsLoading] = useState(false);
+  const [isGoogleLogin, setIsGoogleLogin] = useState(false);
 
   const {
     handleSubmit,
@@ -102,8 +105,11 @@ const LoginForm = () => {
       <TextPrimary>OR</TextPrimary>
 
       <GoogleButton
+        isDisabled={isGoogleLogin}
         handleClick={async () => {
           try {
+            setIsGoogleLogin(true);
+
             const {
               user: { displayName, email, uid },
             } = isMobile()
@@ -112,6 +118,8 @@ const LoginForm = () => {
 
             // Create user profile if the profile doesn't exist
             await createUserProfile(displayName!, email!, uid!);
+
+            reCheckUserProfile(!value);
           } catch (_) {
             // Display error notification
             setNotification({

@@ -1,6 +1,7 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 
-const Root = styled.div`
+const Root = styled.div<{ bg?: string }>`
   display: inline-block;
   position: relative;
   width: 8rem;
@@ -12,7 +13,7 @@ const Root = styled.div`
     width: 1.3rem;
     height: 1.3rem;
     border-radius: 50%;
-    background: #fff;
+    background: ${({ bg }) => (bg ? bg : '#fff')};
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
   }
 
@@ -64,9 +65,13 @@ const Root = styled.div`
   }
 `;
 
-const LoadingAnimation = () => {
+interface Props {
+  bg?: string;
+}
+
+const LoadingAnimation: FC<Props> = ({ bg }) => {
   return (
-    <Root>
+    <Root bg={bg}>
       <div></div>
       <div></div>
       <div></div>
