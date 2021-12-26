@@ -39,8 +39,8 @@ const LargeImageContainer = styled.div`
     position: absolute;
     top: 0;
     left: 0;
-    width: 750px;
-    height: 750px;
+    width: 75rem;
+    height: 75rem;
   }
 `;
 
@@ -62,6 +62,7 @@ const ProductImage: FC<Props> = ({ img, alt }) => {
         const target = (e.target as HTMLDivElement).closest('.image-container');
         const { top, left, width, height } = target!.getBoundingClientRect();
         const windowRects = window.current!.getBoundingClientRect();
+        const imageRects = image.current!.getBoundingClientRect();
         const posX = e.clientX - left;
         const posY = e.clientY - top;
 
@@ -78,16 +79,22 @@ const ProductImage: FC<Props> = ({ img, alt }) => {
           ) + 'px';
 
         // Moving the large image
-        // image.current!.style.top =
-        //   Math.min(
-        //     Math.max(posY - windowRects.height / 2, 0),
-        //     width - windowRects.height
-        //   ) + 'px';
-        // image.current!.style.left =
-        //   Math.min(
-        //     Math.max(posX - windowRects.width / 2, 0),
-        //     height - windowRects.width
-        //   ) + 'px';
+        image.current!.style.top =
+          (-Math.min(
+            Math.max(posY - windowRects.height / 2, 0),
+            width - windowRects.height
+          ) *
+            imageRects.height) /
+            height +
+          'px';
+        image.current!.style.left =
+          (-Math.min(
+            Math.max(posX - windowRects.width / 2, 0),
+            height - windowRects.width
+          ) *
+            imageRects.width) /
+            width +
+          'px';
       }}
     >
       {/* Product image */}
