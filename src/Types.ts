@@ -16,6 +16,13 @@ export interface ProductPreviewType extends BaseProduct {
   createdAt: string;
 }
 
+export interface FullProduct extends BaseProduct {
+  images: string[];
+  description: string;
+  reviews: Review[];
+  questions: Question[];
+}
+
 export interface Reply {
   name: string;
   image: string;
@@ -32,15 +39,6 @@ export interface Review extends Reply {
 export interface Question extends Reply {
   id: string;
   replies: Reply[];
-}
-
-export interface FullProduct extends BaseProduct {
-  image: string;
-  createdAt: string;
-  images: string[];
-  description: string;
-  reviews: Review[];
-  questions: Question[];
 }
 
 export interface User {

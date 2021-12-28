@@ -75,12 +75,11 @@ const ImageContainer = styled.div`
 `;
 
 const Buttons = styled.div`
+  text-align: center;
   ${positionAbs}
   bottom: 3px;
   left: 50%;
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  align-items: center;
+  width: 100%;
   color: #262626;
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 3px solid var(--accent-color);
@@ -94,20 +93,14 @@ const letterSpacing = css`
 
 const Button = styled.button`
   ${textStyles}
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   ${letterSpacing}
-  padding: 0.6rem 2rem;
+  padding: 1rem 2rem;
   line-height: 1;
 
   &:not(:last-of-type) {
     border-right: 2px solid #ebebeb;
   }
-`;
-
-const HeartIcon = styled.svg`
-  width: 2rem;
-  height: 2rem;
-  fill: currentColor;
 `;
 
 const Name = styled.h3`
@@ -161,13 +154,6 @@ const ProductPreview: FC<ProductPreviewType> = ({
 
           {/* Add to cart and favorite button */}
           <Buttons onClick={e => e.preventDefault()}>
-            {/* Heart button */}
-            <Button>
-              <HeartIcon>
-                <use href="/heart.svg#icon" />
-              </HeartIcon>
-            </Button>
-
             {/* Add to cart button */}
             <Button
               onClick={() => {
