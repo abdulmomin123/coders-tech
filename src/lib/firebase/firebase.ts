@@ -5,6 +5,8 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  limit,
+  query,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -200,4 +202,22 @@ export const getFullProduct = async (category: string, id: string) => {
     reviews,
     questions,
   } as FullProduct;
+};
+
+// Get the first 8 products of a category
+export const getFirstEight = async (category: string) => {
+  const products = (
+    await getDocs(
+      query(collection(firestore, 'products', 'categories', category), limit(8))
+    )
+  ).docs.map(
+    doc =>
+      ({
+        id: doc.id,
+        category,
+        ...doc.data(),
+      } as ProductPreviewType)
+  );
+
+  return products;
 };

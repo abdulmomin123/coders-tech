@@ -1,14 +1,11 @@
+import { doc, getDoc } from 'firebase/firestore';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { FC } from 'react';
 import styled from 'styled-components';
 import ButtonPrimary from '../../components/ButtonPrimary';
 import ProductsGrid from '../../components/ProductsGrid';
-import {
-  camelCaseToNormal,
-  capitalize,
-  kebabCaseToCamelCase,
-} from '../../helpers';
-import { mockProducts } from '../../seedData';
+import { camelCaseToNormal, capitalize } from '../../helpers';
+import { firestore, getFirstEight } from '../../lib/firebase/firebase';
 import {
   categoryAndShopPagesStyles,
   categoryNameStyles,
@@ -16,25 +13,30 @@ import {
 import { ProductPreviewType } from '../../Types';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Fetch all the category names
+  // Fetch all category names
+  const { categories } = (
+    await getDoc(doc(firestore, 'products', 'categories'))
+  ).data() as { categories: string[] };
+
+  const paths = categories.map(category => ({
+    params: { category: camelCaseToNormal(category, '-', false) },
+  }));
+
   return {
-    paths: Object.keys(mockProducts).map(category => ({
-      params: { category: camelCaseToNormal(category, '-', false) },
-    })),
+    paths,
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  // Fetch products of the given category
+  // Fetch first 8 products of each category
   const category = params!.category as string;
+
+  const products = await getFirstEight(category);
 
   return {
     props: {
-      products:
-        mockProducts[
-          kebabCaseToCamelCase(category) as keyof typeof mockProducts
-        ],
+      products: JSON.stringify(products),
       category,
     },
     revalidate: 60,
@@ -53,17 +55,19 @@ const CategoryName = styled.h1`
 
 interface Props {
   category: string;
-  products: ProductPreviewType[];
+  products: string;
 }
 
 const index: FC<Props> = ({ category, products }) => {
+  const parsedProducts = JSON.parse(products) as ProductPreviewType[];
+
   return (
     <Root>
       {/* Category name */}
       <CategoryName>{capitalize(category.replaceAll('-', ' '))}</CategoryName>
 
       {/* Products */}
-      <ProductsGrid products={products} />
+      <ProductsGrid products={parsedProducts} />
 
       {/* Load more button */}
       <ButtonPrimary type="button">Load More</ButtonPrimary>

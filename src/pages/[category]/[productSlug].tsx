@@ -7,7 +7,9 @@ import { slugify } from '../../helpers';
 import { FullProduct } from '../../Types';
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // Fetch all the products
+  // Fetch all category names
+
+  // Fetch all the products of all categories
 
   return {
     paths: allProducts.map(({ category, name }) => ({

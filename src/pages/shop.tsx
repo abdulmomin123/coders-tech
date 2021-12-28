@@ -1,10 +1,11 @@
+import { doc, getDoc } from 'firebase/firestore';
 import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import styled from 'styled-components';
 import ButtonPrimary from '../components/ButtonPrimary';
 import ProductsGrid from '../components/ProductsGrid';
 import { camelCaseToNormal } from '../helpers';
-import { mockProducts } from '../seedData';
+import { firestore, getFirstEight } from '../lib/firebase/firebase';
 import {
   categoryAndShopPagesStyles,
   categoryNameStyles,
@@ -12,17 +13,22 @@ import {
 import { ProductPreviewType } from '../Types';
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Fetch all products
-  const categories = [];
+  // Fetch all category names
+  const { categories } = (
+    await getDoc(doc(firestore, 'products', 'categories'))
+  ).data() as { categories: string[] };
 
-  for (let key in mockProducts)
-    categories.push({
-      categoryName: key as keyof typeof mockProducts,
-      products: mockProducts[key as keyof typeof mockProducts],
-    });
+  // Fetch first 8 products of each category
+  const results = await Promise.all(
+    categories.map(async category => {
+      const products = await getFirstEight(category);
+
+      return { category, products };
+    })
+  );
 
   return {
-    props: { categories },
+    props: { result: JSON.stringify(results) },
   };
 };
 
@@ -57,14 +63,16 @@ const CategoryName = styled.h2`
   margin-bottom: 3rem;
 `;
 
-interface Props {
-  categories: {
-    categoryName: keyof typeof mockProducts;
-    products: ProductPreviewType[];
-  }[];
-}
+type Result = {
+  category: string;
+  products: ProductPreviewType[];
+}[];
 
-const shop: FC<Props> = ({ categories }) => {
+const shop: FC<{ result: string }> = ({ result }) => {
+  const categories = (JSON.parse(result) as Result).filter(
+    ({ products }) => products.length
+  );
+
   return (
     <Root>
       {/* Title */}
@@ -73,13 +81,12 @@ const shop: FC<Props> = ({ categories }) => {
 
         <Text>Shop the best furniture ever!</Text>
       </TitleContainer>
-
       <CategoriesGrid>
-        {categories.map(({ categoryName, products }) => (
-          <div key={categoryName}>
+        {categories.map(({ category, products }) => (
+          <div key={category}>
             {/* Category name */}
             <CategoryName>
-              {camelCaseToNormal(categoryName, ' ', true)}
+              {camelCaseToNormal(category, ' ', true)}
             </CategoryName>
 
             {/* Products */}

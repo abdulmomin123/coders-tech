@@ -13,7 +13,7 @@ export interface CartItem extends BaseProduct {
 
 export interface ProductPreviewType extends BaseProduct {
   image: string;
-  createdAt: string;
+  createdAt: { seconds: number };
 }
 
 export interface FullProduct extends BaseProduct {

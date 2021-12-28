@@ -129,7 +129,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
   price,
   oldPrice,
   thumbnail,
-  createdAt,
+  createdAt: { seconds },
 }) => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
@@ -140,7 +140,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
   const kebabCasedCategory = camelCaseToNormal(category, '-', false);
   const status = oldPrice
     ? 'sale'
-    : Date.now() - new Date(createdAt).getTime() <= 604800000
+    : Date.now() - seconds * 1000 <= 604800000
     ? 'new'
     : null;
 

@@ -3,7 +3,6 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import { gridCenter } from '../styles/utils';
-import { mockCategories } from '../constants';
 import { capitalize } from '../helpers';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { auth } from '../lib/firebase/firebase';
@@ -350,7 +349,7 @@ const Navbar = () => {
             {/* Dropdown */}
             <CategoryDropdown>
               {/* Links */}
-              {mockCategories.slice(1).map(category => (
+              {['furniture', 'lighting', 'rugs', 'bathroom'].map(category => (
                 <li key={category}>
                   <Link href={`/${category.replaceAll(' ', '-')}`} passHref>
                     <DropdownLink>{capitalize(category)}</DropdownLink>
