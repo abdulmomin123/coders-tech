@@ -7,7 +7,7 @@ import {
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
-import { formatPrice, slugify } from '../helpers';
+import { formatPrice } from '../helpers';
 import { CartItem } from '../Types';
 
 const displayGrid = css`
@@ -135,7 +135,7 @@ const CartProdPreview: FC<CartItem> = ({
   const setCartItems = useContext(CartItemsSetter);
   const { setIsCartOpen } = useContext(CartContext);
 
-  const href = `/${category}/${slugify(name)}`;
+  const href = `/${category}/${id}`;
   const closeCart = () => setIsCartOpen(false);
 
   return (

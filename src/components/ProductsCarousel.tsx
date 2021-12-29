@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { mockCategories } from '../constants';
+import { CATEGORIES } from '../constants';
 import { capitalize } from '../helpers';
 import { mockProducts } from '../seedData';
 import ButtonPrimary from './ButtonPrimary';
@@ -86,7 +86,7 @@ const Icon = styled.svg<{ isLeft?: boolean }>`
 
 const ProductsCarousel = () => {
   // State
-  const [selectedCategory, setSelectedCategory] = useState(mockCategories[0]);
+  const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
   const [currentPage, setCurrentPage] = useState(1);
 
   const updateCategory = (target: HTMLButtonElement) =>
@@ -96,7 +96,7 @@ const ProductsCarousel = () => {
     <Root>
       {/* Category buttons */}
       <CategoryButtonsContainer>
-        {mockCategories.map(category => (
+        {CATEGORIES.map(category => (
           <CategoryBtn
             key={category}
             onClick={({ target }) =>

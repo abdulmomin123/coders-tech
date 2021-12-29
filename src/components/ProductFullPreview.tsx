@@ -646,7 +646,7 @@ const ProductFullPreview: FC<Props> = ({
                     {/* Reply */}
                     <ReplyContainer>
                       {review.replies.map(reply => (
-                        <Feedback feedback={reply} key={reply.date} />
+                        <Feedback feedback={reply} key={reply.date.seconds} />
                       ))}
                     </ReplyContainer>
                   </FeedbackGroup>
@@ -659,7 +659,7 @@ const ProductFullPreview: FC<Props> = ({
                     {/* Reply */}
                     <ReplyContainer>
                       {question.replies.map(reply => (
-                        <Feedback feedback={reply} key={reply.date} />
+                        <Feedback feedback={reply} key={reply.date.seconds} />
                       ))}
                     </ReplyContainer>
                   </FeedbackGroup>

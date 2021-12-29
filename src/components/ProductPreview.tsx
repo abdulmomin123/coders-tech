@@ -7,7 +7,7 @@ import {
   CartItemsContext,
   CartItemsSetter,
 } from '../contexts/Cart';
-import { camelCaseToNormal, formatPrice, slugify } from '../helpers';
+import { camelCaseToNormal, formatPrice } from '../helpers';
 import { ProductPreviewType } from '../Types';
 
 const position = css`
@@ -145,7 +145,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
     : null;
 
   return (
-    <Link href={`/${kebabCasedCategory}/${slugify(name)}`} passHref>
+    <Link href={`/${kebabCasedCategory}/${id}`} passHref>
       <Root>
         {/* Image container */}
         <ImageContainer>

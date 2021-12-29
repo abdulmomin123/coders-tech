@@ -55,7 +55,7 @@ const Feedback: FC<Props> = ({ feedback }) => {
   const {
     name,
     image,
-    date,
+    date: { seconds },
     feedback: feedbackText,
     rating,
   } = feedback as Review;
@@ -75,7 +75,7 @@ const Feedback: FC<Props> = ({ feedback }) => {
         <DateText>
           {new Intl.DateTimeFormat('en-US', {
             dateStyle: 'medium',
-          }).format(new Date(date))}
+          }).format(new Date(seconds * 1000))}
         </DateText>
 
         {/* Rating */}

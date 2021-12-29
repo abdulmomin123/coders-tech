@@ -8,6 +8,7 @@ import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { auth } from '../lib/firebase/firebase';
 import { signOut } from 'firebase/auth';
 import { UserContext } from '../contexts/User';
+import { CATEGORIES } from '../constants';
 
 const topZero = css`
   top: 0;
@@ -349,7 +350,7 @@ const Navbar = () => {
             {/* Dropdown */}
             <CategoryDropdown>
               {/* Links */}
-              {['furniture', 'lighting', 'rugs', 'bathroom'].map(category => (
+              {CATEGORIES.map(category => (
                 <li key={category}>
                   <Link href={`/${category.replaceAll(' ', '-')}`} passHref>
                     <DropdownLink>{capitalize(category)}</DropdownLink>

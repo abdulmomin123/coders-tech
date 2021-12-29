@@ -27,7 +27,7 @@ export interface Reply {
   name: string;
   image: string;
   feedback: string;
-  date: string;
+  date: { seconds: number };
 }
 
 export interface Review extends Reply {
