@@ -1,3 +1,5 @@
+import { FieldValue } from 'firebase/firestore';
+
 interface MinimalProduct {
   name: string;
   price: number;
@@ -30,7 +32,7 @@ export interface RawProduct extends MinimalProduct {
   image: string;
   description: string;
   images: string[];
-  createdAt: { seconds: number };
+  createdAt: FieldValue;
 }
 
 export interface Reply {

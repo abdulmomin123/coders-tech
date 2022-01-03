@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import {
+  addDoc,
   collection,
   doc,
   getDoc,
@@ -14,7 +15,7 @@ import { setDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-avataaars-sprites';
-import { User, ProductPreviewType, FullProduct } from '../../Types';
+import { User, ProductPreviewType, FullProduct, RawProduct } from '../../Types';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCUbqFvykMxoJLIU0KtqOzfFAjcoAJKzoM',
@@ -229,7 +230,58 @@ export const getFirstEight = async (category: string) => {
 
 export const uploadProducts = async (
   category: string,
-  products: FullProduct[]
+  products: RawProduct[]
 ) => {
-  //
+  products.forEach(
+    async ({
+      name,
+      price,
+      oldPrice,
+      image,
+      description,
+      images,
+      createdAt,
+    }) => {
+      const product = {
+        name,
+        price,
+        image,
+        createdAt,
+      };
+
+      // Upload the basic details
+      const prodRef = await addDoc(
+        collection(firestore, 'products', 'categories', category),
+        oldPrice ? { ...product, oldPrice } : product
+      );
+
+      // Upload the description collection
+      await setDoc(
+        doc(
+          firestore,
+          'products',
+          'categories',
+          category,
+          prodRef.id,
+          'description',
+          'description'
+        ),
+        { description }
+      );
+
+      // Upload the images collection
+      await setDoc(
+        doc(
+          firestore,
+          'products',
+          'categories',
+          category,
+          prodRef.id,
+          'images',
+          'images'
+        ),
+        { images }
+      );
+    }
+  );
 };
