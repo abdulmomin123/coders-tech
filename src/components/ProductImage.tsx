@@ -98,14 +98,20 @@ const ProductImage: FC<Props> = ({ img, alt }) => {
       }}
     >
       {/* Product image */}
-      <Image src={img} alt={alt} width={350} height={350} layout="responsive" />
+      <Image
+        src={`/products/${img}`}
+        alt={alt}
+        width={350}
+        height={350}
+        layout="responsive"
+      />
 
       {/* Navigator window */}
       <Window ref={window} />
 
       {/* Large image */}
       <LargeImageContainer>
-        <img src={img} alt={alt} ref={image} />
+        <img src={`/products/${img}`} alt={alt} ref={image} />
       </LargeImageContainer>
     </Root>
   );

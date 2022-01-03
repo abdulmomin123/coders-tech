@@ -1,8 +1,11 @@
-interface BaseProduct {
-  id: string;
+interface MinimalProduct {
   name: string;
   price: number;
   oldPrice?: number;
+}
+
+interface BaseProduct extends MinimalProduct {
+  id: string;
   category: string;
   thumbnail: string;
 }
@@ -21,6 +24,13 @@ export interface FullProduct extends BaseProduct {
   description: string;
   reviews: Review[];
   questions: Question[];
+}
+
+export interface RawProduct extends MinimalProduct {
+  image: string;
+  description: string;
+  images: string[];
+  createdAt: { seconds: number };
 }
 
 export interface Reply {

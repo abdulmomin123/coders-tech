@@ -144,7 +144,12 @@ const CartProdPreview: FC<CartItem> = ({
       <ImageContainer>
         <Link href={href}>
           <a onClick={closeCart}>
-            <Image src={thumbnail} alt={name} width={120} height={120} />
+            <Image
+              src={`/products/${thumbnail}`}
+              alt={name}
+              width={120}
+              height={120}
+            />
           </a>
         </Link>
       </ImageContainer>

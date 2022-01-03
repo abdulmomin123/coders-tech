@@ -400,7 +400,7 @@ const ProductFullPreview: FC<Props> = ({
                 isSelected={selectedImage === i}
               >
                 <Image
-                  src={img}
+                  src={`/products/${img}`}
                   alt={`${name} small size`}
                   width={55}
                   height={55}

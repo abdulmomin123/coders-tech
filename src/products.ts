@@ -1,8 +1,4 @@
-import { FullProduct } from './Types';
-
-export const PRODUCTS: {
-  [key: string]: FullProduct[];
-} = {
+export const PRODUCTS = {
   furniture: [],
   lighting: [],
   rugs: [],

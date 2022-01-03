@@ -150,7 +150,12 @@ const ProductPreview: FC<ProductPreviewType> = ({
         {/* Image container */}
         <ImageContainer>
           {/* Product image */}
-          <Image src={image} alt={name} width={270} height={350} />
+          <Image
+            src={`/products/${image}`}
+            alt={name}
+            width={270}
+            height={350}
+          />
 
           {/* Add to cart and favorite button */}
           <Buttons onClick={e => e.preventDefault()}>
