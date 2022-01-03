@@ -101,6 +101,7 @@ export const getProducts = async (category: string) =>
       ({
         id: doc.id,
         category: doc.ref.parent.id,
+        thumbnail: (doc.data().image as string).replace('cover', '1'),
         ...doc.data(),
       } as ProductPreviewType)
   );
@@ -191,12 +192,15 @@ export const getFullProduct = async (category: string, id: string) => {
     })
   );
 
+  const prodData = (
+    await getDoc(doc(firestore, 'products', 'categories', category, id))
+  ).data();
+
   return {
     id,
     category,
-    ...(
-      await getDoc(doc(firestore, 'products', 'categories', category, id))
-    ).data(),
+    thumbnail: (prodData!.image as string).replace('cover', '1'),
+    ...prodData,
     description,
     images,
     reviews,
@@ -215,9 +219,17 @@ export const getFirstEight = async (category: string) => {
       ({
         id: doc.id,
         category,
+        thumbnail: (doc.data().image as string).replace('cover', '1'),
         ...doc.data(),
       } as ProductPreviewType)
   );
 
   return products;
+};
+
+export const uploadProducts = async (
+  category: string,
+  products: FullProduct[]
+) => {
+  //
 };
