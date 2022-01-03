@@ -456,7 +456,7 @@ export const PRODUCTS: {
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Utespelare Gaming chair black',
+      name: 'Utespelare Gaming chair',
       price: 129,
       image: 'product-15-img-cover.webp',
       description: `3-year warranty. Read about the terms in the warranty brochure.
@@ -1269,458 +1269,382 @@ export const PRODUCTS: {
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Vindum Rug',
+      price: 179,
+      oldPrice: 299,
+      image: 'product-62-img-cover.webp',
+      description: `The high pile makes it easy to join several rugs, without a visible seam.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      The dense, thick pile dampens sound and provides a soft surface to walk on.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Durable, stain resistant and easy to care for since the rug is made of synthetic fibers.
       
-      The high back provides good support for your neck.
+      A perfect companion for all types of flooring, even those with underfloor heating.
       
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
+      Use STOPP anti-slip underlay under the entire rug for increased safety.
       
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      You will need 5 STOPP anti-slip underlays (26½x78¾") for this rug. Trim or fold if necessary.
+      
+      The rug is machine-woven.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-62-img-1.webp',
+        'product-62-img-2.webp',
+        'product-62-img-3.webp',
+        'product-62-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Langsted Rug',
+      price: 39.99,
+      oldPrice: 45.99,
+      image: 'product-63-img-cover.webp',
+      description: `The cut edges makes it easy to join several rugs to create a bigger rug.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Place several rugs of your favorite color together – or mix colors.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Durable and will not shed since the rug is made of polypropylene.
       
-      The high back provides good support for your neck.
+      The rug will last a long time since it is stain-resistant and easy to care for.
       
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
+      A perfect companion for all types of flooring, even those with underfloor heating.
       
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Use STOPP anti-slip underlay under the entire rug for increased safety.
+      
+      You will need 2 STOPP anti-slip underlays (26½x78¾") for this rug. Trim or fold if necessary.
+      
+      When you have unpacked and rolled out your rug, it will take up to 2 days before it regains its original shape.
+      
+      The rug is machine-woven.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-63-img-1.webp',
+        'product-63-img-2.webp',
+        'product-63-img-3.webp',
+        'product-63-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Stoense Rug',
+      price: 149,
+      oldPrice: 154.99,
+      image: 'product-64-img-cover.webp',
+      description: `The dense, thick pile dampens sound and provides a soft surface to walk on.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Durable, stain resistant and easy to care for since the rug is made of synthetic fibers.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      The cut edges makes it easy to join several rugs to create a bigger rug, without a visible seam.
       
-      The high back provides good support for your neck.
+      The light sheen creates variations in the surface.
       
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
+      A perfect companion for all types of flooring, even those with underfloor heating.
       
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Use STOPP anti-slip underlay under the entire rug for increased safety.
+      
+      You will need 4 STOPP anti-slip underlays (26½x78¾") for this rug. Trim or fold if necessary.
+      
+      When you have unpacked and rolled out your rug, it will take up to 2 days before it regains its original shape.
+      
+      The rug is machine-woven.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-64-img-1.webp',
+        'product-64-img-2.webp',
+        'product-64-img-3.webp',
+        'product-64-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Horuphav Rug',
+      price: 199,
+      oldPrice: 215,
+      image: 'product-65-img-cover.webp',
+      description: `The rug is made of wool so it’s naturally soil-repellent and very durable.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Handwoven by skilled craftspeople, and therefore unique.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Use STOPP FILT anti-slip rug underlay under the entire rug for increased safety.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      All new materials have their own particular smell, which gradually disappears. Airing and vacuuming the rug will help to eliminate the smell.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-65-img-1.webp',
+        'product-65-img-2.webp',
+        'product-65-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Lyngsbak Rug',
+      price: 199,
+      oldPrice: 215,
+      image: 'product-66-img-cover.webp',
+      description: `The wool is naturally soil-repellent and durable.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Use STOPP anti-slip underlay under the entire rug for increased safety.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-66-img-1.webp',
+        'product-66-img-2.webp',
+        'product-66-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Bronden Rug',
+      price: 279,
+      image: 'product-67-img-cover.webp',
+      description: `Hand-woven by skilled craftspeople, each one is unique.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      The rug is made of wool so it’s naturally soil-repellent and very durable.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      The rug is hand-woven by skilled craftspeople and adds a personal touch to your room.
       
-      The high back provides good support for your neck.
+      The rug is hand-woven.
       
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
+      You will need 1 STOPP FILT rug underlay with anti-slip (5'5"x7'9") for this rug. Trim if necessary.
       
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Use STOPP FILT anti-slip rug underlay under the entire rug for increased safety.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-67-img-1.webp',
+        'product-67-img-2.webp',
+        'product-67-img-3.webp',
+        'product-67-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Lonnestak Rug',
+      price: 199,
+      image: 'product-68-img-cover.webp',
+      description: `The wool is naturally soil-repellent and durable.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Durable and hardwearing rug in 100% wool with a warp and fringes in 100% sustainably sourced cotton.
       
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Use STOPP anti-slip underlay under the entire rug for increased safety.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-68-img-1.webp',
+        'product-68-img-2.webp',
+        'product-68-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Stockholm Rug',
+      price: 299,
+      image: 'product-69-img-cover.webp',
+      description: `Handwoven by skilled craftspeople, each one is unique. Made in India in organized weaving centers with good working conditions and fair wages.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      The durable, soil-resistant wool surface makes this rug perfect in your living room or under your dining table.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      The rug has the same pattern on both sides, so you can turn it over and it will withstand more wear and last even longer.
       
-      The high back provides good support for your neck.
+      Ideal in your living room or under your dining table since the flat-woven surface makes it easy to pull out the chairs and vacuum.
       
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
+      The rug is hand-woven.
       
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      You will need 2 STOPP FILT rug underlay with anti-slip (5'5"x7'9") for this rug. Trim if necessary.
+      
+      Use STOPP FILT anti-slip rug underlay under the entire rug for increased safety.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-69-img-1.webp',
+        'product-69-img-2.webp',
+        'product-69-img-3.webp',
+        'product-69-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Jordlose Rug',
+      price: 199,
+      image: 'product-70-img-cover.webp',
+      description: `The rug is made of wool so it’s naturally soil-repellent and very durable.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Handwoven by skilled craftspeople, and therefore unique.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Use STOPP FILT anti-slip rug underlay under the entire rug for increased safety.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      All new materials have their own particular smell, which gradually disappears. Airing and vacuuming the rug will help to eliminate the smell.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-70-img-1.webp',
+        'product-70-img-2.webp',
+        'product-70-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Osterild Door mat',
+      price: 4.99,
+      image: 'product-71-img-cover.webp',
+      description: `Catches grit and dirt which are dragged in from outside and prevents it from getting into your home.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Adds character and style to the entrance and creates a welcoming impression when entering your home.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Easy to keep clean - just vacuum or shake the door mat.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Recommended for indoor use only.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-71-img-1.webp',
+        'product-71-img-2.webp',
+        'product-71-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Kristrup Door mat',
+      price: 0.99,
+      image: 'product-72-img-cover.webp',
+      description: `Easy to keep clean - just vacuum or shake the door mat.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Use STOPP anti-slip underlay for increased safety; to be placed under the entire door mat.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-72-img-1.webp',
+        'product-72-img-2.webp',
+        'product-72-img-3.webp',
+        'product-72-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Trampa Door mat',
+      price: 12.99,
+      image: 'product-73-img-cover.webp',
+      description: `Easy to keep clean - just vacuum or shake the rug.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      The backing keeps the door mat firmly in place and reduces the risk of slipping.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      The rug is machine-tufted.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Only for indoor use.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-73-img-1.webp',
+        'product-73-img-2.webp',
+        'product-73-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Klampenborg Door mat',
+      price: 2.99,
+      image: 'product-74-img-cover.webp',
+      description: `Add character to the entrance of your home by choosing a door mat with a pattern or different colors.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Catches grit and dirt which are dragged in from outside and prevents it from getting into your home.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Easy to keep clean - just vacuum or shake the door mat.
       
-      The high back provides good support for your neck.
+      This doormat is made of recycled polyester from sources like PET bottles. Using waste as a resource takes us one step closer to a more sustainable future.
       
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
+      Only for indoor use.
       
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Due to the nature of the recycled material, each door mat may vary slightly in color.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-74-img-1.webp',
+        'product-74-img-2.webp',
+        'product-74-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Toftbo Bath mat',
+      price: 8.99,
+      image: 'product-75-img-cover.webp',
+      description: `Ultra soft and quick to dry since it's made of microfiber.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Available in different colors which are easy to coordinate with other bath textiles and accessories.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Use STOPP anti-slip underlay for increased safety. To be placed under the entire bath mat.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      STOPP anti-slip underlay can be used on all types of flooring, even those with underfloor heating.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-75-img-1.webp',
+        'product-75-img-2.webp',
+        'product-75-img-3.webp',
+        'product-75-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Alstern Bath mat',
+      price: 5.99,
+      image: 'product-76-img-cover.webp',
+      description: `Soft terry bath mat with high absorption capacity (weight 900 g/m²).
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Available in different colors which are easy to coordinate with other bath textiles and accessories.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-76-img-1.webp',
+        'product-76-img-2.webp',
+        'product-76-img-3.webp',
+        'product-76-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Almtjarn Bath mat',
+      price: 19.99,
+      image: 'product-77-img-cover.webp',
+      description: `Ultra soft, absorbent and quick to dry since it's made of microfiber.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Available in different colors which are easy to coordinate with other bath textiles and accessories.
       
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Not suitable for use on PVC/vinyl flooring since the backing may leave permanent stains on the floor.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-77-img-1.webp',
+        'product-77-img-2.webp',
+        'product-77-img-3.webp',
+        'product-77-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Asklonn Bath mat',
+      price: 14.99,
+      image: 'product-78-img-cover.webp',
+      description: `Available in different colors which are easy to coordinate with other bath textiles and accessories.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Ultra soft and quick to dry since it's made of microfiber.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      The backing keeps the bath mat in place and reduces the risk of slipping.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Not suitable for use on PVC/vinyl flooring since the backing may leave permanent stains on the floor.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-78-img-1.webp',
+        'product-78-img-2.webp',
+        'product-78-img-3.webp',
+        'product-78-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Rodvatten Bath mat',
+      price: 14.99,
+      image: 'product-79-img-cover.webp',
+      description: `The thick cotton pile is a treat for your feet.
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Elegant design with varying pile construction.
       
-      Soft, durable and easy care leather which is practical for families with children.
+      Easy to keep clean and fresh since it is machine washable.
       
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Easy to coordinate with towels and shower curtains in our range.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-79-img-1.webp',
+        'product-79-img-2.webp',
+        'product-79-img-3.webp',
+        'product-79-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
     {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
+      name: 'Alstern Bath mat',
+      price: 5.99,
+      image: 'product-80-img-cover.webp',
+      description: `Soft terry bath mat with high absorption capacity (weight 26.5 oz/yd²).
 
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
+      Easy to keep clean and fresh since it is machine washable.
       
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
+      Available in different colors which are easy to coordinate with other bath textiles and accessories.`,
       images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
+        'product-80-img-1.webp',
+        'product-80-img-2.webp',
+        'product-80-img-3.webp',
       ],
       createdAt: serverTimestamp(),
     },
