@@ -284,4 +284,6 @@ export const uploadProducts = async (
       );
     }
   );
+
+  return 'done';
 };

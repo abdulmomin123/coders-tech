@@ -71,6 +71,7 @@ const Status = styled.div<{ status: 'new' | 'sale' }>`
 const ImageContainer = styled.div`
   ${position}
   margin-bottom: 2.5rem;
+  border: 1px solid #f7f7f7;
   overflow: hidden;
 `;
 

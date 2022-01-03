@@ -57,8 +57,8 @@ const DetailsSection = styled.section`
 const ImagesSide = styled.div``;
 
 const Thumbnails = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 `;
 
 const ThumbnailContainer = styled.div<{ isSelected: boolean }>`

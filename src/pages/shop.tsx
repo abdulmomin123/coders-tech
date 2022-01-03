@@ -5,12 +5,7 @@ import styled from 'styled-components';
 import ButtonPrimary from '../components/ButtonPrimary';
 import ProductsGrid from '../components/ProductsGrid';
 import { camelCaseToNormal } from '../helpers';
-import {
-  firestore,
-  getFirstEight,
-  uploadProducts,
-} from '../lib/firebase/firebase';
-import { PRODUCTS } from '../products';
+import { firestore, getFirstEight } from '../lib/firebase/firebase';
 import {
   categoryAndShopPagesStyles,
   categoryNameStyles,
@@ -82,17 +77,7 @@ const shop: FC<{ result: string }> = ({ result }) => {
     <Root>
       {/* Title */}
       <TitleContainer>
-        <Title
-          onClick={() => {
-            for (let category in PRODUCTS) {
-              if (!PRODUCTS[category].length) return;
-
-              uploadProducts(category, PRODUCTS[category]);
-            }
-          }}
-        >
-          Shop
-        </Title>
+        <Title>Shop</Title>
 
         <Text>Shop the best furniture ever!</Text>
       </TitleContainer>
