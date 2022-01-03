@@ -633,6 +633,524 @@ export const PRODUCTS: {
     },
   ],
 
+  bathroom: [
+    {
+      name: 'Hemnes Open sink cabinet',
+      price: 199,
+      oldPrice: 219,
+      image: 'product-21-img-cover.webp',
+      description: `The drawers and open shelf give you plenty of storage space.
+
+      The open shelf makes it easy for you to see and reach your things.
+      
+      Smooth-running and soft-closing drawers with pull-out stop.
+      
+      You can easily see and reach your things because the drawers pull out fully.
+      
+      Knobs included.
+      
+      Two people are needed to assemble this furniture.
+      
+      Secure that the material in your bathroom walls can support the weight of the furniture. If you are uncertain about the installation, contact a professional.`,
+      images: [
+        'product-21-img-1.webp',
+        'product-21-img-2.webp',
+        'product-21-img-3.webp',
+        'product-21-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Godmorgon Sink cabinet',
+      price: 249,
+      oldPrice: 265,
+      image: 'product-22-img-cover.webp',
+      description: `Great value for money and guaranteed to outlast at least 10 years of everyday use. Read about the terms in the guarantee brochure.
+
+      The clean and simple expression is easy to combine with other furniture in the room.
+      
+      The matte surface on the bathroom cabinet creates a sense of calm.
+      
+      The drawers are protected from water damage thanks to a smart production technique. Foil is wrapped vertically around the particleboard so there are no unprotected edges where water can penetrate.
+      
+      Cleaning the floor is a breeze since this solution is wall mounted and there are no legs that get in the way.
+      
+      The smooth-running drawers with pull-out stop, open all the way for a good overview without falling out.
+      
+      You can sense the calm every time you close the drawers thanks to the soft-closing mechanism. No worries about fingers getting trapped.
+      
+      The deep bottom drawer has space for larger things like towels and hairdryer. The top drawer is suitable for smaller items like brushes, creams, sprays and accessories.
+      
+      You can make good use of the space inside the drawers thanks to the smart design of the water trap that leads the piping into the far back of the cabinet.
+      
+      Smooth, durable and easy-to-clean ceramic sink with space for toothbrushes, soap dispenser and other smaller things on the wide edges.`,
+      images: [
+        'product-22-img-1.webp',
+        'product-22-img-2.webp',
+        'product-22-img-3.webp',
+        'product-22-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Hemnes Sink cabinet',
+      price: 359,
+      oldPrice: 379,
+      image: 'product-23-img-cover.webp',
+      description: `Smooth-running and soft-closing drawers with pull-out stop.
+
+      You can easily see and reach your things because the drawers pull out fully.
+      
+      The included water trap is easy to connect to the drain, washing machine and dryer because it is flexible.
+      
+      Unique water trap design gives room for a full sized drawer.
+      
+      Bathroom faucet is sold separately.
+      
+      Knobs included.
+      
+      Strainer and water-trap included.
+      
+      Secure that the material in your bathroom walls can support the weight of the furniture. If you are uncertain about the installation, contact a professional.
+      
+      Two people are needed to assemble this furniture.
+      
+      The sink is resistant to most chemicals, except for strong acids and strong alkalis.
+      
+      Please note that the sink may be up to ¾" wider than the sink cabinet to protect it from water leakage.`,
+      images: [
+        'product-23-img-1.webp',
+        'product-23-img-2.webp',
+        'product-23-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Natade Wire basket with handles',
+      price: 27.99,
+      oldPrice: 35,
+      image: 'product-24-img-cover.webp',
+      description: `A slightly larger size that you can have on the floor or maaybe for cushions and throws by the sofa. This can also be used as a laundry basket in the bathroom or for storing firewood by the fireplace?
+
+      Can be used anywhere in your home, even in damp indoor areas like the bathroom.
+      
+      The included felt pads protect the surface from scratches.`,
+      images: [
+        'product-24-img-1.webp',
+        'product-24-img-2.webp',
+        'product-24-img-3.webp',
+        'product-24-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Saxborga Jar with lid and tray',
+      price: 14.99,
+      oldPrice: 19.99,
+      image: 'product-25-img-cover.webp',
+      description: `You can place the jars individually, stacked or grouped thanks to the cork lids and tray that keep them in place.
+
+      Sizes: 2 jars dia. 3", height 2", 2 jars dia. 3", height 4⅜" and 1 tray length 10", width 4" and height 1".
+      
+      Can be used with other SAXBORGA products.`,
+      images: [
+        'product-25-img-1.webp',
+        'product-25-img-2.webp',
+        'product-25-img-3.webp',
+        'product-25-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Baxna Organizer',
+      price: 5.99,
+      oldPrice: 8.99,
+      image: 'product-26-img-cover.webp',
+      description: `The fabric is made of recycled polyester. Using waste as a resource takes us one step closer to a more sustainable future.
+
+      The inner side of the fabric has a decorative pattern that makes your drawer feel extra nice every time you open it.
+      
+      The pattern and style fit perfectly with furniture in the HAUGA and IDANÄS series, but of course you can use it in any piece of furniture you like in order to organize and structure your things.
+      
+      The size suits slightly deeper drawers and is perfect for storing t-shirts, sweaters and hand towels.
+      
+      Easy to machine wash – just remember to remove the inserts hidden under the fabric.
+      
+      Approved for use in bathrooms, just like all the other organizers in the BAXNA series.
+      
+      You save space and it’s easier to find what you need when everything is organized.`,
+      images: [
+        'product-26-img-1.webp',
+        'product-26-img-2.webp',
+        'product-26-img-3.webp',
+        'product-26-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Lillangen Mirror cabinet',
+      price: 74.99,
+      image: 'product-27-img-cover.webp',
+      description: `The mirror comes with safety film on the back, which reduces the risk of injury if the glass is broken.
+
+      The open shelves are perfect for perfume bottles or other things that you use frequently.
+      
+      The shallow sink cabinet is perfect where space is limited.
+      
+      Hinges included.
+      
+      2 adjustable shelves included.
+      
+      This furniture must be secured to the wall with the enclosed wall anchoring device.
+      
+      Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.`,
+      images: [
+        'product-27-img-1.webp',
+        'product-27-img-2.webp',
+        'product-27-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Hemnes Mirror cabinet with',
+      price: 209,
+      image: 'product-28-img-cover.webp',
+      description: `The adjustable shelf is extra heat- and impact-resistant and has a high load-bearing capacity since it is made of tempered glass.
+
+      The mirror comes with safety film on the back, which reduces the risk of injury if the glass is broken.
+      
+      6 adjustable shelves included.
+      
+      Different wall and door materials require different types of mounting hardware. Use mounting hardware suitable for the walls or doors in your home, sold separately.
+      
+      Two people are needed to assemble this furniture.`,
+      images: [
+        'product-28-img-1.webp',
+        'product-28-img-2.webp',
+        'product-28-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Ikornnes Table Mirror',
+      price: 29.99,
+      image: 'product-29-img-cover.webp',
+      description: `The mirror can be placed on a table or chest of drawers, or hung on the wall.
+
+      If you choose to hang the mirror on the wall, you can use the stand as a hanger for scarves and ties.
+      
+      If you hang the mirror on the wall do not let your child climb or stand on the shelf/hanger.
+      
+      Mounting fittings included.
+      
+      Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.`,
+      images: [
+        'product-29-img-1.webp',
+        'product-29-img-2.webp',
+        'product-29-img-3.webp',
+        'product-29-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Forsiktig Childrens stool',
+      price: 5.99,
+      image: 'product-30-img-cover.webp',
+      description: `Anti-slip cover on top reduces the risk of slipping.
+
+      Anti-slip material on the underside makes the stool stand steady.
+      
+      Made from harmless plastic, the same material used in baby bottles, disposable diapers and food boxes.
+      
+      For children with a max. weight of 77 lbs.`,
+      images: [
+        'product-30-img-1.webp',
+        'product-30-img-2.webp',
+        'product-30-img-3.webp',
+        'product-30-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Bolmen Step stool',
+      price: 6.99,
+      image: 'product-31-img-cover.webp',
+      description: `The step stool is suitable for both children and adults as it is tested and approved for a maximum weight capacity of 220 lbs.
+
+      Less risk of sliding since the stool has anti-slip protection on the top.
+      
+      The stool stands securely since it has anti-slip protection on the bottom.
+      
+      The material in this product may be recyclable. Please check the recycling rules in your community and if recycling facilities exist in your area.`,
+      images: [
+        'product-31-img-1.webp',
+        'product-31-img-2.webp',
+        'product-31-img-3.webp',
+        'product-31-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Panget Storage bench',
+      price: 199,
+      image: 'product-32-img-cover.webp',
+      description: `Perfect for storage, but can also be used as an extra seat.
+
+      Made of solid wood, which is a durable and warm natural material.`,
+      images: [
+        'product-32-img-1.webp',
+        'product-32-img-2.webp',
+        'product-32-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Brogrund Touch top trash can',
+      price: 14.99,
+      image: 'product-33-img-cover.webp',
+      description: `You open the trash can easily by pressing lightly on the top of the lid.
+
+      Easy to keep clean, thanks to the fingerprint-proof surface.
+      
+      The slim design allows the bin to fit into narrow spaces.
+      
+      You can stand the bin on the floor or mount it to the wall.
+      
+      The trash can is easy to move since it has a handle on the back.
+      
+      The waste bag can be easily secured around the handles of the inner bucket, so the bag is less visible from the outside.
+      
+      Handles make it easier to remove the inner bucket.
+      
+      You can use this trash can anywhere in your home, even in damp areas like the kitchen and bathroom.
+      
+      The trash can should be used with a trash bag.
+      
+      Special waste handling may be required. Please contact your local authorities for more information.
+      
+      Hardware for wall mounting included.
+      
+      Screws for wall mounting not included.
+      
+      Different wall materials require different types of fasteners. Use fasteners suitable for the walls in your home.
+      
+      If you are uncertain about what type of mounting devices to use, please contact your local hardware store.
+      
+      Can be used with other products in the BROGRUND series.`,
+      images: [
+        'product-33-img-1.webp',
+        'product-33-img-2.webp',
+        'product-33-img-3.webp',
+        'product-33-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Toftan Trash can',
+      price: 9.99,
+      image: 'product-34-img-cover.webp',
+      description: `There’s no slamming when you throw out trash – the soft-closing lid closes smoothly and quietly.
+
+      The trash can is easy to move since it has a handle on the back.
+      
+      Easy to empty and clean as the inner bucket can be removed.
+      
+      You can use this trash can anywhere in your home, even in damp areas like the kitchen and bathroom.
+      
+      Combines with other products in TOFTAN series.`,
+      images: [
+        'product-34-img-1.webp',
+        'product-34-img-2.webp',
+        'product-34-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Strapats Pedal bin',
+      price: 19.99,
+      image: 'product-35-img-cover.webp',
+      description: `The bin is easy to move since it has a handle on the back.
+
+      Easy to empty and clean as the inner bucket can be removed.
+      
+      You can use this bin anywhere in your home, even in damp areas like the kitchen and bathroom.`,
+      images: [
+        'product-35-img-1.webp',
+        'product-35-img-2.webp',
+        'product-35-img-3.webp',
+        'product-35-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Glypen Bath faucet',
+      price: 50,
+      image: 'product-36-img-cover.webp',
+      description: `The faucet insert has hard, durable ceramic discs that can handle the high friction that occurs when you change the temperature of the water.
+
+      Chrome-plated brass is a hard and durable surface that is easy to clean.
+      
+      An aerator integrated in the faucet keeps the water flow just right while less water and energy is used.
+      
+      Tested and certified according to applicable codes and standards including: ASME A112.18.1/CSA B125.1, NSF 61, NSF 372 and EPA WaterSense.
+      
+      Tested and certified according to relevant mechanical, quality and safety standards.
+      
+      The kitchen faucet can be used in high-pressure systems. Tested to manage a pressure of max. 10 bar (1000 kPa). Recommended working pressure: 1.0 - 5.0 bar (100 kPa - 500 kPa).
+      
+      If you are uncertain about the installation, contact a professional. The installation shall be made in accordance with valid local building and plumbing regulations.
+      
+      A tool is included that makes it easy to install the faucet in place.
+      
+      Water and energy saving aerator (4.5 l/min, 1.2 gpm) for high-pressure systems included.
+      
+      Connection hoses with 9/16" x 24UNEF connection included. Length: 13¾".
+      
+      Max. temperature hot water connection 80°C/176°F. Recommended temperature is 65°C/149°F.
+      
+      Spare parts are available to prolong the life of your product. For more information, contact IKEA Customer Services at your IKEA store or IKEA.com.
+      
+      Swivel spout is present to 360° but can be changed to 90° or 120°.
+      
+      Fits IKEA sinks and standard sinks from other manufacturers.`,
+      images: [
+        'product-36-img-1.webp',
+        'product-36-img-2.webp',
+        'product-36-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Lundskar Bath faucet with strainer',
+      price: 90,
+      image: 'product-37-img-cover.webp',
+      description: `10-year Limited Warranty. Read about the terms in the Limited Warranty brochure.
+
+      This is a durable faucet that you can use for many years, since the hard, ceramic discs withstand the friction that always occurs when you change the temperature of the water.
+      
+      An aerator integrated in the faucet keeps the water flow just right while less water and energy is used.
+      
+      Strainer included.
+      
+      A tool is included that makes it easy to install the faucet in place.
+      
+      Water and energy saving aerator (1.2 gal/min.) for high-pressure systems included.
+      
+      Connection hoses with 9/16" x 24UNEF connection included. Length: 13¾".
+      
+      Max. temperature hot water system 176°F.
+      
+      Not compatible with HÖRVIK or KATTEVIK countertop sinks as the faucet must be mounted in a sink, not in a countertop.
+      
+      Spare parts are available to prolong the life of your product. For more information, contact IKEA Customer Services at your IKEA store or IKEA.com.
+      
+      If you are uncertain about the installation, contact a professional. The installation shall be made in accordance with valid local building and plumbing regulations.
+      
+      Fits IKEA sinks and standard sinks from other manufacturers.
+      
+      Tested and certified according to applicable codes and standards including: ASME A112.18.1/CSA B125.1, NSF 61, NSF 372 and EPA WaterSense.
+      
+      Flow rate: 1.2 gal./min. (4.5 l/min.)`,
+      images: [
+        'product-37-img-1.webp',
+        'product-37-img-2.webp',
+        'product-37-img-3.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Brogrund 5-spray hand shower',
+      price: 19.99,
+      image: 'product-38-img-cover.webp',
+      description: `3-year warranty. Read about the terms in the warranty brochure.
+
+      This hand shower with full spray function gives a wide and even coverage for a relaxing shower experience.
+      
+      The massage spray function varies the water flow from soft to hard for an invigorating experience that takes away the tension.
+      
+      The mist spray function produces fine droplets of water that feel gentle, soft and relaxing.
+      
+      You can choose between full, mist or massage sprays, or choose your favorite combination of full/mist or full/massage, giving you even more alternatives for a relaxing shower.
+      
+      Easy to clean by rubbing the rubber nozzles on the showerhead.
+      
+      The chrome-plated surface is a hard, durable and easy to clean.
+      
+      A washer integrated in the shower keeps the water flow just right while less water and energy is used.
+      
+      Comes with full, mist, massage, full/mist, full/massage spray functions.
+      
+      Shower hose is sold separately.
+      
+      The hand shower water consumption is 1.8 gpm.
+      
+      Can be used with other products in the BROGRUND series.
+      
+      Pressure compensating flow regulator included.`,
+      images: [
+        'product-38-img-1.webp',
+        'product-38-img-2.webp',
+        'product-38-img-3.webp',
+        'product-38-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Godmorgon Bathroom furniture',
+      price: 957,
+      image: 'product-39-img-cover.webp',
+      description: `Smooth-running and soft-closing drawers with pull-out stop.
+
+      You can easily see and reach your things because the drawers pull out fully.
+      
+      The included water trap is easy to connect to the drain, washing machine and dryer because it is flexible.
+      
+      Unique water trap design gives room for a full sized drawer.
+      
+      Knobs included.
+      
+      Strainer and water-trap included.
+      
+      Secure that the material in your bathroom walls can support the weight of the furniture. If you are uncertain about the installation, contact a professional.
+      
+      Two people are needed to assemble this furniture.
+      
+      The sink is resistant to most chemicals, except for strong acids and strong alkalis.
+      
+      Please note that the sink may be up to ¾" wider than the sink cabinet to protect it from water leakage.
+      
+      The material in this product may be recyclable. Please check the recycling rules in your community and if recycling facilities exist in your area.`,
+      images: [
+        'product-39-img-1.webp',
+        'product-39-img-2.webp',
+        'product-39-img-3.webp',
+        'product-39-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+    {
+      name: 'Danka Ironing board',
+      price: 31.99,
+      image: 'product-40-img-cover.webp',
+      description: `Variable height adjustment.
+
+      The material lets steam through from the iron, which prevents moisture forming.
+      
+      Extra stable and durable because the frame and base are made of steel.
+      
+      The holder has heat-resistant silicone pads which prevent scratches on the iron surface.
+      
+      WARNING! This ironing board must not be used with a steamer.`,
+      images: [
+        'product-40-img-1.webp',
+        'product-40-img-2.webp',
+        'product-40-img-3.webp',
+        'product-40-img-4.webp',
+      ],
+      createdAt: serverTimestamp(),
+    },
+  ],
+
   lighting: [
     {
       name: 'Grimsas Pendant lamp',
@@ -1645,489 +2163,6 @@ export const PRODUCTS: {
         'product-80-img-1.webp',
         'product-80-img-2.webp',
         'product-80-img-3.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-  ],
-
-  bathroom: [
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
-      ],
-      createdAt: serverTimestamp(),
-    },
-    {
-      name: 'Poang Rocking Chair',
-      price: 269,
-      oldPrice: 399,
-      image: 'product-1-img-cover.webp',
-      description: `10 year Limited warranty. Read about the terms in the warranty brochure.
-
-      A variety of seat cushion designs makes it easy to change the look of your POÄNG chair and your living room.
-      
-      Soft, durable and easy care leather which is practical for families with children.
-      
-      The high back provides good support for your neck.
-      
-      The layer-glued bent wood frame gives the armchair a comfortable resilience, making it perfect to relax in.
-      
-      10-year guarantee. Read about the terms in the guarantee brochure.`,
-      images: [
-        'product-1-img-1.webp',
-        'product-1-img-2.webp',
-        'product-1-img-3.webp',
-        'product-1-img-4.webp',
       ],
       createdAt: serverTimestamp(),
     },
