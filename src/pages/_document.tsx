@@ -47,7 +47,7 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap"
             rel="stylesheet"
           />
-          <link rel="icon" href="shopnik.png" type="image/x-icon" />
+          <link rel="icon" href="/shopnik.png" type="image/x-icon" />
         </Head>
         <body>
           <Main />

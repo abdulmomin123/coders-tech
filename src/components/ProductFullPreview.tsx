@@ -362,8 +362,9 @@ const ProductFullPreview: FC<Props> = ({
     'reviews' | 'questions'
   >('reviews');
 
-  const avgRating =
-    reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length;
+  const avgRating = reviews.length
+    ? reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
+    : 0;
 
   return (
     <Root>

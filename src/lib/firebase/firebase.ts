@@ -152,7 +152,7 @@ export const getFullProduct = async (category: string, id: string) => {
       ).docs.map(doc => doc.data());
 
       // Return the review along with it's replies
-      return { ...review.data(), replies };
+      return { id: review.id, ...review.data(), replies };
     })
   );
 
@@ -187,7 +187,7 @@ export const getFullProduct = async (category: string, id: string) => {
       ).docs.map(doc => doc.data());
 
       // Return the question along with it's replies
-      return { ...question.data(), replies };
+      return { id: question.id, ...question.data(), replies };
     })
   );
 
