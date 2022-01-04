@@ -102,7 +102,7 @@ const ProductsCarousel: FC<Props> = ({ furnitureProducts }) => {
   const [lastVisible, setLastVisible] =
     useState<QueryDocumentSnapshot<DocumentData>>();
   const [currentPage, setCurrentPage] = useState(1);
-  const [maxPage, setMaxPage] = useState<number>(3);
+  const [maxPage, setMaxPage] = useState<number>(Infinity);
   const [isLoading, setIsLoading] = useState(false);
 
   const updateCategory = (target: HTMLButtonElement) =>

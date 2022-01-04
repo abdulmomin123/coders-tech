@@ -1,6 +1,10 @@
+import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 import { FC, useState } from 'react';
 import styled from 'styled-components';
+import { capitalize } from '../helpers';
+import { getNumProducts } from '../lib/firebase/firebase';
 import { ProductPreviewType } from '../Types';
+import Overlay from './Overlay';
 import ProductPreview from './ProductPreview';
 import ViewNowBtn from './ViewNowBtn';
 
@@ -69,14 +73,19 @@ interface Props {
 
 const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
   // State
+  const [currentProducts, setCurrentProducts] = useState(products);
+  const [lastVisible, setLastVisible] =
+    useState<QueryDocumentSnapshot<DocumentData>>();
   const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState<number>(Infinity);
+  const [isLoading, setIsLoading] = useState(false);
 
   return (
     <Root>
       {/* Left side */}
       <LeftSide>
         {/* Name */}
-        <Name>{name}</Name>
+        <Name>{capitalize(name)}</Name>
 
         {/* Description */}
         <Description>{description}</Description>
@@ -90,6 +99,7 @@ const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
         {/* Left button */}
         {currentPage > 1 && (
           <PaginationButton
+            disabled={isLoading}
             isLeft={true}
             onClick={() => setCurrentPage(currentPage - 1)}
           >
@@ -100,7 +110,7 @@ const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
         )}
 
         {/* Product previews */}
-        {products
+        {currentProducts
           .slice((currentPage - 1) * 3, currentPage * 3)
           .map(
             ({
@@ -128,13 +138,46 @@ const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
           )}
 
         {/* Right button */}
-        {currentPage < 3 && (
-          <PaginationButton onClick={() => setCurrentPage(currentPage + 1)}>
+        {currentPage < maxPage && (
+          <PaginationButton
+            disabled={isLoading}
+            onClick={async () => {
+              try {
+                if (currentProducts.length - currentPage * 3 > 0)
+                  return setCurrentPage(currentPage + 1);
+
+                setIsLoading(true);
+
+                // Fetch next 3 products
+                const [products, lastDoc] = await getNumProducts(
+                  name,
+                  lastVisible,
+                  3
+                );
+
+                const [latestProducts, latestDoc] =
+                  currentPage <= 1
+                    ? await getNumProducts(name, lastDoc, 3)
+                    : [products, lastDoc];
+
+                if (latestProducts.length < 3) setMaxPage(currentPage + 1);
+
+                setLastVisible(latestDoc);
+                setCurrentProducts([...currentProducts, ...latestProducts]);
+                setIsLoading(false);
+                setCurrentPage(currentPage + 1);
+              } catch (_) {
+                setIsLoading(false);
+              }
+            }}
+          >
             <ChevronIcon>
               <use href="chevron-right.svg#icon" />
             </ChevronIcon>
           </PaginationButton>
         )}
+
+        <Overlay isLoading={isLoading} scale={1.7} />
       </ProductGrid>
     </Root>
   );

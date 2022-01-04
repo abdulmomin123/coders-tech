@@ -27,13 +27,13 @@ export const getStaticProps: GetStaticProps = async () => {
         products,
         featuredCategories: [
           {
-            name: 'Lighting',
+            name: 'lighting',
             description:
               "Look up, look around, but don't stare. Lighting! It's here, there and everywhere.",
             products: lightingProducts,
           },
           {
-            name: 'Rugs',
+            name: 'rugs',
             description:
               'Treat your feet every day with warm area rugs for your bedroom or living room.',
             products: rugProducts,
