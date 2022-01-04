@@ -1,15 +1,37 @@
-import { useState } from 'react';
+import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import { FC, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CATEGORIES } from '../constants';
 import { capitalize } from '../helpers';
-import { mockProducts } from '../seedData';
+import { getNumProducts } from '../lib/firebase/firebase';
+import { gridCenter } from '../styles/utils';
+import { ProductPreviewType } from '../Types';
 import ButtonPrimary from './ButtonPrimary';
+import LoadingAnimation from './LoadingAnimation';
 import ProductsGrid from './ProductsGrid';
 
 const Root = styled.section`
   max-width: 120rem;
   margin: 0 auto;
   padding-top: 8rem;
+`;
+
+const Overlay = styled.div<{ isVisible: boolean }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: ${({ isVisible }) => (isVisible ? '1' : '0')};
+  visibility: ${({ isVisible }) => (isVisible ? 'initial' : 'hidden')};
+  transition: opacity 0.2s, opacity 0.2s;
+`;
+
+const LoaderContainer = styled.div`
+  ${gridCenter}
+  width: 100%;
+  height: 100%;
 `;
 
 const displayGrid = css`
@@ -48,6 +70,10 @@ const CategoryBtn = styled.button<{ isSelected: boolean }>`
   }
 `;
 
+const Products = styled.div`
+  position: relative;
+`;
+
 const PaginationButtons = styled.div`
   ${displayGrid}
   grid-template-columns: repeat(3, max-content);
@@ -84,10 +110,19 @@ const Icon = styled.svg<{ isLeft?: boolean }>`
   ${({ isLeft }) => isLeft && 'transform: rotate(180deg);'}
 `;
 
-const ProductsCarousel = () => {
+interface Props {
+  furnitureProducts: ProductPreviewType[];
+}
+
+const ProductsCarousel: FC<Props> = ({ furnitureProducts }) => {
   // State
+  const [currentProducts, setCurrentProducts] = useState(furnitureProducts);
   const [selectedCategory, setSelectedCategory] = useState(CATEGORIES[0]);
+  const [lastVisible, setLastVisible] =
+    useState<QueryDocumentSnapshot<DocumentData>>();
   const [currentPage, setCurrentPage] = useState(1);
+  const [maxPage, setMaxPage] = useState<number>(3);
+  const [isLoading, setIsLoading] = useState(false);
 
   const updateCategory = (target: HTMLButtonElement) =>
     setSelectedCategory(target.textContent!.toLowerCase());
@@ -99,9 +134,25 @@ const ProductsCarousel = () => {
         {CATEGORIES.map(category => (
           <CategoryBtn
             key={category}
-            onClick={({ target }) =>
-              updateCategory(target as HTMLButtonElement)
-            }
+            onClick={async ({ target }) => {
+              updateCategory(target as HTMLButtonElement);
+
+              try {
+                setIsLoading(true);
+
+                // Fetch the first 8 products of the newly selected
+                // category
+                const [products] = await getNumProducts(category);
+
+                setCurrentPage(1);
+                setMaxPage(3);
+                setLastVisible(undefined);
+                setCurrentProducts(products);
+                setIsLoading(false);
+              } catch (_) {
+                setIsLoading(false);
+              }
+            }}
             isSelected={selectedCategory === category}
           >
             {capitalize(category)}
@@ -110,17 +161,29 @@ const ProductsCarousel = () => {
       </CategoryButtonsContainer>
 
       {/* Products grid */}
-      <ProductsGrid products={mockProducts['furniture']} />
+      <Products>
+        {/* Products */}
+        <ProductsGrid
+          products={currentProducts.slice(
+            (currentPage - 1) * 8,
+            8 * currentPage
+          )}
+        />
+
+        {/* Overlay */}
+        <Overlay isVisible={isLoading}>
+          <LoaderContainer>
+            <LoadingAnimation bg="var(--accent-color)" scale={2.1} />
+          </LoaderContainer>
+        </Overlay>
+      </Products>
 
       {/* Pagination buttons */}
       <PaginationButtons>
         {/* Left button */}
         <PaginationBtn
-          onClick={() => {
-            if (currentPage <= 1) return;
-
-            setCurrentPage(currentPage - 1);
-          }}
+          disabled={currentPage <= 1 || isLoading}
+          onClick={() => setCurrentPage(currentPage - 1)}
         >
           <Icon isLeft={true}>
             <use href="/chevron-right.svg#icon" />
@@ -131,21 +194,46 @@ const ProductsCarousel = () => {
         <PageNumber>{currentPage}</PageNumber>
 
         {/* Right button */}
-        <PaginationBtn
-          onClick={() => {
-            if (currentPage > 5) return;
+        {currentPage < maxPage && (
+          <PaginationBtn
+            disabled={currentPage >= maxPage || isLoading}
+            onClick={async () => {
+              try {
+                if (currentProducts.length - currentPage * 8 > 0)
+                  return setCurrentPage(currentPage + 1);
 
-            setCurrentPage(currentPage + 1);
-          }}
-        >
-          <Icon>
-            <use href="/chevron-right.svg#icon" />
-          </Icon>
-        </PaginationBtn>
+                setIsLoading(true);
+
+                // Fetch next 8 products
+                const [products, lastDoc] = await getNumProducts(
+                  selectedCategory,
+                  lastVisible
+                );
+                const [latestProducts, latestDoc] =
+                  currentPage <= 1
+                    ? await getNumProducts(selectedCategory, lastDoc)
+                    : [products, lastDoc];
+
+                if (latestProducts.length < 8) setMaxPage(currentPage + 1);
+
+                setLastVisible(latestDoc);
+                setCurrentProducts([...currentProducts, ...latestProducts]);
+                setIsLoading(false);
+                setCurrentPage(currentPage + 1);
+              } catch (_) {
+                setIsLoading(false);
+              }
+            }}
+          >
+            <Icon>
+              <use href="/chevron-right.svg#icon" />
+            </Icon>
+          </PaginationBtn>
+        )}
       </PaginationButtons>
 
       {/* Go to shop button */}
-      <ButtonPrimary type="button" href="/shop">
+      <ButtonPrimary type="link" href="/shop">
         Go to Shop
       </ButtonPrimary>
     </Root>

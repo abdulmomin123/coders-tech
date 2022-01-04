@@ -26,6 +26,7 @@ const Name = styled.p`
 
 const Description = styled.p`
   font-size: 2rem;
+  line-height: 1.35;
   margin-bottom: 4rem;
   color: #828282;
 `;

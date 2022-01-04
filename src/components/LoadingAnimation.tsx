@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-const Root = styled.div<{ bg?: string }>`
+const Root = styled.div<{ bg?: string; scale?: number }>`
   display: inline-block;
   position: relative;
   width: 8rem;
   height: 1.3rem;
+  transform: ${({ scale }) => (scale ? `scale(${scale})` : 'none')};
 
   & div {
     position: absolute;
@@ -67,11 +68,12 @@ const Root = styled.div<{ bg?: string }>`
 
 interface Props {
   bg?: string;
+  scale?: number;
 }
 
-const LoadingAnimation: FC<Props> = ({ bg }) => {
+const LoadingAnimation: FC<Props> = ({ bg, scale }) => {
   return (
-    <Root bg={bg}>
+    <Root bg={bg} scale={scale}>
       <div></div>
       <div></div>
       <div></div>
