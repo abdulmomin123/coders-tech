@@ -2,14 +2,9 @@ import { doc, getDoc } from 'firebase/firestore';
 import { GetStaticProps } from 'next';
 import { FC } from 'react';
 import styled from 'styled-components';
-import ButtonPrimary from '../components/ButtonPrimary';
-import ProductsGrid from '../components/ProductsGrid';
-import { camelCaseToNormal } from '../helpers';
-import { firestore, getFirstEight } from '../lib/firebase/firebase';
-import {
-  categoryAndShopPagesStyles,
-  categoryNameStyles,
-} from '../styles/globalStyles';
+import CategoryGrid from '../components/CategoryGrid';
+import { firestore, getNumProducts } from '../lib/firebase/firebase';
+import { categoryAndShopPagesStyles } from '../styles/globalStyles';
 import { ProductPreviewType } from '../Types';
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -21,7 +16,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // Fetch first 8 products of each category
   const results = await Promise.all(
     categories.map(async category => {
-      const products = await getFirstEight(category);
+      const [products] = await getNumProducts(category);
 
       return { category, products };
     })
@@ -29,6 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: { result: JSON.stringify(results) },
+    revalidate: 60,
   };
 };
 
@@ -52,15 +48,9 @@ const Text = styled.p`
   font-size: 2rem;
 `;
 
-const CategoriesGrid = styled.div`
+const CategoryGrids = styled.div`
   display: grid;
   gap: 8rem;
-`;
-
-const CategoryName = styled.h2`
-  ${categoryNameStyles}
-  padding-bottom: 1rem;
-  margin-bottom: 3rem;
 `;
 
 type Result = {
@@ -81,22 +71,17 @@ const shop: FC<{ result: string }> = ({ result }) => {
 
         <Text>Shop the best furniture ever!</Text>
       </TitleContainer>
-      <CategoriesGrid>
+
+      <CategoryGrids>
         {categories.map(({ category, products }) => (
-          <div key={category}>
-            {/* Category name */}
-            <CategoryName>
-              {camelCaseToNormal(category, ' ', true)}
-            </CategoryName>
-
-            {/* Products */}
-            <ProductsGrid products={products} />
-
-            {/* Load more button */}
-            <ButtonPrimary type="button">Load More</ButtonPrimary>
-          </div>
+          <CategoryGrid
+            key={category}
+            name={category}
+            products={products}
+            isShopPage={true}
+          />
         ))}
-      </CategoriesGrid>
+      </CategoryGrids>
     </Root>
   );
 };

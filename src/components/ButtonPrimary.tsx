@@ -59,9 +59,17 @@ const Button = styled.button`
 interface Props {
   type: 'link' | 'button';
   href?: string;
+  isDisabled?: boolean;
+  onClick?: () => void;
 }
 
-const ButtonPrimary: FC<Props> = ({ type, href, children }) => (
+const ButtonPrimary: FC<Props> = ({
+  type,
+  href,
+  isDisabled,
+  onClick,
+  children,
+}) => (
   <Root>
     <Line />
 
@@ -71,7 +79,9 @@ const ButtonPrimary: FC<Props> = ({ type, href, children }) => (
           <LinkButton>{children}</LinkButton>
         </Link>
       ) : (
-        <Button>{children}</Button>
+        <Button disabled={isDisabled} onClick={onClick}>
+          {children}
+        </Button>
       )}
     </InnerContainer>
   </Root>

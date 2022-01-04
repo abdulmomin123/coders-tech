@@ -2,14 +2,10 @@ import { doc, getDoc } from 'firebase/firestore';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { FC } from 'react';
 import styled from 'styled-components';
-import ButtonPrimary from '../../components/ButtonPrimary';
-import ProductsGrid from '../../components/ProductsGrid';
-import { camelCaseToNormal, capitalize } from '../../helpers';
-import { firestore, getFirstEight } from '../../lib/firebase/firebase';
-import {
-  categoryAndShopPagesStyles,
-  categoryNameStyles,
-} from '../../styles/globalStyles';
+import CategoryGrid from '../../components/CategoryGrid';
+import { camelCaseToNormal } from '../../helpers';
+import { firestore, getNumProducts } from '../../lib/firebase/firebase';
+import { categoryAndShopPagesStyles } from '../../styles/globalStyles';
 import { ProductPreviewType } from '../../Types';
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -32,7 +28,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   // Fetch first 8 products of each category
   const category = params!.category as string;
 
-  const products = await getFirstEight(category);
+  const [products] = await getNumProducts(category);
 
   return {
     props: {
@@ -47,12 +43,6 @@ const Root = styled.div`
   ${categoryAndShopPagesStyles}
 `;
 
-const CategoryName = styled.h1`
-  ${categoryNameStyles}
-  padding-bottom: 1.5rem;
-  margin-bottom: 5rem;
-`;
-
 interface Props {
   category: string;
   products: string;
@@ -63,14 +53,7 @@ const index: FC<Props> = ({ category, products }) => {
 
   return (
     <Root>
-      {/* Category name */}
-      <CategoryName>{capitalize(category.replaceAll('-', ' '))}</CategoryName>
-
-      {/* Products */}
-      <ProductsGrid products={parsedProducts} />
-
-      {/* Load more button */}
-      <ButtonPrimary type="button">Load More</ButtonPrimary>
+      <CategoryGrid name={category} products={parsedProducts} />
     </Root>
   );
 };

@@ -3,11 +3,15 @@ import {
   addDoc,
   collection,
   doc,
+  DocumentData,
   getDoc,
   getDocs,
   getFirestore,
   limit,
+  orderBy,
   query,
+  QueryDocumentSnapshot,
+  startAfter,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -210,12 +214,30 @@ export const getFullProduct = async (category: string, id: string) => {
 };
 
 // Get the first 8 products of a category
-export const getFirstEight = async (category: string) => {
-  const products = (
-    await getDocs(
-      query(collection(firestore, 'products', 'categories', category), limit(8))
-    )
-  ).docs.map(
+export const getNumProducts = async (
+  category: string,
+  startAt?: QueryDocumentSnapshot<DocumentData>,
+  count: number = 8
+): Promise<[ProductPreviewType[], QueryDocumentSnapshot<DocumentData>]> => {
+  const productsQuery = startAt
+    ? query(
+        collection(firestore, 'products', 'categories', category),
+        orderBy('name'),
+        startAfter(startAt),
+        limit(count)
+      )
+    : query(
+        collection(firestore, 'products', 'categories', category),
+        orderBy('name'),
+        limit(count)
+      );
+
+  const documentSnapshots = await getDocs(productsQuery);
+
+  // Get the last visible document
+  const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+
+  const products = documentSnapshots.docs.map(
     doc =>
       ({
         id: doc.id,
@@ -225,7 +247,7 @@ export const getFirstEight = async (category: string) => {
       } as ProductPreviewType)
   );
 
-  return products;
+  return [products, lastVisible];
 };
 
 export const uploadProducts = async (
@@ -284,6 +306,4 @@ export const uploadProducts = async (
       );
     }
   );
-
-  return 'done';
 };
