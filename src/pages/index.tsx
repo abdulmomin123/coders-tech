@@ -7,6 +7,7 @@ import FeaturedProdPreview from '../components/FeaturedProdPreview';
 import ImageSlideshow from '../components/ImageSlideshow';
 import ProductsCarousel from '../components/ProductsCarousel';
 import { getNumProducts } from '../lib/firebase/firebase';
+import { ProductPreviewType } from '../Types';
 
 export const getStaticProps: GetStaticProps = async () => {
   // Fetch slides
@@ -17,11 +18,27 @@ export const getStaticProps: GetStaticProps = async () => {
   const [products] = await getNumProducts('furniture');
 
   // Fetch featured categories along with first 3 products
+  const [lightingProducts] = await getNumProducts('lighting', undefined, 3);
+  const [rugProducts] = await getNumProducts('rugs', undefined, 3);
 
   return {
     props: {
       result: JSON.stringify({
         products,
+        featuredCategories: [
+          {
+            name: 'Lighting',
+            description:
+              "Look up, look around, but don't stare. Lighting! It's here, there and everywhere.",
+            products: lightingProducts,
+          },
+          {
+            name: 'Rugs',
+            description:
+              'Treat your feet every day with warm area rugs for your bedroom or living room.',
+            products: rugProducts,
+          },
+        ],
       }),
     },
     revalidate: 60,
@@ -44,7 +61,14 @@ interface Props {
 }
 
 const index: FC<Props> = ({ result }) => {
-  const { products } = JSON.parse(result);
+  const { products, featuredCategories } = JSON.parse(result) as {
+    products: ProductPreviewType[];
+    featuredCategories: {
+      name: string;
+      description: string;
+      products: ProductPreviewType[];
+    }[];
+  };
 
   return (
     <>
@@ -89,17 +113,16 @@ const index: FC<Props> = ({ result }) => {
       </section>
 
       {/* Featured categories */}
-      {/* <FeaturedCategories>
-      <FeaturedCategory
-        name="Lighting"
-        description="Look up, look around, but don't stare. Lighting! It's here, there and everywhere."
-      />
-
-      <FeaturedCategory
-        name="Rugs"
-        description="Treat your feet every day with warm area rugs for your bedroom or living room."
-      />
-    </FeaturedCategories> */}
+      <FeaturedCategories>
+        {featuredCategories.map(({ name, description, products }) => (
+          <FeaturedCategory
+            key={name}
+            name={name}
+            description={description}
+            products={products}
+          />
+        ))}
+      </FeaturedCategories>
     </>
   );
 };

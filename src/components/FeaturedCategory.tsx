@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import styled from 'styled-components';
-import { mockProducts } from '../seedData';
+import { ProductPreviewType } from '../Types';
 import ProductPreview from './ProductPreview';
 import ViewNowBtn from './ViewNowBtn';
 
@@ -64,13 +64,12 @@ const ChevronIcon = styled.svg<{ isLeft?: boolean }>`
 interface Props {
   name: string;
   description: string;
+  products: ProductPreviewType[];
 }
 
-const FeaturedCategory: FC<Props> = ({ name, description }) => {
+const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
   // State
   const [currentPage, setCurrentPage] = useState(1);
-
-  const maxNumOfPages = Math.ceil(mockProducts['furniture'].length / 3);
 
   return (
     <Root>
@@ -101,7 +100,7 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
         )}
 
         {/* Product previews */}
-        {mockProducts['furniture']
+        {products
           .slice((currentPage - 1) * 3, currentPage * 3)
           .map(
             ({
@@ -129,7 +128,7 @@ const FeaturedCategory: FC<Props> = ({ name, description }) => {
           )}
 
         {/* Right button */}
-        {currentPage < maxNumOfPages && (
+        {currentPage < 3 && (
           <PaginationButton onClick={() => setCurrentPage(currentPage + 1)}>
             <ChevronIcon>
               <use href="chevron-right.svg#icon" />

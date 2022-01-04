@@ -78,12 +78,12 @@ const ImageContainer = styled.div`
 const Buttons = styled.div`
   text-align: center;
   ${positionAbs}
-  bottom: 3px;
+  bottom: 0;
   left: 50%;
   width: 100%;
   color: #262626;
   background: rgba(255, 255, 255, 0.8);
-  border-bottom: 3px solid var(--accent-color);
+  border-bottom: 5px solid var(--accent-color);
   transform: translate(-50%, 110%);
   ${transition}
 `;

@@ -4,34 +4,15 @@ import styled, { css } from 'styled-components';
 import { CATEGORIES } from '../constants';
 import { capitalize } from '../helpers';
 import { getNumProducts } from '../lib/firebase/firebase';
-import { gridCenter } from '../styles/utils';
 import { ProductPreviewType } from '../Types';
 import ButtonPrimary from './ButtonPrimary';
-import LoadingAnimation from './LoadingAnimation';
+import Overlay from './Overlay';
 import ProductsGrid from './ProductsGrid';
 
 const Root = styled.section`
   max-width: 120rem;
   margin: 0 auto;
   padding-top: 8rem;
-`;
-
-const Overlay = styled.div<{ isVisible: boolean }>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  opacity: ${({ isVisible }) => (isVisible ? '1' : '0')};
-  visibility: ${({ isVisible }) => (isVisible ? 'initial' : 'hidden')};
-  transition: opacity 0.2s, opacity 0.2s;
-`;
-
-const LoaderContainer = styled.div`
-  ${gridCenter}
-  width: 100%;
-  height: 100%;
 `;
 
 const displayGrid = css`
@@ -171,11 +152,7 @@ const ProductsCarousel: FC<Props> = ({ furnitureProducts }) => {
         />
 
         {/* Overlay */}
-        <Overlay isVisible={isLoading}>
-          <LoaderContainer>
-            <LoadingAnimation bg="var(--accent-color)" scale={2.1} />
-          </LoaderContainer>
-        </Overlay>
+        <Overlay isLoading={isLoading} scale={2.1} />
       </Products>
 
       {/* Pagination buttons */}
