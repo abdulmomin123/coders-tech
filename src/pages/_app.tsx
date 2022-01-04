@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <NotificationProvider>
         <UserProvider>
           <Head>
-            <title>Shopnik | Furniture store</title>
+            <title>Shopnik | Home</title>
             <meta
               name="description"
               content="Shopnik is a furniture store. You can shop world class furniture at Shopnik."
