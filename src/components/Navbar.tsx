@@ -9,6 +9,7 @@ import { auth } from '../lib/firebase/firebase';
 import { signOut } from 'firebase/auth';
 import { UserContext } from '../contexts/User';
 import { CATEGORIES } from '../constants';
+import { index } from '../lib/algolia';
 
 const topZero = css`
   top: 0;
@@ -322,6 +323,15 @@ const Navbar = () => {
             maxLength={20}
             placeholder="Search products"
             name="search"
+            onChange={async ({ target: { value } }) => {
+              try {
+                const res = await index.search(value);
+
+                console.log(res.hits);
+              } catch (_) {
+                //
+              }
+            }}
           />
 
           {/* Magnifying icon */}

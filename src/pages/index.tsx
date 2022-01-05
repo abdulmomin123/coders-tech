@@ -10,10 +10,6 @@ import { getNumProducts } from '../lib/firebase/firebase';
 import { ProductPreviewType } from '../Types';
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Fetch slides
-
-  // Fetch featured products
-
   // Fetch first 8 products of furniture
   const [products] = await getNumProducts('furniture');
 
