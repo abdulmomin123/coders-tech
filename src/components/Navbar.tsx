@@ -9,7 +9,7 @@ import { auth } from '../lib/firebase/firebase';
 import { signOut } from 'firebase/auth';
 import { UserContext } from '../contexts/User';
 import { CATEGORIES } from '../constants';
-import { index } from '../lib/algolia';
+import { index } from '../lib/algolia/algolia';
 
 const topZero = css`
   top: 0;

@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch';
-import { RawProduct } from '../Types';
+import { RawProduct } from '../../Types';
 
 // Algolia client credentials
 const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!;
