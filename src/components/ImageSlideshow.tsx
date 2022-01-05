@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { SLIDES } from '../constants';
 
 const Root = styled.div`
   position: relative;
@@ -52,8 +53,6 @@ const ImageSlideshow = () => {
   const initializeTimer = () =>
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
 
-  const images = ['/slide.jpg', '/slide.jpg'];
-
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
   useEffect(() => {
@@ -73,22 +72,26 @@ const ImageSlideshow = () => {
         currentImg={currentImg}
         shouldTransition={shouldTransition}
         onTransitionEnd={() => {
-          if (currentImg > images.length) {
+          if (currentImg > SLIDES.length) {
             setShouldTransition(false);
             setCurrentImg(1);
           }
 
           if (currentImg < 1) {
             setShouldTransition(false);
-            setCurrentImg(images.length);
+            setCurrentImg(SLIDES.length);
           }
         }}
       >
         {/* Last image */}
-        <Link href="/laptop/0">
+        <Link
+          href={`/${SLIDES[SLIDES.length - 1].category}/${
+            SLIDES[SLIDES.length - 1].productId
+          }`}
+        >
           <a>
             <Image
-              src={images[images.length - 1]}
+              src={SLIDES[SLIDES.length - 1].img}
               width={1520}
               height={440}
               alt="test"
@@ -97,18 +100,18 @@ const ImageSlideshow = () => {
         </Link>
 
         {/* All images */}
-        {images.map(img => (
-          <Link href="/keyboard/a" key={Math.random()}>
+        {SLIDES.map(({ name, category, productId, img }) => (
+          <Link href={`/${category}/${productId}`} key={category}>
             <a>
-              <Image src={img} width={1520} height={440} alt="test" />
+              <Image src={img} width={1520} height={440} alt={name} />
             </a>
           </Link>
         ))}
 
         {/* First image */}
-        <Link href="/mouse/5">
+        <Link href={`/${SLIDES[0].category}/${SLIDES[0].productId}`}>
           <a>
-            <Image src={images[0]} width={1520} height={440} alt="test" />
+            <Image src={SLIDES[0].img} width={1520} height={440} alt="test" />
           </a>
         </Link>
       </SlidesContainer>
@@ -123,11 +126,11 @@ const ImageSlideshow = () => {
           Previous
         </Button>
 
-        <span>{currentImg > images.length ? images.length : currentImg}</span>
+        <span>{currentImg > SLIDES.length ? SLIDES.length : currentImg}</span>
 
         <Button
           onClick={() => {
-            if (currentImg > images.length) return;
+            if (currentImg > SLIDES.length) return;
             setCurrentImg(currentImg + 1);
           }}
         >

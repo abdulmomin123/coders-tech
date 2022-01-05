@@ -363,7 +363,9 @@ const ProductFullPreview: FC<Props> = ({
   >('reviews');
 
   const avgRating = reviews.length
-    ? reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
+    ? +(
+        reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
+      ).toFixed(2)
     : 0;
 
   return (
@@ -449,7 +451,7 @@ const ProductFullPreview: FC<Props> = ({
               <OldPriceContainer>
                 <OldPrice>{formatPrice(oldPrice)}</OldPrice>
                 <DiscountPercent>
-                  &nbsp;-{((oldPrice - price) * 100) / 100}%
+                  &nbsp;-{Math.floor(((oldPrice - price) * 100) / 100)}%
                 </DiscountPercent>
               </OldPriceContainer>
             )}
