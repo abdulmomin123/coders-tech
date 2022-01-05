@@ -6,7 +6,7 @@ import { featuredProdTitleStyles } from '../styles/globalStyles';
 
 const Root = styled.div`
   position: relative;
-  padding: 4rem;
+  padding: 8rem 4rem;
   background: #f4f5f7;
 `;
 
@@ -36,7 +36,7 @@ const Description = styled.p`
 const ImageContainer = styled.div<{ width: number; height: number }>`
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 2rem;
   width: ${({ width }) => `${width / 10}rem`};
   height: ${({ height }) => `${height / 10}rem`};
 `;
@@ -46,6 +46,7 @@ interface Props {
   description: string;
   href: string;
   img: string;
+  alt: string;
   width: number;
   height: number;
 }
@@ -55,6 +56,7 @@ const FeaturedProdPreview: FC<Props> = ({
   description,
   href,
   img,
+  alt,
   width,
   height,
 }) => {
@@ -83,7 +85,13 @@ const FeaturedProdPreview: FC<Props> = ({
 
       {/* Product image */}
       <ImageContainer width={width} height={height}>
-        <Image src={img} width={width} height={height} layout="responsive" />
+        <Image
+          src={img}
+          alt={alt}
+          width={width}
+          height={height}
+          layout="responsive"
+        />
       </ImageContainer>
     </Root>
   );

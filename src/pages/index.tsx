@@ -6,6 +6,7 @@ import FeaturedProdBanner from '../components/FeaturedProdBanner';
 import FeaturedProdPreview from '../components/FeaturedProdPreview';
 import ImageSlideshow from '../components/ImageSlideshow';
 import ProductsCarousel from '../components/ProductsCarousel';
+import { FEATURED_PRODUCTS } from '../constants';
 import { getNumProducts } from '../lib/firebase/firebase';
 import { ProductPreviewType } from '../Types';
 
@@ -66,6 +67,10 @@ const index: FC<Props> = ({ result }) => {
     }[];
   };
 
+  const featuredOne = FEATURED_PRODUCTS[0];
+  const featuredTwo = FEATURED_PRODUCTS[1];
+  const featuredThree = FEATURED_PRODUCTS[2];
+
   return (
     <>
       <section>
@@ -75,21 +80,23 @@ const index: FC<Props> = ({ result }) => {
         {/* Featured products preview */}
         <FeaturedProducts>
           <FeaturedProdPreview
-            title="Comfortable Chair"
-            description="Domed as former time of very might vows trial road, its clarinet expect."
-            href="/test"
-            img="/chair.png"
-            width={230}
-            height={184}
+            title={featuredOne.displayName}
+            description={featuredOne.description}
+            href={`/${featuredOne.category}/${featuredOne.productId}`}
+            img={featuredOne.img}
+            alt={featuredOne.name}
+            width={200}
+            height={275}
           />
 
           <FeaturedProdPreview
-            title="Luxurious new desk"
-            description="As shoulders ship first uninitiated theory mathematically trying. Nor some the measures arrived."
-            href="/test"
-            img="/table.png"
-            width={330}
-            height={132}
+            title={featuredTwo.displayName}
+            description={featuredTwo.description}
+            href={`/${featuredTwo.category}/${featuredTwo.productId}`}
+            img={featuredTwo.img}
+            alt={featuredTwo.name}
+            width={332}
+            height={219}
           />
         </FeaturedProducts>
       </section>
@@ -100,10 +107,11 @@ const index: FC<Props> = ({ result }) => {
       {/* Featured product banner */}
       <section>
         <FeaturedProdBanner
-          title="Stylish Minimal Chair"
-          href="/chairs/1"
-          img="/f3.png"
-          width={424}
+          title={featuredThree.displayName}
+          href={`/${featuredThree.category}/${featuredThree.productId}`}
+          img={featuredThree.img}
+          alt={featuredThree.name}
+          width={222}
           height={390}
         />
       </section>

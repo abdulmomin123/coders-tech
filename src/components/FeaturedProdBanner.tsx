@@ -37,11 +37,19 @@ interface Props {
   title: string;
   href: string;
   img: string;
+  alt: string;
   width: number;
   height: number;
 }
 
-const FeaturedProdBanner: FC<Props> = ({ title, href, img, width, height }) => {
+const FeaturedProdBanner: FC<Props> = ({
+  title,
+  href,
+  img,
+  alt,
+  width,
+  height,
+}) => {
   return (
     <Root>
       {/* Title and view now button */}
@@ -65,7 +73,7 @@ const FeaturedProdBanner: FC<Props> = ({ title, href, img, width, height }) => {
 
       {/* Product image */}
       <ImageContainer>
-        <Image src={img} alt={title} width={width} height={height} />
+        <Image src={img} alt={alt} width={width} height={height} />
       </ImageContainer>
     </Root>
   );

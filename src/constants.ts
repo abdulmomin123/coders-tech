@@ -29,4 +29,32 @@ export const SLIDES = [
   },
 ];
 
-export const FEATURED_PRODUCTS = [];
+export const FEATURED_PRODUCTS = [
+  {
+    name: 'Vedbo Armchair Gunnared',
+    displayName: 'Comfortable Chair',
+    description:
+      'Enjoy yourself with a cup of coffee sitting in this comfortable chair.',
+    category: 'furniture',
+    productId: 'IQllBWtRO1msMBascV1H',
+    img: '/featured-img-1.png',
+  },
+  {
+    name: 'Linanas Loveseat Vissle Beige',
+    displayName: 'Luxurious Sofa',
+    description:
+      'Spend quality time with your family and watch TV sitting in this chair.',
+    category: 'furniture',
+    productId: 'uIrSQ5vIhz4IivYJHMth',
+    img: '/featured-img-2.png',
+  },
+  {
+    name: 'Storhaga LED table lamp',
+    displayName: 'Stylish LED lamp',
+    description:
+      'Enjoy yourself with a cup of coffee sitting in this comfortable chair.',
+    category: 'lighting',
+    productId: 'J8XAWZK0U9AMkIPmnJ4j',
+    img: '/featured-img-3.png',
+  },
+];
