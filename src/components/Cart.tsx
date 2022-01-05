@@ -232,7 +232,7 @@ const Cart = () => {
           </ProductsContainer>
         ) : (
           <CartIcon>
-            <use href="/cart.svg#icon" />
+            <use href="/empty-cart.svg#icon" />
           </CartIcon>
         )}
 
