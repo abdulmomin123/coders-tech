@@ -1,5 +1,5 @@
 import algoliasearch from 'algoliasearch';
-import { RawProduct } from '../../Types';
+import { getProducts } from '../firebase/firebase';
 
 // Algolia client credentials
 const ALGOLIA_APP_ID = process.env.NEXT_PUBLIC_ALGOLIA_APP_ID!;
@@ -12,19 +12,24 @@ export const client = algoliasearch(ALGOLIA_APP_ID, ALGOLIA_API_KEY);
 // Initialize an index
 export const index = client.initIndex(ALGOLIA_INDEX_NAME);
 
-export const uploadRecords = (products: RawProduct[]) =>
-  products.forEach(
-    async ({ name, price, description }) =>
+export const uploadRecords = async () => {
+  // Getting all products
+  const furnitureProds = await getProducts('furniture');
+  const lightingProds = await getProducts('lighting');
+  const rugsProds = await getProducts('rugs');
+  const bathroomProds = await getProducts('bathroom');
+
+  [...furnitureProds, ...lightingProds, ...rugsProds, ...bathroomProds].forEach(
+    async ({ id, category, name, price, oldPrice, image }) =>
       await index
-        .saveObject(
-          {
-            name,
-            price,
-            description,
-          },
-          {
-            autoGenerateObjectIDIfNotExist: true,
-          }
-        )
+        .saveObject({
+          objectID: id,
+          category,
+          name,
+          price,
+          oldPrice,
+          image: image.replace('cover', '1'),
+        })
         .wait()
   );
+};

@@ -16,6 +16,12 @@ export interface CartItem extends BaseProduct {
   quantity: number;
 }
 
+export interface SearchResultType extends MinimalProduct {
+  objectID: string;
+  category: string;
+  image: string;
+}
+
 export interface ProductPreviewType extends BaseProduct {
   image: string;
   createdAt: { seconds: number };
