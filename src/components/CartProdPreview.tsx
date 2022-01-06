@@ -22,6 +22,7 @@ const Root = styled.div`
 
 const ImageContainer = styled.div`
   border-radius: 2rem;
+  border: 1px solid #eee;
   overflow: hidden;
 `;
 
@@ -147,8 +148,8 @@ const CartProdPreview: FC<CartItem> = ({
             <Image
               src={`/products/${thumbnail}`}
               alt={name}
-              width={120}
-              height={120}
+              width={115}
+              height={115}
             />
           </a>
         </Link>

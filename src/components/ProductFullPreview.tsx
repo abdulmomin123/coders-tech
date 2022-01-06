@@ -17,6 +17,9 @@ import { UserContext } from '../contexts/User';
 import { useRouter } from 'next/dist/client/router';
 import { useForm } from 'react-hook-form';
 import ProductImage from './ProductImage';
+import LoadingAnimation from './LoadingAnimation';
+import { getStripe } from '../lib/stripe/stripe';
+import { NotificationContextSetter } from '../contexts/Notification';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -348,6 +351,7 @@ const ProductFullPreview: FC<Props> = ({
   const { setIsCartOpen, hasCartOpened, setHasCartOpened } =
     useContext(CartContext);
   const user = useContext(UserContext);
+  const setNotification = useContext(NotificationContextSetter);
   const router = useRouter();
   const {
     register,
@@ -361,6 +365,7 @@ const ProductFullPreview: FC<Props> = ({
   const [selectedFeedback, setSelectedFeedback] = useState<
     'reviews' | 'questions'
   >('reviews');
+  const [isLoading, setIsLoading] = useState(false);
 
   const avgRating = reviews.length
     ? +(
@@ -488,8 +493,55 @@ const ProductFullPreview: FC<Props> = ({
           {/* Action buttons */}
           <ActionButtons>
             {/* Buy now button */}
-            <ActionBtn bg="#2abbe8" bgHover="#26abd4">
-              Buy Now
+            <ActionBtn
+              bg="#2abbe8"
+              bgHover="#26abd4"
+              onClick={async () => {
+                // Send a POST request with line items for a checkout session
+                try {
+                  setIsLoading(true);
+
+                  const session = await (
+                    await fetch('/api/checkout_sessions', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({}),
+                    })
+                  ).json();
+
+                  if ((session as any).statusCode === 500) {
+                    return setNotification({
+                      type: 'error',
+                      text: 'Something went wrong.',
+                    });
+                  }
+
+                  // Redirect to Checkout
+                  const stripe = await getStripe();
+
+                  const { error } = await stripe!.redirectToCheckout({
+                    sessionId: session.id,
+                  });
+
+                  if (error)
+                    setNotification({
+                      type: 'error',
+                      text: 'Something went wrong.',
+                    });
+
+                  setIsLoading(false);
+                } catch (_) {
+                  setIsLoading(false);
+                  setNotification({
+                    type: 'error',
+                    text: 'Something went wrong.',
+                  });
+                }
+              }}
+            >
+              {isLoading ? <LoadingAnimation /> : 'Buy Now'}
             </ActionBtn>
 
             {/* Add to cart button */}
