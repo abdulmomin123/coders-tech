@@ -39,6 +39,9 @@ const ResultsContainer = styled.div`
   top: calc(100% + 5px);
   left: 0;
   width: 100%;
+  max-height: 36rem;
+  display: grid;
+  gap: 1rem;
   padding: 5px;
   background: #fff;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.09);
@@ -46,6 +49,18 @@ const ResultsContainer = styled.div`
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s, visibility 0.2s;
+  overflow-x: hidden;
+  overflow-y: scroll;
+
+  ::-webkit-scrollbar {
+    width: 9px;
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 5px;
+  }
 `;
 
 const EmptyResultsText = styled.p`
