@@ -339,6 +339,7 @@ const ProductFullPreview: FC<Props> = ({
     name,
     price,
     oldPrice,
+    priceId,
     thumbnail,
     description,
     images,
@@ -494,6 +495,7 @@ const ProductFullPreview: FC<Props> = ({
           <ActionButtons>
             {/* Buy now button */}
             <ActionBtn
+              disabled={isLoading}
               bg="#2abbe8"
               bgHover="#26abd4"
               onClick={async () => {
@@ -507,7 +509,12 @@ const ProductFullPreview: FC<Props> = ({
                       headers: {
                         'Content-Type': 'application/json',
                       },
-                      body: JSON.stringify({}),
+                      body: JSON.stringify([
+                        {
+                          price: priceId,
+                          quantity,
+                        },
+                      ]),
                     })
                   ).json();
 

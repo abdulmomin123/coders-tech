@@ -10,19 +10,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    //  const { priceId }: { priceId: string } = req.body;
+    const line_items = req.body;
 
     // Create Checkout Sessions from body params
     const params: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
       payment_method_types: ['card'],
-      line_items: [
-        {
-          price: 'price_1KEy73IvhpZxAOAquUiaEBT0',
-          quantity: 1,
-        },
-      ],
-      success_url: `${req.headers.origin}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
+      line_items,
+      success_url: `${req.headers.origin}/`,
       cancel_url: `${req.headers.origin}/`,
     };
 

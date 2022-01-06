@@ -30,6 +30,7 @@ export interface ProductPreviewType extends BaseProduct {
 export interface FullProduct extends BaseProduct {
   images: string[];
   description: string;
+  priceId: string;
   reviews: Review[];
   questions: Question[];
 }

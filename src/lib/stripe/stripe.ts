@@ -1,6 +1,8 @@
 import Stripe from 'stripe';
 import { Stripe as StripeClient, loadStripe } from '@stripe/stripe-js';
 import { getProducts } from '../firebase/firebase';
+import { firestore } from '../firebase/firebase';
+import { doc, updateDoc } from 'firebase/firestore';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2020-08-27',
@@ -32,19 +34,28 @@ export const uploadProducts = async () => {
 
   for (let product of products) {
     // const res = await stripe.products.del(id);
-    const { id, name, price } = product;
+    const { category, id, name, price } = product;
 
-    // Create product
-    const stripeProduct = await stripe.products.create({
-      id,
-      name: name,
-    });
+    try {
+      // Create product
+      const stripeProduct = await stripe.products.create({
+        id,
+        name: name,
+      });
 
-    // Add price of the product
-    await stripe.prices.create({
-      product: stripeProduct.id,
-      unit_amount: Math.round(price * 100),
-      currency: 'usd',
-    });
+      // Add price of the product
+      const stripePrice = await stripe.prices.create({
+        product: stripeProduct.id,
+        unit_amount: Math.round(price * 100),
+        currency: 'usd',
+      });
+
+      // Add priceId to products in DB
+      updateDoc(doc(firestore, 'products', 'categories', category, id), {
+        priceId: stripePrice.id,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   }
 };
