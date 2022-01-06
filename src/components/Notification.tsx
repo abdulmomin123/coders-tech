@@ -20,6 +20,7 @@ const Root = styled.div<{ notification: NotificationType }>`
   border-radius: 3px;
   transform: translateX(-50%);
   transition: bottom 0.2s;
+  z-index: 2;
 `;
 
 const CloseIcon = styled.svg`

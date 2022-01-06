@@ -27,7 +27,7 @@ const Root = styled.a`
     ${transition}
   }
 
-  &:hover > :first-child > :last-child {
+  &:hover button {
     transform: translate(-50%, 0);
   }
 
@@ -75,19 +75,6 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `;
 
-const Buttons = styled.div`
-  text-align: center;
-  ${positionAbs}
-  bottom: 0;
-  left: 50%;
-  width: 100%;
-  color: #262626;
-  background: rgba(255, 255, 255, 0.8);
-  border-bottom: 5px solid var(--accent-color);
-  transform: translate(-50%, 110%);
-  ${transition}
-`;
-
 const letterSpacing = css`
   letter-spacing: 1px;
 `;
@@ -95,9 +82,19 @@ const letterSpacing = css`
 const Button = styled.button`
   ${textStyles}
   font-size: 1.4rem;
+  text-align: center;
   ${letterSpacing}
-  padding: 1rem 2rem;
   line-height: 1;
+  ${positionAbs}
+  bottom: 0;
+  left: 50%;
+  width: 100%;
+  padding: 1rem 2rem;
+  color: #262626;
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 5px solid var(--accent-color);
+  transform: translate(-50%, 110%);
+  ${transition}
 
   &:not(:last-of-type) {
     border-right: 2px solid #ebebeb;
@@ -128,6 +125,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
   category,
   image,
   price,
+  priceId,
   oldPrice,
   thumbnail,
   createdAt: { seconds },
@@ -159,39 +157,40 @@ const ProductPreview: FC<ProductPreviewType> = ({
           />
 
           {/* Add to cart and favorite button */}
-          <Buttons onClick={e => e.preventDefault()}>
-            {/* Add to cart button */}
-            <Button
-              onClick={() => {
-                const newCartItems = [...cartItems];
-                const existingProduct = newCartItems.find(
-                  ({ id: prodId }) => prodId === id
-                );
+          {/* Add to cart button */}
+          <Button
+            onClick={e => {
+              e.preventDefault();
 
-                if (!hasCartOpened) setIsCartOpen(true), setHasCartOpened(true);
-                if (existingProduct && existingProduct.quantity >= 100) return;
+              const newCartItems = [...cartItems];
+              const existingProduct = newCartItems.find(
+                ({ id: prodId }) => prodId === id
+              );
 
-                if (existingProduct) {
-                  existingProduct.quantity++;
-                  return setCartItems(newCartItems);
-                }
+              if (!hasCartOpened) setIsCartOpen(true), setHasCartOpened(true);
+              if (existingProduct && existingProduct.quantity >= 100) return;
 
-                setCartItems([
-                  ...cartItems,
-                  {
-                    id,
-                    name,
-                    category: kebabCasedCategory,
-                    price,
-                    thumbnail,
-                    quantity: 1,
-                  },
-                ]);
-              }}
-            >
-              Add To Cart
-            </Button>
-          </Buttons>
+              if (existingProduct) {
+                existingProduct.quantity++;
+                return setCartItems(newCartItems);
+              }
+
+              setCartItems([
+                ...cartItems,
+                {
+                  id,
+                  name,
+                  category: kebabCasedCategory,
+                  price,
+                  priceId,
+                  thumbnail,
+                  quantity: 1,
+                },
+              ]);
+            }}
+          >
+            Add To Cart
+          </Button>
         </ImageContainer>
 
         {/* Product status */}

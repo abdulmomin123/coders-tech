@@ -119,6 +119,7 @@ const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
               category,
               image,
               price,
+              priceId,
               oldPrice,
               thumbnail,
               createdAt,
@@ -130,6 +131,7 @@ const FeaturedCategory: FC<Props> = ({ name, description, products }) => {
                 category={category}
                 image={image}
                 price={price}
+                priceId={priceId}
                 oldPrice={oldPrice}
                 thumbnail={thumbnail}
                 createdAt={createdAt}

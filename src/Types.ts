@@ -10,6 +10,7 @@ interface BaseProduct extends MinimalProduct {
   id: string;
   category: string;
   thumbnail: string;
+  priceId: string;
 }
 
 export interface CartItem extends BaseProduct {
@@ -30,7 +31,6 @@ export interface ProductPreviewType extends BaseProduct {
 export interface FullProduct extends BaseProduct {
   images: string[];
   description: string;
-  priceId: string;
   reviews: Review[];
   questions: Question[];
 }

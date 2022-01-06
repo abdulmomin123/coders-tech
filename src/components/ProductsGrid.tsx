@@ -25,6 +25,7 @@ const ProductsGrid: FC<Props> = ({ products }) => {
           image,
           category,
           price,
+          priceId,
           oldPrice,
           thumbnail,
           createdAt,
@@ -36,6 +37,7 @@ const ProductsGrid: FC<Props> = ({ products }) => {
             category={category}
             image={image}
             price={price}
+            priceId={priceId}
             oldPrice={oldPrice}
             thumbnail={thumbnail}
             createdAt={createdAt}

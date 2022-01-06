@@ -128,11 +128,11 @@ export const getFullProduct = async (category: string, id: string) => {
   ).docs[0].data();
 
   // Get priceId of the product
-  const { priceId } = (
-    await getDocs(
-      collection(firestore, 'products', 'categories', category, id, 'priceId')
-    )
-  ).docs[0].data();
+  // const { priceId } = (
+  //   await getDocs(
+  //     collection(firestore, 'products', 'categories', category, id, 'priceId')
+  //   )
+  // ).docs[0].data();
 
   // Get images of the product
   const { images } = (
@@ -211,7 +211,6 @@ export const getFullProduct = async (category: string, id: string) => {
   return {
     id,
     category,
-    priceId,
     thumbnail: (prodData!.image as string).replace('cover', '1'),
     ...prodData,
     description,

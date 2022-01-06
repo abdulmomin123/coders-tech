@@ -18,6 +18,19 @@ export const getStripe = () => {
   return stripePromise;
 };
 
+export const getSession = async (
+  lineItems: { price: string; quantity: number }[]
+) =>
+  await (
+    await fetch('/api/checkout_sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(lineItems),
+    })
+  ).json();
+
 export const uploadProducts = async () => {
   // Getting all products
   const furnitureProds = await getProducts('furniture');

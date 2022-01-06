@@ -18,7 +18,7 @@ import { useRouter } from 'next/dist/client/router';
 import { useForm } from 'react-hook-form';
 import ProductImage from './ProductImage';
 import LoadingAnimation from './LoadingAnimation';
-import { getStripe } from '../lib/stripe/stripe';
+import { getSession, getStripe } from '../lib/stripe/stripe';
 import { NotificationContextSetter } from '../contexts/Notification';
 
 const Root = styled.div`
@@ -503,20 +503,9 @@ const ProductFullPreview: FC<Props> = ({
                 try {
                   setIsLoading(true);
 
-                  const session = await (
-                    await fetch('/api/checkout_sessions', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify([
-                        {
-                          price: priceId,
-                          quantity,
-                        },
-                      ]),
-                    })
-                  ).json();
+                  const session = await getSession([
+                    { price: priceId, quantity },
+                  ]);
 
                   if ((session as any).statusCode === 500) {
                     return setNotification({
@@ -578,6 +567,7 @@ const ProductFullPreview: FC<Props> = ({
                     name,
                     category: camelCaseToNormal(category, '-', false),
                     price,
+                    priceId,
                     thumbnail,
                     quantity: quantity,
                   },

@@ -1,8 +1,11 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
+import { NotificationContextSetter } from '../contexts/Notification';
 import { formatPrice } from '../helpers';
+import { getSession, getStripe } from '../lib/stripe/stripe';
 import CartProdPreview from './CartProdPreview';
+import LoadingAnimation from './LoadingAnimation';
 
 const fullWidth = css`
   width: 100%;
@@ -171,12 +174,14 @@ const Cart = () => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const setNotification = useContext(NotificationContextSetter);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const subtotal = cartItems.reduce(
     (total, item) => item.price * item.quantity + total,
     0
   );
-  const shippingCost = subtotal ? 10 : 0;
 
   useEffect(() => {
     isCartOpen
@@ -217,13 +222,14 @@ const Cart = () => {
         {cartItems.length ? (
           <ProductsContainer>
             {cartItems.map(
-              ({ id, name, category, price, quantity, thumbnail }) => (
+              ({ id, name, category, price, priceId, quantity, thumbnail }) => (
                 <CartProdPreview
                   key={id}
                   id={id}
                   name={name}
                   category={category}
                   price={price}
+                  priceId={priceId}
                   quantity={quantity}
                   thumbnail={thumbnail}
                 />
@@ -247,21 +253,63 @@ const Cart = () => {
             <Price>{formatPrice(subtotal)}</Price>
           </PriceGroup>
 
-          {/* Shipping Cost */}
-          <PriceGroup>
-            Shipping Cost
-            <Price>+{formatPrice(shippingCost)}</Price>
-          </PriceGroup>
-
           {/* Total */}
           <PriceGroup isTotal={true}>
             Total
-            <TotalPrice>{formatPrice(subtotal + shippingCost)}</TotalPrice>
+            <TotalPrice>{formatPrice(subtotal)}</TotalPrice>
           </PriceGroup>
 
           {/* Checkout button */}
-          <CheckoutBtn disabled={!cartItems.length}>
-            Checkout ({formatPrice(subtotal + shippingCost)})
+          <CheckoutBtn
+            disabled={!cartItems.length || isLoading}
+            onClick={async () => {
+              try {
+                setIsLoading(true);
+
+                const session = await getSession(
+                  cartItems.map(({ priceId, quantity }) => ({
+                    price: priceId,
+                    quantity,
+                  }))
+                );
+
+                console.log(session);
+
+                if ((session as any).statusCode === 500) {
+                  return setNotification({
+                    type: 'error',
+                    text: 'Something went wrong.',
+                  });
+                }
+
+                // Redirect to Checkout
+                const stripe = await getStripe();
+
+                const { error } = await stripe!.redirectToCheckout({
+                  sessionId: session.id,
+                });
+
+                if (error)
+                  setNotification({
+                    type: 'error',
+                    text: 'Something went wrong.',
+                  });
+
+                setIsLoading(false);
+              } catch (_) {
+                setIsLoading(false);
+                setNotification({
+                  type: 'error',
+                  text: 'Something went wrong.',
+                });
+              }
+            }}
+          >
+            {isLoading ? (
+              <LoadingAnimation />
+            ) : (
+              `Checkout (${formatPrice(subtotal)})`
+            )}
           </CheckoutBtn>
         </BottomPart>
       </ShoppingCart>
