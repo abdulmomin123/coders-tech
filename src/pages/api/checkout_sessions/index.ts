@@ -10,16 +10,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const line_items = req.body;
-
     // Create Checkout Sessions from body params
     const params: Stripe.Checkout.SessionCreateParams = {
       mode: 'payment',
       payment_method_types: ['card'],
-      line_items,
+      line_items: req.body.lineItems,
       success_url: `${req.headers.origin}/`,
       cancel_url: `${req.headers.origin}/`,
     };
+    req.body.email ? (params.customer_email = req.body.email) : null;
 
     const checkoutSession: Stripe.Checkout.Session =
       await stripe.checkout.sessions.create(params);

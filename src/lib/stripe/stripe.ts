@@ -19,6 +19,7 @@ export const getStripe = () => {
 };
 
 export const getSession = async (
+  email: string,
   lineItems: { price: string; quantity: number }[]
 ) =>
   await (
@@ -27,7 +28,7 @@ export const getSession = async (
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(lineItems),
+      body: JSON.stringify({ email, lineItems }),
     })
   ).json();
 
@@ -46,7 +47,6 @@ export const uploadProducts = async () => {
   ];
 
   for (let product of products) {
-    // const res = await stripe.products.del(id);
     const { category, id, name, price } = product;
 
     try {
@@ -61,7 +61,10 @@ export const uploadProducts = async () => {
         product: stripeProduct.id,
         unit_amount: Math.round(price * 100),
         currency: 'usd',
+        nickname: category,
       });
+
+      console.log(stripePrice.id);
 
       // Add priceId to products in DB
       updateDoc(doc(firestore, 'products', 'categories', category, id), {

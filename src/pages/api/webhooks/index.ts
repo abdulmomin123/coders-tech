@@ -2,8 +2,9 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { buffer } from 'micro';
 import Cors from 'micro-cors';
-import { getUserFromEmail } from '../../../lib/firebase/firebase';
+import { firestore, getUserFromEmail } from '../../../lib/firebase/firebase';
 import { stripe } from '../../../lib/stripe/stripe';
+import { doc, setDoc } from 'firebase/firestore';
 
 const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!;
 
@@ -49,12 +50,20 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     if (!user) return res.json({ received: true });
 
-    // Add the purchased products to users toBeReviewed list in DB
     const lineItems = await stripe.checkout.sessions.listLineItems(data.id, {
       limit: 80,
     });
 
-    lineItems.data.forEach(item => console.log(item.price?.product));
+    lineItems.data.forEach(async ({ price }) => {
+      // Retrieve product details
+      const product = await stripe.products.retrieve(price!.product as string);
+
+      // Add the product to users toBeReviewed list in DB
+      setDoc(doc(firestore, 'users', user.uid, 'toBeReviewed', product.id), {
+        name: product.name,
+        image: product.images[0],
+      });
+    });
   }
 
   // Return a response to acknowledge receipt of the event

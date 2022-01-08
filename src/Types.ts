@@ -35,6 +35,12 @@ export interface FullProduct extends BaseProduct {
   questions: Question[];
 }
 
+export interface ReviewProduct {
+  id: string;
+  name: string;
+  image: string;
+}
+
 export interface RawProduct extends MinimalProduct {
   image: string;
   description: string;

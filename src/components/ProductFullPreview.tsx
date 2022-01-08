@@ -503,7 +503,7 @@ const ProductFullPreview: FC<Props> = ({
                 try {
                   setIsLoading(true);
 
-                  const session = await getSession([
+                  const session = await getSession(user ? user.email : '', [
                     { price: priceId, quantity },
                   ]);
 

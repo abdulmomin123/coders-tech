@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
 import { NotificationContextSetter } from '../contexts/Notification';
+import { UserContext } from '../contexts/User';
 import { formatPrice } from '../helpers';
 import { getSession, getStripe } from '../lib/stripe/stripe';
 import CartProdPreview from './CartProdPreview';
@@ -174,6 +175,7 @@ const Cart = () => {
   // Consuming context
   const cartItems = useContext(CartItemsContext);
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
+  const user = useContext(UserContext);
   const setNotification = useContext(NotificationContextSetter);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -267,13 +269,12 @@ const Cart = () => {
                 setIsLoading(true);
 
                 const session = await getSession(
+                  user ? user.email : '',
                   cartItems.map(({ priceId, quantity }) => ({
                     price: priceId,
                     quantity,
                   }))
                 );
-
-                console.log(session);
 
                 if ((session as any).statusCode === 500) {
                   return setNotification({
