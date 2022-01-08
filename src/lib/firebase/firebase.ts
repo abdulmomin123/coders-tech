@@ -12,6 +12,7 @@ import {
   query,
   QueryDocumentSnapshot,
   startAfter,
+  where,
 } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -85,6 +86,16 @@ export const getUserProfile = async (uid: string) => {
   const foundUser = await doesUserExist(uid);
 
   return foundUser ? (foundUser.data() as User) : null;
+};
+
+export const getUserFromEmail = async (email: string) => {
+  const q = query(collection(firestore, 'users'), where('email', '==', email));
+
+  const user = (await getDocs(q)).docs[0]
+    ? ((await getDocs(q)).docs[0].data() as User)
+    : null;
+
+  return user;
 };
 
 // Get a single product's base info
