@@ -20,6 +20,15 @@ import ProductImage from './ProductImage';
 import LoadingAnimation from './LoadingAnimation';
 import { getSession, getStripe } from '../lib/stripe/stripe';
 import { NotificationContextSetter } from '../contexts/Notification';
+import {
+  addDoc,
+  collection,
+  doc,
+  getDoc,
+  serverTimestamp,
+} from 'firebase/firestore';
+import { firestore } from '../lib/firebase/firebase';
+import { Question } from '../Types';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -283,6 +292,8 @@ const AskQuestionForm = styled.form`
   gap: 1rem;
 `;
 
+const QuestionInputContainer = styled.div``;
+
 const QuestionInput = styled.textarea<{ error: boolean }>`
   height: 8rem;
   width: 80%;
@@ -306,6 +317,13 @@ const SubmitBtn = styled.button`
   &:hover {
     background: #42e7b0;
   }
+`;
+
+const QuestionError = styled.p`
+  font-size: 1.7rem;
+  font-weight: 300;
+  margin: 0.5rem 0;
+  color: red;
 `;
 
 const FeedbackGroup = styled.div`
@@ -361,12 +379,14 @@ const ProductFullPreview: FC<Props> = ({
     formState: { errors },
   } = useForm();
 
+  const [allQuestions, setAllQuestions] = useState(questions);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedFeedback, setSelectedFeedback] = useState<
     'reviews' | 'questions'
   >('reviews');
   const [isLoading, setIsLoading] = useState(false);
+  const [isAskingQuestion, setIsAskingQuestion] = useState(false);
 
   const avgRating = reviews.length
     ? +(
@@ -659,34 +679,115 @@ const ProductFullPreview: FC<Props> = ({
             {/* Ask a question */}
             {selectedFeedback === 'questions' && (
               <AskQuestionForm
-                onSubmit={handleSubmit(({ question }) => {
+                onSubmit={handleSubmit(async ({ question }) => {
                   if (!user) return router.push('/login');
 
-                  console.log(question);
+                  try {
+                    setIsAskingQuestion(true);
 
-                  // Reset the form
-                  reset();
+                    // Add a question doc in questions collections
+                    const questionRef = await addDoc(
+                      collection(
+                        firestore,
+                        'products',
+                        'categories',
+                        category,
+                        id,
+                        'questions'
+                      ),
+                      {
+                        name: user.name,
+                        image: user.image,
+                        feedback: question,
+                        date: serverTimestamp(),
+                      }
+                    );
+
+                    const createdQuestion = (
+                      await getDoc(
+                        doc(
+                          firestore,
+                          'products',
+                          'categories',
+                          category,
+                          id,
+                          'questions',
+                          questionRef.id
+                        )
+                      )
+                    ).data() as Question;
+
+                    // Add the newly added question to allQuestions
+                    setAllQuestions([
+                      {
+                        id: questionRef.id,
+                        name: user.name,
+                        image: user.image,
+                        feedback: createdQuestion.feedback,
+                        date: createdQuestion.date,
+                        replies: [],
+                      },
+                      ...allQuestions,
+                    ]);
+
+                    // Reset the form
+                    reset();
+                    setIsAskingQuestion(false);
+                  } catch (_) {
+                    setNotification({
+                      type: 'error',
+                      text: 'Something went wrong.',
+                    });
+
+                    // Reset the form
+                    reset();
+                    setIsAskingQuestion(false);
+                  }
+
                   return;
                 })}
               >
-                {/* Input */}
-                <QuestionInput
-                  placeholder="Ask a question..."
-                  maxLength={150}
-                  {...register('question', {
-                    required: true,
-                    minLength: 15,
-                    maxLength: 150,
-                  })}
-                  error={!!errors.question}
-                />
+                <QuestionInputContainer>
+                  {/* Input */}
+                  <QuestionInput
+                    placeholder="Ask a question..."
+                    maxLength={150}
+                    {...register('question', {
+                      minLength: {
+                        value: 15,
+                        message: 'Should be at least 15 characters long',
+                      },
+                      maxLength: {
+                        value: 150,
+                        message: 'Should be less than 150 characters',
+                      },
+                      required: {
+                        value: true,
+                        message: 'This field is required',
+                      },
+                    })}
+                    error={!!errors.question}
+                  />
+
+                  {/* Error text */}
+                  {errors.question && (
+                    <QuestionError>{errors.question.message}</QuestionError>
+                  )}
+                </QuestionInputContainer>
 
                 {/* Submit button */}
                 <SubmitBtn
                   type="submit"
                   onClick={() => !user && router.push('/login')}
                 >
-                  {user ? 'Ask question' : 'Log in to ask a question'}
+                  {isAskingQuestion ? (
+                    <LoadingAnimation />
+                  ) : user ? (
+                    'Ask question'
+                  ) : (
+                    'Log in to ask a question'
+                  )}
+                  {isLoading}
                 </SubmitBtn>
               </AskQuestionForm>
             )}
@@ -705,7 +806,7 @@ const ProductFullPreview: FC<Props> = ({
                     </ReplyContainer>
                   </FeedbackGroup>
                 ))
-              : questions.map(question => (
+              : allQuestions.map(question => (
                   <FeedbackGroup key={question.id}>
                     {/* Feedback */}
                     <Feedback feedback={question} />

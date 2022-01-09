@@ -182,9 +182,8 @@ const MyAccount = styled.div`
   ${positionRelative}
 
   &:hover > :last-child {
-      opacity: 1;
-      visibility: initial;
-    }
+    opacity: 1;
+    visibility: initial;
   }
 `;
 

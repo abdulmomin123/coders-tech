@@ -238,7 +238,7 @@ const ReviewProduct: FC<Props> = ({
               },
               required: { value: true, message: 'This field is required' },
             })}
-            error={errors.review}
+            error={!!errors.review}
           />
 
           {/* Error */}

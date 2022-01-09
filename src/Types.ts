@@ -53,18 +53,17 @@ export interface Reply {
   name: string;
   image: string;
   feedback: string;
+  replies: Reply[];
   date: { seconds: number };
 }
 
 export interface Review extends Reply {
   id: string;
   rating: number;
-  replies: Reply[];
 }
 
 export interface Question extends Reply {
   id: string;
-  replies: Reply[];
 }
 
 export interface User {
