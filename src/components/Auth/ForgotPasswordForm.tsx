@@ -1,5 +1,5 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';

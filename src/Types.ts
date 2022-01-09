@@ -35,9 +35,10 @@ export interface FullProduct extends BaseProduct {
   questions: Question[];
 }
 
-export interface ReviewProduct {
+export interface ReviewProductType {
   id: string;
   name: string;
+  category: string;
   image: string;
 }
 
@@ -67,10 +68,11 @@ export interface Question extends Reply {
 }
 
 export interface User {
+  uid: string;
   name: string;
   email: string;
   image: string;
-  uid: string;
+  toBeReviewed: ReviewProductType[];
 }
 
 export interface NotificationType {

@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useContext, useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { CartContext, CartItemsContext } from '../contexts/Cart';
@@ -177,6 +178,7 @@ const Cart = () => {
   const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const user = useContext(UserContext);
   const setNotification = useContext(NotificationContextSetter);
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -273,7 +275,8 @@ const Cart = () => {
                   cartItems.map(({ priceId, quantity }) => ({
                     price: priceId,
                     quantity,
-                  }))
+                  })),
+                  router.asPath
                 );
 
                 if ((session as any).statusCode === 500) {

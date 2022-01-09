@@ -20,7 +20,13 @@ import { setDoc } from 'firebase/firestore';
 import { getStorage, ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/avatars-avataaars-sprites';
-import { User, ProductPreviewType, FullProduct, RawProduct } from '../../Types';
+import {
+  User,
+  ProductPreviewType,
+  FullProduct,
+  RawProduct,
+  ReviewProduct,
+} from '../../Types';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCUbqFvykMxoJLIU0KtqOzfFAjcoAJKzoM',
@@ -83,19 +89,37 @@ export const createUserProfile = async (
 };
 
 export const getUserProfile = async (uid: string) => {
-  const foundUser = await doesUserExist(uid);
+  try {
+    const foundUser = await doesUserExist(uid);
 
-  return foundUser ? (foundUser.data() as User) : null;
+    if (!foundUser) return null;
+
+    // Fetch the to be reviewed collection of the user
+    const toBeReviewed = (
+      await getDocs(collection(firestore, 'users', uid, 'toBeReviewed'))
+    ).docs.map(doc => ({ id: doc.id, ...doc.data() } as ReviewProduct));
+
+    return {
+      uid: foundUser.id,
+      ...foundUser.data(),
+      toBeReviewed,
+    } as User;
+  } catch {
+    return null;
+  }
 };
 
 export const getUserFromEmail = async (email: string) => {
   const q = query(collection(firestore, 'users'), where('email', '==', email));
 
-  const user = (await getDocs(q)).docs[0]
-    ? ((await getDocs(q)).docs[0].data() as User)
-    : null;
+  const user = (await getDocs(q)).docs[0];
 
-  return user;
+  if (!user) return null;
+
+  return {
+    uid: user.id,
+    ...user.data(),
+  } as User;
 };
 
 // Get a single product's base info
@@ -137,13 +161,6 @@ export const getFullProduct = async (category: string, id: string) => {
       )
     )
   ).docs[0].data();
-
-  // Get priceId of the product
-  // const { priceId } = (
-  //   await getDocs(
-  //     collection(firestore, 'products', 'categories', category, id, 'priceId')
-  //   )
-  // ).docs[0].data();
 
   // Get images of the product
   const { images } = (

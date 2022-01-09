@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { index } from '../lib/algolia/algolia';
+import { scrollBarStyles } from '../styles/globalStyles';
 import { SearchResultType } from '../Types';
 import Overlay from './Overlay';
 import SearchResult from './SearchResult';
@@ -51,16 +52,7 @@ const ResultsContainer = styled.div`
   transition: opacity 0.2s, visibility 0.2s;
   overflow-x: hidden;
   overflow-y: scroll;
-
-  ::-webkit-scrollbar {
-    width: 9px;
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: #cccccc;
-    border-radius: 5px;
-  }
+  ${scrollBarStyles}
 `;
 
 const EmptyResultsText = styled.p`

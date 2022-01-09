@@ -1,13 +1,5 @@
-import styled from 'styled-components';
+import AccountPage from '../components/AccountPage';
 
-const Root = styled.div``;
-
-const account = () => {
-  return (
-    <Root>
-      <h1>My account</h1>
-    </Root>
-  );
-};
+const account = () => <AccountPage />;
 
 export default account;

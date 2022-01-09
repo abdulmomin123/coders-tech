@@ -53,6 +53,18 @@ export const authFormsStyles = css`
   box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
 `;
 
+export const scrollBarStyles = css`
+  ::-webkit-scrollbar {
+    width: 9px;
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 5px;
+  }
+`;
+
 // General styling of the app
 export const GlobalStyles = createGlobalStyle`
 ${css`
@@ -88,6 +100,8 @@ ${css`
     @media only screen and (max-width: 56.25em) {
       font-size: 50%; // 1rem = 8px 8/16 = 50%
     }
+
+    ${scrollBarStyles}
   }
 
   input,

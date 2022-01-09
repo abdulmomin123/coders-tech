@@ -20,7 +20,8 @@ export const getStripe = () => {
 
 export const getSession = async (
   email: string,
-  lineItems: { price: string; quantity: number }[]
+  lineItems: { price: string; quantity: number }[],
+  cancelUrl: string
 ) =>
   await (
     await fetch('/api/checkout_sessions', {
@@ -28,7 +29,7 @@ export const getSession = async (
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, lineItems }),
+      body: JSON.stringify({ email, lineItems, cancelUrl }),
     })
   ).json();
 

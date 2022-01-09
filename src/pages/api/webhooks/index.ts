@@ -61,6 +61,7 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
       // Add the product to users toBeReviewed list in DB
       setDoc(doc(firestore, 'users', user.uid, 'toBeReviewed', product.id), {
         name: product.name,
+        category: price!.nickname,
         image: product.images[0],
       });
     });

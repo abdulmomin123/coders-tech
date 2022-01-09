@@ -14,7 +14,7 @@ import {
 import RatingGroup from './RatingGroup';
 import { gridCenter } from '../styles/utils';
 import { UserContext } from '../contexts/User';
-import { useRouter } from 'next/dist/client/router';
+import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
 import ProductImage from './ProductImage';
 import LoadingAnimation from './LoadingAnimation';
@@ -503,9 +503,11 @@ const ProductFullPreview: FC<Props> = ({
                 try {
                   setIsLoading(true);
 
-                  const session = await getSession(user ? user.email : '', [
-                    { price: priceId, quantity },
-                  ]);
+                  const session = await getSession(
+                    user ? user.email : '',
+                    [{ price: priceId, quantity }],
+                    router.asPath
+                  );
 
                   if ((session as any).statusCode === 500) {
                     return setNotification({
