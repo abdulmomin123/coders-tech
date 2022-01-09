@@ -4,6 +4,7 @@ import { auth, getUserProfile } from '../lib/firebase/firebase';
 import { User } from '../Types';
 
 export const UserContext = createContext<User | null>(null);
+export const UserContextSetter = createContext<(user: User) => void>(() => {});
 export const RecheckUserProfile = createContext<{
   value: boolean;
   reCheckUserProfile: (value: boolean) => void;
@@ -42,7 +43,9 @@ const UserProvider: FC = ({ children }) => {
           reCheckUserProfile: setReCheckUserProfile,
         }}
       >
-        {children}
+        <UserContextSetter.Provider value={setUser}>
+          {children}
+        </UserContextSetter.Provider>
       </RecheckUserProfile.Provider>
     </UserContext.Provider>
   );
