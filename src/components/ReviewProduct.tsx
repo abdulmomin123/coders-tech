@@ -9,6 +9,16 @@ const Root = styled.div`
   display: grid;
   grid-template-columns: max-content 1fr;
   gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 5px;
+
+  &:nth-child(odd) {
+    background: rgba(125, 240, 255, 0.3);
+  }
+
+  &:nth-child(even) {
+    background: rgba(255, 235, 52, 0.3);
+  }
 `;
 
 const ImageContainer = styled.a`

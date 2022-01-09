@@ -82,7 +82,7 @@ const TextSecondary = styled.p`
 `;
 
 const ProductsContainer = styled.div`
-  max-width: 70rem;
+  max-width: 75rem;
   max-height: 42rem;
   display: grid;
   gap: 2rem;
