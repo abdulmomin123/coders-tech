@@ -1,9 +1,10 @@
+import Head from 'next/head';
 import { doc, getDoc } from 'firebase/firestore';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { FC } from 'react';
 import styled from 'styled-components';
 import CategoryGrid from '../../components/CategoryGrid';
-import { camelCaseToNormal } from '../../helpers';
+import { camelCaseToNormal, capitalize } from '../../helpers';
 import { firestore, getNumProducts } from '../../lib/firebase/firebase';
 import { categoryAndShopPagesStyles } from '../../styles/globalStyles';
 import { ProductPreviewType } from '../../Types';
@@ -53,6 +54,10 @@ const index: FC<Props> = ({ category, products }) => {
 
   return (
     <Root>
+      <Head>
+        <title>Shopnik | {capitalize(category)}</title>
+      </Head>
+
       <CategoryGrid name={category} products={parsedProducts} />
     </Root>
   );

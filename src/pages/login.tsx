@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useContext } from 'react';
 import styled from 'styled-components';
@@ -17,6 +18,10 @@ const login = () => {
 
   return (
     <Root>
+      <Head>
+        <title>Log in</title>
+      </Head>
+
       <LoginForm />
     </Root>
   );

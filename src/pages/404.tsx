@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -31,6 +32,10 @@ const HomeLink = styled.a`
 const FourOFour = () => {
   return (
     <Root>
+      <Head>
+        <title>Shopnik | 404</title>
+      </Head>
+
       {/* Title */}
       <Title>This Page Does Not Exist.</Title>
 

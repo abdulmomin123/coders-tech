@@ -1,4 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import { FC, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductFullPreview from '../../components/ProductFullPreview';
@@ -79,6 +80,10 @@ const product: FC<Props> = ({ result }) => {
 
   return (
     <Root>
+      <Head>
+        <title>{product.name}</title>
+      </Head>
+
       <ProductFullPreview product={product} />
     </Root>
   );

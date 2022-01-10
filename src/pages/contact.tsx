@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import HeadingPrimary from '../components/HeadingPrimary';
@@ -83,6 +84,10 @@ const contact = () => {
 
   return (
     <Root>
+      <Head>
+        <title>Shopnik | Contact Us</title>
+      </Head>
+
       {/* Page title */}
       <HeadingPrimary>Contact</HeadingPrimary>
 

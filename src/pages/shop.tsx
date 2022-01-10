@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { doc, getDoc } from 'firebase/firestore';
 import { GetStaticProps } from 'next';
 import { FC } from 'react';
@@ -65,6 +66,10 @@ const shop: FC<{ result: string }> = ({ result }) => {
 
   return (
     <Root>
+      <Head>
+        <title>Shopnik | Shop</title>
+      </Head>
+
       {/* Title */}
       <TitleContainer>
         <Title>Shop</Title>
