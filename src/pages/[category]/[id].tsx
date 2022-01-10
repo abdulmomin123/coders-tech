@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { FC, useEffect } from 'react';
+import { FC, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import ProductFullPreview from '../../components/ProductFullPreview';
 import { FullProduct } from '../../Types';
@@ -9,6 +9,7 @@ import {
   getFullProduct,
   getProducts,
 } from '../../lib/firebase/firebase';
+import { CurrentProductsSetter } from '../../contexts/currentProduct';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Fetch all category names
@@ -59,9 +60,14 @@ interface Props {
 }
 
 const product: FC<Props> = ({ result }) => {
+  const setCurrentProduct = useContext(CurrentProductsSetter);
+
   const product = JSON.parse(result) as FullProduct;
 
   useEffect(() => {
+    // Set current product context
+    setCurrentProduct(product);
+
     document.body.style.background = '#eff0f5';
     document.querySelector('html')!.style.scrollBehavior = 'smooth';
 

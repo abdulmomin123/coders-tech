@@ -1,8 +1,10 @@
 import Image from 'next/image';
-import { FC } from 'react';
+import { FC, useContext, useState } from 'react';
 import styled from 'styled-components';
 import ReactStars from 'react-stars';
 import { Question, Reply, Review } from '../Types';
+import { UserContext } from '../contexts/User';
+import ReplyForm from './ReplyForm';
 
 const Root = styled.div`
   display: grid;
@@ -47,12 +49,38 @@ const FeedbackText = styled.p`
   grid-column: 1 / -1;
 `;
 
+const ReplyBtn = styled.button`
+  font-size: 1.8rem;
+  font-weight: 500;
+  grid-column: 2 / -1;
+  justify-self: end;
+  padding: 0.7rem 5rem;
+  color: #fff;
+  background: var(--accent-color);
+  border-radius: 5px;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #2cb889;
+  }
+`;
+
+const FormContainer = styled.div`
+  grid-column: 2 / -1;
+`;
+
 interface Props {
   feedback: Review | Question | Reply;
+  category?: string;
+  prodId?: string;
 }
 
-const Feedback: FC<Props> = ({ feedback }) => {
+const Feedback: FC<Props> = ({ feedback, category, prodId }) => {
+  const user = useContext(UserContext);
+  const [shouldFormShow, setShouldFormShow] = useState(false);
+
   const {
+    id,
     name,
     image,
     date: { seconds },
@@ -94,9 +122,30 @@ const Feedback: FC<Props> = ({ feedback }) => {
 
         {/* Feedback text */}
         <FeedbackText>{feedbackText}</FeedbackText>
+
+        {/* Reply button */}
+        {user?.uid === '6S0uuCaFkbMOcxXhtx4c13H0Kcp2' && !shouldFormShow && (
+          <ReplyBtn onClick={() => setShouldFormShow(true)}>Reply</ReplyBtn>
+        )}
       </InfoContainer>
+
+      <FormContainer>
+        {/* Reply form */}
+        {user?.uid === '6S0uuCaFkbMOcxXhtx4c13H0Kcp2' && shouldFormShow && (
+          <ReplyForm
+            category={category!}
+            prodId={prodId!}
+            replyToId={id}
+            replyTo={rating ? 'reviews' : 'questions'}
+            onSuccess={() => setShouldFormShow(false)}
+          />
+        )}
+      </FormContainer>
     </Root>
   );
 };
+
+('Yes, this product is very good.');
+('Is this product of good quality?');
 
 export default Feedback;

@@ -29,6 +29,10 @@ import {
 } from 'firebase/firestore';
 import { firestore } from '../lib/firebase/firebase';
 import { Question } from '../Types';
+import {
+  CurrentProductContext,
+  CurrentProductsSetter,
+} from '../contexts/currentProduct';
 
 const Root = styled.div`
   max-width: 115rem;
@@ -365,6 +369,8 @@ const ProductFullPreview: FC<Props> = ({
     questions,
   },
 }) => {
+  const currentProduct = useContext(CurrentProductContext);
+  const setCurrentProduct = useContext(CurrentProductsSetter);
   const cartItems = useContext(CartItemsContext);
   const setCartItems = useContext(CartItemsSetter);
   const { setIsCartOpen, hasCartOpened, setHasCartOpened } =
@@ -379,7 +385,6 @@ const ProductFullPreview: FC<Props> = ({
     formState: { errors },
   } = useForm();
 
-  const [allQuestions, setAllQuestions] = useState(questions);
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [selectedFeedback, setSelectedFeedback] = useState<
@@ -717,18 +722,20 @@ const ProductFullPreview: FC<Props> = ({
                       )
                     ).data() as Question;
 
-                    // Add the newly added question to allQuestions
-                    setAllQuestions([
-                      {
-                        id: questionRef.id,
-                        name: user.name,
-                        image: user.image,
-                        feedback: createdQuestion.feedback,
-                        date: createdQuestion.date,
-                        replies: [],
-                      },
-                      ...allQuestions,
-                    ]);
+                    setCurrentProduct({
+                      ...currentProduct!,
+                      questions: [
+                        ...currentProduct!.questions,
+                        {
+                          id: questionRef.id,
+                          name: user.name,
+                          image: user.image,
+                          feedback: createdQuestion.feedback,
+                          date: createdQuestion.date,
+                          replies: [],
+                        },
+                      ],
+                    });
 
                     // Reset the form
                     reset();
@@ -793,10 +800,14 @@ const ProductFullPreview: FC<Props> = ({
             )}
 
             {selectedFeedback === 'reviews'
-              ? reviews.map(review => (
+              ? (currentProduct?.reviews || reviews).map(review => (
                   <FeedbackGroup key={review.id}>
                     {/* Feedback */}
-                    <Feedback feedback={review} />
+                    <Feedback
+                      feedback={review}
+                      category={category}
+                      prodId={id}
+                    />
 
                     {/* Reply */}
                     <ReplyContainer>
@@ -806,10 +817,14 @@ const ProductFullPreview: FC<Props> = ({
                     </ReplyContainer>
                   </FeedbackGroup>
                 ))
-              : allQuestions.map(question => (
+              : (currentProduct?.questions || questions).map(question => (
                   <FeedbackGroup key={question.id}>
                     {/* Feedback */}
-                    <Feedback feedback={question} />
+                    <Feedback
+                      feedback={question}
+                      category={category}
+                      prodId={id}
+                    />
 
                     {/* Reply */}
                     <ReplyContainer>
