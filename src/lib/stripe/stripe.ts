@@ -21,7 +21,8 @@ export const getStripe = () => {
 export const getSession = async (
   email: string,
   lineItems: { price: string; quantity: number }[],
-  cancelUrl: string
+  cancelUrl: string,
+  clear: 'none' | 'all'
 ) =>
   await (
     await fetch('/api/checkout_sessions', {
@@ -29,7 +30,7 @@ export const getSession = async (
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email, lineItems, cancelUrl }),
+      body: JSON.stringify({ email, lineItems, cancelUrl, clear }),
     })
   ).json();
 

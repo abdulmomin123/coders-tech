@@ -276,7 +276,8 @@ const Cart = () => {
                     price: priceId,
                     quantity,
                   })),
-                  router.asPath
+                  router.asPath,
+                  'all'
                 );
 
                 if ((session as any).statusCode === 500) {

@@ -531,7 +531,8 @@ const ProductFullPreview: FC<Props> = ({
                   const session = await getSession(
                     user ? user.email : '',
                     [{ price: priceId, quantity }],
-                    router.asPath
+                    router.asPath,
+                    'none'
                   );
 
                   if ((session as any).statusCode === 500) {

@@ -15,7 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       mode: 'payment',
       payment_method_types: ['card'],
       line_items: req.body.lineItems,
-      success_url: `${req.headers.origin}/success`,
+      success_url: `${req.headers.origin}/?clear=${req.body.clear}`,
       cancel_url: `${req.headers.origin}${req.body.cancelUrl}`,
     };
     req.body.email ? (params.customer_email = req.body.email) : null;

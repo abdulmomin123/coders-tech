@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
-import { FC } from 'react';
+import { useRouter } from 'next/router';
+import { FC, useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import FeaturedCategory from '../components/FeaturedCategory';
 import FeaturedProdBanner from '../components/FeaturedProdBanner';
@@ -7,6 +8,7 @@ import FeaturedProdPreview from '../components/FeaturedProdPreview';
 import ImageSlideshow from '../components/ImageSlideshow';
 import ProductsCarousel from '../components/ProductsCarousel';
 import { FEATURED_PRODUCTS } from '../constants';
+import { CartItemsSetter } from '../contexts/Cart';
 import { getNumProducts } from '../lib/firebase/firebase';
 import { ProductPreviewType } from '../Types';
 
@@ -58,6 +60,9 @@ interface Props {
 }
 
 const index: FC<Props> = ({ result }) => {
+  const setCartItems = useContext(CartItemsSetter);
+  const router = useRouter();
+
   const { products, featuredCategories } = JSON.parse(result) as {
     products: ProductPreviewType[];
     featuredCategories: {
@@ -70,6 +75,11 @@ const index: FC<Props> = ({ result }) => {
   const featuredOne = FEATURED_PRODUCTS[0];
   const featuredTwo = FEATURED_PRODUCTS[1];
   const featuredThree = FEATURED_PRODUCTS[2];
+
+  useEffect(() => {
+    router.query.clear === 'all' && setCartItems([]);
+    router.push('/');
+  }, [router.query.clear]);
 
   return (
     <>
