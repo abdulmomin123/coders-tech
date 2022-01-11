@@ -1,14 +1,22 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SearchResultType } from '../Types';
 import { formatPrice } from '../helpers';
 
-const Root = styled.a`
+const displayGrid = css`
   display: grid;
-  grid-template-columns: max-content 1fr;
+`;
+
+const gap = css`
   gap: 1rem;
+`;
+
+const Root = styled.a`
+  ${displayGrid}
+  grid-template-columns: max-content 1fr;
+  ${gap}
   padding: 0.5rem;
   border-radius: 5px;
   transition: background 0.2s;
@@ -32,9 +40,9 @@ const Name = styled.p`
 
 const PriceContainer = styled.div`
   font-size: 1.5rem;
-  display: grid;
+  ${displayGrid}
   grid-template-columns: repeat(2, max-content);
-  gap: 1rem;
+  ${gap}
 `;
 
 const Price = styled.span`
