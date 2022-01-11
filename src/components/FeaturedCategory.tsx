@@ -1,6 +1,6 @@
 import { DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
 import { FC, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { capitalize } from '../helpers';
 import { getNumProducts } from '../lib/firebase/firebase';
 import { ProductPreviewType } from '../Types';
@@ -8,8 +8,12 @@ import Overlay from './Overlay';
 import ProductPreview from './ProductPreview';
 import ViewNowBtn from './ViewNowBtn';
 
-const Root = styled.div`
+const displayGrid = css`
   display: grid;
+`;
+
+const Root = styled.div`
+  ${displayGrid}
   grid-template-columns: 1fr 3.2fr;
   gap: 3rem;
   padding: 6rem 0;
@@ -37,7 +41,7 @@ const Description = styled.p`
 
 const ProductGrid = styled.div`
   position: relative;
-  display: grid;
+  ${displayGrid}
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
 `;
