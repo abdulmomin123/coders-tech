@@ -28,10 +28,14 @@ const gridAFColumn = css`
   grid-auto-flow: column;
 `;
 
+const alignItems = css`
+  align-items: center;
+`;
+
 const CenteredContainer = styled.div`
   display: grid;
   ${gridAFColumn}
-  align-items: center;
+  ${alignItems}
   justify-content: space-between;
   max-width: 160rem;
   margin: 0 auto;
@@ -67,22 +71,38 @@ const rightZero = css`
   right: 0;
 `;
 
-const Links = styled.div`
+const displayFlex = css`
   display: flex;
+`;
+
+const Links = styled.div`
+  ${displayFlex}
 `;
 
 const colorTransition = css`
   transition: color 0.2s;
 `;
 
-const linkTypography = css`
+const fontSize = css`
   font-size: 1.8rem;
-  padding: 0.9rem 2rem;
+`;
+
+const darkColor = css`
   color: #222;
+`;
+
+const greyColor = css`
+  color: #444;
+`;
+
+const linkTypography = css`
+  ${fontSize}
+  padding: 0.9rem 2rem;
+  ${darkColor}
   ${colorTransition}
 
   &:hover {
-    color: #444444;
+    ${greyColor}
   }
 `;
 
@@ -91,12 +111,20 @@ const NavLink = styled.a`
   ${fontWeight}
 `;
 
+const visibilityInitial = css`
+  visibility: initial;
+`;
+
+const fullOpacity = css`
+  opacity: 1;
+`;
+
 const DropdownContainer = styled.div`
   ${positionRelative}
 
   &:hover > :last-child {
-    visibility: initial;
-    opacity: 1;
+    ${visibilityInitial}
+    ${fullOpacity}
   }
 `;
 
@@ -110,31 +138,67 @@ const CategoryText = styled.p`
   ${cursorPointer}
 `;
 
+const top = css`
+  top: 100%;
+`;
+
+const width25 = css`
+  width: 25rem;
+`;
+
+const bgWhite = css`
+  background: #fff;
+`;
+
+const borderRadius = css`
+  border-radius: 5px;
+`;
+
+const zeroOpacity = css`
+  opacity: 0;
+`;
+
+const visibilityHidden = css`
+  visibility: hidden;
+`;
+
 const CategoryDropdown = styled.ul`
   ${positionAbs}
-  top: 100%;
+  ${top}
   left: 50%;
-  width: 25rem;
+  ${width25}
   padding: 1.5rem 0;
-  background: #fff;
-  border-radius: 5px;
+  ${bgWhite}
+  ${borderRadius}
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   transform: translateX(-50%);
-  opacity: 0;
-  visibility: hidden;
+  ${zeroOpacity}
+  ${visibilityHidden}
   transition: opacity 0.3s;
   z-index: 1;
 `;
 
+const fullWidth = css`
+  width: 100%;
+`;
+
+const transition = css`
+  transition: background 0.2s;
+`;
+
+const bgDarkTransparent = css`
+  background: rgba(0, 0, 0, 0.1);
+`;
+
 const DropdownLink = styled.a`
   ${linkTypography}
-  width: 100%;
+  ${fullWidth}
   padding: 1rem 1.5rem;
-  transition: background 0.2s;
+  ${transition}
 
   &:hover {
     color: currentColor;
-    background: rgba(0, 0, 0, 0.1);
+    ${bgDarkTransparent}
   }
 `;
 
@@ -162,6 +226,10 @@ const CartIcon = styled.svg`
   ${height3Rem}
 `;
 
+const borderRadius50Per = css`
+  border-radius: 50%;
+`;
+
 const ItemCount = styled.span<{ totalItems: number }>`
   ${fontSizeSmall}
   ${fontWeight}
@@ -174,7 +242,7 @@ const ItemCount = styled.span<{ totalItems: number }>`
   ${gridCenter};
   color: #fff;
   background: red;
-  border-radius: 50%;
+  ${borderRadius50Per}
   transform: translate(50%, -50%);
 `;
 
@@ -182,23 +250,23 @@ const MyAccount = styled.div`
   ${positionRelative}
 
   &:hover > :last-child {
-    opacity: 1;
-    visibility: initial;
+    ${fullOpacity}
+    ${visibilityInitial}
   }
 `;
 
 const AccountActionsDropdown = styled.div`
   text-align: center;
   ${positionAbs}
-  top: 100%;
-  right: 0;
-  width: 25rem;
+  ${top}
+  ${rightZero}
+  ${width25}
   padding-top: 2rem;
-  background: #fff;
-  border-radius: 5px;
+  ${bgWhite}
+  ${borderRadius}
   box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
-  opacity: 0;
-  visibility: hidden;
+  ${zeroOpacity}
+  ${visibilityHidden}
   transition: opacity 0.5s;
 `;
 
@@ -207,27 +275,27 @@ const UserImage = styled.span<{ width?: string; height?: string }>`
   height: ${({ height }) => height};
   margin-bottom: ${({ width }) => (width ? '0' : '1rem')};
   border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
+  ${borderRadius50Per}
+  ${cursorPointer}
   overflow: hidden;
-  cursor: pointer;
 `;
 
 const UserName = styled.p`
-  font-size: 1.8rem;
-  font-weight: 500;
+  ${fontSize}
+  ${fontWeight}
   margin-bottom: 2.5rem;
 `;
 
 const buttonStyles = css`
-  font-size: 1.8rem;
-  width: 100%;
-  display: flex;
-  align-items: center;
+  ${fontSize}
+  ${fullWidth}
+  ${displayFlex}
+  ${alignItems}
   padding: 1rem 0 1rem 1.5rem;
-  transition: background 0.2s;
+  ${transition}
 
   &:hover {
-    background: rgba(0, 0, 0, 0.1);
+    ${bgDarkTransparent}
   }
 `;
 
@@ -249,11 +317,11 @@ const LogoutBtn = styled.button`
 const SignInLink = styled.a`
   font-size: 1.7rem;
   ${fontWeight}
-  color: #222;
+  ${darkColor}
   ${colorTransition}
 
   &:hover {
-    color: #444444;
+    ${greyColor}
   }
 `;
 
