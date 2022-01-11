@@ -170,7 +170,7 @@ const CategoryDropdown = styled.ul`
   padding: 1.5rem 0;
   ${bgWhite}
   ${borderRadius}
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
   transform: translateX(-50%);
   ${zeroOpacity}
   ${visibilityHidden}

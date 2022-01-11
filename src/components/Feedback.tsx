@@ -169,7 +169,4 @@ const Feedback: FC<Props> = ({ feedback, category, prodId }) => {
   );
 };
 
-('Yes, this product is very good.');
-('Is this product of good quality?');
-
 export default Feedback;
