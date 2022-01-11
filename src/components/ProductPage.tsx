@@ -458,7 +458,7 @@ interface Props {
   product: FullProduct;
 }
 
-const ProductFullPreview: FC<Props> = ({
+const ProductPage: FC<Props> = ({
   product: {
     id,
     category,
@@ -960,4 +960,4 @@ const ProductFullPreview: FC<Props> = ({
   );
 };
 
-export default ProductFullPreview;
+export default ProductPage;

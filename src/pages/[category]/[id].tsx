@@ -2,7 +2,6 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { FC, useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import ProductFullPreview from '../../components/ProductFullPreview';
 import { FullProduct } from '../../Types';
 import { doc, getDoc } from 'firebase/firestore';
 import {
@@ -11,6 +10,7 @@ import {
   getProducts,
 } from '../../lib/firebase/firebase';
 import { CurrentProductsSetter } from '../../contexts/currentProduct';
+import ProductPage from '../../components/ProductPage';
 
 export const getStaticPaths: GetStaticPaths = async () => {
   // Fetch all category names
@@ -84,7 +84,7 @@ const product: FC<Props> = ({ result }) => {
         <title>{product.name}</title>
       </Head>
 
-      <ProductFullPreview product={product} />
+      <ProductPage product={product} />
     </Root>
   );
 };
