@@ -17,10 +17,18 @@ import { UserContext, UserContextSetter } from '../contexts/User';
 import LoadingAnimation from './LoadingAnimation';
 import { NotificationContextSetter } from '../contexts/Notification';
 
+const padding = css`
+  padding: 1rem;
+`;
+
+const borderRadius = css`
+  border-radius: 5px;
+`;
+
 const Root = styled.div<{ shouldDisplay: boolean }>`
   text-align: left;
-  padding: 1rem;
-  border-radius: 5px;
+  ${padding}
+  ${borderRadius}
 
   &:nth-child(odd) {
     background: rgba(125, 240, 255, 0.3);
@@ -74,30 +82,38 @@ const ReviewBtn = styled.button`
   ${buttonStyles}
   padding: 0.8rem 2rem;
   background: rgb(0, 114, 9);
-  border-radius: 5px;
+  ${borderRadius}
 
   &:hover {
     background: rgb(0, 143, 12);
   }
 `;
 
+const marginTop = css`
+  margin-top: 1rem;
+`;
+
 const Form = styled.form`
   padding: 2rem;
-  margin-top: 1rem;
+  ${marginTop}
   background: #fff;
-  border-radius: 5px;
+  ${borderRadius}
+`;
+
+const fullWidth = css`
+  width: 100%;
 `;
 
 const TextArea = styled.textarea<{ error: boolean }>`
   font-size: 1.7rem;
   height: 10rem;
-  width: 100%;
+  ${fullWidth}
   padding: 1.5rem;
-  margin-top: 1rem;
+  ${marginTop}
   color: #666;
   background: rgba(0, 0, 0, 0.02);
   border: 3px solid ${({ error }) => (error ? 'red' : '#ccc')};
-  border-radius: 5px;
+  ${borderRadius}
   resize: vertical;
 `;
 
@@ -113,8 +129,8 @@ const SubmitBtnContainer = styled.div`
 const SubmitBtn = styled.button`
   ${buttonStyles}
   background: var(--accent-color);
-  padding: 1rem;
-  width: 100%;
+  ${padding}
+  ${fullWidth}
   border-radius: 20px;
 
   &:hover {
