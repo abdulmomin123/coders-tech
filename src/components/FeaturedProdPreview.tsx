@@ -1,11 +1,15 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ViewNowBtn from './ViewNowBtn';
 import { featuredProdTitleStyles } from '../styles/globalStyles';
 
-const Root = styled.div`
+const posRelative = css`
   position: relative;
+`;
+
+const Root = styled.div`
+  ${posRelative}
   padding: 4rem;
   background: #f4f5f7;
 `;
@@ -14,7 +18,7 @@ const Texts = styled.div`
   letter-spacing: 1px;
   width: 75%;
   color: #232323;
-  position: relative;
+  ${posRelative}
   z-index: 1;
 `;
 

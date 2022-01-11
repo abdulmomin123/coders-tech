@@ -6,10 +6,10 @@ import ViewNowBtn from './ViewNowBtn';
 
 const Root = styled.div`
   position: relative;
-  height: 300px;
+  height: 30rem;
   display: flex;
   align-items: center;
-  margin: 20rem 0 13rem 0;
+  margin: 20rem 0 8rem 0;
   background: #f4f5f7;
 `;
 
