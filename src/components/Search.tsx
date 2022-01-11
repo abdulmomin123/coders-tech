@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { index } from '../lib/algolia/algolia';
 import { scrollBarStyles } from '../styles/globalStyles';
 import { SearchResultType } from '../Types';
@@ -18,10 +18,14 @@ const Root = styled.form`
   }
 `;
 
+const fullWidth = css`
+  width: 100%;
+`;
+
 const SearchInput = styled.input`
   font-size: 1.6rem;
   letter-spacing: 0.5px;
-  width: 100%;
+  ${fullWidth}
   color: #333;
   background: rgba(0, 0, 0, 0.07);
   padding: 0.5rem 1.5rem;
@@ -35,11 +39,15 @@ const SearchInput = styled.input`
   }
 `;
 
-const ResultsContainer = styled.div`
+const posAbs = css`
   position: absolute;
+`;
+
+const ResultsContainer = styled.div`
+  ${posAbs}
   top: calc(100% + 5px);
   left: 0;
-  width: 100%;
+  ${fullWidth}
   max-height: 36rem;
   display: grid;
   gap: 1rem;
@@ -63,7 +71,7 @@ const EmptyResultsText = styled.p`
 `;
 
 const SearchIcon = styled.svg`
-  position: absolute;
+  ${posAbs}
   top: 50%;
   right: 0;
   width: 2rem;
