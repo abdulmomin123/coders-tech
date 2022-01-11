@@ -7,7 +7,7 @@ import {
 } from 'firebase/firestore';
 import { FC, useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import {
   CurrentProductContext,
   CurrentProductsSetter,
@@ -19,10 +19,14 @@ import LoadingAnimation from './LoadingAnimation';
 
 const Root = styled.form``;
 
+const fullWidth = css`
+  width: 100%;
+`;
+
 const TextArea = styled.textarea<{ error: boolean }>`
   font-size: 1.7rem;
   height: 10rem;
-  width: 100%;
+  ${fullWidth}
   padding: 1.5rem;
   margin-bottom: 1rem;
   color: #666;
@@ -35,12 +39,12 @@ const TextArea = styled.textarea<{ error: boolean }>`
 const SubmitBtn = styled.button`
   font-size: 1.9rem;
   font-weight: 500;
-  color: #fff;
-  transition: background 0.2s;
-  background: var(--accent-color);
+  ${fullWidth}
   padding: 1rem;
-  width: 100%;
+  color: #fff;
+  background: var(--accent-color);
   border-radius: 20px;
+  transition: background 0.2s;
 
   &:hover {
     background: #2cb889;
