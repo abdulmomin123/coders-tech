@@ -9,14 +9,22 @@ const inputStyles = css`
   color: inherit;
 `;
 
-export const featuredProdTitleStyles = css`
+const liteFont = css`
   font-weight: 300;
+`;
+
+const boldFont = css`
+  font-weight: 500;
+`;
+
+export const featuredProdTitleStyles = css`
+  ${liteFont}
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-bottom: 0.5rem;
 
   strong {
-    font-weight: 500;
+    ${boldFont}
   }
 `;
 
@@ -34,8 +42,12 @@ export const categoryAndShopPagesStyles = css`
   margin: 0 auto;
 `;
 
-export const categoryNameStyles = css`
+const displayIB = css`
   display: inline-block;
+`;
+
+export const categoryNameStyles = css`
+  ${displayIB}
   color: #363636;
   border-bottom: 5px solid var(--accent-color);
 `;
@@ -83,7 +95,7 @@ ${css`
   html {
     font-family: 'Rubik', sans-serif;
     font-size: 62.5%;
-    font-weight: 300;
+    ${liteFont}
     line-height: 1;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -134,7 +146,7 @@ ${css`
   img,
   span,
   a {
-    display: inline-block;
+    ${displayIB}
   }
 
   a {
@@ -158,22 +170,22 @@ ${css`
 
   h1 {
     font-size: 4rem;
-    font-weight: 500;
+    ${boldFont}
   }
 
   h2 {
     font-size: 3rem;
-    font-weight: 500;
+    ${boldFont}
   }
 
   h3 {
     font-size: 2.5rem;
-    font-weight: 500;
+    ${boldFont}
   }
 
   h4 {
     font-size: 2rem;
-    font-weight: 500;
+    ${boldFont}
   }
 `}
 `;
