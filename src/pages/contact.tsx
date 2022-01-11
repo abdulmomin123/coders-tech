@@ -1,8 +1,12 @@
 import Head from 'next/head';
+import { FormEvent, useContext, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 import HeadingPrimary from '../components/HeadingPrimary';
+import LoadingAnimation from '../components/LoadingAnimation';
+import { NotificationContextSetter } from '../contexts/Notification';
 import { validateEmail } from '../helpers';
+import { sendEmail } from '../lib/emailjs/emailjs';
 
 const Root = styled.div`
   max-width: 80rem;
@@ -76,10 +80,14 @@ const SubmitBtn = styled.button`
 `;
 
 const contact = () => {
+  const setNotification = useContext(NotificationContextSetter);
+  const [isEmailSending, setIsEmailSending] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
   return (
@@ -93,12 +101,30 @@ const contact = () => {
 
       {/* Contact form */}
       <Form
-        onSubmit={handleSubmit(data => {
-          console.log(data);
+        onSubmit={handleSubmit(async (_, e) => {
+          try {
+            setIsEmailSending(true);
+
+            await sendEmail(e as FormEvent<HTMLFormElement>, form.current!);
+
+            reset();
+            setIsEmailSending(false);
+            setNotification({
+              type: 'success',
+              text: 'We will contact you soon.',
+            });
+          } catch (err) {
+            setIsEmailSending(false);
+            setNotification({
+              type: 'error',
+              text: 'Something went wrong. Try again.',
+            });
+          }
         })}
       >
         {/* First name */}
         <Input
+          id="firstName"
           type="text"
           placeholder="First Name"
           {...register('firstName', { required: true, minLength: 2 })}
@@ -107,6 +133,7 @@ const contact = () => {
 
         {/* Last name */}
         <Input
+          id="lastName"
           type="text"
           placeholder="Last Name"
           {...register('lastName', { required: true, minLength: 2 })}
@@ -115,6 +142,7 @@ const contact = () => {
 
         {/* Email */}
         <Input
+          id="email"
           type="text"
           placeholder="Email"
           {...register('email', { required: true, validate: validateEmail })}
@@ -123,6 +151,7 @@ const contact = () => {
 
         {/* Subject */}
         <Input
+          id="subject"
           type="text"
           placeholder="Subject"
           {...register('subject', { required: true, minLength: 4 })}
@@ -131,13 +160,16 @@ const contact = () => {
 
         {/* Message */}
         <TextArea
+          id="message"
           placeholder="Message"
           rows={7}
           {...register('message', { required: true, minLength: 5 })}
           error={errors.message}
         />
 
-        <SubmitBtn type="submit">Send</SubmitBtn>
+        <SubmitBtn type="submit">
+          {isEmailSending ? <LoadingAnimation /> : 'Send'}
+        </SubmitBtn>
       </Form>
     </Root>
   );
