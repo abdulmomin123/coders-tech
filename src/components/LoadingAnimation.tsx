@@ -1,5 +1,17 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const left = css`
+  left: 8px;
+`;
+
+const scale0 = css`
+  transform: scale(0);
+`;
+
+const scale1 = css`
+  transform: scale(1);
+`;
 
 const Root = styled.div<{ bg?: string; scale?: number }>`
   display: inline-block;
@@ -19,12 +31,12 @@ const Root = styled.div<{ bg?: string; scale?: number }>`
   }
 
   & div:nth-child(1) {
-    left: 8px;
+    ${left}
     animation: lds-ellipsis1 0.6s infinite;
   }
 
   & div:nth-child(2) {
-    left: 8px;
+    ${left}
     animation: lds-ellipsis2 0.6s infinite;
   }
 
@@ -40,19 +52,21 @@ const Root = styled.div<{ bg?: string; scale?: number }>`
 
   @keyframes lds-ellipsis1 {
     0% {
-      transform: scale(0);
+      ${scale0}
     }
+
     100% {
-      transform: scale(1);
+      ${scale1}
     }
   }
 
   @keyframes lds-ellipsis3 {
     0% {
-      transform: scale(1);
+      ${scale1}
     }
+
     100% {
-      transform: scale(0);
+      ${scale0}
     }
   }
 
@@ -60,6 +74,7 @@ const Root = styled.div<{ bg?: string; scale?: number }>`
     0% {
       transform: translate(0, 0);
     }
+
     100% {
       transform: translate(24px, 0);
     }

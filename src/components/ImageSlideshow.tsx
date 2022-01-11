@@ -1,21 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { SLIDES } from '../constants';
 
 const Root = styled.div`
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
   margin-bottom: 3rem;
+  cursor: pointer;
+  overflow: hidden;
+`;
+
+const displayGrid = css`
+  display: grid;
 `;
 
 const SlidesContainer = styled.div<{
   currentImg: number;
   shouldTransition: boolean;
 }>`
-  display: grid;
+  ${displayGrid}
   grid-auto-flow: column;
   grid-auto-columns: 100%;
   transform: translateX(
@@ -31,7 +35,7 @@ const ButtonsContainer = styled.div`
   position: absolute;
   bottom: 15%;
   left: 15%;
-  display: grid;
+  ${displayGrid}
   grid-template-columns: repeat(3, max-content);
   align-items: center;
   gap: 1rem;
