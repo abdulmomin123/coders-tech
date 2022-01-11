@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { FC, useRef } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Root = styled.div`
   position: relative;
@@ -14,31 +14,47 @@ const Root = styled.div`
   }
 `;
 
-const Window = styled.div`
+const posAbs = css`
   position: absolute;
+`;
+
+const top = css`
   top: 0;
+`;
+
+const left = css`
   left: 0;
-  width: 20rem;
-  height: 20rem;
-  background: rgba(0, 183, 255, 0.2);
+`;
+
+const visibility = css`
   visibility: hidden;
 `;
 
+const Window = styled.div`
+  ${posAbs}
+  ${top}
+  ${left}
+  width: 20rem;
+  height: 20rem;
+  background: rgba(0, 183, 255, 0.2);
+  ${visibility}
+`;
+
 const LargeImageContainer = styled.div`
-  position: absolute;
-  top: 0;
+  ${posAbs}
+  ${top}
   left: 35rem;
   width: 45rem;
   height: 45rem;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.09);
-  visibility: hidden;
+  ${visibility}
   overflow: hidden;
   z-index: 1;
 
   img {
-    position: absolute;
-    top: 0;
-    left: 0;
+    ${posAbs}
+    ${top}
+    ${left}
     width: 75rem;
     height: 75rem;
   }
