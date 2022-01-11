@@ -1,14 +1,22 @@
 import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ReactStars from 'react-stars';
 import { Question, Reply, Review } from '../Types';
 import { UserContext } from '../contexts/User';
 import ReplyForm from './ReplyForm';
 
-const Root = styled.div`
+const displayGrid = css`
   display: grid;
+`;
+
+const gridCols = css`
   grid-template-columns: max-content 1fr;
+`;
+
+const Root = styled.div`
+  ${displayGrid}
+  ${gridCols}
   align-items: start;
   gap: 1.5rem;
   padding: 2rem;
@@ -23,20 +31,32 @@ const ImageContainer = styled.div`
 `;
 
 const InfoContainer = styled.div`
-  display: grid;
-  grid-template-columns: max-content 1fr;
+  ${displayGrid}
+  ${gridCols}
   align-items: center;
 `;
 
-const Name = styled.span`
+const fontSize = css`
   font-size: 1.9rem;
+`;
+
+const fontWeight = css`
   font-weight: 500;
+`;
+
+const Name = styled.span`
+  ${fontSize}
+  ${fontWeight}
   margin-bottom: 0.3rem;
+`;
+
+const justifySelf = css`
+  justify-self: end;
 `;
 
 const DateText = styled.span`
   font-size: 1.7rem;
-  justify-self: end;
+  ${justifySelf}
 `;
 
 const RatingContainer = styled.div`
@@ -44,16 +64,20 @@ const RatingContainer = styled.div`
 `;
 
 const FeedbackText = styled.p`
-  font-size: 1.9rem;
+  ${fontSize}
   line-height: 1.7;
   grid-column: 1 / -1;
 `;
 
+const gridCol = css`
+  grid-column: 2 / -1;
+`;
+
 const ReplyBtn = styled.button`
   font-size: 1.8rem;
-  font-weight: 500;
-  grid-column: 2 / -1;
-  justify-self: end;
+  ${fontWeight}
+  ${gridCol}
+  ${justifySelf}
   padding: 0.7rem 5rem;
   color: #fff;
   background: var(--accent-color);
@@ -66,7 +90,7 @@ const ReplyBtn = styled.button`
 `;
 
 const FormContainer = styled.div`
-  grid-column: 2 / -1;
+  ${gridCol}
 `;
 
 interface Props {
