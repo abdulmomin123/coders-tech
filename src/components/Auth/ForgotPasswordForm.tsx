@@ -19,8 +19,8 @@ const Root = styled.form`
 `;
 
 const Text = styled.p`
-  font-weight: 500;
   font-size: 1.5rem;
+  font-weight: 500;
   text-align: left;
   margin-bottom: 1.3rem;
   color: #5e6c84;

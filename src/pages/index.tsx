@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps = async () => {
         ],
       }),
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 };
 
@@ -95,8 +95,8 @@ const index: FC<Props> = ({ result }) => {
             href={`/${featuredOne.category}/${featuredOne.productId}`}
             img={featuredOne.img}
             alt={featuredOne.name}
-            width={200}
-            height={275}
+            width={160}
+            height={200}
           />
 
           <FeaturedProdPreview
@@ -105,8 +105,8 @@ const index: FC<Props> = ({ result }) => {
             href={`/${featuredTwo.category}/${featuredTwo.productId}`}
             img={featuredTwo.img}
             alt={featuredTwo.name}
-            width={332}
-            height={219}
+            width={303}
+            height={200}
           />
         </FeaturedProducts>
       </section>

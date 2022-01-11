@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useContext } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { UserContext } from '../contexts/User';
 import { auth } from '../lib/firebase/firebase';
 import { scrollBarStyles } from '../styles/globalStyles';
@@ -27,47 +27,75 @@ const ImageContainer = styled.div`
 
 const InfoContainer = styled.div``;
 
+const mrBtm = css`
+  margin-bottom: 1rem;
+`;
+
 const Name = styled.h1`
   font-size: 3.5rem;
   color: #333;
-  margin-bottom: 1rem;
+  ${mrBtm}
 `;
 
 const Email = styled.p`
   font-size: 1.9rem;
-  margin-bottom: 1rem;
+  ${mrBtm}
+`;
+
+const normalFontSize = css`
+  font-size: 1.6rem;
+`;
+
+const fontWeight = css`
+  font-weight: 500;
+`;
+
+const whiteColor = css`
+  color: #fff;
 `;
 
 const LogoutBtn = styled.button`
-  font-size: 1.6rem;
-  font-weight: 500;
+  ${normalFontSize}
+  ${fontWeight}
   padding: 0.5rem 2rem;
-  color: #fff;
+  ${whiteColor}
   background: #ff1e1e;
   border-radius: 20px;
   margin-bottom: 4rem;
 `;
 
 const Text = styled.span`
-  font-size: 1.6rem;
-  font-weight: 500;
+  ${normalFontSize}
+  ${fontWeight}
   padding-bottom: 0.5rem;
   margin-bottom: 2rem;
   color: #444;
   border-bottom: 4px solid var(--accent-color);
 `;
 
+const borderRadius = css`
+  border-radius: 1rem;
+`;
+
 const NoProductsToReview = styled.div`
   height: 40vh;
   ${gridCenter}
   background: rgba(0, 0, 0, 0.08);
-  border-radius: 1rem;
+  ${borderRadius}
+`;
+
+const displayGrid = css`
+  display: grid;
+`;
+
+const gap2Rem = css`
+  gap: 2rem;
 `;
 
 const IconContainer = styled.div`
-  display: grid;
+  ${displayGrid}
   justify-items: center;
-  gap: 2rem;
+  ${gap2Rem}
 `;
 
 const SmileyIcon = styled.svg`
@@ -84,12 +112,12 @@ const TextSecondary = styled.p`
 const ProductsContainer = styled.div`
   max-width: 75rem;
   max-height: 42rem;
-  display: grid;
-  gap: 2rem;
+  ${displayGrid}
+  ${gap2Rem}
   padding: 2rem 5rem;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.02);
-  border-radius: 1rem;
+  ${borderRadius}
   overflow-y: scroll;
   ${scrollBarStyles}
 `;
@@ -104,8 +132,8 @@ const CartoonImageContainer = styled.div`
 
 const LoginLink = styled.a`
   font-size: 2rem;
-  font-weight: 500;
-  color: #fff;
+  ${fontWeight}
+  ${whiteColor}
   padding: 1.2rem 4rem;
   background: #000;
   border-radius: 30px;
