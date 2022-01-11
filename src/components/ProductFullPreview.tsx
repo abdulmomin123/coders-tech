@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { FC, useContext, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ReactStars from 'react-stars';
 import { FullProduct } from '../Types';
 import { camelCaseToNormal, capitalize, formatPrice } from '../helpers';
@@ -39,14 +39,26 @@ const Root = styled.div`
   margin: 0 auto;
 `;
 
+const alignItemsCenter = css`
+  align-items: center;
+`;
+
+const mrBtm1 = css`
+  margin-bottom: 1rem;
+`;
+
+const colorGrey = css`
+  color: #757575;
+`;
+
 const TopNameAndCategory = styled.div`
   font-size: 2rem;
   display: inline-flex;
-  align-items: center;
+  ${alignItemsCenter}
   justify-content: center;
   padding: 1rem 0;
-  margin-bottom: 1rem;
-  color: #757575;
+  ${mrBtm1}
+  ${colorGrey}
 `;
 
 const CategoryLink = styled.a`
@@ -60,21 +72,49 @@ const Chevron = styled.svg`
   margin: 0 1rem;
 `;
 
-const DetailsSection = styled.section`
+const displayGrid = css`
   display: grid;
-  grid-template-columns: max-content 1fr;
+`;
+
+const gap8Rem = css`
   gap: 8rem;
+`;
+
+const padding3Rem = css`
   padding: 3rem;
+`;
+
+const mrBtm3 = css`
   margin-bottom: 3rem;
+`;
+
+const bgWhite = css`
   background: #fff;
+`;
+
+const borderRadius3px = css`
   border-radius: 3px;
+`;
+
+const DetailsSection = styled.section`
+  ${displayGrid}
+  grid-template-columns: max-content 1fr;
+  ${gap8Rem}
+  ${padding3Rem}
+  ${mrBtm3}
+  ${bgWhite}
+  ${borderRadius3px}
 `;
 
 const ImagesSide = styled.div``;
 
 const Thumbnails = styled.div`
-  display: grid;
+  ${displayGrid}
   grid-template-columns: repeat(4, 1fr);
+`;
+
+const cursor = css`
+  cursor: pointer;
 `;
 
 const ThumbnailContainer = styled.div<{ isSelected: boolean }>`
@@ -82,8 +122,8 @@ const ThumbnailContainer = styled.div<{ isSelected: boolean }>`
   height: 5.5rem;
   border: 1px solid ${({ isSelected }) => (isSelected ? '#f57224' : '#dadada')};
   border-radius: 2px;
+  ${cursor}
   transition: border 0.2s;
-  cursor: pointer;
 
   &:hover {
     border: 1px solid #f57224;
@@ -91,74 +131,122 @@ const ThumbnailContainer = styled.div<{ isSelected: boolean }>`
 `;
 
 const InfoSide = styled.div`
-  display: grid;
+  ${displayGrid}
   grid-template-rows: repeat(4, max-content) 1fr;
+`;
+
+const mrBtm1AndAHalf = css`
+  margin-bottom: 1.5rem;
+`;
+
+const darkColor = css`
+  color: #212121;
 `;
 
 const Name = styled.h1`
   font-size: 3.5rem;
-  margin-bottom: 1.5rem;
-  color: #212121;
+  ${mrBtm1AndAHalf}
+  ${darkColor}
+`;
+
+const fontSizeNormal = css`
+  font-size: 1.7rem;
+`;
+
+const displayFlex = css`
+  display: flex;
+`;
+
+const mrBtm4 = css`
+  margin-bottom: 4rem;
 `;
 
 const TotalRatings = styled.div`
-  font-size: 1.7rem;
-  display: flex;
-  align-items: center;
-  margin-bottom: 4rem;
+  ${fontSizeNormal}
+  ${displayFlex}
+  ${alignItemsCenter}
+  ${mrBtm4}
 `;
 
 const TotalRatingsLink = styled.a`
   margin-left: 1rem;
   color: #1d899e;
-  cursor: pointer;
+  ${cursor}
+`;
+
+const fontSizeMedium = css`
+  font-size: 3.3rem;
 `;
 
 const PriceDetails = styled.div``;
 
 const Price = styled.p`
-  font-size: 3.3rem;
+  ${fontSizeMedium}
   color: #f57224;
-  margin-bottom: 1rem;
+  ${mrBtm1}
 `;
 
 const OldPriceContainer = styled.div`
-  font-size: 1.7rem;
+  ${fontSizeNormal}
+`;
+
+const colorLightGrey = css`
+  color: #9e9e9e;
 `;
 
 const OldPrice = styled.span`
   text-decoration: line-through;
-  color: #9e9e9e;
+  ${colorLightGrey}
 `;
 
 const DiscountPercent = styled.span`
-  color: #212121;
+  ${darkColor}
+`;
+
+const fontSizeSmall18 = css`
+  font-size: 1.8rem;
 `;
 
 const QuantityContainer = styled.div`
-  font-size: 1.8rem;
-  display: flex;
-  align-items: center;
+  ${fontSizeSmall18}
+  ${displayFlex}
+  ${alignItemsCenter}
   margin-top: 6rem;
-  color: #757575;
+  ${colorGrey}
+`;
+
+const gridAutoFlCol = css`
+  grid-auto-flow: column;
+`;
+
+const gap2Rem = css`
+  gap: 2rem;
 `;
 
 const QuantityButtons = styled.div`
-  display: grid;
-  grid-auto-flow: column;
-  align-items: center;
-  gap: 2rem;
+  ${displayGrid}
+  ${gridAutoFlCol}
+  ${alignItemsCenter}
+  ${gap2Rem}
   margin-left: 4rem;
+`;
+
+const borderRadius5px = css`
+  border-radius: 5px;
+`;
+
+const transitionBg = css`
+  transition: background 0.2s;
 `;
 
 const QuantityBtn = styled.button`
   width: 3.5rem;
   height: 3.5rem;
-  display: grid;
+  ${displayGrid}
   place-items: center;
   background: rgba(0, 0, 0, 0.08);
-  border-radius: 5px;
-  transition: background 0.2s;
+  ${borderRadius5px}
+  ${transitionBg}
 
   &:hover {
     background: rgba(0, 0, 0, 0.12);
@@ -171,26 +259,34 @@ const QuantityIcon = styled.svg`
   fill: #777676;
 `;
 
-const QuantityCount = styled.span`
-  color: #212121;
+const fontBold = css`
   font-weight: 500;
+`;
+
+const QuantityCount = styled.span`
+  ${darkColor}
+  ${fontBold}
 `;
 
 const ActionButtons = styled.div`
   align-self: end;
-  display: grid;
-  grid-auto-flow: column;
-  gap: 2rem;
+  ${displayGrid}
+  ${gridAutoFlCol}
+  ${gap2Rem}
+`;
+
+const fontSizeSmall19 = css`
+  font-size: 1.9rem;
 `;
 
 const ActionBtn = styled.button<{ bg: string; bgHover: string }>`
-  font-size: 1.9rem;
-  font-weight: 500;
+  ${fontSizeSmall19}
+  ${fontBold}
   padding: 1.5rem 0;
   color: #fff;
   background: ${({ bg }) => bg};
-  border-radius: 3px;
-  transition: background 0.2s;
+  ${borderRadius3px}
+  ${transitionBg}
 
   &:hover {
     background: ${({ bgHover }) => bgHover};
@@ -198,44 +294,48 @@ const ActionBtn = styled.button<{ bg: string; bgHover: string }>`
 `;
 
 const DescriptionSection = styled.section`
-  margin-bottom: 3rem;
-  background: #fff;
-  border-radius: 3px;
+  ${mrBtm3}
+  ${bgWhite}
+  ${borderRadius3px}
 `;
 
 const SectionTitle = styled.h2`
-  font-size: 1.9rem;
+  ${fontSizeSmall19}
   padding: 2rem 3rem;
-  color: #212121;
+  ${darkColor}
   background: #fafafa;
 `;
 
 const Description = styled.p`
-  font-size: 1.8rem;
+  ${fontSizeSmall18}
   line-height: 2;
   padding: 1rem 3rem 3rem 3rem;
 `;
 
 const ReviewsSection = styled.section`
-  margin-bottom: 3rem;
-  background: #fff;
-  border-radius: 3px;
+  ${mrBtm3}
+  ${bgWhite}
+  ${borderRadius3px}
 `;
 
 const Container = styled.div`
-  padding: 3rem;
+  ${padding3Rem}
+`;
+
+const gridTemplateCols = css`
+  grid-template-columns: repeat(2, max-content);
 `;
 
 const ReviewButtons = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 2rem;
-  margin-bottom: 4rem;
+  ${displayGrid}
+  ${gridTemplateCols}
+  ${gap2Rem}
+  ${mrBtm4}
 `;
 
 const ReviewBtn = styled.button<{ isSelected: boolean }>`
-  font-size: 1.8rem;
-  font-weight: 500;
+  ${fontSizeSmall18}
+  ${fontBold}
   padding-bottom: 0.5rem;
   border-bottom: 4px solid
     ${({ isSelected }) => (isSelected ? '#46D6AB' : '#ccc')};
@@ -247,53 +347,57 @@ const ReviewBtn = styled.button<{ isSelected: boolean }>`
 `;
 
 const Ratings = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, max-content);
-  gap: 8rem;
+  ${displayGrid}
+  ${gridTemplateCols}
+  ${gap8Rem}
   margin-bottom: 8rem;
 `;
 
 const RatingsLeft = styled.div`
   font-size: 1.4rem;
-  font-weight: 500;
-  color: #757575;
+  ${fontBold}
+  ${colorGrey}
 `;
 
 const Numbers = styled.div`
-  margin-bottom: 1.5rem;
+  ${mrBtm1AndAHalf}
 `;
 
 const StarsContainer = styled.div`
-  margin-bottom: 1rem;
+  ${mrBtm1}
+`;
+
+const gap1Rem = css`
+  gap: 1rem;
 `;
 
 const RatingsRight = styled.div`
-  display: grid;
-  gap: 1rem;
+  ${displayGrid}
+  ${gap1Rem}
 `;
 
 const Rating = styled.span`
   font-size: 5rem;
-  color: #212121;
+  ${darkColor}
 `;
 
 const RatingOutOf = styled.span`
-  font-size: 3.3rem;
-  color: #9e9e9e;
+  ${fontSizeMedium}
+  ${colorLightGrey}
 `;
 
 const Feedbacks = styled.div`
-  display: grid;
+  ${displayGrid}
   gap: 5rem;
   margin-bottom: 5rem;
 `;
 
 const AskQuestionForm = styled.form`
-  font-size: 1.7rem;
-  font-weight: 500;
-  display: grid;
+  ${fontSizeNormal}
+  ${fontBold}
+  ${displayGrid}
   grid-template-columns: 1fr;
-  gap: 1rem;
+  ${gap1Rem}
 `;
 
 const QuestionInputContainer = styled.div``;
@@ -305,18 +409,18 @@ const QuestionInput = styled.textarea<{ error: boolean }>`
   color: #666;
   background: rgba(0, 0, 0, 0.04);
   border: 3px solid ${({ error }) => (error ? 'red' : '#ccc')};
-  border-radius: 5px;
+  ${borderRadius5px}
   resize: vertical;
 `;
 
 const SubmitBtn = styled.button`
-  font-size: 1.8rem;
+  ${fontSizeSmall18}
   justify-self: start;
   padding: 1rem 3rem;
   color: #333;
   background: var(--accent-color);
-  border-radius: 5px;
-  transition: background 0.2s;
+  ${borderRadius5px}
+  ${transitionBg}
 
   &:hover {
     background: #42e7b0;
@@ -324,14 +428,14 @@ const SubmitBtn = styled.button`
 `;
 
 const QuestionError = styled.p`
-  font-size: 1.7rem;
+  ${fontSizeNormal}
   font-weight: 300;
   margin: 0.5rem 0;
   color: red;
 `;
 
 const FeedbackGroup = styled.div`
-  display: grid;
+  ${displayGrid}
   gap: 0.7rem;
 `;
 
@@ -347,7 +451,7 @@ const EmptyContainer = styled.div`
 `;
 
 const EmptyText = styled.p`
-  font-size: 1.8rem;
+  ${fontSizeSmall18}
 `;
 
 interface Props {
