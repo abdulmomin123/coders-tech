@@ -10,7 +10,7 @@ const Root = styled.div`
   ${authPagesStyles}
 `;
 
-const signup = () => {
+const Signup = () => {
   const user = useContext(UserContext);
   const router = useRouter();
 
@@ -27,4 +27,4 @@ const signup = () => {
   );
 };
 
-export default signup;
+export default Signup;
