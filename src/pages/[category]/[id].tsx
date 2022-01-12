@@ -60,7 +60,7 @@ interface Props {
   result: string;
 }
 
-const product: FC<Props> = ({ result }) => {
+const Product: FC<Props> = ({ result }) => {
   const setCurrentProduct = useContext(CurrentProductsSetter);
 
   const product = JSON.parse(result) as FullProduct;
@@ -89,4 +89,4 @@ const product: FC<Props> = ({ result }) => {
   );
 };
 
-export default product;
+export default Product;
