@@ -67,6 +67,9 @@ const ImageSlideshow = () => {
 
   useEffect(() => () => clearTimer());
 
+  // Starting the timer for the first time
+  useEffect(() => initializeTimer(), []);
+
   return (
     <Root
       onMouseOver={() => clearTimer()}

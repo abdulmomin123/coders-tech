@@ -49,7 +49,7 @@ const LargeImageContainer = styled.div`
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.09);
   ${visibility}
   overflow: hidden;
-  z-index: 1;
+  z-index: 2;
 
   img {
     ${posAbs}
