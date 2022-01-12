@@ -37,6 +37,7 @@ interface Props {
   };
 }
 
+// eslint-disable-next-line react/display-name
 const Input: FC<Props> = forwardRef<any, Props>(
   ({ error, ...inputProps }, ref) => {
     return (
