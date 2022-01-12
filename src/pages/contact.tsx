@@ -111,6 +111,7 @@ const contact = () => {
 
       {/* Contact form */}
       <Form
+        ref={form}
         onSubmit={handleSubmit(async (_, e) => {
           try {
             setIsEmailSending(true);
