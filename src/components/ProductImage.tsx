@@ -127,6 +127,7 @@ const ProductImage: FC<Props> = ({ img, alt }) => {
 
       {/* Large image */}
       <LargeImageContainer>
+        {/* eslint-disable-next-line  */}
         <img src={`/products/${img}`} alt={alt} ref={image} />
       </LargeImageContainer>
     </Root>

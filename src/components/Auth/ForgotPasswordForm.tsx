@@ -66,9 +66,9 @@ const ForgotPasswordForm = () => {
         }
       })}
     >
-      <FormTitle>Can&apos;t log in?</FormTitle>
+      <FormTitle>Can't log in?</FormTitle>
 
-      <Text>We&apos;ll send a recovery link to:</Text>
+      <Text>We'll send a recovery link to:</Text>
 
       <InputGrid>
         {/* Email */}
