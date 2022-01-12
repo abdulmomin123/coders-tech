@@ -36,7 +36,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       products: JSON.stringify(products),
       category,
     },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 

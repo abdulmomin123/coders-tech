@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
   return {
     props: { result: JSON.stringify(product) },
-    revalidate: 10,
+    revalidate: 1,
   };
 };
 
