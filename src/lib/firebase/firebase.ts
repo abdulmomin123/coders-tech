@@ -25,7 +25,7 @@ import {
   ProductPreviewType,
   FullProduct,
   RawProduct,
-  ReviewProduct,
+  ReviewProductType,
 } from '../../Types';
 
 const firebaseConfig = {
@@ -97,7 +97,7 @@ export const getUserProfile = async (uid: string) => {
     // Fetch the to be reviewed collection of the user
     const toBeReviewed = (
       await getDocs(collection(firestore, 'users', uid, 'toBeReviewed'))
-    ).docs.map(doc => ({ id: doc.id, ...doc.data() } as ReviewProduct));
+    ).docs.map(doc => ({ id: doc.id, ...doc.data() } as ReviewProductType));
 
     return {
       uid: foundUser.id,
