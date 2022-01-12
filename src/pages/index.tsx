@@ -59,7 +59,7 @@ interface Props {
   result: string;
 }
 
-const index: FC<Props> = ({ result }) => {
+const Index: FC<Props> = ({ result }) => {
   const setCartItems = useContext(CartItemsSetter);
   const router = useRouter();
 
@@ -141,4 +141,4 @@ const index: FC<Props> = ({ result }) => {
   );
 };
 
-export default index;
+export default Index;
