@@ -365,7 +365,7 @@ const Navbar = () => {
               {/* Links */}
               {CATEGORIES.map(category => (
                 <li key={category}>
-                  <Link href={`/${category.replaceAll(' ', '-')}`} passHref>
+                  <Link href={`/${category.replace(/ /g, '-')}`} passHref>
                     <DropdownLink>{capitalize(category)}</DropdownLink>
                   </Link>
                 </li>

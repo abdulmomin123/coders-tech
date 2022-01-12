@@ -7,7 +7,7 @@ export const formatPrice = (price: number) =>
   );
 
 export const slugify = (val: string) =>
-  val.trim().toLowerCase().replaceAll(' ', '-');
+  val.trim().toLowerCase().replace(/ /g, '-');
 
 export const validateEmail = (email: string) => {
   const re =
