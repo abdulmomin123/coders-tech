@@ -11,7 +11,7 @@ import { sendEmail } from '../lib/emailjs/emailjs';
 const Root = styled.div`
   max-width: 80rem;
   margin: 0 auto;
-  height: 75vh;
+  min-height: 75vh;
   padding: 3rem;
   text-align: center;
 `;
@@ -37,6 +37,7 @@ const Form = styled.form`
 `;
 
 const inputStyles = css`
+  width: 100%;
   padding: 1.3rem 1.5rem;
   border: 4px solid var(--color-border);
   border-radius: 5px;
@@ -65,6 +66,13 @@ const TextArea = styled.textarea<{ error: boolean }>`
   }
 `;
 
+const Error = styled.p`
+  font-weight: 300;
+  text-align: left;
+  margin-top: 0.8rem;
+  color: red;
+`;
+
 const SubmitBtn = styled.button`
   font-size: 2rem;
   grid-column: 2 / -1;
@@ -89,6 +97,8 @@ const contact = () => {
     formState: { errors },
     reset,
   } = useForm();
+
+  const requiredErrorMsg = 'This field is required';
 
   return (
     <Root>
@@ -123,49 +133,131 @@ const contact = () => {
         })}
       >
         {/* First name */}
-        <Input
-          id="firstName"
-          type="text"
-          placeholder="First Name"
-          {...register('firstName', { required: true, minLength: 2 })}
-          error={errors.firstName}
-        />
+        <div>
+          <Input
+            id="firstName"
+            type="text"
+            placeholder="First Name"
+            maxLength={13}
+            {...register('firstName', {
+              required: {
+                value: true,
+                message: requiredErrorMsg,
+              },
+              minLength: {
+                value: 2,
+                message: 'Should be at least 2 characters long',
+              },
+              maxLength: {
+                value: 13,
+                message: 'Should be less than 13 characters',
+              },
+            })}
+            error={errors.firstName}
+          />
+
+          {errors.firstName && <Error>{errors.firstName.message}</Error>}
+        </div>
 
         {/* Last name */}
-        <Input
-          id="lastName"
-          type="text"
-          placeholder="Last Name"
-          {...register('lastName', { required: true, minLength: 2 })}
-          error={errors.lastName}
-        />
+        <div>
+          <Input
+            id="lastName"
+            type="text"
+            placeholder="Last Name"
+            maxLength={13}
+            {...register('lastName', {
+              required: {
+                value: true,
+                message: requiredErrorMsg,
+              },
+              minLength: {
+                value: 2,
+                message: 'Should be at least 2 characters long',
+              },
+              maxLength: {
+                value: 13,
+                message: 'Should be less than 13 characters',
+              },
+            })}
+            error={errors.lastName}
+          />
+
+          {errors.lastName && <Error>{errors.lastName.message}</Error>}
+        </div>
 
         {/* Email */}
-        <Input
-          id="email"
-          type="text"
-          placeholder="Email"
-          {...register('email', { required: true, validate: validateEmail })}
-          error={errors.email}
-        />
+        <div>
+          <Input
+            id="email"
+            type="text"
+            placeholder="Email"
+            {...register('email', {
+              required: {
+                value: true,
+                message: requiredErrorMsg,
+              },
+              validate: validateEmail,
+            })}
+            error={errors.email}
+          />
+
+          {errors.email && <Error>{errors.email.message}</Error>}
+        </div>
 
         {/* Subject */}
-        <Input
-          id="subject"
-          type="text"
-          placeholder="Subject"
-          {...register('subject', { required: true, minLength: 4 })}
-          error={errors.subject}
-        />
+        <div>
+          <Input
+            id="subject"
+            type="text"
+            placeholder="Subject"
+            maxLength={50}
+            {...register('subject', {
+              required: {
+                value: true,
+                message: requiredErrorMsg,
+              },
+              minLength: {
+                value: 10,
+                message: 'Should be at least 10 characters long',
+              },
+              maxLength: {
+                value: 50,
+                message: 'Should be less than 50 characters',
+              },
+            })}
+            error={errors.subject}
+          />
+
+          {errors.subject && <Error>{errors.subject.message}</Error>}
+        </div>
 
         {/* Message */}
-        <TextArea
-          id="message"
-          placeholder="Message"
-          rows={7}
-          {...register('message', { required: true, minLength: 5 })}
-          error={errors.message}
-        />
+        <div>
+          <TextArea
+            id="message"
+            placeholder="Message"
+            rows={7}
+            maxLength={1500}
+            {...register('message', {
+              required: {
+                value: true,
+                message: requiredErrorMsg,
+              },
+              minLength: {
+                value: 5,
+                message: 'Should be at least 5 characters long',
+              },
+              maxLength: {
+                value: 1500,
+                message: 'Should be less than 1500 characters',
+              },
+            })}
+            error={errors.message}
+          />
+
+          {errors.message && <Error>{errors.message.message}</Error>}
+        </div>
 
         <SubmitBtn type="submit">
           {isEmailSending ? <LoadingAnimation /> : 'Send'}
