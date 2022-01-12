@@ -87,7 +87,7 @@ const SubmitBtn = styled.button`
   }
 `;
 
-const contact = () => {
+const Contact = () => {
   const setNotification = useContext(NotificationContextSetter);
   const [isEmailSending, setIsEmailSending] = useState(false);
   const form = useRef<HTMLFormElement>(null);
@@ -268,4 +268,4 @@ const contact = () => {
   );
 };
 
-export default contact;
+export default Contact;
