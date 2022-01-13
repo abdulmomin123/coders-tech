@@ -5,7 +5,8 @@ import { firestore } from '../firebase/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2020-08-27',
+  // @ts-ignore
+  apiVersion: null,
 });
 
 let stripePromise: Promise<StripeClient | null>;

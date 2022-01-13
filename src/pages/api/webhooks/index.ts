@@ -1,22 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { buffer } from 'micro';
-import Cors from 'micro-cors';
 import { firestore, getUserFromEmail } from '../../../lib/firebase/firebase';
-import { stripe } from '../../../lib/stripe/stripe';
 import { doc, setDoc } from 'firebase/firestore';
-
-const webhookSecret: string = process.env.STRIPE_WEBHOOK_SECRET!;
+import { stripe } from '../../../lib/stripe/stripe';
 
 export const config = {
   api: {
     bodyParser: false,
   },
 };
-
-const cors = Cors({
-  allowMethods: ['POST', 'HEAD'],
-});
 
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Return error if it's not a post request
@@ -26,12 +19,19 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const buf = await buffer(req);
-  const sig = req.headers['stripe-signature']!;
+  const sig = req.headers['stripe-signature'] as string;
 
   let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(buf.toString(), sig, webhookSecret);
+    event = stripe.webhooks.constructEvent(
+      buf.toString(),
+      sig,
+      process.env.STRIPE_WEBHOOK_SECRET!
+    );
+
+    // Successfully constructed event
+    console.log('✅ Success:', event.id);
   } catch (err) {
     // On error, log and return the error message
     console.log(`❌ Error message: ${(err as any).message}`);
@@ -71,4 +71,4 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.json({ received: true });
 };
 
-export default cors(webhookHandler as any);
+export default webhookHandler;
