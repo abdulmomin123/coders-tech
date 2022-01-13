@@ -23,6 +23,8 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   let event: Stripe.Event;
 
+  console.log(process.env.STRIPE_WEBHOOK_SECRET);
+
   try {
     event = stripe.webhooks.constructEvent(
       buf.toString(),
@@ -37,8 +39,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log(`❌ Error message: ${(err as any).message}`);
     return res.status(400).send(`Webhook Error: ${(err as any).message}`);
   }
-
-  console.log(process.env.STRIPE_WEBHOOK_SECRET);
 
   // When the user subscribes
   if (event.type === 'checkout.session.completed') {
