@@ -1,5 +1,5 @@
 {
-  "name": "coders-tech",
+  "name": "shopnik",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,7 @@
     "@types/react-stars": "^2.2.1",
     "@types/styled-components": "^5.1.13",
     "algoliasearch": "^4.11.0",
-    "firebase": "^9.6.1",
+    "firebase": "^9.6.2",
     "install": "^0.13.0",
     "micro": "^9.3.4",
     "next": "^11.1.0",

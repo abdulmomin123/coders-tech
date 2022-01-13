@@ -23,8 +23,6 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   let event: Stripe.Event;
 
-  console.log(process.env.STRIPE_WEBHOOK_SECRET);
-
   try {
     event = stripe.webhooks.constructEvent(
       buf.toString(),
