@@ -13,6 +13,10 @@ const Root = styled.section`
   max-width: 120rem;
   margin: 0 auto;
   padding-top: 8rem;
+
+  @media only screen and (max-width: 46.875em) {
+    padding-top: 5rem;
+  }
 `;
 
 const displayGrid = css`
@@ -25,6 +29,18 @@ const CategoryButtonsContainer = styled.div`
   grid-auto-columns: max-content;
   gap: 6.5rem;
   margin-bottom: 4rem;
+
+  @media only screen and (max-width: 46.875em) {
+    margin-bottom: 2rem;
+  }
+
+  @media only screen and (max-width: 28.125em) {
+    gap: 3rem;
+  }
+
+  @media only screen and (max-width: 22.1875em) {
+    gap: 2rem;
+  }
 `;
 
 const textTransform = css`

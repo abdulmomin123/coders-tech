@@ -25,6 +25,20 @@ const TopPart = styled.div`
   padding: 8rem 10%;
   margin: 0 auto;
   background: #48c4a0;
+
+  @media only screen and (max-width: 45.625em) {
+    padding: 8rem 5%;
+  }
+
+  @media only screen and (max-width: 41.25em) {
+    gap: 3rem;
+    padding: 4rem 5%;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
 `;
 
 const fontWeight = css`
@@ -62,6 +76,10 @@ const Title = styled.p`
   text-transform: uppercase;
   padding-bottom: 1rem;
   margin-bottom: 3rem;
+
+  @media only screen and (max-width: 37.5em) {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const Border = styled.span`
@@ -105,6 +123,7 @@ const BottomPart = styled.div`
 
   p {
     font-size: 1.8rem;
+    line-height: 1.6;
     ${letterSpacing}
   }
 

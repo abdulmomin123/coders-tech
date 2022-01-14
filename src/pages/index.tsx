@@ -48,11 +48,19 @@ const FeaturedProducts = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 4rem;
+
+  @media only screen and (max-width: 41.875em) {
+    gap: 2rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const FeaturedCategories = styled.section`
   max-width: 120rem;
-  margin: 0 auto 10rem auto;
+  margin: 0 auto;
 `;
 
 interface Props {

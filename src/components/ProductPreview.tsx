@@ -89,7 +89,7 @@ const Button = styled.button`
   bottom: 0;
   left: 50%;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 3px;
   color: #262626;
   background: rgba(255, 255, 255, 0.8);
   border-bottom: 5px solid var(--accent-color);
@@ -110,13 +110,23 @@ const Name = styled.h3`
   color: #4d4c4c;
 `;
 
+const Prices = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, min-content);
+  gap: 1.5rem;
+
+  @media only screen and (max-width: 22.5em) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+`;
+
 const Price = styled.span<{ isDiscounted?: boolean }>`
   ${fontSize}
   ${fontWeight}
   text-decoration: ${({ isDiscounted }) =>
     isDiscounted ? 'line-through' : 'none'};
   color: ${({ isDiscounted }) => (isDiscounted ? '#bbbaba' : '#252525')};
-  ${({ isDiscounted }) => isDiscounted && 'margin-left: 1.5rem;'}
 `;
 
 const ProductPreview: FC<ProductPreviewType> = ({
@@ -200,7 +210,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
         <Name>{name}</Name>
 
         {/* Product price & discounted price */}
-        <div>
+        <Prices>
           {/* Current price */}
           <Price>{formatPrice(price)}</Price>
 
@@ -208,7 +218,7 @@ const ProductPreview: FC<ProductPreviewType> = ({
           {oldPrice && (
             <Price isDiscounted={true}>{formatPrice(oldPrice)}</Price>
           )}
-        </div>
+        </Prices>
       </Root>
     </Link>
   );

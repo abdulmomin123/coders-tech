@@ -22,6 +22,14 @@ const Root = styled.nav`
   background: var(--bg-primary);
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.09);
   z-index: 2;
+
+  @media only screen and (max-width: 40.9375em) {
+    padding: 2rem 1.4rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 1.4rem;
+  }
 `;
 
 const gridAFColumn = css`
@@ -37,6 +45,7 @@ const CenteredContainer = styled.div`
   ${gridAFColumn}
   ${alignItems}
   justify-content: space-between;
+  row-gap: 1rem;
   max-width: 160rem;
   margin: 0 auto;
 `;
@@ -52,6 +61,11 @@ const Logo = styled.a`
 
   span {
     color: var(--accent-color);
+  }
+
+  @media only screen and (max-width: 26.25em) {
+    grid-column: 1 / 4;
+    justify-self: center;
   }
 `;
 
@@ -77,6 +91,14 @@ const displayFlex = css`
 
 const Links = styled.div`
   ${displayFlex}
+
+  @media only screen and (max-width: 37.5em) {
+    grid-row: 1 / 2;
+  }
+
+  @media only screen and (max-width: 26.25em) {
+    grid-row: 2 / 3;
+  }
 `;
 
 const colorTransition = css`
@@ -103,6 +125,14 @@ const linkTypography = css`
 
   &:hover {
     ${greyColor}
+  }
+
+  @media only screen and (max-width: 42.8125em) {
+    padding: 0.9rem 1rem;
+  }
+
+  @media only screen and (max-width: 40.9375em) {
+    padding: 0.9rem 0.7rem;
   }
 `;
 
@@ -193,7 +223,7 @@ const bgDarkTransparent = css`
 const DropdownLink = styled.a`
   ${linkTypography}
   ${fullWidth}
-  padding: 1rem 1.5rem;
+  padding: 1rem 2rem !important;
   ${transition}
 
   &:hover {
@@ -206,6 +236,19 @@ const UserActions = styled.div`
   ${gridCenter}
   ${gridAFColumn}
   gap: 4rem;
+
+  @media only screen and (max-width: 42.8125em) {
+    gap: 1.5rem;
+  }
+
+  @media only screen and (max-width: 40.9375em) {
+    gap: 0.8rem;
+  }
+
+  @media only screen and (max-width: 26.25em) {
+    grid-row: 2 / 3;
+    grid-column: 3 / 4;
+  }
 `;
 
 const CartButton = styled.button`

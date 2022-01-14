@@ -6,6 +6,10 @@ import { SearchResultType } from '../Types';
 import Overlay from './Overlay';
 import SearchResult from './SearchResult';
 
+const fullWidth = css`
+  width: 100%;
+`;
+
 const Root = styled.form`
   position: relative;
   width: 22vw;
@@ -16,10 +20,20 @@ const Root = styled.form`
       opacity: 1;
     }
   }
-`;
 
-const fullWidth = css`
-  width: 100%;
+  @media only screen and (max-width: 42.8125em) {
+    width: 30vw;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    grid-row: 2 / 3;
+    grid-column: 1 / 4;
+    ${fullWidth}
+  }
+
+  @media only screen and (max-width: 26.25em) {
+    grid-row: 3 / 4;
+  }
 `;
 
 const SearchInput = styled.input`

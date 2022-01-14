@@ -21,6 +21,14 @@ const Root = styled.div`
   &:not(:last-of-type) {
     border-bottom: 2px solid #ebebeb;
   }
+
+  @media only screen and (max-width: 46.875em) {
+    gap: 2rem;
+  }
+
+  @media only screen and (max-width: 40.625em) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const LeftSide = styled.div``;
@@ -30,6 +38,10 @@ const Name = styled.p`
   font-weight: 500;
   margin-bottom: 2rem;
   color: #202600;
+
+  @media only screen and (max-width: 40.625em) {
+    margin-bottom: 1rem;
+  }
 `;
 
 const Description = styled.p`
@@ -37,6 +49,10 @@ const Description = styled.p`
   line-height: 1.35;
   margin-bottom: 4rem;
   color: #828282;
+
+  @media only screen and (max-width: 40.625em) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const ProductGrid = styled.div`
@@ -44,21 +60,32 @@ const ProductGrid = styled.div`
   ${displayGrid}
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
+
+  @media only screen and (max-width: 46.875em) {
+    gap: 2rem;
+  }
 `;
 
 const PaginationButton = styled.button<{ isLeft?: boolean }>`
   position: absolute;
-  top: 17.5rem;
+  top: 30%;
   ${({ isLeft }) => (isLeft ? 'left: 0;' : 'right: 0;')}
   padding: 2.5rem .8rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 2px;
-  transform: translateY(-50%);
   transition: background 0.2s;
   z-index: 1;
 
   &:hover {
     background: rgba(0, 0, 0, 0.5);
+  }
+
+  @media only screen and (max-width: 50em) {
+    top: 25%;
+  }
+
+  @media only screen and (max-width: 26.25em) {
+    padding: 1.7rem 0.4rem;
   }
 `;
 

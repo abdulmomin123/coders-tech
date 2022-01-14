@@ -9,12 +9,31 @@ const Root = styled.div`
   height: 30rem;
   display: flex;
   align-items: center;
-  margin: 20rem 0 8rem 0;
+  margin-top: 13rem;
   background: #f4f5f7;
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: 34.0625em) {
+    height: auto;
+    display: grid;
+    gap: 1rem;
+    padding: 3rem;
+  }
 `;
 
 const LeftSide = styled.div`
   margin-left: 10%;
+
+  @media only screen and (max-width: 41.875em) {
+    margin-left: 5%;
+  }
+
+  @media only screen and (max-width: 34.0625em) {
+    margin-left: 0;
+  }
 `;
 
 const Title = styled.h2`
@@ -27,10 +46,27 @@ const Title = styled.h2`
   }
 `;
 
-const ImageContainer = styled.div`
+const ImageContainer = styled.div<{ width: number; height: number }>`
   position: absolute;
   bottom: 1rem;
   right: 10%;
+  width: ${({ width }) => `${width / 10}rem`};
+  height: ${({ height }) => `${height / 10}rem`};
+
+  @media only screen and (max-width: 41.875em) {
+    right: 5%;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    width: ${({ width }) => `${width / 10 - 3}rem`};
+    height: ${({ height }) => `${height / 10 - 3}rem`};
+  }
+
+  @media only screen and (max-width: 34.0625em) {
+    position: initial;
+    grid-row: 1 / 2;
+    justify-self: center;
+  }
 `;
 
 interface Props {
@@ -72,8 +108,14 @@ const FeaturedProdBanner: FC<Props> = ({
       </LeftSide>
 
       {/* Product image */}
-      <ImageContainer>
-        <Image src={img} alt={alt} width={width} height={height} />
+      <ImageContainer width={width} height={height}>
+        <Image
+          src={img}
+          alt={alt}
+          width={width}
+          height={height}
+          layout="responsive"
+        />
       </ImageContainer>
     </Root>
   );

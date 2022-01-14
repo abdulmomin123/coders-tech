@@ -12,6 +12,18 @@ const Root = styled.div`
   ${posRelative}
   padding: 4rem;
   background: #f4f5f7;
+
+  @media only screen and (max-width: 46.875em) {
+    padding: 3rem;
+  }
+
+  @media only screen and (max-width: 41.875em) {
+    padding: 2rem;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    padding: 3rem;
+  }
 `;
 
 const Texts = styled.div`
@@ -34,7 +46,7 @@ const Description = styled.p`
   font-size: 1.8rem;
   line-height: 1.7;
   margin-bottom: 3rem;
-  color: #88888a;
+  color: #575757;
 `;
 
 const ImageContainer = styled.div<{ width: number; height: number }>`

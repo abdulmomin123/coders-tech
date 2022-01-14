@@ -9,6 +9,21 @@ const Root = styled.div`
   column-gap: 3rem;
   row-gap: 6rem;
   margin-bottom: 7rem;
+
+  @media only screen and (max-width: 46.875em) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 2rem;
+  }
+
+  @media only screen and (max-width: 31.25em) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media only screen and (max-width: 20.9375em) {
+    grid-template-columns: repeat(1, 1fr);
+    justify-items: center;
+    gap: 2rem;
+  }
 `;
 
 interface Props {

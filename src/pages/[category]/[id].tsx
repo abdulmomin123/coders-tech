@@ -70,11 +70,9 @@ const Product: FC<Props> = ({ result }) => {
     setCurrentProduct(product);
 
     document.body.style.background = '#eff0f5';
-    document.querySelector('html')!.style.scrollBehavior = 'smooth';
 
     return () => {
       document.body.style.background = 'initial';
-      document.querySelector('html')!.style.scrollBehavior = 'initial';
     };
   }, []);
 
