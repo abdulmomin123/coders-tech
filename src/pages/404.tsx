@@ -5,14 +5,30 @@ import styled from 'styled-components';
 import { gridCenter } from '../styles/utils';
 
 const Root = styled.div`
+  text-align: center;
   min-height: 85vh;
   ${gridCenter}
   align-items: start;
 `;
 
 const Title = styled.h1`
+  line-height: 1.3;
   color: #5a5a5a;
   margin-top: 2rem;
+
+  @media only screen and (max-width: 26.375em) {
+    margin-top: 0;
+  }
+`;
+
+const ImageContainer = styled.div`
+  width: 40rem;
+  height: 46.4rem;
+
+  @media only screen and (max-width: 23.125em) {
+    width: 30rem;
+    height: 34.8rem;
+  }
 `;
 
 const HomeLink = styled.a`
@@ -40,12 +56,15 @@ const FourOFour = () => {
       <Title>This Page Does Not Exist.</Title>
 
       {/* Image */}
-      <Image
-        src="/404.png"
-        alt="A monkey holding a phone"
-        width={400}
-        height={464}
-      />
+      <ImageContainer>
+        <Image
+          src="/404.png"
+          alt="A monkey holding a phone"
+          width={400}
+          height={464}
+          layout="responsive"
+        />
+      </ImageContainer>
 
       {/* Home link */}
       <Link href="/" passHref>

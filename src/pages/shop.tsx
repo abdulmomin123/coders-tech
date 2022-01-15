@@ -31,7 +31,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Root = styled.div`
   ${categoryAndShopPagesStyles}
-  padding-top: 1.5rem;
 `;
 
 const TitleContainer = styled.div`

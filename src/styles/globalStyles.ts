@@ -40,6 +40,10 @@ export const categoryAndShopPagesStyles = css`
   max-width: 120rem;
   padding: 3rem 0 8rem 0;
   margin: 0 auto;
+
+  @media only screen and (max-width: 34.375em) {
+    padding-top: 0;
+  }
 `;
 
 const displayIB = css`
