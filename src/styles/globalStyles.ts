@@ -34,6 +34,10 @@ export const authPagesStyles = css`
   align-items: start;
   justify-content: center;
   padding: 5rem 3rem 3rem 3rem;
+
+  @media only screen and (max-width: 22.5em) {
+    padding: 3rem 0 3rem 0;
+  }
 `;
 
 export const categoryAndShopPagesStyles = css`
@@ -63,10 +67,18 @@ const fontSize = css`
 export const authFormsStyles = css`
   ${fontSize}
   text-align: center;
-  width: 400px;
+  width: 40rem;
   border-radius: 4px;
   padding: 2.5rem 4rem;
   box-shadow: rgb(0 0 0 / 10%) 0 0 10px;
+
+  @media only screen and (max-width: 22.5em) {
+    width: 100%;
+  }
+
+  @media only screen and (max-width: 18.75em) {
+    padding: 3rem;
+  }
 `;
 
 export const scrollBarStyles = css`

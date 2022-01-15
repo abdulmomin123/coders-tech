@@ -24,6 +24,12 @@ const Root = styled.div`
   ${authFormsStyles}
 `;
 
+const Point = styled.span`
+  @media only screen and (max-width: 22.5em) {
+    display: none;
+  }
+`;
+
 const LoginForm = () => {
   const setNotification = useContext(NotificationContextSetter);
   const { value, reCheckUserProfile } = useContext(RecheckUserProfile);
@@ -132,7 +138,7 @@ const LoginForm = () => {
 
       <Links>
         <BottomLink href="/forgot">Forgot password?</BottomLink>
-        &nbsp;•&nbsp;
+        <Point>&nbsp;•&nbsp;</Point>
         <BottomLink href="/signup">Sign up for an account</BottomLink>
       </Links>
     </Root>
