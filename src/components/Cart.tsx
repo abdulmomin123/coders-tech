@@ -59,6 +59,10 @@ const Container = styled.div`
   align-items: center;
   ${justifyContent}
   margin-bottom: 4rem;
+
+  @media only screen and (max-width: 37.5em) {
+    margin-bottom: 2rem;
+  }
 `;
 
 const fontWeight = css`
@@ -103,6 +107,10 @@ const TextPrimary = styled.p`
   ${fontWeight}
   margin-bottom: 2.5rem;
   color: #040d28;
+
+  @media only screen and (max-width: 37.5em) {
+    margin-bottom: 1.2rem;
+  }
 `;
 
 const CartIcon = styled.svg`
@@ -143,6 +151,10 @@ const PriceGroup = styled.div<{ isTotal?: boolean }>`
   &:not(:last-of-type) {
     margin-bottom: 2rem;
   }
+
+  @media only screen and (max-width: 37.5em) {
+    margin-top: ${({ isTotal }) => (isTotal ? '2.5rem' : 'none')};
+  }
 `;
 
 const Price = styled.span`
@@ -169,6 +181,10 @@ const CheckoutBtn = styled.button`
 
   &:hover {
     background: #002db3;
+  }
+
+  @media only screen and (max-width: 37.5em) {
+    margin-top: 2.8rem;
   }
 `;
 
