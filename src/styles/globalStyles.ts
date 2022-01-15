@@ -26,6 +26,10 @@ export const featuredProdTitleStyles = css`
   strong {
     ${boldFont}
   }
+
+  @media only screen and (max-width: 26.5625em) {
+    font-size: 2.5rem;
+  }
 `;
 
 export const authPagesStyles = css`

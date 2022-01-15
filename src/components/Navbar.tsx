@@ -238,7 +238,7 @@ const UserActions = styled.div`
   gap: 4rem;
 
   @media only screen and (max-width: 42.8125em) {
-    gap: 1.5rem;
+    gap: 2.5rem;
   }
 
   @media only screen and (max-width: 40.9375em) {
