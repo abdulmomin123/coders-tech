@@ -14,6 +14,10 @@ const Root = styled.div`
   min-height: 75vh;
   padding: 3rem;
   text-align: center;
+
+  @media only screen and (max-width: 26.25em) {
+    padding: 0;
+  }
 `;
 
 const Form = styled.form`
@@ -33,6 +37,10 @@ const Form = styled.form`
 
   & > :last-child {
     resize: vertical;
+  }
+
+  @media only screen and (max-width: 21.25em) {
+    gap: 1.5rem;
   }
 `;
 
