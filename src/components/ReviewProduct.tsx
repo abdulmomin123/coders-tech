@@ -63,12 +63,21 @@ const Name = styled.h2`
   line-height: 1.2;
   margin-bottom: 1.5rem;
   color: #535353;
+
+  @media only screen and (max-width: 25em) {
+    font-size: 2.2rem;
+  }
 `;
 
 const ButtonContainer = styled.div`
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.2s;
+
+  @media only screen and (hover: none) {
+    opacity: 1;
+    visibility: initial;
+  }
 `;
 
 const buttonStyles = css`

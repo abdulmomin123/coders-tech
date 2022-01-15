@@ -120,6 +120,10 @@ const ProductsContainer = styled.div`
   ${borderRadius}
   overflow-y: scroll;
   ${scrollBarStyles}
+
+  @media only screen and (max-width: 28.125em) {
+    padding: 2rem;
+  }
 `;
 
 const NoUser = styled.div`
