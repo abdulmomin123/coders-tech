@@ -100,7 +100,7 @@ const ImageSlideshow = () => {
             <Image
               src={SLIDES[SLIDES.length - 1].img}
               width={1520}
-              height={540}
+              height={640}
               alt={SLIDES[SLIDES.length - 1].name}
             />
           </a>
@@ -110,7 +110,7 @@ const ImageSlideshow = () => {
         {SLIDES.map(({ name, category, productId, img }) => (
           <Link href={`/${category}/${productId}`} key={category}>
             <a>
-              <Image src={img} width={1520} height={540} alt={name} />
+              <Image src={img} width={1520} height={640} alt={name} />
             </a>
           </Link>
         ))}
@@ -121,7 +121,7 @@ const ImageSlideshow = () => {
             <Image
               src={SLIDES[0].img}
               width={1520}
-              height={540}
+              height={640}
               alt={SLIDES[0].name}
             />
           </a>
