@@ -18,10 +18,15 @@ const Root = styled.div`
   ${displayGrid}
   ${gridCols}
   align-items: start;
-  gap: 1.5rem;
+  column-gap: 1.5rem;
   padding: 2rem;
   background: rgba(0, 0, 0, 0.03);
   border-radius: 1rem;
+
+  @media only screen and (max-width: 24.375em) {
+    padding: 1.5rem;
+    column-gap: 1rem;
+  }
 `;
 
 const ImageContainer = styled.div`

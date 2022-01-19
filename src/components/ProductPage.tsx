@@ -104,13 +104,33 @@ const DetailsSection = styled.section`
   ${mrBtm3}
   ${bgWhite}
   ${borderRadius3px}
+
+  @media only screen and (max-width: 46.875em) {
+    gap: 4rem;
+  }
+
+  @media only screen and (max-width: 43.75em) {
+    grid-template-columns: 1fr;
+  }
+
+  @media only screen and (max-width: 25em) {
+    padding: 2rem;
+  }
 `;
 
-const ImagesSide = styled.div``;
+const ImagesSide = styled.div`
+  @media only screen and (max-width: 43.75em) {
+    justify-self: center;
+  }
+`;
+
+const displayFlex = css`
+  display: flex;
+`;
 
 const Thumbnails = styled.div`
-  ${displayGrid}
-  grid-template-columns: repeat(4, 1fr);
+  ${displayFlex}
+  justify-content: space-between;
 `;
 
 const cursor = css`
@@ -151,10 +171,6 @@ const Name = styled.h1`
 
 const fontSizeNormal = css`
   font-size: 1.7rem;
-`;
-
-const displayFlex = css`
-  display: flex;
 `;
 
 const mrBtm4 = css`
@@ -273,6 +289,10 @@ const ActionButtons = styled.div`
   ${displayGrid}
   ${gridAutoFlCol}
   ${gap2Rem}
+
+  @media only screen and (max-width: 43.75em) {
+    margin-top: 3rem;
+  }
 `;
 
 const fontSizeSmall19 = css`
@@ -320,6 +340,10 @@ const ReviewsSection = styled.section`
 
 const Container = styled.div`
   ${padding3Rem}
+
+  @media only screen and (max-width: 38.125em) {
+    padding: 2rem;
+  }
 `;
 
 const gridTemplateCols = css`
@@ -351,6 +375,14 @@ const Ratings = styled.div`
   ${gridTemplateCols}
   ${gap8Rem}
   margin-bottom: 8rem;
+
+  @media only screen and (max-width: 40.625em) {
+    gap: 3rem;
+  }
+
+  @media only screen and (max-width: 35.9375em) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const RatingsLeft = styled.div`
@@ -403,8 +435,7 @@ const AskQuestionForm = styled.form`
 const QuestionInputContainer = styled.div``;
 
 const QuestionInput = styled.textarea<{ error: boolean }>`
-  height: 8rem;
-  width: 80%;
+  width: 100%;
   padding: 1.5rem;
   color: #666;
   background: rgba(0, 0, 0, 0.04);
@@ -863,6 +894,7 @@ const ProductPage: FC<Props> = ({
                   {/* Input */}
                   <QuestionInput
                     placeholder="Ask a question..."
+                    rows={4}
                     maxLength={150}
                     {...register('question', {
                       minLength: {

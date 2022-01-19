@@ -10,6 +10,10 @@ const Root = styled.span`
   align-items: center;
   gap: 2rem;
   color: #212121;
+
+  @media only screen and (max-width: 23.1875em) {
+    gap: 1rem;
+  }
 `;
 
 const ProgressBar = styled.span`
