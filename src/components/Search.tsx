@@ -12,7 +12,7 @@ const fullWidth = css`
 
 const Root = styled.form`
   position: relative;
-  width: 22vw;
+  width: 43rem;
 
   &:focus-within {
     & > :last-child {
@@ -21,8 +21,16 @@ const Root = styled.form`
     }
   }
 
-  @media only screen and (max-width: 42.8125em) {
-    width: 30vw;
+  @media only screen and (max-width: 61.25em) {
+    width: 33rem;
+  }
+
+  @media only screen and (max-width: 50em) {
+    width: 25rem;
+  }
+
+  @media only screen and (max-width: 45.3125em) {
+    width: 21rem;
   }
 
   @media only screen and (max-width: 37.5em) {
@@ -61,7 +69,8 @@ const ResultsContainer = styled.div`
   ${posAbs}
   top: calc(100% + 5px);
   left: 0;
-  ${fullWidth}
+  width: 100%;
+  min-width: 30rem;
   max-height: 36rem;
   display: grid;
   gap: 1rem;
