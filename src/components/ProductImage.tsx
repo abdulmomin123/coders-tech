@@ -128,6 +128,7 @@ const ProductImage: FC<Props> = ({ img, alt }) => {
         width={330}
         height={330}
         layout="responsive"
+        priority
       />
 
       {/* Navigator window */}
