@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import Stripe from 'stripe';
 import { buffer } from 'micro';
+import Cors from 'micro-cors';
 import { firestore, getUserFromEmail } from '../../../lib/firebase/firebase';
 import { doc, setDoc } from 'firebase/firestore';
 import { stripe } from '../../../lib/stripe/stripe';
@@ -10,6 +11,10 @@ export const config = {
     bodyParser: false,
   },
 };
+
+const cors = Cors({
+  allowMethods: ['POST', 'HEAD'],
+});
 
 const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   // Return error if it's not a post request
@@ -71,4 +76,4 @@ const webhookHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   res.json({ received: true });
 };
 
-export default webhookHandler;
+export default cors(webhookHandler as any);
