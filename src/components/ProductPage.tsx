@@ -531,7 +531,7 @@ const ProductPage: FC<Props> = ({
   const avgRating = reviews.length
     ? +(
         reviews.reduce((acc, { rating }) => acc + rating, 0) / reviews.length
-      ).toFixed(2)
+      ).toFixed(1)
     : 0;
 
   return (
