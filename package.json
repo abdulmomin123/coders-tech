@@ -18,7 +18,7 @@
     "@types/react-stars": "^2.2.1",
     "@types/styled-components": "^5.1.13",
     "algoliasearch": "^4.11.0",
-    "firebase": "^9.6.2",
+    "firebase": "^9.6.3",
     "install": "^0.13.0",
     "micro": "^9.3.4",
     "micro-cors": "^0.1.1",
