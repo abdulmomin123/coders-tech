@@ -861,7 +861,6 @@ const ProductPage: FC<Props> = ({
                     setCurrentProduct({
                       ...currentProduct!,
                       questions: [
-                        ...currentProduct!.questions,
                         {
                           id: questionRef.id,
                           name: user.name,
@@ -870,6 +869,7 @@ const ProductPage: FC<Props> = ({
                           date: createdQuestion.date,
                           replies: [],
                         },
+                        ...currentProduct!.questions,
                       ],
                     });
 
