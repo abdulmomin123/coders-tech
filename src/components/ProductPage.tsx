@@ -129,7 +129,8 @@ const displayFlex = css`
 `;
 
 const Thumbnails = styled.div`
-  ${displayFlex}
+  ${displayGrid}
+  grid-auto-flow: column;
   justify-content: space-between;
 `;
 
