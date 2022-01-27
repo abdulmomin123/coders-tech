@@ -130,7 +130,7 @@ const displayFlex = css`
 
 const Thumbnails = styled.div`
   ${displayGrid}
-  grid-auto-flow: column;
+  grid-template-columns: repeat(4,1fr);
   justify-content: space-between;
 `;
 
