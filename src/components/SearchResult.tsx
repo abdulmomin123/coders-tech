@@ -63,7 +63,7 @@ const SearchResult: FC<Props> = ({
 }) => {
   return (
     <Link href={`/${category}/${objectID}`} passHref>
-      <Root target="__blank">
+      <Root>
         {/* Image */}
         <ImageContainer>
           <Image src={`/products/${image}`} alt={name} width={70} height={70} />
