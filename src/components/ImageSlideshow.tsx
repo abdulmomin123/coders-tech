@@ -59,15 +59,11 @@ const ImageSlideshow = () => {
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
-  useEffect(() => {
-    clearTimer();
-
-    initializeTimer();
-  }, [currentImg]);
+  useEffect(() => (clearTimer(), initializeTimer()), [currentImg]);
 
   useEffect(() => () => clearTimer());
 
-  // Starting the timer for the first time
+  // Starting the timer for the first time, and stopping the timer when the user switches tabs
   useEffect(() => initializeTimer(), []);
 
   return (
