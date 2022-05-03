@@ -135,6 +135,10 @@ ${css`
 
     ${scrollBarStyles}
   }
+  
+  ::selection {
+    background: rgba(0, 183, 255, 0.2);
+  }
 
   input,
   textarea,
