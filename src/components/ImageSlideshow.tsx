@@ -50,23 +50,43 @@ const ImageSlideshow = () => {
   const [currentImg, setCurrentImg] = useState(1);
   const [shouldTransition, setShouldTransition] = useState(true);
   const [timer, setTimer] = useState<NodeJS.Timeout>();
+  const [isVisible, setIsVisible] = useState(true);
 
-  const clearTimer = () => clearTimeout(timer!);
   const startSlideshow = () =>
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
+  const stopSlideshow = () => clearTimeout(timer!);
+
+  // Starting the timer for the first time, and stopping the timer when the user switches tabs
+  useEffect(() => {
+    startSlideshow();
+
+    const setVisibility = () => {
+      if (document.hidden) return setIsVisible(false);
+
+      setIsVisible(true);
+    };
+
+    document.addEventListener('visibilitychange', setVisibility);
+    return () =>
+      document.removeEventListener('visibilitychange', setVisibility);
+  }, []);
+
+  useEffect(() => (stopSlideshow(), startSlideshow()), [currentImg]);
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
-  useEffect(() => (clearTimer(), startSlideshow()), [currentImg]);
+  useEffect(() => {
+    if (!isVisible) return stopSlideshow();
 
-  useEffect(() => () => clearTimer());
+    startSlideshow();
+  }, [isVisible]);
 
-  // Starting the timer for the first time, and stopping the timer when the user switches tabs
-  useEffect(() => startSlideshow(), []);
+  // Stopping the slideshow
+  useEffect(() => () => stopSlideshow());
 
   return (
     <Root
-      onMouseOver={() => clearTimer()}
+      onMouseOver={() => stopSlideshow()}
       onMouseLeave={() => startSlideshow()}
     >
       <SlidesContainer
@@ -132,7 +152,13 @@ const ImageSlideshow = () => {
           Previous
         </Button>
 
-        <span>{currentImg > SLIDES.length ? SLIDES.length : currentImg}</span>
+        <span>
+          {currentImg > SLIDES.length
+            ? SLIDES.length
+            : currentImg < 1
+            ? 1
+            : currentImg}
+        </span>
 
         <Button
           onClick={() => {
