@@ -52,20 +52,23 @@ const ImageSlideshow = () => {
   const [timer, setTimer] = useState<NodeJS.Timeout>();
 
   const clearTimer = () => clearTimeout(timer!);
-  const startTimer = () =>
+  const startSlideshow = () =>
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
-  useEffect(() => (clearTimer(), startTimer()), [currentImg]);
+  useEffect(() => (clearTimer(), startSlideshow()), [currentImg]);
 
   useEffect(() => () => clearTimer());
 
   // Starting the timer for the first time, and stopping the timer when the user switches tabs
-  useEffect(() => startTimer(), []);
+  useEffect(() => startSlideshow(), []);
 
   return (
-    <Root onMouseOver={() => clearTimer()} onMouseLeave={() => startTimer()}>
+    <Root
+      onMouseOver={() => clearTimer()}
+      onMouseLeave={() => startSlideshow()}
+    >
       <SlidesContainer
         currentImg={currentImg}
         shouldTransition={shouldTransition}
