@@ -22,9 +22,7 @@ const SlidesContainer = styled.div<{
   ${displayGrid}
   grid-auto-flow: column;
   grid-auto-columns: 100%;
-  transform: translateX(
-    ${({ currentImg }) => `${-((currentImg + 1 - 1) * 100)}%`}
-  );
+  transform: translateX(${({ currentImg }) => `${-(currentImg * 100)}%`});
   transition: ${({ shouldTransition }) =>
     shouldTransition ? 'transform 0.8s ease-in-out' : 'none'};
 `;
@@ -54,23 +52,20 @@ const ImageSlideshow = () => {
   const [timer, setTimer] = useState<NodeJS.Timeout>();
 
   const clearTimer = () => clearTimeout(timer!);
-  const initializeTimer = () =>
+  const startTimer = () =>
     setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
-  useEffect(() => (clearTimer(), initializeTimer()), [currentImg]);
+  useEffect(() => (clearTimer(), startTimer()), [currentImg]);
 
   useEffect(() => () => clearTimer());
 
   // Starting the timer for the first time, and stopping the timer when the user switches tabs
-  useEffect(() => initializeTimer(), []);
+  useEffect(() => startTimer(), []);
 
   return (
-    <Root
-      onMouseOver={() => clearTimer()}
-      onMouseLeave={() => initializeTimer()}
-    >
+    <Root onMouseOver={() => clearTimer()} onMouseLeave={() => startTimer()}>
       <SlidesContainer
         currentImg={currentImg}
         shouldTransition={shouldTransition}
