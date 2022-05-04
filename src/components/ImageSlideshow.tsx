@@ -52,9 +52,11 @@ const ImageSlideshow = () => {
   const [timer, setTimer] = useState<NodeJS.Timeout>();
   const [isVisible, setIsVisible] = useState(true);
 
-  const startSlideshow = () =>
-    setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
   const stopSlideshow = () => clearTimeout(timer!);
+  const startSlideshow = () => {
+    stopSlideshow();
+    setTimer(setTimeout(() => setCurrentImg(currentImg + 1), 4000));
+  };
 
   // Starting the timer for the first time, and stopping the timer when the user switches tabs
   useEffect(() => {
@@ -71,7 +73,7 @@ const ImageSlideshow = () => {
       document.removeEventListener('visibilitychange', setVisibility);
   }, []);
 
-  useEffect(() => (stopSlideshow(), startSlideshow()), [currentImg]);
+  useEffect(() => startSlideshow(), [currentImg]);
 
   useEffect(() => setShouldTransition(true), [shouldTransition]);
 
