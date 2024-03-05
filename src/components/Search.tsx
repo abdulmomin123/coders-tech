@@ -120,8 +120,6 @@ const Search = () => {
 
         setHits(hits);
 
-        console.log(hits);
-
         setIsLoading(false);
       } catch (_) {
         setIsLoading(false);

@@ -67,14 +67,12 @@ export const uploadProducts = async () => {
         nickname: category,
       });
 
-      console.log(stripePrice.id);
-
       // Add priceId to products in DB
       updateDoc(doc(firestore, 'products', 'categories', category, id), {
         priceId: stripePrice.id,
       });
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   }
 };
